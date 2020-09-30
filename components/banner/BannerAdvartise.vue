@@ -1,0 +1,32 @@
+<template>
+  <section class="advartise-area light-layout section-b-space">
+    <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="advartise-img-wrap">
+          <nuxt-link to="#"><img :src="imagepath1" alt="banner"></nuxt-link>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="advartise-img-wrap">
+          <nuxt-link to="#"><img :src="imagepath2" alt="banner"></nuxt-link>      
+        </div>
+      </div>
+    </div></div>
+  </section>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      imagepath1: require('@/assets/images/banner-img/addvartise-1.jpg'),
+      imagepath2: require('@/assets/images/banner-img/addvartise-2.jpg'),
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

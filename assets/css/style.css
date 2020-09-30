@@ -1,0 +1,791 @@
+/*
+-------------------------------------------------
+  Theme Name: Kazi's Supermarket
+  Theme URL: http://kazissupermarket.com
+  Author: Kazi's Supermarket
+  Author URL:  http://kazissupermarket.com
+  Creation Date: 26/09/2020
+  Description:A default stylesheet for Kazi's Supermarket
+  Version: 1.00
+  Primary use: ecommerce, shop,
+  Support: ,
+
+  ---------------------------------------------------
+  Developed By: Suraiya Aysha
+  Developer URL: http://ayshatech.com/
+
+  ---------------------------------------------------
+
+  --------------------------------------------------
+  Table of Contents
+  --------------------------------------------------
+  1. General CSS
+  2. Typography CSS
+  3. Button CSS
+  4. Chat Bot Area CSS
+  5. Scroll To Top Area
+  6.Preloader Area Start
+  7. Header Area
+  33. Responsive CSS
+
+------------------------------------------------ */
+
+
+/* Use font link */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Use style sheet */
+@import url('../vendor/fontawesome-free/css/all.min.css');
+@import url('../vendor/flat-icon/flaticon.css');
+
+/***
+
+/*-----------------------------------------------
+            1. General Style
+-------------------------------------------------*/
+
+  * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+  }
+
+  body,
+  html {
+      height: 100%;
+      margin: 0;
+  }
+
+body {
+    background: #fff none repeat scroll;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color: #777c87;
+    letter-spacing: 0.05em;
+    overflow-x: hidden;
+}
+#body-content {
+	transition: ease-in-out 0.3s;
+	margin-left: 240px;
+}
+
+p{
+  line-height: 1.75;
+  color: #777c87;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+a {
+  color: #252121;
+}
+
+/* Theme All Transitions
+------------------------------- */
+a, #mainNav, .theme-button, .offer-tile-item-link{
+    transition: all .5s ease-in-out;
+}
+
+.slow-transition{
+    transition: all .7s ease-in-out;
+}
+
+  ul li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+  }
+
+  ul {
+      margin: 0;
+      padding: 0;
+  }
+
+  a,
+  a > * {
+      outline: none;
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  a:hover {
+      text-decoration: none;
+      color: var(--green-color);
+  }
+
+  ::selection {
+      background-color: #93ebfb;
+  }
+  img::selection {
+    background: transparent;
+  }
+  .page-link:focus {
+    box-shadow: none;
+  }
+
+  /*----Form Control Reset CSS----*/
+.form-control {
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    height: 47px;
+    color: #777c87;
+    border: 1px solid #B9C1C9;
+}
+.form-control:focus {
+    background-color: #fff;
+    border-color: #dddddd;
+    box-shadow: none;
+}
+.form-control::placeholder {
+    color: #a0a3aa;
+}
+.input-group-text {
+    background-color: transparent;
+}
+button{
+    cursor: pointer;
+}
+label {
+    margin-bottom: 5px;
+}
+
+/*------------------------------------------
+            2.  Typography
+-------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    margin: 0;
+    color: var(--heading-color);
+}
+figure {
+    margin: 0 0 0;
+}
+.card-body{
+    padding: 0;
+}
+.card-title {
+    margin-bottom: 0;
+}
+/*--------------------------------
+            2.1 Theme Color
+-----------------------------------*/
+
+:root{
+    --white-color: #fff;
+    --orange-color: #ea662f;
+    --black-color: #252121;
+    --text-color: #646464;
+    --border-color: #EDF1F4;
+    --red-color: #e01212;
+    --bg-secondary: #f8f8f8;
+    --green-color: #0e7346;
+}
+
+/*--------------------------------
+    2.2 Theme Inner Color Style
+-----------------------------------*/
+.text-color-white, .footer-widget a, .bottom-footer-left ul li a, .bottom-footer-right ul li a{
+    color: #fff;
+}
+.text-black-color{
+    color: var(--black-color);
+}
+.color-green, .subscribe-area h4{
+    color: var(--green-color);
+}
+.bg-white{
+    background-color: #fff;
+}
+.different-bg{
+    background-color: var(--bg-secondary);
+}
+/*--------------------------------
+    2.3 Theme Font Style
+-----------------------------------*/
+.font-bold{
+    font-weight: 700;
+}
+.font-12, .b-form-spinbutton.form-control, .b-form-spinbutton button, .b-form-spinbutton button:hover{
+    font-size: 12px;
+}
+.font-14, .theme-button, .offer-tile-item-paragraph{
+    font-size: 14px;
+}
+.font-15{
+    font-size: 15px;
+}
+.font-16{
+    font-size: 16px;
+}
+.font-18{
+    font-size: 18px;
+}
+
+/*--------------------------------
+    2.5 Theme Margin and Padding
+-----------------------------------*/
+.mt-10, .ride-owner-box p{
+    margin-top: 10px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.mb-15 {
+    margin-bottom: 15px;
+}
+.mt-15{
+    margin-top: 15px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mb-30{
+    margin-bottom: 30px;
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.mr-10{
+    margin-right: 10px;
+}
+.mr-5{
+    margin-right: 5px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.p-30{
+    padding: 30px;
+}
+.p-20{
+    padding: 20px;
+}
+/*--------------------------------
+   2.4 Template Default CSS
+-----------------------------------*/
+
+/*----Template Main Section ----*/
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+}
+.section-title h4 {
+	color: #2f3033;
+}
+.section-title a {
+	font-weight: 500;
+	color: var(--green-color);
+}
+.section-title a:hover {
+	color: var(--orange-color);
+}
+section{
+    position: relative;
+    z-index: 9;
+}
+.padding-zero{
+    padding: 0 0;
+}
+.pagination {
+	justify-content: center;
+}
+.pagination .page-item.active .page-link{
+    background-color: var(--heading-color);
+    border-color: var(--heading-color);
+}
+.pagination .page-link{
+    color: var(--heading-color);
+}
+
+.link-text-hover-style, .footer-widget a:hover, .bottom-footer-left ul li a:hover, .bottom-footer-right ul li a:hover {
+    text-decoration: underline;
+}
+
+/*Modal Default CSS*/
+
+.modal-dialog {
+	max-width: 600px;
+}
+.modal-content {
+	padding: 30px;
+}
+.modal-header {
+	border: 0;
+	padding: 0;
+}
+.close {
+    font-size: 26px;
+}
+/*Flat Icon Default Settings*/
+[class^="flaticon-"]::before, [class*=" flaticon-"]::before, [class^="flaticon-"]::after, [class*=" flaticon-"]::after {
+    margin-left: 0;
+}
+
+/*------------------------------------------
+            2.  Typography End
+-------------------------------------------*/
+
+/*--------------------------------------------
+            3. Button Style
+---------------------------------------------*/
+.btn{
+  padding: 0;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+button{
+    background-color: transparent;
+}
+button:focus {
+    outline: 0;
+}
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: 48%!important;
+}
+/*Slider Default Button CSS*/
+  .testi_prev, .testi_next {
+      cursor: pointer;
+      line-height: 39px;
+      position: absolute;
+      z-index: 9;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+/*-----Theme Button Style-----*/
+.theme-button {
+    /* position: relative; */
+    color: #fff;
+    /* display: inline-flex; */
+    cursor: pointer;
+    transition: all 0.7s ease 0s;
+    outline: none;
+    /* text-transform: capitalize; */
+    z-index: 99;
+    padding: 11px 20px;
+    height: 47px;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: var(--orange-color);
+    /* align-items: center;
+    justify-content: center; */
+}
+.theme-button:hover{
+    background-color: var(--green-color);
+    color: #fff;
+}
+/*-------------------------------------------
+           4. Nav Area CSS
+-------------------------------------------*/
+.menu-section-area {
+	padding: 0;
+	z-index: 9999;
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+.menu-section-area .navbar {
+    padding: 0;
+}
+#mainNav {
+	background-color: #fff;
+	height: 80px;
+	display: flex !important;
+	transition: all ease .6s;
+	border-bottom: 1px solid #EDF1F4;
+	border-bottom: 1px solid var(--border-color);
+	padding: 0;
+}
+#mainNav.navbar-shrink {
+    background-color: #fff;
+    box-shadow: 0 0 9px 3px rgba(50,29,154,.2);
+    top:0
+}
+#mainNav .navbar-brand {
+	position: relative;
+	top: 0;
+	margin-left: 30px;
+	padding: 15px 0;
+	margin-right: 2rem;
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+    font-size: 16px;
+    padding: 0.75em 10px;
+    position: relative;
+    color: var(--black-color);
+}
+#mainNav .navbar-nav .nav-item:last-child .nav-link{
+    padding-right: 0;
+}
+#mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link.active {
+    color: var(--hover-color);
+}
+#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+    color: #0a8aff;
+}
+#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover, #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link.active {
+    color: var(--hover-color);
+}
+#mainNav .navbar-nav .nav-item .nav-link i.fa-comment-dots {
+    font-size: 30px;
+}
+/*---- Dropdown Menu CSS ----*/
+/* .dropdown-toggle::after {
+    display: none;
+}
+.dropdown-box .dropdown-menu {
+    padding: 1.2rem 0;
+    width: 210px;
+    margin: 0 0;
+}
+.dropdown-menu.dropdown-menu-right li {
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.dropdown-menu.dropdown-menu-right li:hover a {
+    background-color: #f4f4f4d9;
+    color: var(--hover-color);
+}
+.dropdown-menu.dropdown-menu-right li a > span {
+    padding: 0;
+}
+.dropdown-menu.dropdown-menu-right li span {
+    color: var(--text-color);
+    padding: 6px 1.2rem;
+    display: block;
+}
+#mainNav ul li{
+     position: relative;
+ }
+#mainNav ul li.nav-item a.nav-link > span.points-overview-number {
+    right: 0!important;
+}
+.dropdown-menu.dropdown-menu-right li span.points-overview-number, #mainNav ul li a span.points-overview-number {
+    background-color: var(--red-color);
+    position: absolute;
+    border-radius: 5px;
+    color: #fff;
+    padding: 1px 4px;
+    height: 18px;
+    width: auto;
+    font-size: 11px;
+    top: 6px;
+    min-width: 21px;
+    text-align: center;
+}
+.dropdown-menu.dropdown-menu-right li span.points-overview-number{
+    right: 9px!important;
+}
+.dropdown-menu.dropdown-menu-right li a {
+    font-size: 14px;
+    text-transform: capitalize;
+    display: block;
+    font-weight: 400;
+    color: var(--heading-color);
+    font-family: 'SolaimanLipiBold';
+    padding: 4px 1.2rem;
+}
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid #e5e5e5;
+}
+#mainNav ul.navbar-nav li.nav-item.dropdown-box .dropdown-list {
+    background-color: #fff;
+    top: 213%;
+    position: absolute;
+    transition: .5s;
+    visibility: hidden;
+    opacity: 0;
+    width: 199px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 12px 15px rgba(0,0,0,.10);
+    border: 1px solid var(--heading-color);
+    z-index: 99;
+    left: -140px;
+}
+#mainNav ul.navbar-nav li.nav-item.dropdown-box:hover .dropdown-list {
+    top: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+.dropdown-list li a {
+    padding: 6px 10px;
+    display: block;
+}
+#mainNav .navbar-nav .nav-item .nav-link > i.fas.fa-globe {
+    padding-right: 5px;
+}
+#mainNav .navbar-nav .nav-item .nav-link > i.fa-angle-down {
+    padding-left: 5px;
+    position: relative;
+    top: 2px;
+    color: #c1c1c1;
+}
+@media (min-width: 992px) {
+
+} */
+/*-------------------------------------------
+    21. Footer Area/Copyright Area
+-------------------------------------------*/
+/*Footer Top CSS*/
+.footer-top-area {
+	background-color: #2f2f2f;
+}
+.footer-widget a {
+    padding: 6px;
+    display: block;
+}
+.footer-widget h5 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.footer-widget p {
+    color: #fff;
+    margin-bottom: 10px;
+}
+/* Subscripbe area css */
+.subscribe-area {
+	border-top: 1px solid #a3a3a3;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+/*Footer Bottom CSS*/
+.footer-bottom-area {
+	background-color: var(--green-color);
+    padding: 15px 0;
+}
+.footer-bottom-part {
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-footer-left ul li {
+    display: inline;
+}
+.bottom-footer-left ul li a {
+    padding: 0 15px 0 0;
+    display: inline-block;
+}
+.payment-images li a {
+	margin-left: 10px;
+}
+.payment-images li a img {
+	height: 30px;
+    border-radius: 5px;
+}
+/*-------------------------------------------
+    21. Footer Area/Copyright Area End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    32. Login Page CSS End
+-------------------------------------------*/
+.login-area form {
+	width: 52%;
+	margin: 30px auto;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 0.25rem;
+}
+/*-------------------------------------------
+    32. Login Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    33. Responsive Design CSS
+-------------------------------------------*/
+
+/*=====================================
+    Extra Large Screen
+========================================*/
+
+  @media only screen and (min-width: 1920px){
+  }
+
+/*=====================================
+    For Large Screen
+========================================*/
+
+  /*------Max 1200px Width Screen------*/
+
+  @media only screen and (max-width: 1775px) {
+
+  }
+
+/*--------Max 1680px Width Screen---------*/
+@media only screen and (max-width: 1680px) {
+
+}
+/*--------Max 1600px Width Screen---------*/
+@media only screen and (max-width: 1600px) {
+
+}
+
+/*--------Max 1366px Width Screen---------*/
+
+@media only screen and (max-width: 1366px) {
+
+    /*Default for Max 1366px Width Devices*/
+    h4 {
+        font-size: 22px;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1366px){
+
+}
+
+/*--------Max 1200px Width Screen---------*/
+
+  @media only screen and (max-width: 1200px) {
+      body {
+          font-size: 14px;
+      }
+      h2.section-heading {
+          font-size: 40px;
+      }
+      p.section-subheading{
+          font-size: 16px;
+      }
+      h4 {
+          font-size: 21px;
+      }
+      /*Hero Area*/
+
+  }
+
+/*--------Min 1200px Width Screen--------*/
+  @media only screen and (min-width: 1200px) {
+
+  }
+
+/*=====================================
+    For Medium Screen
+========================================*/
+
+@media only screen and (max-width: 1199px){
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    /*Domain Area CSS*/
+    p{
+        font-size: 14px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+
+}
+
+/*======================================
+        Tablet layout
+=========================================*/
+
+  @media only screen and (max-width: 991px) {
+    p {
+        font-size: 14px;
+    }
+    /*Menu CSS*/
+    #mainNav .navbar-brand img {
+        height: 45px;
+    }
+
+  }
+  @media only screen and (min-width: 991px) {
+
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 991px){
+
+  }
+
+@media only screen and (max-width: 768px) {
+    /*Main Menu Bar*/
+
+}
+
+/*=======================================
+        For Small Devices
+=========================================*/
+  @media only screen and (max-width: 767px) {
+
+    .login-area form {
+	    width: 100%;
+    }
+
+    /*Footer CSS*/
+    .footer-widget {
+        border-top: 1px solid rgba(44, 212, 217, .2);
+        padding: 30px 0 0 0;
+        margin-top: 30px;
+    }
+    .footer-middle-area hr {
+        margin: 30px 0;
+    }
+
+  }
+
+  /*========================================
+            For large mobile
+  =========================================*/
+
+@media only screen and (max-width: 766px){
+
+
+}
+
+@media only screen and (max-width: 575px){
+
+}
+@media only screen and (max-width: 535px) {
+   
+}
+
+@media only screen and (max-width: 510px){
+
+}
+
+/*=========================================
+        For very little mobile
+=========================================*/
+  @media only screen and (min-width:300px) and (max-width:479px){
+
+    
+  }
+@media only screen and (max-width:320px){
+
+}
+  /*-------------------------------------------
+        24. Responsive Design End
+  -------------------------------------------*/
