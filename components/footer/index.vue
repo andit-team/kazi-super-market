@@ -53,7 +53,7 @@
 
                   <!-- Column Start-->
                   <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                      <div class="footer-widget">
+                      <div class="footer-widget footer-get-app">
                           <h5 class="text-uppercase">Get the app</h5>
                           <ul>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam veritatis!</p>

@@ -50,7 +50,7 @@ header #mainNav .search-box .vs__selected {
   #nav-collapse ul.navbar-nav {
     background-color: #fff;
     /* max-height: 100%; */
-    top: -6px;
+    top: 6px;
     position: relative;
     align-items: flex-start;
     /* height: 100vh; */

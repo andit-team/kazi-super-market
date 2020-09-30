@@ -1,13 +1,13 @@
 <template>
   <div>
     <!-- <BannerPage :bannerImg="bannerImg" /> -->
-    <Breadcrumbs title="Category Title" />
+    <Breadcrumbs title="Product Title" />
     <section class="product-page section-b-space">
       <div class="container">
         <div class="row">
-          <div class="col-12 col-md-3 col-lg-2" v-for="(product,index) in products" :key="index">
+          <div class="col">
             <!-- Home product box Start -->
-            <ProductItem :product="product" :index="index" />
+            <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
             <!-- Home product box End -->
           </div>
         </div>
@@ -22,11 +22,9 @@
 import Breadcrumbs from '../../components/widgets/breadcrumbs'
 import ProductItem from '../../components/product/ProductItem'
 export default {
-  layout: 'product',
 data() {
   return {
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
-      imageSrc: '',
         "products": [
         {
             "id": 1,

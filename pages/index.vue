@@ -1,12 +1,12 @@
 <template>
   <div>
     <BannerHomeSlider />
-    <CategoryList />
-    <HomeOnSaleProduct :products="products" />
-    <HomeDealsProduct :products="products" />
-    <ProductSlider :products="products" />
+    <HomeCategoryList />
+    <HomeOnSaleProduct />
+    <HomeDealsProduct />
+    <ProductSlider />
     <BannerAdvartise />
-    <ProductSlider2 :products="products" />
+    <ProductSlider2 />
     <Footer /> 
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import { mapState } from 'vuex'
 import BannerHomeSlider from '../components/banner/BannerHomeSlider'
-import CategoryList from '../components/category/CategoryList'
+import HomeCategoryList from '../components/home/HomeCategoryList'
 import HomeOnSaleProduct from '../components/home/HomeOnSaleProduct'
 import HomeDealsProduct from '../components/home/HomeDealsProduct'
 import ProductSlider from '../components/product/ProductSlider'
@@ -23,28 +23,6 @@ import ProductSlider2 from '../components/product/ProductSlider2'
 // import CartSidebar from '../components/cart/CartSidebar'
 import Footer from '../components/footer'
 export default {
-  data() {
-    return {
-      products: [],
-    }
-  },
-  computed: {
-    ...mapState({
-      productslist: state => state.products.productslist,
-    }),
-  },
-  mounted() {
-    this.productsArray();
-  },
-  methods: {
-    productsArray: function () {
-      this.productslist.map((item) => {
-        if (item.type === 'popular') {
-          this.products.push(item)
-        }
-      })
-    },
-  },
 
   /*
   ** Headers of the page

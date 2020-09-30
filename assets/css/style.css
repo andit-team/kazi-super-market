@@ -59,7 +59,7 @@
 
 body {
     background: #fff none repeat scroll;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
     font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: #777c87;
@@ -69,13 +69,14 @@ body {
 #body-content {
 	transition: ease-in-out 0.3s;
 	margin-left: 240px;
+	margin-top: 118px;
 }
 
 p{
   line-height: 1.75;
   color: #777c87;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -85,7 +86,7 @@ a {
 
 /* Theme All Transitions
 ------------------------------- */
-a, #mainNav, .theme-button, .offer-tile-item-link{
+a, #mainNav, .theme-button, .category-box{
     transition: all .5s ease-in-out;
 }
 
@@ -217,7 +218,7 @@ figure {
 .font-12, .b-form-spinbutton.form-control, .b-form-spinbutton button, .b-form-spinbutton button:hover{
     font-size: 12px;
 }
-.font-14, .theme-button, .offer-tile-item-paragraph{
+.font-14, .dropdown-menu, .theme-button, .offer-tile-item-paragraph{
     font-size: 14px;
 }
 .font-15{
@@ -226,7 +227,7 @@ figure {
 .font-16{
     font-size: 16px;
 }
-.font-18{
+.font-18, .cart-sidebar header > strong{
     font-size: 18px;
 }
 
@@ -290,6 +291,9 @@ figure {
 @media only screen and (min-width: 1200px) {
     .container {
         max-width: 1400px;
+    }
+    .home-slider .home .container {
+	    width: 1170px;
     }
 }
 .section-title h4 {
@@ -382,21 +386,16 @@ button:focus {
 
 /*-----Theme Button Style-----*/
 .theme-button {
-    /* position: relative; */
     color: #fff;
-    /* display: inline-flex; */
     cursor: pointer;
     transition: all 0.7s ease 0s;
     outline: none;
-    /* text-transform: capitalize; */
     z-index: 99;
     padding: 11px 20px;
     height: 47px;
     font-weight: 500;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: var(--orange-color);
-    /* align-items: center;
-    justify-content: center; */
 }
 .theme-button:hover{
     background-color: var(--green-color);
@@ -411,13 +410,13 @@ button:focus {
 	position: fixed;
 	width: 100%;
 	top: 0;
+    margin-bottom: 122px;
 }
 .menu-section-area .navbar {
     padding: 0;
 }
 #mainNav {
 	background-color: #fff;
-	height: 80px;
 	display: flex !important;
 	transition: all ease .6s;
 	border-bottom: 1px solid #EDF1F4;
@@ -437,7 +436,6 @@ button:focus {
 	margin-right: 2rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-    font-size: 16px;
     padding: 0.75em 10px;
     position: relative;
     color: var(--black-color);
@@ -446,16 +444,7 @@ button:focus {
     padding-right: 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link.active {
-    color: var(--hover-color);
-}
-#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-    color: #0a8aff;
-}
-#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover, #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link.active {
-    color: var(--hover-color);
-}
-#mainNav .navbar-nav .nav-item .nav-link i.fa-comment-dots {
-    font-size: 30px;
+    color: var(--green-color);
 }
 /*---- Dropdown Menu CSS ----*/
 /* .dropdown-toggle::after {
@@ -572,11 +561,21 @@ button:focus {
     color: #fff;
     margin-bottom: 10px;
 }
+.footer-widget.footer-get-app ul li {
+	display: inline;
+}
+.footer-widget.footer-get-app ul li a img {
+	height: 40px;
+}
 /* Subscripbe area css */
 .subscribe-area {
 	border-top: 1px solid #a3a3a3;
 	margin-top: 30px;
 	padding-top: 30px;
+}
+.subscribe-area form input {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 /*Footer Bottom CSS*/
 .footer-bottom-area {
@@ -693,7 +692,16 @@ button:focus {
 ========================================*/
 
 @media only screen and (max-width: 1199px){
-
+   .category-box {
+        padding: 15px 0!important;
+    }
+    #mainNav .container {
+        max-width: 100%;
+    }
+    .menu-section-area form.form-inline input {
+        width: auto!important;
+        min-width: 250px!important;
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px){
@@ -705,7 +713,9 @@ button:focus {
 }
 
 @media only screen and (max-width: 992px) {
-
+    #mainNav .navbar-brand img {
+        height: 40px;
+    }
 }
 
 /*======================================
@@ -743,15 +753,43 @@ button:focus {
     .login-area form {
 	    width: 100%;
     }
+    #mainNav .navbar-brand {
+        display: none;
+    }
+    #mainNav {
+        padding: 15px 0;
+    }
+    .menu-section-area form.form-inline input {
+        width: auto;
+    }
 
     /*Footer CSS*/
     .footer-widget {
-        border-top: 1px solid rgba(44, 212, 217, .2);
-        padding: 30px 0 0 0;
-        margin-top: 30px;
+        border-bottom: 1px solid rgba(44, 212, 217, .2);
+        padding: 0 0 30px 0;
+        margin-bottom: 30px;
     }
-    .footer-middle-area hr {
-        margin: 30px 0;
+    .subscribe-area {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    .footer-bottom-part {
+        flex-direction: column;
+    }
+    .bottom-footer-left {
+        margin-bottom: 20px;
+    }
+
+    /* Style started from here */
+    .home-deals-product-area .section-title p {
+        margin-bottom: 30px!important;
+    }
+    .advartise-img-wrap {
+	    margin-bottom: 20px;
+    }
+    .subscribe-area p {
+	    margin: 15px 0;
     }
 
   }
@@ -779,8 +817,25 @@ button:focus {
 /*=========================================
         For very little mobile
 =========================================*/
+  @media only screen  and (min-width:300px) and (max-width:455px){
+    div.product {
+        float: none!important;
+        margin: 0 auto 45px!important;
+    }
+    
+  }
   @media only screen and (min-width:300px) and (max-width:479px){
 
+    
+  }
+  @media only screen and (min-width:320px) and (max-width:430px){
+    .menu-section-area form.form-inline input {
+        width: auto !important;
+        min-width: 160px !important;
+    }
+    #mainNav .navbar-toggler {
+        margin: 0 4px 0 0 !important;
+    }
     
   }
 @media only screen and (max-width:320px){

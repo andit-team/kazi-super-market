@@ -35,19 +35,12 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
-import { log } from 'util'
 export default {
   props: ['product', 'index'],
   data(){
     return {
       imageSrc: '',
     }
-  },
-  computed: {
-    ...mapState({
-      productslist: state => state.products.productslist
-    }),
   },
   methods: {
     getImgUrl(path) {
