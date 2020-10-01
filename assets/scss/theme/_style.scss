@@ -1519,6 +1519,26 @@ transition: all 0.3s ease;
         }
       }
     }
+}// Bottom Nav
+.bottom-nav {
+  background-color: #f3f3f3;
+  padding: 10px 0;
+  display: flex;
+  z-index: 9999;
+  justify-content: space-between;
+    .col-12{
+      display: flex;
+      justify-content: space-between;
+      
+      ul > li {
+      display: inline;
+      a {
+      display: inline-block;
+      color: $black;
+      padding: 0 8px;
+        }
+      }
+    }
 }
 // Main Nav
 #mainNav .btn-light {
@@ -1547,26 +1567,47 @@ transition: all 0.3s ease;
   color: $white;
 }
 // Categories Sidebar Nav
-.b-sidebar {
-	width: 240px;
-	padding-top: 147px;
+// .b-sidebar {
+// 	width: 240px;
+// 	padding-top: 147px;
+// }
+// .categories-sidebar .dropdown-menu.show{
+//   position: relative!important;
+//   top: -40px!important;
+//   left: 20px!important;
+// }
+// .categories-sidebar .dropdown-menu{
+//   border: none;
+//   border-radius: 0;
+//   border-left: 1px solid rgba(0, 0, 0, 0.15);
+// }
+// .categories-sidebar li.dropdown-box.show > a {
+// 	color: var(--orange-color);
+// }
+// .categories-sidebar li a i {
+// 	margin-right: 10px;
+// }
+
+// Categories Sidebar Menu Items CSS Start
+.categories-nav {
+	border: 1px solid var(--border-color);
+	box-shadow: 0 0px 5px 3px rgba(0,0,0,.05);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 60vh;
+	min-height: 400px;
+  overflow: hidden;
 }
-.categories-sidebar .dropdown-menu.show{
-  position: relative!important;
-  top: -40px!important;
-  left: 20px!important;
+.categories-nav h5 {
+  background-color: var(--light-green);
+  color: #fff;
+  padding: 15px 30px;
 }
-.categories-sidebar .dropdown-menu{
-  border: none;
-  border-radius: 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.15);
+.categories-nav ul li a {
+	padding: 15px 30px;
 }
-.categories-sidebar li.dropdown-box.show > a {
-	color: var(--orange-color);
-}
-.categories-sidebar li a i {
-	margin-right: 10px;
-}
+// Categories Sidebar Menu Items CSS End
+
 
 // 2. Category Product Area CSS
 .offer-tile-header-roundel img {

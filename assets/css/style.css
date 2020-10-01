@@ -68,8 +68,8 @@ body {
 }
 #body-content {
 	transition: ease-in-out 0.3s;
-	margin-left: 240px;
-	margin-top: 118px;
+	/* margin-left: 240px; */
+	margin-top: 60px;
 }
 
 p{
@@ -189,6 +189,7 @@ figure {
     --red-color: #e01212;
     --bg-secondary: #f8f8f8;
     --green-color: #0e7346;
+    --light-green: #80bb01;
 }
 
 /*--------------------------------
@@ -407,18 +408,19 @@ button:focus {
 .menu-section-area {
 	padding: 0;
 	z-index: 9999;
-	position: fixed;
+	/* position: fixed; */
 	width: 100%;
-	top: 0;
-    margin-bottom: 122px;
+	/* top: 0; */
+    margin-bottom: 40px;
 }
 .menu-section-area .navbar {
     padding: 0;
 }
 #mainNav {
-	background-color: #fff;
+	background-color: #f8f8f8;
 	display: flex !important;
 	transition: all ease .6s;
+	border-bottom: 1px solid #EDF1F4;
 	border-bottom: 1px solid #EDF1F4;
 	border-bottom: 1px solid var(--border-color);
 	padding: 0;

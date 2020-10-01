@@ -1,16 +1,16 @@
 <template>
-  <section class="top-bar">
+  <section class="bottom-nav">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <ul>
-            <li><a href="#">Shopping</a></li>
-            <li><a href="#">Stores</a></li>
-            <li><a href="#">Everyday rewards</a></li>
+            <li><a href="#">My weekly picks</a></li>
+            <li><a href="#">Online only</a></li>
+            <li><a href="#">Half price</a></li>
           </ul>
           <ul>
-            <li><a href="#">Signup</a></li>
             <li><a href="#">Login</a></li>
+            <li><a href="#">Signup</a></li>
           </ul>
         </div>
       </div>
