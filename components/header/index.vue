@@ -1,24 +1,41 @@
 <template>
   <div>
     <!-- Menu After Login Area Start -->
-    <header class="menu-section-area padding-zero">
+    <header class="menu-section-area padding-zero" >
       <TopBar />
       
       <!-- Navigation -->
-      <b-navbar sticky toggleable="lg" type="dark" id="mainNav">
+      <b-navbar toggleable="lg" type="dark" id="mainNav" :class="{classNotSticky: scrollPosition < 100, classSticky: scrollPosition > 100}">
         <b-container>
             
           <b-navbar-brand to="/">
-            <b-img :src='"@/assets/images/logo.png"' class="img-fluid" alt="logo" />
+            <b-img :src='"@/assets/images/logo.png"' class="img-fluid desktop-logo" alt="logo" />
+            <b-img :src='"@/assets/images/logo-mobile.png"' class="img-fluid mobile-logo" alt="logo" />
           </b-navbar-brand>
 
-          <!-- For Mobile -->
-          <b-nav-form inline class="product-search-form">
-            <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
-            <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
-          </b-nav-form>
-          <!-- For Mobile -->
+          <!-- For Desktop Device Only -->
+          <div class="middle-nav-wrap align-items-center w-100 d-xs-none d-sm-none d-md-none d-lg-flex d-xl-flex">
+            <b-navbar-nav class="middle-nav-desktop middle-nav-left-list">
+              <b-nav-item to="/categories/category-list">List</b-nav-item>
+              <b-nav-item to="/categories/category-list">Catalogue</b-nav-item>
+            </b-navbar-nav>
 
+            <!-- For Mobile -->
+            <b-nav-form inline class="product-search-form ml-auto">
+              <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
+              <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
+            </b-nav-form>
+            <!-- For Mobile -->
+
+            <b-navbar-nav class="ml-auto middle-nav-desktop middle-nav-right-list">
+              <li class="rounded"><b-icon-check-circle-fill></b-icon-check-circle-fill>Free delivery</li>
+              <li class="rounded"><b-icon-lock-fill></b-icon-lock-fill>Safe payment</li>
+              <li class="rounded"><b-icon-bell-fill></b-icon-bell-fill>24/7 Support</li>
+            </b-navbar-nav>
+
+          </div>
+
+          <!-- For Mobile/Small Device Only -->
           <b-navbar-toggle target="nav-collapse">
             <template v-slot:default="{ expanded }">
               <b-icon v-if="expanded" icon="x"></b-icon>
@@ -36,9 +53,7 @@
               </b-nav-form>
             </b-navbar-nav> -->
 
-            <b-navbar-nav class="ml-auto">
-              <!-- <b-nav-item to="/account/register" v-if="!isLogin">Signup </b-nav-item>
-              <b-nav-item to="/account/login" v-if="!isLogin">Login</b-nav-item> -->
+            <b-navbar-nav class="ml-auto d-xs-block d-sm-block d-md-block d-lg-none d-xl-none">
 
               <b-nav-item-dropdown class="dropdown-box" right v-if="isLogin">
                 <!-- Using 'button-content' slot -->
@@ -51,13 +66,17 @@
                 <b-dropdown-item to="/">Logout</b-dropdown-item>
               </b-nav-item-dropdown>
 
-              <b-nav-item to="/categories" v-if="!isLogin">List</b-nav-item>
-              <b-nav-item to="/categories" v-if="!isLogin">Catalogue</b-nav-item>
-              <b-nav-item to="#" v-if="!isLogin">Weekly picks</b-nav-item>
-              <b-nav-item to="#" v-if="!isLogin">Online only</b-nav-item>
-              <b-nav-item to="#" v-if="!isLogin">Half price</b-nav-item>
+              <b-nav-item to="#">Shopping</b-nav-item>
+              <b-nav-item to="#">Stores</b-nav-item>
+              <b-nav-item to="#">Everyday rewards</b-nav-item>
+              <b-nav-item to="/categories">List</b-nav-item>
+              <b-nav-item to="/categories">Catalogue</b-nav-item>
+              <b-nav-item to="#">My Weekly picks</b-nav-item>
+              <b-nav-item to="#">Online only</b-nav-item>
+              <b-nav-item to="#">Half price</b-nav-item>
 
             </b-navbar-nav>
+
           </b-collapse>
         </b-container>
       </b-navbar>
@@ -76,12 +95,12 @@ export default {
   },
   data() {
     return {
-      
+       scrollPosition: null
     }
   },
   computed: {
-    ...mapGetters({
-    }),
+    ...mapGetters({}),
+
   },
   methods: {
     getImgUrl(path) {
@@ -96,8 +115,21 @@ export default {
         document.querySelector("#body-content").style.marginLeft = "0px";
         x.style.display = "none";
       }
-    }
+    },
+
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+    },
+
+  },
+
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
+  },
+  destroy() {
+    window.removeEventListener('scroll', this.updateScroll)
   }
+
 }
 </script>
 <style>
@@ -105,7 +137,7 @@ export default {
 	display: none;
 }
 #mainNav .navbar-toggler {
-	color: var(--heading-color);
+	color: var(--black-color);
 	font-size: 30px;
 	padding: 0.15rem 2px;
 	margin: 0 30px 0 0;

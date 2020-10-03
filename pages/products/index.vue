@@ -1,5 +1,6 @@
 <template>
   <div>
+    <BannerHomeSlider />
     <!-- <BannerPage :bannerImg="bannerImg" /> -->
     <Breadcrumbs title="Product Title" />
     <section class="product-page section-b-space">
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-
+import BannerHomeSlider from '../../components/banner/BannerHomeSlider'
 // import BannerPage from '../../components/banner/BannerPage'
 import Breadcrumbs from '../../components/widgets/breadcrumbs'
 import ProductItem from '../../components/product/ProductItem'
@@ -60,7 +61,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 4,
@@ -72,7 +73,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-2.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 4,
@@ -108,7 +109,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 7,
@@ -120,7 +121,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-4.png"
         },
         {
             "id": 8,
@@ -144,7 +145,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-2.png"
         },
         {
             "id": 10,
@@ -156,7 +157,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 11,
@@ -168,7 +169,7 @@ data() {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-4.png"
         }
     ]
   }

@@ -71,7 +71,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 4,
@@ -83,7 +83,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-2.png"
+            "productImage": "product-4.png"
         },
         {
             "id": 4,
@@ -119,7 +119,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 7,
@@ -131,7 +131,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-4.png"
         },
         {
             "id": 8,
@@ -155,7 +155,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-2.png"
         },
         {
             "id": 10,
@@ -167,7 +167,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-3.png"
         },
         {
             "id": 11,
@@ -179,7 +179,7 @@ export default {
             "price": "89",
             "oldPrice": "95",
             "tag": "on sale",
-            "productImage": "product-1.png"
+            "productImage": "product-4.png"
         }
     ]
   }

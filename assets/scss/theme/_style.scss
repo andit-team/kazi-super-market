@@ -337,6 +337,7 @@ min-height: 400px;
 .slider-contain {
 width: 100%;
 height: 60vh;
+padding: 0 70px;
 display: flex;
 align-items: center;
 text-align: left;
@@ -1504,7 +1505,6 @@ transition: all 0.3s ease;
   background-color: var(--green-color);
   padding: 10px 0;
   display: flex;
-  z-index: 9999;
   justify-content: space-between;
     .col-12{
       display: flex;
@@ -1524,7 +1524,6 @@ transition: all 0.3s ease;
   background-color: #f3f3f3;
   padding: 10px 0;
   display: flex;
-  z-index: 9999;
   justify-content: space-between;
     .col-12{
       display: flex;
@@ -1540,6 +1539,24 @@ transition: all 0.3s ease;
       }
     }
 }
+// Middle Nav CSS Start
+.middle-nav-right-list li {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 0 0 20px;
+	box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.06);
+	padding: 20px 10px;
+	color: var(--black-color);
+  background-color: var(--white-color);
+}
+.middle-nav-right-list li svg {
+	fill: var(--green-color);
+	font-size: 16px;
+	margin-bottom: .25rem;
+}
+// Middle Nav CSS End
 // Main Nav
 #mainNav .btn-light {
 	background: transparent;
@@ -1589,6 +1606,10 @@ transition: all 0.3s ease;
 // }
 
 // Categories Sidebar Menu Items CSS Start
+.b-sidebar > .b-sidebar-header {
+	border-bottom: 1px solid var(--border-color);
+	background-color: var(--bg-secondary);
+}
 .categories-nav {
 	border: 1px solid var(--border-color);
 	box-shadow: 0 0px 5px 3px rgba(0,0,0,.05);
@@ -1596,15 +1617,27 @@ transition: all 0.3s ease;
 	border-top-right-radius: 5px;
 	height: 60vh;
 	min-height: 400px;
-  overflow: hidden;
 }
 .categories-nav h5 {
   background-color: var(--light-green);
   color: #fff;
   padding: 15px 30px;
 }
-.categories-nav ul li a {
-	padding: 15px 30px;
+.categories-nav ul {
+	margin: 30px;
+	border-bottom: 1px solid #e3e3e3;
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	display: block;
+}
+.categories-nav ul li a, .categories-sidebar-mobile ul li a {
+	padding: 0 10px 25px 0;
+	display: flex;
+	justify-content: space-between;
+}
+.categories-nav h6 {
+	margin: 15px 30px;
 }
 // Categories Sidebar Menu Items CSS End
 
@@ -1614,7 +1647,7 @@ transition: all 0.3s ease;
 	height: 50px;
 }
 .offer-tile-header {
-	background-color: var(--orange);
+	background-color: #ffda00;
 	border-radius: 4px;
 	padding: 10px;
 }
@@ -1662,7 +1695,7 @@ div.product {
 	width: 202px;
 	float: left;
 	height: 342px;
-	padding: 5px;
+	padding: 13px;
 	box-sizing: content-box;
 	border-radius: 4px;
 	margin-bottom: 45px;
@@ -1726,7 +1759,7 @@ div.product div.discountedPriceSection {
 	-webkit-justify-content: center;
 }
 div.product div.discountedPriceSection div.discountedPrice {
-	color: var(--orange-color);
+	color: var(--light-green);
 	font-weight: 700;
 	font-size: 18px;
 }
@@ -1801,16 +1834,16 @@ div.product section.addButtonWrapper {
 	cursor: pointer;
 	background-color: #fff;
 	border: 1px solid var(--orange-color);
-	padding: 6px 0;
+	padding: 9px 0;
 	text-align: center;
 	transition: all ease-in-out .15s;
 }
 div.product section.addButtonWrapper p.buyText {
 	display: inline;
-	margin-bottom: 0;
-	padding-top: 9px;
+	// margin-bottom: 0;
+	// padding-top: 9px;
 	transition: all ease-in-out .15s;
-	height: 35px;
+	// height: 35px;
 	color: var(--orange-color);
 }
 div.product .imageWrapper:active .overlay.text, div.product .imageWrapper:hover .overlay.text {
@@ -1859,17 +1892,31 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 
 // 6. Cart Sidebar Area CSS Start
 .cart-small-view, .cart-small-view:hover, .cart-small-view.btn-secondary:focus, .btn-secondary.focus, .cart-small-view.btn-secondary:not(:disabled):not(.disabled):active{
-	position: fixed;
-	top: 50%;
-	right: 0;
-	z-index: 9;
-	height: 70px;
-	width: 70px;
-	color: #fff;
-	color: #fff;
-	background-color: var(--orange-color);
-	box-shadow: 0px 0px 12px 8px rgba(0,0,0,.07);
-	border: none;
+	// position: fixed;
+	// top: 50%;
+	// right: 0;
+	// z-index: 9;
+	// height: 70px;
+	// width: 70px;
+	color: var(--black-color);
+	background-color: transparent;
+	// box-shadow: 0px 0px 12px 8px rgba(0,0,0,.07);
+	border: transparent;
+  font-size: 14px;
+  margin-left: 20px;
+}
+.btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus, .show > .btn-secondary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+.cart-small-view .badge {
+	top: -12px;
+	left: 7px;
+}
+.cart-small-view svg {
+	fill: var(--green-color);
+	margin-right: 5px;
+	height: 14px;
+	margin-bottom: 2px;
 }
 .cart-sidebar .b-sidebar {
 	width: 320px;

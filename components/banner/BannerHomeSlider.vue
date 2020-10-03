@@ -6,7 +6,7 @@
     <div class="slide-1 home-slider">
       <div class="container">
         <div class="row">
-        <div class="col-12 col-lg-3">
+        <div class="col-12 col-lg-3 d-xs-none d-sm-none d-md-none d-lg-block d-xl-block">
           <CategoriesNav />
         </div>
           <div class="col-12 col-lg-9">

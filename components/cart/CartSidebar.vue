@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-sidebar id="sidebar-right" title="Added Product" right shadow backdrop class="cart-sidebar">
+    <b-sidebar id="sidebar-right" title="Added Product" bg-variant="white" right shadow backdrop class="cart-sidebar">
       <div class="px-3 py-2">
 
       <!-- Product List Start -->
