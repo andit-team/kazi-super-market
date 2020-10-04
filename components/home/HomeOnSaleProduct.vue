@@ -157,30 +157,6 @@ export default {
             "tag": "on sale",
             "productImage": "product-2.png"
         },
-        {
-            "id": 10,
-            "title": "Tomato",
-            "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-            "type": "popular",
-            "alt": "kazis supermarket",
-            "images": "1.jpg",
-            "price": "89",
-            "oldPrice": "95",
-            "tag": "on sale",
-            "productImage": "product-3.png"
-        },
-        {
-            "id": 11,
-            "title": "Tomato",
-            "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-            "type": "popular",
-            "alt": "kazis supermarket",
-            "images": "1.jpg",
-            "price": "89",
-            "oldPrice": "95",
-            "tag": "on sale",
-            "productImage": "product-4.png"
-        }
     ]
   }
   },

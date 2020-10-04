@@ -30,14 +30,22 @@
             </b-navbar-nav>
 
             <b-nav-form inline class="product-search-form ml-auto">
-              <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
-              <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
+              <!-- <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
+              <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button> -->
+              <!-- <form class="form-inline">                    -->
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Your email address">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-search theme-button"><b-icon-search /></button>
+                    </div>
+                </div>
+              <!-- </form> -->
             </b-nav-form>
 
             <b-navbar-nav class="ml-auto middle-nav-desktop middle-nav-right-list">
-              <li class="rounded"><b-icon-check-circle-fill></b-icon-check-circle-fill>Free delivery</li>
-              <li class="rounded"><b-icon-lock-fill></b-icon-lock-fill>Safe payment</li>
-              <li class="rounded"><b-icon-bell-fill></b-icon-bell-fill>24/7 Support</li>
+              <li class="rounded-circle"><b-icon-check-circle-fill></b-icon-check-circle-fill>Free delivery</li>
+              <li class="rounded-circle"><b-icon-lock-fill></b-icon-lock-fill>Safe payment</li>
+              <li class="rounded-circle"><b-icon-bell-fill></b-icon-bell-fill>24/7 Support</li>
             </b-navbar-nav>
 
           </div>

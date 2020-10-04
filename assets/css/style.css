@@ -183,12 +183,12 @@ figure {
 :root{
     --white-color: #fff;
     --orange-color: #ea662f;
-    --black-color: #252121;
-    --text-color: #646464;
+    --black-color: #000;
+    --text-color: #000;
     --border-color: #EDF1F4;
     --red-color: #e01212;
     --bg-secondary: #f8f8f8;
-    --green-color: #0e7346;
+    --green-color: #125430;
     --light-green: #178841;
 }
 
@@ -395,7 +395,7 @@ button:focus {
     padding: 11px 20px;
     height: 47px;
     font-weight: 500;
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: var(--orange-color);
 }
 .theme-button:hover{
@@ -587,8 +587,8 @@ button:focus {
 	padding-top: 30px;
 }
 .subscribe-area form input {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
 }
 /*Footer Bottom CSS*/
 .footer-bottom-area {
