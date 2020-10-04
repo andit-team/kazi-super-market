@@ -232,12 +232,13 @@ export default {
 	background-image: none;
 }
 .swiper-button-next i, .swiper-button-prev i {
-	font-size: 19px;
-	color: var(--heading-color);
+	/* font-size: 19px; */
+	color: #fff;
 }
 .swiper-button-prev, .swiper-button-next {
 	width: 30px;
 	height: 30px;
-	background-color: #fff;
+	background-color: var(--green-color);
+  /* color: #fff; */
 }
 </style>

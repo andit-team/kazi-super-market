@@ -4,7 +4,7 @@
     <!-- <BannerPage :bannerImg="bannerImg" /> -->
     <Breadcrumbs title="Category Title" />
     <!-- Area Start -->
-    <section class="categories-page section-b-40-space">
+    <section class="categories-page section-b-space">
       <div class="container">
 
         <div class="row categories-wrap">

@@ -1,5 +1,5 @@
 <template>
-  <div class="categories-nav">
+  <div class="categories-nav d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block">
   <h5 class="text-uppercase rounded-top">Categories</h5>
     <!-- Navigation -->
     <b-nav vertical>

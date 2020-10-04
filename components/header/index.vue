@@ -13,6 +13,15 @@
             <b-img :src='"@/assets/images/logo-mobile.png"' class="img-fluid mobile-logo" alt="logo" />
           </b-navbar-brand>
 
+          <!-- For Mobile Search -->
+          <b-navbar-nav class="d-xs-block d-sm-block d-md-block d-lg-none d-xl-none">
+            <b-nav-form inline class="product-search-form">
+              <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
+              <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
+            </b-nav-form>
+          </b-navbar-nav>
+          <!-- For Mobile Search -->
+
           <!-- For Desktop Device Only -->
           <div class="middle-nav-wrap align-items-center w-100 d-xs-none d-sm-none d-md-none d-lg-flex d-xl-flex">
             <b-navbar-nav class="middle-nav-desktop middle-nav-left-list">
@@ -20,12 +29,10 @@
               <b-nav-item to="/categories/category-list">Catalogue</b-nav-item>
             </b-navbar-nav>
 
-            <!-- For Mobile -->
             <b-nav-form inline class="product-search-form ml-auto">
               <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
               <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
             </b-nav-form>
-            <!-- For Mobile -->
 
             <b-navbar-nav class="ml-auto middle-nav-desktop middle-nav-right-list">
               <li class="rounded"><b-icon-check-circle-fill></b-icon-check-circle-fill>Free delivery</li>
@@ -34,6 +41,7 @@
             </b-navbar-nav>
 
           </div>
+          <!-- For Desktop Device Only -->
 
           <!-- For Mobile/Small Device Only -->
           <b-navbar-toggle target="nav-collapse">
@@ -45,18 +53,10 @@
 
           <!-- Right aligned nav items -->
           <b-collapse id="nav-collapse" is-nav>
-          
-            <!-- <b-navbar-nav>
-              <b-nav-form inline class="product-search-form">
-                <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
-                <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
-              </b-nav-form>
-            </b-navbar-nav> -->
 
             <b-navbar-nav class="ml-auto d-xs-block d-sm-block d-md-block d-lg-none d-xl-none">
 
               <b-nav-item-dropdown class="dropdown-box" right v-if="isLogin">
-                <!-- Using 'button-content' slot -->
                 <template v-slot:button-content>
                   <span class="customer-img"><b-img :src='"@/assets/images/profile-img/owner2.png"' alt="img" /></span>
                   <span>Suraiya Aysha</span>
@@ -172,7 +172,7 @@ header #mainNav .search-box .vs__selected {
   #nav-collapse ul.navbar-nav {
     background-color: #fff;
     /* max-height: 100%; */
-    top: 6px;
+    top: 0;
     position: relative;
     align-items: flex-start;
     /* height: 100vh; */

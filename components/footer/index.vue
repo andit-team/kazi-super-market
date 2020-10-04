@@ -67,7 +67,7 @@
               <div class="subscribe-area">
                 <div class="row">              
                     <div class="col-12 col-md-3">
-                        <h4>Join our newsletter now</h4>
+                        <h4>Join our newsletter</h4>
                     </div>
                     <div class="col-12 col-md-4">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, tempore! Amet.</p>

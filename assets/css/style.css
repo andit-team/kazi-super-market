@@ -195,13 +195,13 @@ figure {
 /*--------------------------------
     2.2 Theme Inner Color Style
 -----------------------------------*/
-.text-color-white, .footer-widget a, .bottom-footer-left ul li a, .bottom-footer-right ul li a{
+.text-color-white, .footer-widget a, .bottom-footer-left ul li a, .bottom-footer-right ul li a, .subscribe-area h4, .subscribe-area p{
     color: #fff;
 }
 .text-black-color{
     color: var(--black-color);
 }
-.color-green, .subscribe-area h4{
+.color-green{
     color: var(--green-color);
 }
 .bg-white{
@@ -225,7 +225,7 @@ figure {
 .font-15{
     font-size: 15px;
 }
-.font-16{
+.font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a{
     font-size: 16px;
 }
 .font-18, .cart-sidebar header > strong{
@@ -291,10 +291,10 @@ figure {
 
 @media only screen and (min-width: 1200px) {
     .container {
-        max-width: 1400px;
+        max-width: 1170px;
     }
     .home-slider .home .container {
-	    width: 1170px;
+	    /* width: 1170px; */
     }
 }
 .section-title h4 {
@@ -440,7 +440,7 @@ button:focus {
 	top: 0;
 	/* margin-left: 30px; */
 	padding: 15px 0;
-	margin-right: 4rem;
+	margin-right: 2rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
     padding: 0.75em 10px;
@@ -715,6 +715,19 @@ button:focus {
         width: auto!important;
         min-width: 250px!important;
     }
+    .home-slider .home, .home-slider .slider-contain, .categories-nav {
+        height: 450px!important;
+    }
+    .categories-nav ul {
+        height: 320px!important;
+    }
+    .categories-nav h5 {
+        font-size: 16px;
+    }
+    .categories-nav h6 {
+        font-size: 15px;
+    }
+
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px){
@@ -727,10 +740,10 @@ button:focus {
 
 @media only screen and (max-width: 992px) {
     #mainNav .navbar-brand {
-	    margin: 0 30px;
+        margin: 0 20px 0 0;
     }
     .middle-nav-right-list li {
-        margin: 0 0 0 15px;
+        margin: 0 0 0 15px!important;
     }
 }
 
@@ -746,11 +759,20 @@ button:focus {
     #mainNav .navbar-brand img {
         height: 45px;
     }
+    #mainNav {
+	    padding: 0;
+    }
     .desktop-logo, .middle-nav-wrap{
         display: none;
     }
     .mobile-logo{
         display: block;
+    }
+    #mainNav .navbar-brand {
+        margin: 0 20px 0 30px!important;
+    }
+    .cart-small-view {
+	    margin-right: 20px;
     }
 
   }
@@ -759,7 +781,9 @@ button:focus {
   }
 
   @media only screen and (min-width: 768px) and (max-width: 991px){
-
+    .menu-section-area form.form-inline input {
+        width: 450px !important;
+    }
   }
 
 @media only screen and (max-width: 768px) {
@@ -776,10 +800,20 @@ button:focus {
 	    width: 100%;
     }
     #mainNav {
-        padding: 15px 0;
+        padding: 0;
+    }
+    .cart-small-view, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a {
+        font-size: 14px !important;
+    }
+    .cart-small-view svg {
+        height: 14px !important;
     }
     .menu-section-area form.form-inline input {
         width: auto;
+    }
+    .home-slider .home, .home-slider .slider-contain, .categories-nav {
+	    height: 350px !important;
+	    min-height: 350px !important;
     }
 
     /*Footer CSS*/
@@ -830,13 +864,24 @@ button:focus {
 }
 
 @media only screen and (max-width: 510px){
-
 }
 
 /*=========================================
         For very little mobile
 =========================================*/
-  @media only screen  and (min-width:300px) and (max-width:455px){
+  @media only screen and (max-width:480px){
+    #mainNav .navbar-brand {
+        margin: 0 10px 0 30px !important;
+    }
+    
+  }
+  @media only screen and (min-width:300px) and (max-width:460px){
+   #mainNav .navbar-brand {
+        margin: 0 20px 0 20px !important;
+    }
+    
+  }
+  @media only screen and (min-width:300px)  and (max-width:455px){
     div.product {
         float: none!important;
         margin: 0 auto 45px!important;
@@ -844,21 +889,41 @@ button:focus {
     
   }
   @media only screen and (min-width:300px) and (max-width:479px){
-
+    .menu-section-area form.form-inline input {
+        min-width: 225px !important;
+    }
     
   }
   @media only screen and (min-width:320px) and (max-width:430px){
-    .menu-section-area form.form-inline input {
-        width: auto !important;
-        min-width: 160px !important;
+  .menu-section-area form.form-inline input {
+        width: 150px !important;
+        min-width: 150px !important;
     }
     #mainNav .navbar-toggler {
         margin: 0 4px 0 0 !important;
     }
+    #mainNav .navbar-brand {
+        margin: 0 4px 0 30px !important;
+    }
     
   }
+@media only screen and (min-width:320px) and (max-width:399px){
+  .cart-small-view {
+        margin-right: 0!important;
+        margin-left: 0!important;
+    }
+}
 @media only screen and (max-width:320px){
-
+    .cart-small-view, .cart-small-view:hover, .cart-small-view.btn-secondary:focus, .btn-secondary.focus, .cart-small-view.btn-secondary:not(:disabled):not(.disabled):active {
+        margin-left: 0!important;
+    }
+    /* #mainNav .navbar-brand {
+        margin: 0 10px;
+    } */
+    #mainNav .navbar-brand {
+	    margin: 0 8px 0 13px !important;
+    }
+    
 }
   /*-------------------------------------------
         24. Responsive Design End

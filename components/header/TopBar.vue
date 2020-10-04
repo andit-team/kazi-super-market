@@ -1,5 +1,5 @@
 <template>
-  <section class="top-bar d-xs-none d-sm-none d-md-none d-lg-block d-xl-block">
+  <section class="top-bar d-none d-xs-none d-sm-none d-md-none d-lg-flex d-xl-flex">
     <div class="container">
       <div class="row">
         <div class="col-12">
