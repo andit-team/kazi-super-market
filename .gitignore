@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+backend/node_modules
+backend/.env
