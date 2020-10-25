@@ -985,6 +985,7 @@ transition: all 0.3s ease;
 	box-shadow: 0px 0px 8px 0px rgba(58, 71, 78, 0.1);
 	padding: 15px;
   position: relative;
+  margin-bottom: 25px;
 }
 .category-box:hover {
 	box-shadow: 0px 0px 12px 0px rgba(58, 71, 78, 0.2);
@@ -1217,6 +1218,7 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	border: transparent;
   font-size: 16px;
   margin-left: 20px;
+  padding: 0;
 }
 .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus, .show > .btn-secondary.dropdown-toggle:focus {
     box-shadow: none;
@@ -1340,7 +1342,7 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	margin-left: 10px;
 }
 .payment-images li a img {
-	height: 30px;
+	height: 25px;
     border-radius: 5px;
 }
 /*-------------------------------------------
