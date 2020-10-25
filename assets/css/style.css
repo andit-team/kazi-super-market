@@ -32,11 +32,11 @@
 
 
 /* Use font link */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
 
 /* Use style sheet */
-@import url('../vendor/fontawesome-free/css/all.min.css');
-@import url('../vendor/flat-icon/flaticon.css');
+/* @import url('../vendor/fontawesome-free/css/all.min.css');
+@import url('../vendor/flat-icon/flaticon.css'); */
 
 /***
 
@@ -170,9 +170,9 @@ h6 {
 figure {
     margin: 0 0 0;
 }
-.card-body{
+/* .card-body{
     padding: 0;
-}
+} */
 .card-title {
     margin-bottom: 0;
 }
@@ -293,9 +293,6 @@ figure {
     .container {
         max-width: 1170px;
     }
-    .home-slider .home .container {
-	    /* width: 1170px; */
-    }
 }
 .section-title h4 {
 	color: #2f3033;
@@ -357,7 +354,7 @@ section{
             3. Button Style
 ---------------------------------------------*/
 .btn{
-  padding: 0;
+  /* padding: 0; */
 }
 .btn.focus, .btn:focus {
     outline: 0;
@@ -403,14 +400,11 @@ button:focus {
     color: #fff;
 }
 /*-------------------------------------------
-           4. Nav Area CSS
+    4. Nav Area CSS
 -------------------------------------------*/
 .menu-section-area {
 	padding: 0;
-	/* z-index: 9999; */
-	/* position: fixed; */
 	width: 100%;
-	/* top: 0; */
     margin-bottom: 40px;
 }
 .menu-section-area .navbar {
@@ -430,15 +424,10 @@ button:focus {
 	position: fixed;
 	top: 0;
 }
-/* #mainNav.navbar-shrink {
-    background-color: #fff;
-    box-shadow: 0 0 9px 3px rgba(50,29,154,.2);
-    top:0
-} */
+
 #mainNav .navbar-brand {
 	position: relative;
 	top: 0;
-	/* margin-left: 30px; */
 	padding: 15px 0;
 	margin-right: 2rem;
 }
@@ -459,102 +448,7 @@ button:focus {
 .mobile-logo{
     display: none;
 }
-/*---- Dropdown Menu CSS ----*/
-/* .dropdown-toggle::after {
-    display: none;
-}
-.dropdown-box .dropdown-menu {
-    padding: 1.2rem 0;
-    width: 210px;
-    margin: 0 0;
-}
-.dropdown-menu.dropdown-menu-right li {
-    color: var(--text-color);
-    text-transform: uppercase;
-    font-size: 14px;
-}
-.dropdown-menu.dropdown-menu-right li:hover a {
-    background-color: #f4f4f4d9;
-    color: var(--hover-color);
-}
-.dropdown-menu.dropdown-menu-right li a > span {
-    padding: 0;
-}
-.dropdown-menu.dropdown-menu-right li span {
-    color: var(--text-color);
-    padding: 6px 1.2rem;
-    display: block;
-}
-#mainNav ul li{
-     position: relative;
- }
-#mainNav ul li.nav-item a.nav-link > span.points-overview-number {
-    right: 0!important;
-}
-.dropdown-menu.dropdown-menu-right li span.points-overview-number, #mainNav ul li a span.points-overview-number {
-    background-color: var(--red-color);
-    position: absolute;
-    border-radius: 5px;
-    color: #fff;
-    padding: 1px 4px;
-    height: 18px;
-    width: auto;
-    font-size: 11px;
-    top: 6px;
-    min-width: 21px;
-    text-align: center;
-}
-.dropdown-menu.dropdown-menu-right li span.points-overview-number{
-    right: 9px!important;
-}
-.dropdown-menu.dropdown-menu-right li a {
-    font-size: 14px;
-    text-transform: capitalize;
-    display: block;
-    font-weight: 400;
-    color: var(--heading-color);
-    font-family: 'SolaimanLipiBold';
-    padding: 4px 1.2rem;
-}
-.dropdown-menu .dropdown-divider {
-    border-top: 1px solid #e5e5e5;
-}
-#mainNav ul.navbar-nav li.nav-item.dropdown-box .dropdown-list {
-    background-color: #fff;
-    top: 213%;
-    position: absolute;
-    transition: .5s;
-    visibility: hidden;
-    opacity: 0;
-    width: 199px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 12px 15px rgba(0,0,0,.10);
-    border: 1px solid var(--heading-color);
-    z-index: 99;
-    left: -140px;
-}
-#mainNav ul.navbar-nav li.nav-item.dropdown-box:hover .dropdown-list {
-    top: 100%;
-    visibility: visible;
-    opacity: 1;
-}
-.dropdown-list li a {
-    padding: 6px 10px;
-    display: block;
-}
-#mainNav .navbar-nav .nav-item .nav-link > i.fas.fa-globe {
-    padding-right: 5px;
-}
-#mainNav .navbar-nav .nav-item .nav-link > i.fa-angle-down {
-    padding-left: 5px;
-    position: relative;
-    top: 2px;
-    color: #c1c1c1;
-}
-@media (min-width: 992px) {
 
-} */
 /*-------------------------------------------
     21. Footer Area/Copyright Area
 -------------------------------------------*/

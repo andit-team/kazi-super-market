@@ -10,56 +10,54 @@
         <div class="row categories-wrap">
           <div class="col-md-6 col-lg-3 col-sm-12" v-for="categoryItem in categories" :key="categoryItem.id">
 
-            <CategoryItem :categoryItem = "categoryItem" :index="index" />
+            <CategoryItem :categoryItem = "categoryItem" />
 
           </div>
         </div>
         <!-- Area End -->
       </div>
     </section>
+    <Footer1 />
   </div>
 </template>
 
 <script>
-import BannerHomeSlider from '../../components/banner/BannerHomeSlider'
-// import BannerPage from '../../components/banner/BannerPage'
-import Breadcrumbs from '../../components/widgets/breadcrumbs'
-import CategoryItem from '../../components/category/CategoryItem'
 export default {
+  layout: 'public',
   data() {
     return {
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
       title: 'Explore this weeks specials',
-    categories:[
-          { 
-          id: 1,
-          title: "Freezer",
-          subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-          offerImage: require('@/assets/images/product-img/offer.svg'),
-          productImage: require('@/assets/images/product-img/product-1.png'),
-        },
-          { 
-          id: 2,
-          title: "Freezer",
-          subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-          offerImage: require('@/assets/images/product-img/offer.svg'),
-          productImage: require('@/assets/images/product-img/product-2.png'),
-        },
-          { 
-          id: 3,
-          title: "Freezer",
-          subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-          offerImage: require('@/assets/images/product-img/offer.svg'),
-          productImage: require('@/assets/images/product-img/product-1.png'),
-        },
-          { 
-          id: 4,  
-          title: "Freezer",
-          subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-          offerImage: require('@/assets/images/product-img/offer.svg'),
-          productImage: require('@/assets/images/product-img/product-2.png'),
-        },
-    ],
+      categories:[
+            { 
+            id: 1,
+            title: "Freezer",
+            subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
+            offerImage: require('@/assets/images/product-img/offer.svg'),
+            productImage: require('@/assets/images/product-img/product-1.png'),
+          },
+            { 
+            id: 2,
+            title: "Freezer",
+            subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
+            offerImage: require('@/assets/images/product-img/offer.svg'),
+            productImage: require('@/assets/images/product-img/product-2.png'),
+          },
+            { 
+            id: 3,
+            title: "Freezer",
+            subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
+            offerImage: require('@/assets/images/product-img/offer.svg'),
+            productImage: require('@/assets/images/product-img/product-1.png'),
+          },
+            { 
+            id: 4,  
+            title: "Freezer",
+            subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
+            offerImage: require('@/assets/images/product-img/offer.svg'),
+            productImage: require('@/assets/images/product-img/product-2.png'),
+          },
+      ],
 
     }
   },

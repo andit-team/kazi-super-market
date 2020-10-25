@@ -1,33 +1,55 @@
-<template>
-  <div>
-    <Header />
-    <CategoriesNavMobile />
-    <nuxt id="body-content"/>
-    <div class="tap-top top-cls" v-scroll-to="'#body-content'">
-      <div>
-          <i class="fa fa-angle-up"></i>
-      </div>
-    </div>
-    <CartSidebar />
-  </div>
-</template>
-
 <script>
-import Header from '../components/header'
-import CategoriesNavMobile from '../components/header/CategoriesNavMobile'
-import CartSidebar from '../components/cart/CartSidebar'
-export default {
-  head() {
-    return {
-      title: 'Kazis Supermarket'
-    }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 3000)
-    })
-  },
+import {
+    mapState
+} from "vuex";
 
-}
+import Vertical from "./vertical";
+import Horizontal from "./horizontal";
+import Detached from "./detached";
+import TwoColumn from "./two-column";
+
+/**
+ * Default Layout
+ */
+export default {
+    components: {
+        Vertical,
+        Horizontal,
+        Detached,
+        TwoColumn,
+    },
+    data() {
+        return {}
+    },
+    computed: mapState(["layout"]),
+    mounted() {
+        if (this.$route.query.layout) {
+            this.$store.dispatch('layout/changeLayoutType', {
+                layoutType: this.$route.query.layout
+            })
+        }
+    }
+};
 </script>
+
+<template>
+<div>
+    <!-- Begin page -->
+    <Vertical v-if="layout.layoutType === 'vertical'" :layout="layout.layoutType">
+        <Nuxt />
+    </Vertical>
+    <!-- END layout-wrapper -->
+
+    <Horizontal v-if="layout.layoutType === 'horizontal'" :layout="layout.layoutType">
+        <slot />
+    </Horizontal>
+
+    <Detached v-if="layout.layoutType === 'detached'" :layout="layout.layoutType">
+        <slot />
+    </Detached>
+
+    <TwoColumn v-if="layout.layoutType === 'two-column'" :layout="layout.layoutType">
+        <slot />
+    </TwoColumn>
+</div>
+</template>

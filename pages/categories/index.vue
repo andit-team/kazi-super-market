@@ -17,15 +17,15 @@
         <!-- Area End -->
       </div>
     </section>
+    <Footer1 />
   </div>
 </template>
 
 <script>
-import BannerHomeSlider from '../../components/banner/BannerHomeSlider'
-// import BannerPage from '../../components/banner/BannerPage'
-import Breadcrumbs from '../../components/widgets/breadcrumbs'
-import CategoryItem from '../../components/category/CategoryItem'
+
 export default {
+  layout: 'public',
+  
   data() {
     return {
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),

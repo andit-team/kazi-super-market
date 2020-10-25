@@ -12,6 +12,361 @@ Author URI: Kazi's Supermarket
 /*=====================
 1.General CSS start
 ==========================*/
+// Kazis'supermarket
+ * {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+  }
+
+  body,
+  html {
+      height: 100%;
+      margin: 0;
+  }
+
+body {
+    background: #fff none repeat scroll;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color: #777c87;
+    letter-spacing: 0.05em;
+    overflow-x: hidden;
+}
+#body-content {
+	transition: ease-in-out 0.3s;
+	/* margin-left: 240px; */
+	margin-top: 60px;
+}
+
+p{
+  line-height: 1.75;
+  color: #777c87;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+a {
+  color: #252121;
+}
+
+/* Theme All Transitions
+------------------------------- */
+a, #mainNav, .theme-button, .category-box{
+    transition: all .5s ease-in-out;
+}
+
+.slow-transition{
+    transition: all .7s ease-in-out;
+}
+
+  ul li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+  }
+
+  ul {
+      margin: 0;
+      padding: 0;
+  }
+
+  a,
+  a > * {
+      outline: none;
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  a:hover {
+      text-decoration: none;
+      color: var(--green-color);
+  }
+
+  ::selection {
+      background-color: #93ebfb;
+  }
+  img::selection {
+    background: transparent;
+  }
+  .page-link:focus {
+    box-shadow: none;
+  }
+
+  /*----Form Control Reset CSS----*/
+.form-control {
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    height: 47px;
+    color: #777c87;
+    border: 1px solid #B9C1C9;
+}
+.form-control:focus {
+    background-color: #fff;
+    border-color: #dddddd;
+    box-shadow: none;
+}
+.form-control::placeholder {
+    color: #a0a3aa;
+}
+.input-group-text {
+    background-color: transparent;
+}
+button{
+    cursor: pointer;
+}
+label {
+    margin-bottom: 5px;
+}
+
+/*------------------------------------------
+            2.  Typography
+-------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    margin: 0;
+    color: var(--black-color);
+}
+figure {
+    margin: 0 0 0;
+}
+/* .card-body{
+    padding: 0;
+} */
+.card-title {
+    margin-bottom: 0;
+}
+/*--------------------------------
+            2.1 Theme Color
+-----------------------------------*/
+
+:root{
+    --white-color: #fff;
+    --orange-color: #ea662f;
+    --black-color: #000;
+    --text-color: #000;
+    --border-color: #EDF1F4;
+    --red-color: #e01212;
+    --bg-secondary: #f8f8f8;
+    --green-color: #125430;
+    --light-green: #178841;
+}
+
+/*--------------------------------
+    2.2 Theme Inner Color Style
+-----------------------------------*/
+.text-color-white, .footer-widget a, .bottom-footer-left ul li a, .bottom-footer-right ul li a, .subscribe-area h4, .subscribe-area p{
+    color: #fff;
+}
+.text-black-color{
+    color: var(--black-color);
+}
+.color-green{
+    color: var(--green-color);
+}
+.bg-white{
+    background-color: #fff;
+}
+.different-bg{
+    background-color: var(--bg-secondary);
+}
+/*--------------------------------
+    2.3 Theme Font Style
+-----------------------------------*/
+.font-bold{
+    font-weight: 700;
+}
+.font-12, .b-form-spinbutton.form-control, .b-form-spinbutton button, .b-form-spinbutton button:hover, .middle-nav-right-list li{
+    font-size: 12px;
+}
+.font-14, .dropdown-menu, .theme-button, .offer-tile-item-paragraph{
+    font-size: 14px;
+}
+.font-15{
+    font-size: 15px;
+}
+.font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a{
+    font-size: 16px;
+}
+.font-18, .cart-sidebar header > strong{
+    font-size: 18px;
+}
+
+/*--------------------------------
+    2.5 Theme Margin and Padding
+-----------------------------------*/
+.mt-10, .ride-owner-box p{
+    margin-top: 10px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.mb-15 {
+    margin-bottom: 15px;
+}
+.mt-15{
+    margin-top: 15px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mb-30{
+    margin-bottom: 30px;
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.mr-10{
+    margin-right: 10px;
+}
+.mr-5{
+    margin-right: 5px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.p-30{
+    padding: 30px;
+}
+.p-20{
+    padding: 20px;
+}
+/*--------------------------------
+   2.4 Template Default CSS
+-----------------------------------*/
+
+/*----Template Main Section ----*/
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+}
+.section-title h4 {
+	color: #2f3033;
+}
+.section-title a {
+	font-weight: 500;
+	color: var(--green-color);
+}
+.section-title a:hover {
+	color: var(--orange-color);
+}
+section{
+    position: relative;
+    z-index: 9;
+}
+.padding-zero{
+    padding: 0 0;
+}
+.pagination {
+	justify-content: center;
+}
+.pagination .page-item.active .page-link{
+    background-color: var(--heading-color);
+    border-color: var(--heading-color);
+}
+.pagination .page-link{
+    color: var(--heading-color);
+}
+
+.link-text-hover-style, .footer-widget a:hover, .bottom-footer-left ul li a:hover, .bottom-footer-right ul li a:hover {
+    text-decoration: underline;
+}
+
+/*Modal Default CSS*/
+
+.modal-dialog {
+	max-width: 600px;
+}
+.modal-content {
+	padding: 30px;
+}
+.modal-header {
+	border: 0;
+	padding: 0;
+}
+.close {
+    font-size: 26px;
+}
+/*Flat Icon Default Settings*/
+[class^="flaticon-"]::before, [class*=" flaticon-"]::before, [class^="flaticon-"]::after, [class*=" flaticon-"]::after {
+    margin-left: 0;
+}
+
+/*------------------------------------------
+   2.  Typography End
+-------------------------------------------*/
+
+/*--------------------------------------------
+  3. Button Style
+---------------------------------------------*/
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+button{
+    background-color: transparent;
+}
+button:focus {
+    outline: 0;
+}
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: 48%!important;
+}
+/*Slider Default Button CSS*/
+  .testi_prev, .testi_next {
+      cursor: pointer;
+      line-height: 39px;
+      position: absolute;
+      z-index: 9;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+/*-----Theme Button Style-----*/
+.theme-button {
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.7s ease 0s;
+    outline: none;
+    z-index: 99;
+    padding: 11px 20px;
+    height: 47px;
+    font-weight: 500;
+    border-radius: 25px;
+    background-color: var(--orange-color);
+}
+.theme-button:hover{
+    background-color: var(--green-color);
+    color: #fff;
+}
+// Kazis'supermarket
+
 ul {
 padding-left: 0;
 margin-bottom: 0;
@@ -190,17 +545,9 @@ filter: blur(0);
 }
 
 /*=====================
-1.2.Title CSS start
-==========================*/
-
-/*=====================
-2.Header CSS start
-==========================*/
-
-/*=====================
 3.Home slider CSS start
 ==========================*/
-.home-slider, .center-slider {
+.home-slider {
 .swiper-button-prev, .swiper-button-next {
 opacity: 0;
 transform: scale(1);
@@ -307,10 +654,7 @@ h4 {
 padding: 0 100px;
 }
 }
-.center-slider {
-border-left: 1px solid $border-grey;
-border-right: 1px solid $border-grey;
-}
+
 .home-slider {
 &.text-white {
 .slider-contain {
@@ -348,487 +692,6 @@ a {
   color: $grey2;
   font-weight: 600;
 }
-}
-}
-
-//forget_pwd//
-.pwd-page {
-text-align: center;
-h2 {
-margin-bottom: 25px;
-color: $dark-font;
-margin-top: -5px;
-}
-.theme-form {
-input{
-  border-color: $round-border;
-  font-size: 15px;
-  padding: 15px 25px;
-  margin-bottom: 15px;
-  height: inherit;
-  text-align: center;
-}
-.btn-solid, .btn-outline {
-  margin: 0 auto;
-}
-}
-}
-
-// Quick-view //
-.quick-view {
-width: 100%;
-max-width: 1080px;
-max-height: 600px;
-position: relative;
-}
-
-// Check-out page //
-.checkout-page {
-.checkout-title {
-margin-bottom: 25px;
-h3 {
-  color: $grey4;
-  font-weight: 700;
-}
-}
-.checkout-form {
-.checkout-details {
-  position: relative;
-  background-color: $grey-lighter;
-  border:1px solid $round-border;
-  padding:40px;
-}
-.check-out {
-  .form-group {
-    &:last-child {
-      margin-bottom: -5px;
-      label {
-        margin-bottom: -5px;
-      }
-    }
-  }
-}
-.form-group {
-  position:relative;
-  margin-bottom: 25px;
-  a{
-    font-size: 16px;
-    color: var(--theme-deafult);
-    text-transform: capitalize;
-    font-weight: 700;
-  }
-  h3 {
-    color: $grey4;
-    font-weight: 700;
-    margin-bottom: 30px;
-    margin-top: 30px;
-  }
-  .field-label {
-    line-height:24px;
-    text-transform:capitalize;
-    color:#333333;
-    margin-bottom:10px;
-    font-weight: 700;
-    span {
-      font-size: 16px;
-      color: $dark-font;
-      font-weight: 600;
-    }
-  }
-  label {
-    color: $grey;
-  }
-}
-select {
-  cursor:pointer;
-  -webkit-appearance:none;
-  -ms-appearance:none;
-  -o-appearance:none;
-  -moz-appearance:none;
-  // background: url("#{$assetspath}/dropdown.png") no-repeat 95%;
-}
-input {
-  &[type="text"], &[type="email"], &[type="password"], &[type="tel"], &[type="number"], &[type="url"] {
-    width: 100%;
-    padding: 0 22px;
-    height: 45px;
-    border:1px solid #dddddd;
-  }
-}
-select, textarea {
-  width: 100%;
-  padding: 0 22px;
-  height: 45px;
-  border:1px solid #dddddd;
-}
-}
-.check-box {
-line-height:24px;
-font-size:14px;
-font-weight:normal;
-padding-top:5px;
-label {
-  position:relative;
-  top:-1px;
-  font-weight:normal;
-  padding:0;
-  font-size:16px;
-  cursor:pointer;
-  color:$font-color;
-}
-}
-.lower-content {
-margin-top: 30px;
-.order-column {
-  margin-bottom: 40px;
-}
-}
-}
-.order-box {
-position: relative;
-margin-bottom: 50px;
-.title-box {
-position: relative;
-padding-bottom: 25px;
-color: $grey4;
-font-weight: 600;
-font-size: 22px;
-border-bottom: 1px solid #ededed;
-margin-bottom: 20px;
-span {
-  position: relative;
-  width: 35%;
-  float: right;
-  line-height: 1.2em;
-}
-}
-.qty {
-position: relative;
-border-bottom: 1px solid #ededed;
-margin-bottom: 30px;
-li {
-  position: relative;
-  display: block;
-  font-size: 15px;
-  color: $grey4;
-  line-height: 20px;
-  margin-bottom: 20px;
-  span {
-    float: right;
-    font-size: 18px;
-    line-height: 20px;
-    color: #232323;
-    font-weight: 400;
-    width: 35%;
-  }
-}
-}
-.sub-total {
-position: relative;
-border-bottom: 1px solid $round-border;
-margin-bottom: 30px;
-li {
-  position: relative;
-  display:inline-block;
-  font-size: 16px;
-  font-weight: 600;
-  color: $font-color;
-  line-height: 20px;
-  margin-bottom: 20px;
-  width: 100%;
-  .count {
-    position: relative;
-    font-size: 18px;
-    line-height: 20px;
-    color: var(--theme-deafult);
-    font-weight: 400;
-    width: 35%;
-    float: right;
-  }
-}
-.shopping-option {
-  label {
-    position: relative;
-    font-size: 16px;
-    line-height: 32px;
-    padding-left: 10px;
-    color: $grey6;
-  }
-}
-.shipping {
-  width: 35%;
-  float: right;
-}
-}
-.total {
-position: relative;
-margin-bottom: 40px;
-li {
-  position: relative;
-  display: block;
-  font-weight: 400;
-  color: $font-color;
-  line-height: 20px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  .count {
-    position: relative;
-    font-size: 18px;
-    line-height: 20px;
-    color: var(--theme-deafult);
-    font-weight: 400;
-  }
-  span {
-    float: right;
-    font-size: 15px;
-    line-height: 20px;
-    color: $grey4;
-    font-weight: 400;
-    width: 35%;
-    display: block;
-  }
-}
-}
-}
-.payment-box {
-position: relative;
-.upper-box {
-position: relative;
-}
-.payment-options {
-position: relative;
-margin-top: 20px;
-margin-bottom: 30px;
-li {
-  display: flex;
-  margin-bottom: 15px;
-  .radio-option {
-    position: relative;
-    label {
-      position: relative;
-      padding-left: 30px;
-      text-transform: capitalize;
-      color: $grey6;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 20px;
-      margin-bottom: 0;
-    }
-    input[type="radio"] {
-      position: absolute;
-      left: 0;
-      top: 5px;
-    }
-    label {
-      .small-text {
-        position: relative;
-        display: none;
-        font-size: 15px;
-        line-height: 25px;
-        font-weight: 300;
-        color: #666666;
-        margin-top: 10px;
-      }
-      img {
-        position: relative;
-        display: block;
-        max-width: 100%;
-        margin-left: -30px;
-        margin-top: 5px;
-      }
-    }
-  }
-}
-}
-}
-
-// Dashboard page
-.dashboard-left {
-.block-title h2 {
-font-size: 24px;
-padding-bottom: 20px;
-}
-.block-content {
-border: 1px solid #ddd;
-padding: 15px;
-ul li {
-  display: flex;
-  transition: all 0.5s ease;
-  &.active {
-    color: var(--theme-deafult);
-    a {
-      color: var(--theme-deafult);
-    }
-  }
-  &:before {
-    content: '\f105';
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 3px;
-  }
-  a {
-    color: black;
-  }
-  &:hover {
-    a {
-      color: var(--theme-deafult);
-      transition: all 0.5s ease;
-    }
-    padding-left: 10px;
-    color: var(--theme-deafult);
-    transition: all 0.5s ease;
-  }
-}
-}
-}
-.padding-cls {
-padding-left: 50px;
-padding-right: 50px;
-}
-.dashboard-right {
-p {
-color: #5f5f5f;
-line-height: 20px;
-}
-.dashboard {
-border: 1px solid #ddd;
-padding: 30px;
-.page-title h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-.welcome-msg {
-  p {
-    margin-bottom: 0;
-  }
-}
-}
-}
-.dashboard {
-.box-head  {
-h2 {
-  font-size: 22px;
-  margin: 20px 0 0;
-  text-transform: capitalize;
-  color: #333;
-}
-}
-.box  {
-a {
-  color: var(--theme-deafult) ;
-}
-h6 {
-  margin-bottom: 0;
-}
-.box-title {
-  border-bottom: 1px solid #ddd;
-  display: inline-block;
-  margin-bottom: 5px;
-  padding: 12px 0;
-  position: relative;
-  width: 100%;
-  h3 {
-    font-size: 16px;
-    margin: 0;
-    text-transform: capitalize;
-    color: #333;
-  }
-  > a {
-    position: absolute;
-    right: 0;
-    top: 12px;
-    color: var(--theme-deafult) ;
-  }
-}
-address {
-  margin-bottom: 0;
-}
-}
-}
-.box-content  {
-h6 {
-font-size: 14px;
-line-height: 25px !important;
-margin-bottom: 0;
-}
-a {
-color: var(--theme-deafult);
-}
-}
-.account-sidebar {
-display: none;
-cursor: pointer;
-background-color: var(--theme-deafult);
-color: $white;
-width:30%;
-font-size: 16px;
-text-transform: uppercase;
-text-align: center;
-font-weight: 700;
-margin-bottom: 20px;
-padding: 5px;
-}
-
-// Order-success //
-.success-text {
-text-align: center;
-i {
-font-size: 50px;
-color: #4ead4e;
-}
-h2 {
-margin-top: 10px;
-margin-bottom: 15px;
-}
-p{
-font-size: 18px;
-text-transform: capitalize;
-}
-&.order-fail {
-i {
-  color: var(--theme-deafult);
-}
-}
-}
-.order-success-sec {
-h4 {
-font-weight: 700;
-text-transform: capitalize;
-}
-.order-detail {
-li {
-  display: flex;
-  text-transform: capitalize;
-  line-height: 24px;
-  font-size: 16px;
-}
-}
-.payment-mode {
-p {
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 0;
-}
-}
-}
-.delivery-sec {
-padding: 30px;
-text-align: center;
-margin-top: 20px;
-background-color: #f9f9f9;
-h2, h3 {
-color: $black;
-text-transform: capitalize;
 }
 }
 
@@ -898,7 +761,6 @@ transition: all 0.3s ease;
 }
 }
 
-
 /*=====================
 24.Tab to top CSS start
 ==========================*/
@@ -927,6 +789,56 @@ transition: all 0.3s ease;
 /*--------------------------------
   Kazi's Supermarket All CSS Start
 -----------------------------------*/
+/*-------------------------------------------
+    4. Nav Area CSS
+-------------------------------------------*/
+.menu-section-area {
+	padding: 0;
+	width: 100%;
+    margin-bottom: 40px;
+}
+.menu-section-area .navbar {
+    padding: 0;
+}
+#mainNav {
+	background-color: #f8f8f8;
+	display: flex !important;
+	border-bottom: 1px solid var(--border-color);
+	padding: 20px 0;
+	position: relative;
+	width: 100%;
+	transition: ease all .5s;
+	z-index: 99;
+}
+#mainNav.classSticky {
+	position: fixed;
+	top: 0;
+}
+
+#mainNav .navbar-brand {
+	position: relative;
+	top: 0;
+	padding: 15px 0;
+	margin-right: 2rem;
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+    padding: 0.75em 10px;
+    position: relative;
+    color: var(--black-color);
+}
+#mainNav .navbar-nav .nav-item:last-child .nav-link{
+    padding-right: 0;
+}
+#mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link.active {
+    color: var(--green-color);
+}
+.desktop-logo{
+    display: block;
+}
+.mobile-logo{
+    display: none;
+}
+
 // TopBar
 .top-bar {
   background-color: var(--green-color);
@@ -1011,31 +923,12 @@ transition: all 0.3s ease;
 	border: none;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 	font-size: 14px;
 	color: #fff;
 	padding: 0;
 }
-// Categories Sidebar Nav
-// .b-sidebar {
-// 	width: 240px;
-// 	padding-top: 147px;
-// }
-// .categories-sidebar .dropdown-menu.show{
-//   position: relative!important;
-//   top: -40px!important;
-//   left: 20px!important;
-// }
-// .categories-sidebar .dropdown-menu{
-//   border: none;
-//   border-radius: 0;
-//   border-left: 1px solid rgba(0, 0, 0, 0.15);
-// }
-// .categories-sidebar li.dropdown-box.show > a {
-// 	color: var(--orange-color);
-// }
-// .categories-sidebar li a i {
-// 	margin-right: 10px;
-// }
 
 // Categories Sidebar Menu Items CSS Start
 .b-sidebar > .b-sidebar-header {
@@ -1072,7 +965,6 @@ transition: all 0.3s ease;
 	margin: 15px 25px;
 }
 // Categories Sidebar Menu Items CSS End
-
 
 // 2. Category Product Area CSS
 .offer-tile-header-roundel img {
@@ -1272,10 +1164,7 @@ div.product section.addButtonWrapper {
 }
 div.product section.addButtonWrapper p.buyText {
 	display: inline;
-	// margin-bottom: 0;
-	// padding-top: 9px;
 	transition: all ease-in-out .15s;
-	// height: 35px;
 	color: var(--orange-color);
 }
 div.product .imageWrapper:active .overlay.text, div.product .imageWrapper:hover .overlay.text {
@@ -1302,7 +1191,6 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 // 4. Advartisement Area CSS End
 
 // 5. Breadcrumb Area CSS Start
-
 .breadcrumb-title {
   display: flex;
   justify-content: space-between;
@@ -1324,15 +1212,8 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 
 // 6. Cart Sidebar Area CSS Start
 .cart-small-view, .cart-small-view:hover, .cart-small-view.btn-secondary:focus, .btn-secondary.focus, .cart-small-view.btn-secondary:not(:disabled):not(.disabled):active{
-	// position: fixed;
-	// top: 50%;
-	// right: 0;
-	// z-index: 9;
-	// height: 70px;
-	// width: 70px;
 	color: var(--black-color);
 	background-color: transparent;
-	// box-shadow: 0px 0px 12px 8px rgba(0,0,0,.07);
 	border: transparent;
   font-size: 16px;
   margin-left: 20px;
@@ -1389,6 +1270,83 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	background-repeat: no-repeat;
 }
 // 7. Deals of the day Product Area CSS End
+
+/*-------------------------------------------
+    32. Login Page CSS Start
+-------------------------------------------*/
+.login-area form {
+	width: 52%;
+	margin: 30px auto;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 0.25rem;
+}
+/*-------------------------------------------
+    32. Login Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    21. Footer Area/Copyright Area
+-------------------------------------------*/
+/*Footer Top CSS*/
+.footer-top-area {
+	background-color: #2f2f2f;
+}
+.footer-widget a {
+    padding: 6px;
+    display: block;
+}
+.footer-widget h5 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.footer-widget p {
+    color: #fff;
+    margin-bottom: 10px;
+}
+.footer-widget.footer-get-app ul li {
+	display: inline;
+}
+.footer-widget.footer-get-app ul li a img {
+	height: 40px;
+}
+/* Subscripbe area css */
+.subscribe-area {
+	border-top: 1px solid #a3a3a3;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+.subscribe-area form input {
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+}
+/*Footer Bottom CSS*/
+.footer-bottom-area {
+	background-color: var(--green-color);
+    padding: 15px 0;
+}
+.footer-bottom-part {
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-footer-left ul li {
+    display: inline;
+}
+.bottom-footer-left ul li a {
+    padding: 0 15px 0 0;
+    display: inline-block;
+}
+.payment-images li a {
+	margin-left: 10px;
+}
+.payment-images li a img {
+	height: 30px;
+    border-radius: 5px;
+}
+/*-------------------------------------------
+    21. Footer Area/Copyright Area End
+-------------------------------------------*/
+
 
 /*--------------------------------
   Kazi's Supermarket All CSS End

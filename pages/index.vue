@@ -7,23 +7,14 @@
     <ProductSlider />
     <BannerAdvartise />
     <ProductSlider2 />
-    <Footer /> 
+    <Footer1 />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BannerHomeSlider from '../components/banner/BannerHomeSlider'
-import HomeCategoryList from '../components/home/HomeCategoryList'
-import HomeOnSaleProduct from '../components/home/HomeOnSaleProduct'
-import HomeDealsProduct from '../components/home/HomeDealsProduct'
-import ProductSlider from '../components/product/ProductSlider'
-import BannerAdvartise from '../components/banner/BannerAdvartise'
-import ProductSlider2 from '../components/product/ProductSlider2'
-// import CartSidebar from '../components/cart/CartSidebar'
-import Footer from '../components/footer'
 export default {
-
+  layout: 'public',
   /*
   ** Headers of the page
   */

@@ -1,4 +1,20 @@
-# Andbaazar Website-vuejs
-Andbaazar Standalone frontend with Vue.js, Vuex &amp; Nuxt
+# Minton - Nuxtjs Responsive Admin Dashboard Template
 
-#Demo: [LIVE URL](https://andbaazar.netlify.app/)
+## Build Setup
+
+```bash
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
+```
+
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

@@ -64,7 +64,7 @@
 
             <b-navbar-nav class="ml-auto d-xs-block d-sm-block d-md-block d-lg-none d-xl-none">
 
-              <b-nav-item-dropdown class="dropdown-box" right v-if="isLogin">
+              <b-nav-item-dropdown class="dropdown-box" right>
                 <template v-slot:button-content>
                   <span class="customer-img"><b-img :src='"@/assets/images/profile-img/owner2.png"' alt="img" /></span>
                   <span>Suraiya Aysha</span>

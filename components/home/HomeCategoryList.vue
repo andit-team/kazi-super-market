@@ -14,7 +14,7 @@
         <div class="row categories-wrap">
           <div class="col-md-6 col-lg-3 col-sm-12" v-for="categoryItem in categories" :key="categoryItem.id">
 
-            <CategoryItem :categoryItem = "categoryItem" :index="index" />
+            <CategoryItem :categoryItem = "categoryItem" />
 
           </div>
         </div>
