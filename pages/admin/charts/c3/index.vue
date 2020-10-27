@@ -18,7 +18,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -44,7 +44,7 @@ export default {
             lineChart: lineChart,
             title: 'C3 Charts',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {

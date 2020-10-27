@@ -13,7 +13,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
@@ -22,7 +22,7 @@ export default {
             chatMessagesData: chatMessagesData,
             title: "Chat",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                 },
                 {
                     text: "Apps",
@@ -223,7 +223,7 @@ export default {
                                                     </div>
                                                 </div>
                                                 <div class="col pl-0">
-                                                    <a href="javascript:void(0);" class="text-muted font-weight-medium">minton-presentation.pdf</a>
+                                                    <a href="javascript:void(0);" class="text-muted font-weight-medium">kazissupermarket-presentation.pdf</a>
                                                     <p class="mb-0">2.3 MB</p>
                                                 </div>
                                                 <div class="col-auto">

@@ -12,7 +12,7 @@ import RadarChart from './RadarChart'
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -27,7 +27,7 @@ export default {
         return {
             title: 'Chartjs',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {

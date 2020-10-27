@@ -95,7 +95,7 @@ export default {
                 <!-- LOGO -->
                 <a href="/" class="logo">
                     <span>
-                        <img src="~/assets/admin/images/logo-sm.png" alt height="28" />
+                        <img src="~/assets/admin/images/logo-sm.png" alt height="35" />
                     </span>
                 </a>
                 <nav class="nav flex-column" id="two-col-sidenav-main">

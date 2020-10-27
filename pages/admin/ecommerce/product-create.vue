@@ -16,7 +16,7 @@ import "vue-form-wizard/dist/vue-form-wizard.min.css";
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -30,7 +30,7 @@ export default {
         return {
             title: "Create Product",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                 },
                 {
                     text: "eCommerce",

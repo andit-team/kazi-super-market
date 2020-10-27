@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
         return {
             title: "Range Slider",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                 },
                 {
                     text: "Extended UI",

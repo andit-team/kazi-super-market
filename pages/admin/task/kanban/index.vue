@@ -9,7 +9,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`
         }
     },
     data() {
@@ -17,7 +17,7 @@ export default {
             tasks: tasks,
             title: "Kanban Board",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/"
                 },
                 {

@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
         return {
             title: 'File Manager',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {
@@ -89,7 +89,7 @@ export default {
                 },
                 {
                     icon: require('~/assets/admin/images/file-icons/zip.svg'),
-                    name: 'Minton-latest.zip',
+                    name: 'Kazissupermarket-latest.zip',
                     date: '10-Aug-18 1:12 PM',
                     size: '248 MB',
                     users: [require('~/assets/admin/images/users/avatar-4.jpg')]

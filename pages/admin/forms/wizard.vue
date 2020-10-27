@@ -10,7 +10,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -21,7 +21,7 @@ export default {
         return {
             title: 'Form Wizard',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {
@@ -54,7 +54,7 @@ export default {
                                     <div class="form-group row mb-3">
                                         <label class="col-md-3 col-form-label" for="userName">User name</label>
                                         <div class="col-md-9">
-                                            <input id="userName" type="text" class="form-control" name="userName" value="themesbrand" />
+                                            <input id="userName" type="text" class="form-control" name="userName" value="kazissupermarket" />
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
@@ -143,7 +143,7 @@ export default {
                                     <div class="form-group row mb-3">
                                         <label class="col-md-3 col-form-label" for="name">User name</label>
                                         <div class="col-md-9">
-                                            <input id="name" type="text" class="form-control" value="themesbrand" />
+                                            <input id="name" type="text" class="form-control" value="kazissupermarket" />
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
@@ -234,7 +234,7 @@ export default {
                                     <div class="form-group row mb-3">
                                         <label class="col-md-3 col-form-label" for="user">User name</label>
                                         <div class="col-md-9">
-                                            <input id="user" type="text" class="form-control" value="themesbrand" />
+                                            <input id="user" type="text" class="form-control" value="kazissupermarket" />
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">

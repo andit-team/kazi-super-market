@@ -7,14 +7,14 @@ import Swal from "sweetalert2";
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
         return {
             title: "Sweet Alerts",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/",
                 },
                 {
@@ -113,7 +113,7 @@ export default {
         },
         imageHeader() {
             Swal.fire({
-                title: "Minton",
+                title: "Kazissupermarket",
                 text: "Responsive Bootstrap 4 Admin Dashboard",
                 imageUrl: require("~/assets/admin/images/logo-sm-dark.png"),
                 imageHeight: 50,

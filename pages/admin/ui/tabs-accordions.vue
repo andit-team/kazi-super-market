@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
         return {
             title: "Tabs & Accordions",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/",
                 },
                 {
@@ -320,7 +320,7 @@ export default {
                     </b-card-header>
                     <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
-                            <b-card-text>Use our dedicated support email (support@themesbrand.com) to send your issues or feedback. We are here to help anytime</b-card-text>
+                            <b-card-text>Use our dedicated support email (support@kazissupermarket.com) to send your issues or feedback. We are here to help anytime</b-card-text>
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -328,14 +328,14 @@ export default {
                     <b-card-header header-tag="header" role="tab">
                         <h5 class="m-0 position-relative">
                             <a v-b-toggle.accordion-4 class="text-reset" href="javascript: void(0);">
-                                Q. Will you regularly give updates of Minton ?
+                                Q. Will you regularly give updates of Kazissupermarket ?
                                 <i class="mdi mdi-chevron-down accordion-arrow"></i>
                             </a>
                         </h5>
                     </b-card-header>
                     <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
-                            <b-card-text>Yes, We will update the Minton regularly. All the future updates would be available without any cost</b-card-text>
+                            <b-card-text>Yes, We will update the Kazissupermarket regularly. All the future updates would be available without any cost</b-card-text>
                         </b-card-body>
                     </b-collapse>
                 </b-card>

@@ -11,7 +11,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -30,7 +30,7 @@ export default {
         return {
             title: "Email Read",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                 },
                 {
                     text: "Email",
@@ -94,7 +94,7 @@ export default {
                                                 </div>
                                             </div>
                                             <div class="col pl-0">
-                                                <a href="javascript:void(0);" class="text-muted font-weight-semibold">Minton-admin-design.zip</a>
+                                                <a href="javascript:void(0);" class="text-muted font-weight-semibold">Kazissupermarket-admin-design.zip</a>
                                                 <p class="mb-0">2.3 MB</p>
                                             </div>
                                             <div class="col-auto">

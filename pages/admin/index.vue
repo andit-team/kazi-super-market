@@ -5,7 +5,7 @@
 export default {
     head() {
         return {
-            title: `Sales Dashboard | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `Sales Dashboard | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     middleware: 'router-auth',
@@ -13,7 +13,7 @@ export default {
         return {
             title: "Welcome !",
             items: [{
-                    text: "Minton"
+                    text: "Kazissupermarket"
                 },
                 {
                     text: "Dashboards"

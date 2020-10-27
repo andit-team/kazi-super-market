@@ -7,7 +7,7 @@ import CrmWidget from "~/components/admin/widgets/Crm-widget";
 export default {
     head() {
         return {
-            title: `${this.title} Dashboard | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} Dashboard | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -17,7 +17,7 @@ export default {
         return {
             title: "CRM",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                 },
                 {
                     text: "Dashboards",

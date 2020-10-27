@@ -5,7 +5,7 @@
 export default {
     head() {
         return {
-            title: `Error-404-alt | Minton - Nuxtjs Responsive Admin Dashboard Template`
+            title: `Error-404-alt | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`
         }
     },
 }

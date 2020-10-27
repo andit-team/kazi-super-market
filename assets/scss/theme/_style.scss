@@ -1,39 +1,43 @@
-/*-----------------------------------------------------------------------------------
+/*-------------------------------------------------
+  Theme Name: Kazi's Supermarket
+  Theme URL: http://kazissupermarket.com.au
+  Author: Kazi's Supermarket
+  Author URL:  http://kazissupermarket.com.au
+  Creation Date: 26/09/2020
+  Description:A default stylesheet for Kazi's Supermarket
+  Version: 1.00
+  Primary use: ecommerce, shop,
+  Support: ,
 
-Template Name:Kazi's Supermarket
-Template URI: Kazi's Supermarket
-Description: Supershop App
-Author: Kazi's Supermarket
-Author URI: Kazi's Supermarket
-
------------------------------------------------------------------------------------ */
-/* 1. General CSS
+  ---------------------------------------------------
+  Developed By: Suraiya Aysha
+  Developer URL: http://ayshatech.com/
+/*
 
 /*=====================
 1.General CSS start
 ==========================*/
-// Kazis'supermarket
  * {
-      margin: 0;
-      padding: 0;
-      border: none;
-      outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
   }
 
   body,
   html {
-      height: 100%;
-      margin: 0;
+    height: 100%;
+    margin: 0;
   }
 
 body {
-    background: #fff none repeat scroll;
-    font-size: 14px;
-    font-weight: normal;
-    font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    color: #777c87;
-    letter-spacing: 0.05em;
-    overflow-x: hidden;
+  background: #fff none repeat scroll;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  color: #777c87;
+  letter-spacing: 0.05em;
+  overflow-x: hidden;
 }
 #body-content {
 	transition: ease-in-out 0.3s;
@@ -56,38 +60,38 @@ a {
 /* Theme All Transitions
 ------------------------------- */
 a, #mainNav, .theme-button, .category-box{
-    transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .slow-transition{
-    transition: all .7s ease-in-out;
+  transition: all .7s ease-in-out;
 }
 
   ul li {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
 
   ul {
-      margin: 0;
-      padding: 0;
+    margin: 0;
+    padding: 0;
   }
 
   a,
   a > * {
-      outline: none;
-      cursor: pointer;
-      text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
   }
 
   a:hover {
-      text-decoration: none;
-      color: var(--green-color);
+    text-decoration: none;
+    color: var(--green-color);
   }
 
   ::selection {
-      background-color: #93ebfb;
+    background-color: #93ebfb;
   }
   img::selection {
     background: transparent;
@@ -98,29 +102,29 @@ a, #mainNav, .theme-button, .category-box{
 
   /*----Form Control Reset CSS----*/
 .form-control {
-    border-radius: 5px;
-    border: none;
-    background-color: #fff;
-    height: 47px;
-    color: #777c87;
-    border: 1px solid #B9C1C9;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  height: 47px;
+  color: #777c87;
+  border: 1px solid #B9C1C9;
 }
 .form-control:focus {
-    background-color: #fff;
-    border-color: #dddddd;
-    box-shadow: none;
+  background-color: #fff;
+  border-color: #dddddd;
+  box-shadow: none;
 }
 .form-control::placeholder {
-    color: #a0a3aa;
+  color: #a0a3aa;
 }
 .input-group-text {
-    background-color: transparent;
+  background-color: transparent;
 }
 button{
-    cursor: pointer;
+  cursor: pointer;
 }
 label {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /*------------------------------------------
@@ -132,125 +136,122 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 700;
-    margin: 0;
-    color: var(--black-color);
+  font-weight: 700;
+  margin: 0;
+  color: var(--black-color);
 }
 figure {
-    margin: 0 0 0;
+  margin: 0 0 0;
 }
-/* .card-body{
-    padding: 0;
-} */
 .card-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 /*--------------------------------
             2.1 Theme Color
 -----------------------------------*/
 
 :root{
-    --white-color: #fff;
-    --orange-color: #ea662f;
-    --black-color: #000;
-    --text-color: #000;
-    --border-color: #EDF1F4;
-    --red-color: #e01212;
-    --bg-secondary: #f8f8f8;
-    --green-color: #125430;
-    --light-green: #178841;
+  --white-color: #fff;
+  --orange-color: #ea662f;
+  --black-color: #000;
+  --text-color: #000;
+  --border-color: #EDF1F4;
+  --red-color: #e01212;
+  --bg-secondary: #f8f8f8;
+  --green-color: #125430;
+  --light-green: #178841;
 }
 
 /*--------------------------------
     2.2 Theme Inner Color Style
 -----------------------------------*/
 .text-color-white, .footer-widget a, .bottom-footer-left ul li a, .bottom-footer-right ul li a, .subscribe-area h4, .subscribe-area p{
-    color: #fff;
+  color: #fff;
 }
 .text-black-color{
-    color: var(--black-color);
+  color: var(--black-color);
 }
 .color-green{
-    color: var(--green-color);
+  color: var(--green-color);
 }
 .bg-white{
-    background-color: #fff;
+  background-color: #fff;
 }
 .different-bg{
-    background-color: var(--bg-secondary);
+  background-color: var(--bg-secondary);
 }
 /*--------------------------------
     2.3 Theme Font Style
 -----------------------------------*/
 .font-bold{
-    font-weight: 700;
+  font-weight: 700;
 }
 .font-12, .b-form-spinbutton.form-control, .b-form-spinbutton button, .b-form-spinbutton button:hover, .middle-nav-right-list li{
-    font-size: 12px;
+  font-size: 12px;
 }
 .font-14, .dropdown-menu, .theme-button, .offer-tile-item-paragraph{
-    font-size: 14px;
+  font-size: 14px;
 }
 .font-15{
-    font-size: 15px;
+  font-size: 15px;
 }
 .font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a{
-    font-size: 16px;
+  font-size: 16px;
 }
 .font-18, .cart-sidebar header > strong{
-    font-size: 18px;
+  font-size: 18px;
 }
 
 /*--------------------------------
     2.5 Theme Margin and Padding
 -----------------------------------*/
 .mt-10, .ride-owner-box p{
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .mb-10{
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .mb-15 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .mt-15{
-    margin-top: 15px;
+  margin-top: 15px;
 }
 .mt-20{
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .mb-20 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .mt-20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .mb-30{
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 .mb-40{
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 .mt-10 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .mr-10{
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .mr-5{
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .mb-10 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .mr-20{
-    margin-right: 20px;
+  margin-right: 20px;
 }
 .p-30{
-    padding: 30px;
+  padding: 30px;
 }
 .p-20{
-    padding: 20px;
+  padding: 20px;
 }
 /*--------------------------------
    2.4 Template Default CSS
@@ -259,9 +260,9 @@ figure {
 /*----Template Main Section ----*/
 
 @media only screen and (min-width: 1200px) {
-    .container {
-        max-width: 1170px;
-    }
+  .container {
+    max-width: 1170px;
+  }
 }
 .section-title h4 {
 	color: #2f3033;
@@ -274,25 +275,25 @@ figure {
 	color: var(--orange-color);
 }
 section{
-    position: relative;
-    z-index: 9;
+  position: relative;
+  z-index: 9;
 }
 .padding-zero{
-    padding: 0 0;
+  padding: 0 0;
 }
 .pagination {
 	justify-content: center;
 }
 .pagination .page-item.active .page-link{
-    background-color: var(--heading-color);
-    border-color: var(--heading-color);
+  background-color: var(--heading-color);
+  border-color: var(--heading-color);
 }
 .pagination .page-link{
-    color: var(--heading-color);
+  color: var(--heading-color);
 }
 
 .link-text-hover-style, .footer-widget a:hover, .bottom-footer-left ul li a:hover, .bottom-footer-right ul li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /*Modal Default CSS*/
@@ -308,7 +309,7 @@ section{
 	padding: 0;
 }
 .close {
-    font-size: 26px;
+  font-size: 26px;
 }
 /*Flat Icon Default Settings*/
 [class^="flaticon-"]::before, [class*=" flaticon-"]::before, [class^="flaticon-"]::after, [class*=" flaticon-"]::after {
@@ -323,64 +324,64 @@ section{
   3. Button Style
 ---------------------------------------------*/
 .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: none;
+  outline: 0;
+  box-shadow: none;
 }
 button{
-    background-color: transparent;
+  background-color: transparent;
 }
 button:focus {
-    outline: 0;
+  outline: 0;
 }
 .swiper-button-prev, .swiper-button-next {
-    position: absolute;
-    top: 48%!important;
+  position: absolute;
+  top: 48%!important;
 }
 /*Slider Default Button CSS*/
   .testi_prev, .testi_next {
-      cursor: pointer;
-      line-height: 39px;
-      position: absolute;
-      z-index: 9;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    cursor: pointer;
+    line-height: 39px;
+    position: absolute;
+    z-index: 9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 /*-----Theme Button Style-----*/
 .theme-button {
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.7s ease 0s;
-    outline: none;
-    z-index: 99;
-    padding: 11px 20px;
-    height: 47px;
-    font-weight: 500;
-    border-radius: 25px;
-    background-color: var(--orange-color);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.7s ease 0s;
+  outline: none;
+  z-index: 99;
+  padding: 11px 20px;
+  height: 47px;
+  font-weight: 500;
+  border-radius: 25px;
+  background-color: var(--orange-color);
 }
 .theme-button:hover{
-    background-color: var(--green-color);
-    color: #fff;
+  background-color: var(--green-color);
+  color: #fff;
 }
 // Kazis'supermarket
 
 ul {
-padding-left: 0;
-margin-bottom: 0;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 a {
-transition: 0.5s ease;
-// color: #009fd9;
+  transition: 0.5s ease;
+  // color: #009fd9;
 &:hover {
-text-decoration: none;
-transition: 0.5s ease;
+  text-decoration: none;
+  transition: 0.5s ease;
 }
 &:focus {
-outline: none;
-box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 }
 .form-control{
@@ -395,10 +396,10 @@ button {
   }
 }
 section ,.section-t-space{
-padding-top: 70px;
+  padding-top: 70px;  
 }
 .section-b-space {
-padding-bottom: 70px;
+  padding-bottom: 70px;
 }
 .section-t-40-space {
   padding-top: 40px;
@@ -419,11 +420,11 @@ padding-bottom: 70px;
   padding-bottom: 0;
 }
 .large-section {
-padding-top: 120px;
-padding-bottom: 120px;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 .p-t-0 {
-padding-top: 0;
+  padding-top: 0;
 }
 .p-b-0{
   padding-bottom: 0;
@@ -435,112 +436,112 @@ padding-top: 0;
   margin-top: 0;
 }
 hr.style1{
-width: 75px;
-height: 3px;
-margin-top: 13px;
-background-color: var(--theme-deafult);
-text-align: center;
+  width: 75px;
+  height: 3px;
+  margin-top: 13px;
+  background-color: var(--theme-deafult);
+  text-align: center;
 }
 .no-arrow {
 .slick-next , .slick-prev {
-display: none !important;
+  display: none !important;
 }
 }
 .form-control {
-border-radius: 0;
+  border-radius: 0;
 }
 .small-section {
-padding-top: 35px;
-padding-bottom: 35px;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 .banner-padding {
-padding-top: 30px;
+  padding-top: 30px;
 }
 .border-section {
-border-top: 1px solid lighten($black, 86.5%);
-border-bottom: 1px solid lighten($black, 86.5%);
+  border-top: 1px solid lighten($black, 86.5%);
+  border-bottom: 1px solid lighten($black, 86.5%);
 }
 .border-b {
-border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
 }
 .border-bottom-grey {
-border-bottom: 1px solid $grey3;
+  border-bottom: 1px solid $grey3;
 }
 .border-top-grey {
-border-top: 1px solid $grey3;
+  border-top: 1px solid $grey3;
 }
 .darken-layout{
-background-color: $grey-darken;
+  background-color: $grey-darken;
 }
 .dark-layout{
-background-color: $grey-dark;
+  background-color: $grey-dark;
 }
 .light-layout{
 // background-color: $grey-lighter;
-background-color: #f7f8fa;
+  background-color: #f7f8fa;
 }
 .white-layout {
-background-color: $white;
+  background-color: $white;
 }
 .bg-light0 {
-background-color:$light-grey;
+  background-color:$light-grey;
 }
 .bg-light1 {
-background-color:$pink ;
+  background-color:$pink ;
 }
 .bg-light2 {
-background-color:$blue ;
+  background-color:$blue ;
 }
 .bg-blog {
-background-color: $white-dark;
+  background-color: $white-dark;
 }
 .bg-grey {
-background-color: $grey-about;
+  background-color: $grey-about;
 }
 .bg_cls {
-background-color: #fafafa;
+  background-color: #fafafa;
 }
 del {
-font-size: 14px;
-color: $font-grey;
-font-weight: 400;
+  font-size: 14px;
+  color: $font-grey;
+  font-weight: 400;
 }
 [data-notify="progressbar"] {
-margin-bottom: 0;
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-height: 5px;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
 }
 .progress-bar{
-background-color: #19a340;
+  background-color: #19a340;
 }
 .progress-bar-info{
-background-color: #00829a;
+  background-color: #00829a;
 }
 // image ratio //
 .b-top {
-background-position: top !important;
+  background-position: top !important;
 }
 .b-bottom {
-background-position: bottom !important;
+  background-position: bottom !important;
 }
 .b-center {
-background-position: center !important;
+  background-position: center !important;
 }
 .b_size_content {
-background-size: contain !important;
-background-repeat: no-repeat;
+  background-size: contain !important;
+  background-repeat: no-repeat;
 }
 /*Lazy load */
 .blur-up {
--webkit-filter: blur(5px);
-filter: blur(5px);
-transition: filter 400ms, -webkit-filter 400ms;
-&.lazyloaded {
--webkit-filter: blur(0);
-filter: blur(0);
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  transition: filter 400ms, -webkit-filter 400ms;
+  &.lazyloaded {
+  -webkit-filter: blur(0);
+  filter: blur(0);
 }
 }
 
@@ -549,20 +550,19 @@ filter: blur(0);
 ==========================*/
 .home-slider {
 .swiper-button-prev, .swiper-button-next {
-opacity: 0;
-transform: scale(1);
-transition: all 0.5s ease;
-height: 15px;
-width: 15px;
-margin: 0;
-background-image: none;
-border-radius: 50%;
+  opacity: 0;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  height: 15px;
+  width: 15px;
+  margin: 0;
+  background-image: none;
+  border-radius: 50%;
 &:before {
   font: normal normal normal 14px/1 $font-awesome;
   opacity: 1;
   color: #fff;
   font-size: 12px;
-  // background-color: rgba($white, 0.5);
   background-color: var(--orange-color);
   border-radius: 100%;
   height: 100%;
@@ -585,11 +585,11 @@ z-index: 1;
 }
 }
 .home{
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-height: 520px;
-min-height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 520px;
+  min-height: 400px;
 }
 
 .slider-contain {
@@ -774,8 +774,7 @@ transition: all 0.3s ease;
 	z-index: 8;
 	color: #fff;
 	text-align: center;
-	background: #17a2fb;
-	background: var(--heading-color);
+	background: var(--green-color);
 	border: none;
 	font-size: 18px;
 	padding: 2px;
@@ -795,10 +794,10 @@ transition: all 0.3s ease;
 .menu-section-area {
 	padding: 0;
 	width: 100%;
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 .menu-section-area .navbar {
-    padding: 0;
+  padding: 0;
 }
 #mainNav {
 	background-color: #f8f8f8;
@@ -822,21 +821,21 @@ transition: all 0.3s ease;
 	margin-right: 2rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-    padding: 0.75em 10px;
-    position: relative;
-    color: var(--black-color);
+  padding: 0.75em 10px;
+  position: relative;
+  color: var(--black-color);
 }
 #mainNav .navbar-nav .nav-item:last-child .nav-link{
-    padding-right: 0;
+  padding-right: 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link.active {
-    color: var(--green-color);
+  color: var(--green-color);
 }
 .desktop-logo{
-    display: block;
+  display: block;
 }
 .mobile-logo{
-    display: none;
+  display: none;
 }
 
 // TopBar
@@ -874,6 +873,9 @@ transition: all 0.3s ease;
       display: inline-block;
       color: $black;
       padding: 0 8px;
+        }
+      & .dropdown-item {
+	      padding: 5px 12px;
         }
       }
     }
@@ -1295,16 +1297,16 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	background-color: #2f2f2f;
 }
 .footer-widget a {
-    padding: 6px;
-    display: block;
+  padding: 6px;
+  display: block;
 }
 .footer-widget h5 {
-    color: #fff;
-    margin-bottom: 20px;
+  color: #fff;
+  margin-bottom: 20px;
 }
 .footer-widget p {
-    color: #fff;
-    margin-bottom: 10px;
+  color: #fff;
+  margin-bottom: 10px;
 }
 .footer-widget.footer-get-app ul li {
 	display: inline;
@@ -1325,31 +1327,26 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 /*Footer Bottom CSS*/
 .footer-bottom-area {
 	background-color: var(--green-color);
-    padding: 15px 0;
+  padding: 15px 0;
 }
 .footer-bottom-part {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .bottom-footer-left ul li {
-    display: inline;
+  display: inline;
 }
 .bottom-footer-left ul li a {
-    padding: 0 15px 0 0;
-    display: inline-block;
+  padding: 0 15px 0 0;
+  display: inline-block;
 }
 .payment-images li a {
 	margin-left: 10px;
 }
 .payment-images li a img {
 	height: 25px;
-    border-radius: 5px;
+  border-radius: 5px;
 }
 /*-------------------------------------------
     21. Footer Area/Copyright Area End
 -------------------------------------------*/
-
-
-/*--------------------------------
-  Kazi's Supermarket All CSS End
------------------------------------*/

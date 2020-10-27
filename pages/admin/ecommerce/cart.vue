@@ -7,7 +7,7 @@ import NumberInputSpinner from 'vue-number-input-spinner'
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -17,7 +17,7 @@ export default {
         return {
             title: "Shopping Cart",
             items: [{
-                    text: "Minton"
+                    text: "Kazissupermarket"
                 },
                 {
                     text: "eCommerce"

@@ -5,7 +5,7 @@
 export default {
     head() {
         return {
-            title: `Logout 2 | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `Logout 2 | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {

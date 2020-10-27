@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`
         }
     },
     data() {
         return {
             title: 'Search Results',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {
@@ -63,7 +63,7 @@ export default {
                                     <div class="search-item">
                                         <h4 class="mb-1"><a href="#">Codefox - Admin & Dashboard Template</a></h4>
                                         <div class="font-13 text-success mb-2 text-truncate">
-                                            https://wrapbootstrap.com/theme/codefox-admin-dashboard-template-WB0X27670?ref=themesbrand
+                                            https://wrapbootstrap.com/theme/codefox-admin-dashboard-template-WB0X27670?ref=kazissupermarket
                                         </div>
                                         <p class="mb-0 text-muted">
                                             Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.
@@ -73,7 +73,7 @@ export default {
                                     <div class="search-item">
                                         <h4 class="mb-1"><a href="#">Starto - Bootstrap 4 Landing Page Template</a></h4>
                                         <div class="font-13 text-success mb-2 text-truncate">
-                                            https://themesbrand.com/starto/index-demo.html
+                                            https://kazissupermarket.com/starto/index-demo.html
                                         </div>
                                         <p class="mb-0 text-muted">
                                             Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.
@@ -103,7 +103,7 @@ export default {
                                     <div class="search-item">
                                         <h4 class="mb-1"><a href="#">Flacto - Admin & Dashboard Template</a></h4>
                                         <div class="font-13 text-success mb-2 text-truncate">
-                                            https://wrapbootstrap.com/theme/flacto-admin-dashboard-template-WB0C3DCHM?ref=themesbrand
+                                            https://wrapbootstrap.com/theme/flacto-admin-dashboard-template-WB0C3DCHM?ref=kazissupermarket
                                         </div>
                                         <p class="mb-0 text-muted">
                                             Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.
@@ -113,7 +113,7 @@ export default {
                                     <div class="search-item">
                                         <h4 class="mb-1"><a href="#">Velonic - Bootstrap 4 Admin & Frontend</a></h4>
                                         <div class="font-13 text-success mb-2 text-truncate">
-                                            https://wrapbootstrap.com/theme/velonic-bootstrap-4-admin-frontend-WB0R9B09G?ref=themesbrand
+                                            https://wrapbootstrap.com/theme/velonic-bootstrap-4-admin-frontend-WB0R9B09G?ref=kazissupermarket
                                         </div>
 
                                         <div class="">
@@ -125,9 +125,9 @@ export default {
                                     </div> <!-- end search item -->
 
                                     <div class="search-item">
-                                        <h4 class="mb-1"><a href="#">themesbrand - WrapBootstrap</a></h4>
+                                        <h4 class="mb-1"><a href="#">kazissupermarket - WrapBootstrap</a></h4>
                                         <div class="font-13 text-success mb-2 text-truncate">
-                                            https://wrapbootstrap.com/user/themesbrand?ref=themesbrand
+                                            https://wrapbootstrap.com/user/kazissupermarket?ref=kazissupermarket
                                         </div>
                                         <p class="mb-0 text-muted">
                                             Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.
