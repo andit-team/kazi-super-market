@@ -24,12 +24,15 @@ const mutations = {
 const actions = {
     async createCategory ({dispatch},payload){
         const UploadData = await helper.fileupload(payload.thumbnail);
-
-        const response = await axios.post('http://localhost:3001/api/admin/category-create/',{
-                name : payload.category_name,
-                thumbnail : UploadData.data.url,
-                description : payload.description
-            });
+        // console.log(UploadData.data.data.display_url)
+        const data = {
+            name : payload.category_name,
+            thumbnail : UploadData.data.data.display_url,
+            description : payload.description
+        }
+        console.log(data);
+        const response = await axios.post('http://localhost:3001/api/admin/category-create/',data);
+            
         dispatch('getCategories')
 
     },

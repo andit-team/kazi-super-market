@@ -217,7 +217,7 @@ export default {
 <div>
     <PageHeader :title="title" :items="items" />
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title m-t-0">Basic Form</h4>
@@ -265,7 +265,7 @@ export default {
         </div>
         <!-- end col -->
 
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Advanced Data Table</h4>
@@ -292,7 +292,13 @@ export default {
                     </div>
                     <!-- Table -->
                     <div class="table-responsive mb-0">
-                        <b-table :items="tableData.data" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered"></b-table>
+                        <b-table :items="tableData.data" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
+                            <!-- A custom formatted column -->
+                            <template #cell(thumbnail)="data">
+                                <!-- {{data.value}} -->
+                                 <img :src="data.value" height="auto" width="100" />
+                            </template>
+                        </b-table>
                     </div>
                     <div class="row">
                         <div class="col">
