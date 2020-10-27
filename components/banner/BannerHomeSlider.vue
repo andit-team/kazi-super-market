@@ -39,7 +39,7 @@
   </div>
 </template>
 <script type="text/javascript">
-import CategoriesNav from '../header/CategoriesNav'
+// import CategoriesNav from '../header/CategoriesNav'
 export default {
   data() {
     return {
