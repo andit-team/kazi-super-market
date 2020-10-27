@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const CategorySchema = new mongoose.Schema({
     name: String,
+    thumbnail: String,
+    description: String,
     slug: { type: String, index: true },
     parentId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -15,7 +17,7 @@ const CategorySchema = new mongoose.Schema({
             index: true
     },
          name: String,
-         slug: String
+         slug: String,
     }]
 });
 

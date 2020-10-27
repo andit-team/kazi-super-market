@@ -16,7 +16,15 @@ import {
  * Form Validation component
  */
 import Multiselect from 'vue-multiselect'
+import { mapGetters,mapActions } from 'vuex'
+import axios from 'axios'
 export default {
+   
+    // saveTodo(e){
+    //     e.preventDefault();
+    //     this.newTodo(this.title);
+    //     this.title = "";
+    // },
     head() {
         return {
             title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
@@ -72,6 +80,48 @@ export default {
                 'Iowa',
             ],
             // submitStatus: null,
+
+
+//table data
+
+            // tableData: '',
+            title: 'Advanced Table',
+            items: [{
+                    text: 'Minton',
+                    href: '/',
+                },
+                {
+                    text: 'Tables',
+                    href: '/',
+                },
+                {
+                    text: 'Advanced',
+                    active: true,
+                },
+            ],
+            totalRows: 1,
+            currentPage: 1,
+            perPage: 10,
+            pageOptions: [10, 25, 50, 100],
+            filter: null,
+            filterOn: [],
+            sortBy: 'age',
+            sortDesc: false,
+            fields: [
+                {
+                    key: 'thumbnail',
+                    sortable: true
+                },
+                {
+                    key: 'name',
+                    sortable: true
+                },
+                {
+                    key: 'description',
+                    sortable: true
+                }
+            ],
+
         }
     },
     validations: {
@@ -90,9 +140,46 @@ export default {
             // },
         }
     },
+    //  computed: mapGetters(['category/allCategories']),
+    computed: {
+        ...mapGetters({tableData : 'category/allCategories'}),
+        /**
+         * Total no. of records
+         */
+        rows() {
+            return this.tableData.data.length
+        },
+    },
+    mounted() {
+        // Set the initial number of items
+        this.totalRows = this.items.length
+    },
     methods: {
-        setFile(event){
-            this.form.thumbnail = event.target.files[0];
+        ...mapActions({cat : 'category/getCategories',newCat : 'category/createCategory'}),
+
+        // setFile(event){
+        //     this.form.thumbnail = event.target.files[0];
+        // },
+       async onFilePicked(event) {
+            const files = event.target.files
+            if (files[0] !== undefined) {
+                this.fileName = files[0].name
+                // Check validity of file
+                if (this.fileName.lastIndexOf('.') <= 0) {
+                return
+                }
+                // If valid, continue
+                const fr = new FileReader()
+                fr.readAsDataURL(files[0])
+                fr.addEventListener('load', () => {
+                this.url = fr.result
+                 this.form.thumbnail = files[0] // this is an file that can be sent to server...
+                })
+            } else {
+                this.fileName = ''
+                 this.form.thumbnail = null
+                this.url = ''
+            }
         },
         /**
          * Basic Form submit
@@ -104,10 +191,24 @@ export default {
             if (this.$v.$invalid) {
                 console.log('error submit');
             } else {
-
+                this.newCat(this.form);
             }
+        },
+
+        /**
+         * Search the table data with search input
+         */
+        onFiltered(filteredItems) {
+            // Trigger pagination to update the number of buttons/pages due to filtering
+            this.totalRows = filteredItems.length
+            this.currentPage = 1
         }
+
     },
+    created(){
+        this.cat();
+    },
+    
     middleware: 'router-auth'
 }
 </script>
@@ -134,7 +235,7 @@ export default {
                             <label for="category_name">
                                 Thumbnail
                             </label>
-                            <input id="thumbnail" name="thumbnail" class="form-control" type="file" @change="setFile"/>
+                            <input id="thumbnail" name="thumbnail" class="form-control img1" type="file" @change="onFilePicked"/>
                         </div>
                         <div class="form-group">
                             <label for="category_name">
@@ -165,7 +266,46 @@ export default {
         <!-- end col -->
 
         <div class="col-lg-6">
-
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Advanced Data Table</h4>
+                    <p class="text-muted font-13 mb-4"></p>
+                    <div class="row mb-md-2">
+                        <div class="col-sm-12 col-md-6">
+                            <div id="tickets-table_length" class="dataTables_length">
+                                <label class="d-inline-flex align-items-center">
+                                    Show&nbsp;
+                                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>&nbsp;entries
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Search -->
+                        <div class="col-sm-12 col-md-6">
+                            <div id="tickets-table_filter" class="dataTables_filter text-md-right">
+                                <label class="d-inline-flex align-items-center">
+                                    Search:
+                                    <b-form-input v-model="filter" type="search" placeholder="Search..." class="form-control form-control-sm ml-2"></b-form-input>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End search -->
+                    </div>
+                    <!-- Table -->
+                    <div class="table-responsive mb-0">
+                        <b-table :items="tableData.data" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered"></b-table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="dataTables_paginate paging_simple_numbers float-right">
+                                <ul class="pagination pagination-rounded mb-0">
+                                    <!-- pagination -->
+                                    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- end col -->
     </div>

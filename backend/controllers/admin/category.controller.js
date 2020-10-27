@@ -9,6 +9,8 @@
     let parentId = req.body.parent ? req.body.parent : null;
     const newCategory = new Category({
         name: req.body.name,
+        description: req.body.description,
+        thumbnail: req.body.thumbnail,
         slug: Helper.slugify(req.body.name),
         parentId
     });
