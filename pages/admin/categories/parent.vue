@@ -192,10 +192,14 @@ export default {
                 console.log('error submit');
             } else {
                 this.newCat(this.form);
-                // form.parent= '';
-                // form.category_name= '';
-                // form.description= '';
-                // form.thumbnail= '';
+                // const done = this.newCat(this.form);
+                // if(done){
+                //     this.form.parent= '';
+                //     this.form.category_name= '';
+                //     this.form.description= '';
+                //     this.form.thumbnail= '';
+                //     document.getElementById("thumbnail").value = "";
+                // }
             }
         },
 
