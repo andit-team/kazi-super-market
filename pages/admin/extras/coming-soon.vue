@@ -5,7 +5,7 @@
 export default {
     head() {
         return {
-            title: `Coming-soon | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `Coming-soon | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     layout: "auth",

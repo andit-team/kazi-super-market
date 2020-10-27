@@ -7,7 +7,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
@@ -16,7 +16,7 @@ export default {
             tableData: tableData,
             title: "Tickets",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/"
                 },
                 {

@@ -5,7 +5,7 @@
 export default {
     head() {
         return {
-            title: `Sign-in signup 2 | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `Sign-in signup 2 | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
@@ -22,12 +22,12 @@ export default {
         <div class="auth-logo">
             <nuxt-link to="/" class="logo logo-dark text-center">
                 <span class="logo-lg">
-                    <img src="~/assets/admin/images/logo-dark.png" alt height="22" />
+                    <img src="~/assets/admin/images/logo-dark.png" alt height="40" />
                 </span>
             </nuxt-link>
             <nuxt-link to="/" class="logo logo-light text-center">
                 <span class="logo-lg">
-                    <img src="~/assets/admin/images/logo-light.png" alt height="22" />
+                    <img src="~/assets/admin/images/logo-light.png" alt height="40" />
                 </span>
             </nuxt-link>
         </div>
@@ -147,8 +147,8 @@ export default {
     <!-- Footer-->
     <footer class="footer footer-alt">
         <p class="text-muted">
-            {{ new Date().getFullYear() }}&copy; Minton theme by
-            <a href="javascript: void(0);" class="text-dark">Themesbrand</a>
+            {{ new Date().getFullYear() }}&copy; Kazissupermarket theme by
+            <a href="www.andit.co" class="text-dark">AndIT</a>
         </p>
     </footer>
 </div>

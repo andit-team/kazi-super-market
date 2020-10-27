@@ -21,7 +21,7 @@ import {
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -41,7 +41,7 @@ export default {
             revenuePieChart: revenuePieChart,
             title: 'Widgets',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {
@@ -180,7 +180,7 @@ export default {
                         </div>
                         <div class="col">
                             <h5 class="mt-0">{{user.name}}</h5>
-                            <p class="text-muted mb-1 font-13">themesbrand@gmail.com</p>
+                            <p class="text-muted mb-1 font-13">kazissupermarket@gmail.com</p>
                             <small :class="`text-${user.color}`">
                                 <b>{{user.type}}</b>
                             </small>

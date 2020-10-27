@@ -113,13 +113,13 @@ export default {
                     <div class="auth-logo">
                         <nuxt-link to="/" class="logo logo-dark text-center">
                             <span class="logo-lg">
-                                <img src="~/assets/admin/images/logo-dark.png" alt height="22" />
+                                <img src="~/assets/admin/images/logo-dark.png" alt height="35" />
                             </span>
                         </nuxt-link>
 
                         <nuxt-link to="/" class="logo logo-light text-center">
                             <span class="logo-lg">
-                                <img src="~/assets/admin/images/logo-light.png" alt height="22" />
+                                <img src="~/assets/admin/images/logo-light.png" alt height="35" />
                             </span>
                         </nuxt-link>
                     </div>

@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`
         }
     },
     data() {
         return {
             title: 'Invoice',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {
@@ -40,7 +40,7 @@ export default {
                     <!-- Logo & title -->
                     <div class="clearfix">
                         <div class="float-left">
-                            <img src="~/assets/admin/images/logo-dark.png" alt height="20" />
+                            <img src="~/assets/admin/images/logo-dark.png" alt height="35" />
                         </div>
                         <div class="float-right">
                             <h4 class="m-0 d-print-none">Invoice</h4>

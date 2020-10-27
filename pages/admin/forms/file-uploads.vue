@@ -6,7 +6,7 @@ import vue2Dropzone from 'vue2-dropzone'
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`
         }
     },
     components: {
@@ -16,7 +16,7 @@ export default {
         return {
             title: 'File Uploads',
             items: [{
-                    text: 'Minton',
+                    text: 'Kazissupermarket',
                     href: '/',
                 },
                 {

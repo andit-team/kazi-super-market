@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     data() {
         return {
             title: "Profile",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/"
                 },
                 {
@@ -197,7 +197,7 @@ export default {
                                     <li class="timeline-sm-item">
                                         <span class="timeline-sm-date">2010 - 12</span>
                                         <h5 class="mt-0 mb-1">Graphic Designer</h5>
-                                        <p>themesbrand LLP</p>
+                                        <p>kazissupermarket LLP</p>
                                         <p class="text-muted mt-2 mb-0">
                                             The European languages are members of the same family.
                                             Their separate existence is a myth. For science music

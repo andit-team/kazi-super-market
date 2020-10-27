@@ -7,7 +7,7 @@ import vue2Dropzone from "vue2-dropzone";
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -17,7 +17,7 @@ export default {
         return {
             title: "Task Detail",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/",
                 },
                 {
@@ -102,7 +102,7 @@ export default {
                         <!-- end dropdown menu-->
                     </b-dropdown>
                     <p class="text-primary">#MN2048</p>
-                    <h4 class="mb-1">Minton admin Dashboard Re-design</h4>
+                    <h4 class="mb-1">Kazissupermarket admin Dashboard Re-design</h4>
                     <p class="text-muted mb-1">If several languages coalesce of the resulting language is more simple than the existing</p>
 
                     <div class="text-muted">
@@ -231,7 +231,7 @@ export default {
                                                 </div>
                                             </div>
                                             <div class="col pl-0">
-                                                <a href="javascript:void(0);" class="text-muted font-weight-semibold">Minton-sketch-design.zip</a>
+                                                <a href="javascript:void(0);" class="text-muted font-weight-semibold">Kazissupermarket-sketch-design.zip</a>
                                                 <p class="mb-0 font-12">2.3 MB</p>
                                             </div>
                                             <div class="col-auto">

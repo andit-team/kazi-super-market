@@ -5,14 +5,14 @@
 export default {
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`
+            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`
         }
     },
     data() {
         return {
             title: "Sitemap",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                     href: "/",
                 },
                 {
@@ -42,7 +42,7 @@ export default {
                             <ul class="sitemap">
                                 <li>
                                     <a href="javascript: void(0);" class="text-uppercase font-weight-bold">
-                                        <img src="~/assets/admin/images/logo-sm-dark.png" alt height="12" class="mr-1" /> Minton Pages
+                                        <img src="~/assets/admin/images/logo-sm-dark.png" alt height="12" class="mr-1" /> Kazissupermarket Pages
                                     </a>
                                     <ul>
                                         <li>
@@ -132,7 +132,7 @@ export default {
                             <ul class="sitemap">
                                 <li>
                                     <a href="javascript: void(0);" class="text-uppercase font-weight-bold">
-                                        <img src="~/assets/admin/images/logo-sm-dark.png" alt height="12" class="mr-1" /> Minton
+                                        <img src="~/assets/admin/images/logo-sm-dark.png" alt height="12" class="mr-1" /> Kazissupermarket
                                     </a>
                                     <ul>
                                         <li>
@@ -236,7 +236,7 @@ export default {
                             <ul class="sitemap">
                                 <li>
                                     <a href="javascript: void(0);" class="text-uppercase font-weight-bold">
-                                        <img src="~/assets/admin/images/logo-sm-dark.png" alt height="12" class="mr-1" /> Minton
+                                        <img src="~/assets/admin/images/logo-sm-dark.png" alt height="12" class="mr-1" /> Kazissupermarket
                                     </a>
                                     <ul>
                                         <li>

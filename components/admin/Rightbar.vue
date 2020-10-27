@@ -451,9 +451,7 @@ export default {
                         <button class="btn btn-primary btn-block mt-4" id="resetBtn" @click="reset()">
                             Reset to Default
                         </button>
-
-                        <a href="https://wrapbootstrap.com/theme/minton-admin-dashboard-landing-template-WB0858DB6?ref=themesbrand" class="btn btn-danger btn-block mt-2" target="_blank"><i class="mdi mdi-basket mr-1"></i> Purchase Now</a>
-                    </div>
+                        </div>
                 </b-tab>
             </b-tabs>
             <!-- Nav tabs -->

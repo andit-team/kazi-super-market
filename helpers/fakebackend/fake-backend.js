@@ -3,7 +3,7 @@ let users;
 if (process.browser) {
     users =
         JSON.parse(window.localStorage.getItem('users'))
-        || [{ username: "admin", email: "minton@themesbrand.com", password: "123456" }];
+        || [{ username: "admin", email: "kazi@kazissupermarket.com", password: "123456" }];
     
 }
 

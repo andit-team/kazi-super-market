@@ -1,7 +1,34 @@
-/*=====================
-    29.Responsive CSS start
-==========================*/
+/*-------------------------------------------
+    33. Kazissupermarket Responsive Design CSS
+-------------------------------------------*/
 
+/*=====================================
+    Extra Large Screen
+========================================*/
+
+  @media only screen and (min-width: 1920px){
+  }
+
+/*=====================================
+    For Large Screen
+========================================*/
+
+  /*------Max 1200px Width Screen------*/
+
+  @media only screen and (max-width: 1775px) {
+
+  }
+
+/*--------Max 1680px Width Screen---------*/
+@media only screen and (max-width: 1680px) {
+
+}
+/*--------Max 1600px Width Screen---------*/
+@media only screen and (max-width: 1600px) {
+
+}
+
+/*--------Max 1366px Width Screen---------*/
 @media(max-width: 1367px) {
   h2 {
     font-size: 32px;
@@ -15,8 +42,48 @@
   }
 }
 
-@media(max-width: 1199px) {
-  section ,.section-t-space{
+@media only screen and (max-width: 1366px) {
+
+  /*Default for Max 1366px Width Devices*/
+  h4 {
+    font-size: 22px;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1366px){
+
+}
+
+/*--------Max 1200px Width Screen---------*/
+
+  @media only screen and (max-width: 1200px) {
+    body {
+      font-size: 14px;
+    }
+    h2.section-heading {
+      font-size: 40px;
+    }
+    p.section-subheading{
+      font-size: 16px;
+    }
+    h4 {
+      font-size: 21px;
+    }
+
+  }
+
+/*--------Min 1200px Width Screen--------*/
+  @media only screen and (min-width: 1200px) {
+
+  }
+
+/*=====================================
+    For Medium Screen
+========================================*/
+
+@media only screen and (max-width: 1199px){
+    section ,.section-t-space{
     padding-top: 60px;
   }
   .section-b-space {
@@ -41,58 +108,133 @@
   .payment-images li a img {
     height: 22px;
   }
+  // Nav CSS
+  .category-box {
+    padding: 15px 0!important;
+  }
+  #mainNav .container, .top-bar .container, .bottom-nav .container {
+    max-width: 100%;
+  }
+  .menu-section-area form.form-inline input {
+    width: auto!important;
+    min-width: 250px!important;
+  }
+  .home-slider .home, .home-slider .slider-contain, .categories-nav {
+    height: 450px!important;
+  }
+  .categories-nav ul {
+    height: 320px!important;
+  }
+  .categories-nav h5 {
+    font-size: 16px;
+  }
+  .categories-nav h6 {
+    font-size: 15px;
+  }
+
 }
 
-@media(max-width: 991px) {
-  h2 {
-    font-size: 28px;
-  }
-  section ,.section-t-space{
-    padding-top: 50px;
-  }
-  .section-b-space {
-    padding-bottom: 50px;
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+  /*Domain Area CSS*/
+  p{
+    font-size: 14px;
   }
 
 }
 
-@media(max-width: 767px) {
+@media only screen and (max-width: 992px) {
+  #mainNav .navbar-brand {
+    margin: 0 20px 0 0;
+  }
+  .middle-nav-right-list li {
+    margin: 0 0 0 15px!important;
+  }
+}
+
+/*======================================
+        Tablet layout
+=========================================*/
+  @media only screen and (max-width: 991px) {
+    p {
+        font-size: 14px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+    section ,.section-t-space{
+      padding-top: 50px;
+    }
+    .section-b-space {
+      padding-bottom: 50px;
+    }
+
+    /*Menu CSS*/
+    #mainNav .navbar-brand img {
+      height: 45px;
+    }
+    #mainNav {
+	    padding: 0;
+    }
+    .desktop-logo, .middle-nav-wrap{
+      display: none;
+    }
+    .mobile-logo{
+      display: block;
+    }
+    #mainNav .navbar-brand {
+      margin: 0 20px 0 30px!important;
+    }
+    .cart-small-view {
+	    margin-right: 0;
+    }
+
+  }
+  @media only screen and (min-width: 991px) {
+
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 991px){
+    .menu-section-area form.form-inline input {
+        width: 450px !important;
+    }
+  }
+
+@media only screen and (max-width: 768px) {
+    /*Main Menu Bar*/
+}
+
+/*=======================================
+        For Small Devices
+=========================================*/
+  @media only screen and (max-width: 767px) {
+
+    .login-area form {
+	    width: 100%;
+    }
+    #mainNav {
+      padding: 0;
+    }
+    .cart-small-view, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a {
+      font-size: 14px !important;
+    }
+    .cart-small-view svg {
+      height: 14px !important;
+    }
+    .menu-section-area form.form-inline input {
+      width: auto;
+    }
+    .home-slider .home, .home-slider .slider-contain, .categories-nav {
+	    height: 350px !important;
+	    min-height: 350px !important;
+    }
+
   section ,.section-t-space{
     padding-top: 40px;
   }
   .section-b-space {
     padding-bottom: 40px;
   }
-  // .banner-timer {
-  //   padding-top: 5px;
-  //   padding-bottom: 5px;
-  //   .banner-text {
-  //     padding-top: 15px;
-  //     padding-bottom: 15px;
-  //     background-color: rgba(255, 255, 255, 0.65);
-  //     h2 {
-  //       font-size: 15px;
-  //     }
-  //   }
-  //   .timer-box{
-  //     text-align: center;
-  //   }
-  //   .timer{
-  //     margin-top: 5px;
-  //     padding-top: 6px;
-  //     padding-bottom: 6px;
-  //     padding-left: 20px;
-  //     p{
-  //       font-size: 14px;
-  //     }
-  //     span {
-  //       width: 40px;
-  //       .padding-l{
-  //         padding-left: 10px;
-  //       }
-  //     }
-  //   }
-  // }
+  
   .home-slider {
     &.fullpage {
       .slick-dots {
@@ -125,6 +267,44 @@
     bottom: 70px;
     right: 20px;
   }
+
+  /*Footer CSS*/
+  .footer-widget {
+    border-bottom: 1px solid rgba(44, 212, 217, .2);
+    padding: 0 0 30px 0;
+    margin-bottom: 30px;
+  }
+  .subscribe-area {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .footer-bottom-part {
+    flex-direction: column;
+  }
+  .bottom-footer-left {
+    margin-bottom: 20px;
+  }
+
+    /* Style started from here */
+    .home-deals-product-area .section-title p {
+      margin-bottom: 30px!important;
+    }
+    .advartise-img-wrap {
+	    margin-bottom: 20px;
+    }
+    .subscribe-area p {
+	    margin: 15px 0;
+    }
+
+  }
+
+  /*========================================
+            For large mobile
+  =========================================*/
+
+@media only screen and (max-width: 766px){
+
 }
 
 @media (max-width: 577px) {
@@ -198,20 +378,7 @@
     padding: 2px;
     font-size: 19px;
   }
-  // .full-scroll-footer {
-  //   display: none;
-  // }
-  // inner pages //
-  // .error-section {
-  //   padding: 100px 0;
-  //   h1 {
-  //     font-size: 100px;
-  //   }
-  //   h2 {
-  //     margin: 20px 0;
-  //     font-size: 18px;
-  //   }
-  // }
+
   .slider-right-nav {
     .slick-slide {
       &:first-child {
@@ -221,12 +388,9 @@
       }
     }
   }
-  // .padding-cls {
-  //   padding-left: 15px;
-  //   padding-right: 15px;
-  // }
 }
-@media (max-width: 575px) {
+
+@media only screen and (max-width: 575px){
   .breadcrumb-section {
     .page-title {
       text-align: center;
@@ -245,9 +409,21 @@
     }
   }
 }
+@media only screen and (max-width: 535px) {
+   
+}
 
-@media (max-width: 480px) {
-  .home-slider {
+@media only screen and (max-width: 510px){
+}
+
+/*=========================================
+        For very little mobile
+=========================================*/
+  @media only screen and (max-width:480px){
+    #mainNav .navbar-brand {
+      margin: 0 10px 0 30px !important;
+    }
+    .home-slider {
     .home{
       height: 55vh;
     }
@@ -275,48 +451,80 @@
       }
     }
   }
-  // inner pages //
-  // .select_input {
-  //   select {
-  //     padding: 12px 15px;
-  //     margin-bottom: 18px;
-  //   }
-  // }
+    
+  }
+  @media (max-width: 360px){
 
-  // .pwd-page {
-  //   padding: 70px 0;
-  //   h2 {
-  //     font-size: 25px;
-  //     margin-bottom: 15px;
-  //   }
-  // }
-  // .login-page {
-  //   .authentication-right {
-  //     h6 {
-  //       margin-bottom: 10px;
-  //     }
-  //   }
-  // }
-  // .register-page {
-  //   .theme-card {
-  //     padding: 18px;
-  //     .theme-form {
-  //       input {
-  //         margin-bottom: 20px;
-  //         padding: 12px 15px;
-  //       }
-  //     }
-  //   }
-  // }
-  // .success-text {
-  //   h2 {
-  //     font-size: 20px;
-  //   }
-  //   p {
-  //     font-size: 14px;
-  //   }
-  // }
+  h2 {
+    font-size: 25px;
+  }
+  .home-slider {
+    .home {
+      height: 50vh;
+    }
+    .slider-contain {
+      height: 50vh;
+      h1 {
+        font-size: 25px!important;
+      }
+      .btn-solid, .btn-outline {
+        margin-top: 8px;
+        padding: 5px 15px;
+      }
+    }
+    &:hover {
+      .slick-prev, .slick-next {
+        transform: scale(1.1);
+      }
+      .slick-next {
+        right:40px;
+      }
+      .slick-prev {
+        left: 40px;
+      }
+    }
+  }
+
 }
+
+  @media only screen and (min-width:300px) and (max-width:460px){
+   #mainNav .navbar-brand {
+      margin: 0 20px 0 20px !important;
+    }
+    
+  }
+  @media only screen and (min-width:300px)  and (max-width:455px){
+    div.product {
+      float: none!important;
+      margin: 0 auto 45px!important;
+    }
+    .cart-small-view {
+      padding: 0;
+    }
+    
+  }
+  @media only screen and (min-width:300px) and (max-width:479px){
+    .menu-section-area form.form-inline input {
+      min-width: 225px !important;
+    }
+    .user-name {
+      display: none;
+    }
+    
+  }
+  @media only screen and (min-width:320px) and (max-width:430px){
+  .menu-section-area form.form-inline input {
+        width: 150px !important;
+        min-width: 150px !important;
+    }
+    #mainNav .navbar-toggler {
+        margin: 0 4px 0 0 !important;
+    }
+    #mainNav .navbar-brand {
+        margin: 0 4px 0 30px !important;
+    }
+    
+  }
 
 @media (max-width: 420px) {
   h2 {
@@ -350,318 +558,6 @@
   }
 }
 
-@media (max-width: 360px){
-
-  h2 {
-    font-size: 25px;
-  }
-  .home-slider {
-    .home {
-      height: 50vh;
-    }
-    .slider-contain {
-      height: 50vh;
-      h1 {
-        font-size: 25px!important;
-      }
-      .btn-solid, .btn-outline {
-        margin-top: 8px;
-        padding: 5px 15px;
-      }
-    }
-    &:hover {
-      .slick-prev, .slick-next {
-        transform: scale(1.1);
-      }
-      .slick-next {
-        right:40px;
-      }
-      .slick-prev {
-        left: 40px;
-      }
-    }
-  }
-
-}
-/*-------------------------------------------
-    33. Kazissupermarket Responsive Design CSS
--------------------------------------------*/
-
-/*=====================================
-    Extra Large Screen
-========================================*/
-
-  @media only screen and (min-width: 1920px){
-  }
-
-/*=====================================
-    For Large Screen
-========================================*/
-
-  /*------Max 1200px Width Screen------*/
-
-  @media only screen and (max-width: 1775px) {
-
-  }
-
-/*--------Max 1680px Width Screen---------*/
-@media only screen and (max-width: 1680px) {
-
-}
-/*--------Max 1600px Width Screen---------*/
-@media only screen and (max-width: 1600px) {
-
-}
-
-/*--------Max 1366px Width Screen---------*/
-
-@media only screen and (max-width: 1366px) {
-
-    /*Default for Max 1366px Width Devices*/
-    h4 {
-        font-size: 22px;
-    }
-
-}
-
-@media only screen and (min-width: 1200px) and (max-width: 1366px){
-
-}
-
-/*--------Max 1200px Width Screen---------*/
-
-  @media only screen and (max-width: 1200px) {
-      body {
-          font-size: 14px;
-      }
-      h2.section-heading {
-          font-size: 40px;
-      }
-      p.section-subheading{
-          font-size: 16px;
-      }
-      h4 {
-          font-size: 21px;
-      }
-      /*Hero Area*/
-
-  }
-
-/*--------Min 1200px Width Screen--------*/
-  @media only screen and (min-width: 1200px) {
-
-  }
-
-/*=====================================
-    For Medium Screen
-========================================*/
-
-@media only screen and (max-width: 1199px){
-   .category-box {
-        padding: 15px 0!important;
-    }
-    #mainNav .container, .top-bar .container, .bottom-nav .container {
-        max-width: 100%;
-    }
-    .menu-section-area form.form-inline input {
-        width: auto!important;
-        min-width: 250px!important;
-    }
-    .home-slider .home, .home-slider .slider-contain, .categories-nav {
-        height: 450px!important;
-    }
-    .categories-nav ul {
-        height: 320px!important;
-    }
-    .categories-nav h5 {
-        font-size: 16px;
-    }
-    .categories-nav h6 {
-        font-size: 15px;
-    }
-
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px){
-    /*Domain Area CSS*/
-    p{
-        font-size: 14px;
-    }
-
-}
-
-@media only screen and (max-width: 992px) {
-    #mainNav .navbar-brand {
-        margin: 0 20px 0 0;
-    }
-    .middle-nav-right-list li {
-        margin: 0 0 0 15px!important;
-    }
-}
-
-/*======================================
-        Tablet layout
-=========================================*/
-
-  @media only screen and (max-width: 991px) {
-    p {
-        font-size: 14px;
-    }
-    /*Menu CSS*/
-    #mainNav .navbar-brand img {
-        height: 45px;
-    }
-    #mainNav {
-	    padding: 0;
-    }
-    .desktop-logo, .middle-nav-wrap{
-        display: none;
-    }
-    .mobile-logo{
-        display: block;
-    }
-    #mainNav .navbar-brand {
-        margin: 0 20px 0 30px!important;
-    }
-    .cart-small-view {
-	    margin-right: 20px;
-    }
-
-  }
-  @media only screen and (min-width: 991px) {
-
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 991px){
-    .menu-section-area form.form-inline input {
-        width: 450px !important;
-    }
-  }
-
-@media only screen and (max-width: 768px) {
-    /*Main Menu Bar*/
-
-}
-
-/*=======================================
-        For Small Devices
-=========================================*/
-  @media only screen and (max-width: 767px) {
-
-    .login-area form {
-	    width: 100%;
-    }
-    #mainNav {
-        padding: 0;
-    }
-    .cart-small-view, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a {
-        font-size: 14px !important;
-    }
-    .cart-small-view svg {
-        height: 14px !important;
-    }
-    .menu-section-area form.form-inline input {
-        width: auto;
-    }
-    .home-slider .home, .home-slider .slider-contain, .categories-nav {
-	    height: 350px !important;
-	    min-height: 350px !important;
-    }
-
-    /*Footer CSS*/
-    .footer-widget {
-        border-bottom: 1px solid rgba(44, 212, 217, .2);
-        padding: 0 0 30px 0;
-        margin-bottom: 30px;
-    }
-    .subscribe-area {
-        border-top: none;
-        margin-top: 0;
-        padding-top: 0;
-    }
-    .footer-bottom-part {
-        flex-direction: column;
-    }
-    .bottom-footer-left {
-        margin-bottom: 20px;
-    }
-
-    /* Style started from here */
-    .home-deals-product-area .section-title p {
-        margin-bottom: 30px!important;
-    }
-    .advartise-img-wrap {
-	    margin-bottom: 20px;
-    }
-    .subscribe-area p {
-	    margin: 15px 0;
-    }
-
-  }
-
-  /*========================================
-            For large mobile
-  =========================================*/
-
-@media only screen and (max-width: 766px){
-
-
-}
-
-@media only screen and (max-width: 575px){
-
-}
-@media only screen and (max-width: 535px) {
-   
-}
-
-@media only screen and (max-width: 510px){
-}
-
-/*=========================================
-        For very little mobile
-=========================================*/
-  @media only screen and (max-width:480px){
-    #mainNav .navbar-brand {
-        margin: 0 10px 0 30px !important;
-    }
-    
-  }
-  @media only screen and (min-width:300px) and (max-width:460px){
-   #mainNav .navbar-brand {
-      margin: 0 20px 0 20px !important;
-    }
-    
-  }
-  @media only screen and (min-width:300px)  and (max-width:455px){
-    div.product {
-      float: none!important;
-      margin: 0 auto 45px!important;
-    }
-    .cart-small-view {
-      padding: 0;
-    }
-    
-  }
-  @media only screen and (min-width:300px) and (max-width:479px){
-    .menu-section-area form.form-inline input {
-        min-width: 225px !important;
-    }
-    
-  }
-  @media only screen and (min-width:320px) and (max-width:430px){
-  .menu-section-area form.form-inline input {
-        width: 150px !important;
-        min-width: 150px !important;
-    }
-    #mainNav .navbar-toggler {
-        margin: 0 4px 0 0 !important;
-    }
-    #mainNav .navbar-brand {
-        margin: 0 4px 0 30px !important;
-    }
-    
-  }
 @media only screen and (min-width:320px) and (max-width:399px){
   .cart-small-view {
     margin-right: 0!important;
@@ -673,14 +569,11 @@
   .cart-small-view, .cart-small-view:hover, .cart-small-view.btn-secondary:focus, .btn-secondary.focus, .cart-small-view.btn-secondary:not(:disabled):not(.disabled):active {
     margin-left: 0!important;
   }
-  /* #mainNav .navbar-brand {
-      margin: 0 10px;
-  } */
   #mainNav .navbar-brand {
     margin: 0 8px 0 13px !important;
   }
     
 }
   /*-------------------------------------------
-        24. Responsive Design End
+  24. Responsive Design End
   -------------------------------------------*/

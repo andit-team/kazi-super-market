@@ -13,7 +13,7 @@ import Overview from "./overview";
 export default {
     head() {
         return {
-            title: `${this.title} Dashboard | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} Dashboard | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -28,7 +28,7 @@ export default {
         return {
             title: "Analytics",
             items: [{
-                    text: "Minton",
+                    text: "Kazissupermarket",
                 },
                 {
                     text: "Dashboards",

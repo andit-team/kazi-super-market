@@ -15,16 +15,16 @@
           <b-nav>
             <b-nav-item><b-button class="cart-small-view" v-b-toggle.sidebar-right><b-badge variant="success" class="rounded-circle">9+</b-badge><b-icon-bag-fill></b-icon-bag-fill>$120</b-button></b-nav-item>
          
-            <!-- <b-nav-item to="#">Login</b-nav-item>
-            <b-nav-item to="#">Signup</b-nav-item> -->
+            <b-nav-item to="#">Login</b-nav-item>
+            <b-nav-item to="#">Signup</b-nav-item>
 
             <b-nav-item-dropdown class="dropdown-box" right v-if="isLogin">
               <template v-slot:button-content>
                 <span class="customer-img mr-1"><b-img :src='"@/assets/images/profile-img/owner2.png"' alt="img" height="27" /></span>
-                <span>Suraiya Aysha</span>
+                <span class="user-name">Suraiya Aysha</span>
                 <i class="fas fa-angle-down"></i>
               </template>
-              <b-dropdown-item to="/account/profile">Profile</b-dropdown-item>
+              <b-dropdown-item to="#">Profile</b-dropdown-item>
               <b-dropdown-item to="/">Logout</b-dropdown-item>
             </b-nav-item-dropdown>
 
@@ -40,7 +40,7 @@
 export default {
   data() {
     return {
-      isLogin: true
+      isLogin: false
     }
   },
 }

@@ -11,7 +11,7 @@ export default {}
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                {{ new Date().getFullYear()}} &copy; Minton theme by <a href="">Themesbrand</a>
+                {{ new Date().getFullYear()}} &copy; Kazissupermarket theme by <a href="www.andit.co">AndIT</a>
             </div>
             <div class="col-md-6">
                 <div class="text-md-right footer-links d-none d-sm-block">
