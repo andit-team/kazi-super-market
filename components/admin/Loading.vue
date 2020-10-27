@@ -21,7 +21,7 @@ export default {
 <!-- Loader -->
 <div id="preloader" v-if="loading">
     <div class="card-portlets-loader">
-        <div class="spinner-border text-primary m-2" role="status"></div>
+        <div class="spinner-border m-2" role="status"></div>
     </div>
 </div>
 </template>

@@ -25,6 +25,7 @@
                 <i class="fas fa-angle-down"></i>
               </template>
               <b-dropdown-item to="#">Profile</b-dropdown-item>
+              <b-dropdown-item to="#">Settings</b-dropdown-item>
               <b-dropdown-item to="/">Logout</b-dropdown-item>
             </b-nav-item-dropdown>
 
