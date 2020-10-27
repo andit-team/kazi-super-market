@@ -27,7 +27,7 @@ export default {
     // },
     head() {
         return {
-            title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
     components: {
@@ -37,7 +37,7 @@ export default {
         return {
             title: 'Form Validation',
             items: [{
-                    text: 'Kazissupermarket',
+                    text: 'Minton',
                     href: '/',
                 },
                 {
@@ -192,6 +192,10 @@ export default {
                 console.log('error submit');
             } else {
                 this.newCat(this.form);
+                // form.parent= '';
+                // form.category_name= '';
+                // form.description= '';
+                // form.thumbnail= '';
             }
         },
 
@@ -220,7 +224,7 @@ export default {
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title m-t-0">Basic Form</h4>
+                    <h4 class="header-title m-t-0">Add Category as Parent</h4>
 
                     <form @submit.prevent="handleSubmit">
                         <div class="form-group">
@@ -268,7 +272,7 @@ export default {
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Advanced Data Table</h4>
+                    <h4 class="header-title">List of Parent Categories</h4>
                     <p class="text-muted font-13 mb-4"></p>
                     <div class="row mb-md-2">
                         <div class="col-sm-12 col-md-6">

@@ -31,14 +31,14 @@ const actions = {
             description : payload.description
         }
         console.log(data);
-        const response = await axios.post('http://localhost:3001/api/admin/category-create/',data);
+        const response = await axios.post(process.env.API_URL+'/admin/category-create/',data);
             
         dispatch('getCategories')
 
     },
 
     async getCategories({ commit }){
-        const response = await axios.get('http://localhost:3001/api/admin/categories');
+        const response = await axios.get(process.env.API_URL+'/admin/categories');
         console.log(response.data);
         commit('SET_CATEGORIES',response.data)
     },
