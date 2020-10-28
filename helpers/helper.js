@@ -41,8 +41,13 @@ function  SuccessMsg(msg) {
     });
 }
 
+function textSort(str, n){
+    return (str.length > n) ? str.substr(0, n-1) + '...' : str;
+};
+
 export const helper = {
     fileupload,
     WarningMsg,
-    SuccessMsg
+    SuccessMsg,
+    textSort
 };

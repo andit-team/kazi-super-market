@@ -11,6 +11,7 @@ import {
     url,
     alphaNum,
 } from 'vuelidate/lib/validators'
+import Swal from "sweetalert2";
 import { helper } from '../../../helpers/helper'
 /**
  * Form Validation component
@@ -51,12 +52,14 @@ export default {
             ],
 
             form: {
+                id: '',
                 parent: '',
                 category_name: '',
                 description: '',
                 thumbnail: ''
             },
             submitted: false,
+            submit: false,
             value: null,
             options: [
                 'Alaska',
@@ -85,7 +88,7 @@ export default {
 //table data
 
             // tableData: '',
-            title: 'Advanced Table',
+            title: 'Advanced Tables',
             items: [{
                     text: 'Minton',
                     href: '/',
@@ -119,6 +122,10 @@ export default {
                 {
                     key: 'description',
                     sortable: true
+                },
+                {
+                    key: 'Actions',
+                    sortable: true
                 }
             ],
 
@@ -129,9 +136,9 @@ export default {
             // parent: {
             //     required
             // },
-            // category_name: {
-            //     required
-            // },
+            category_name: {
+                required
+            },
             // description: {
             //     required
             // },
@@ -155,7 +162,11 @@ export default {
         this.totalRows = this.items.length
     },
     methods: {
-        ...mapActions({cat : 'category/getCategories',newCat : 'category/createCategory'}),
+        ...mapActions({
+                cat : 'category/getCategories',
+                newCat : 'category/createCategory',
+                removeCategory:'category/removeCategory'
+            }),
 
         // setFile(event){
         //     this.form.thumbnail = event.target.files[0];
@@ -185,30 +196,50 @@ export default {
          * Basic Form submit
          */
         handleSubmit(e) {
-            this.submitted = true
+           this.submitted = true
             // stop here if form is invalid
             this.$v.$touch()
             if (this.$v.$invalid) {
                 console.log('error submit');
             } else {
+                this.submit = true
                 this.newCat(this.form).then(res => {
-                    console.log(res);
+                    // console.log(res);
                     if(res.error === false){
                         helper.SuccessMsg(res.msg);
-                        this.form = {}
+                        this.form = {
+                            id: '',
+                            parent: '',
+                            category_name: '',
+                            description: '',
+                            thumbnail: ''
+                        }
                         document.getElementById("thumbnail").value = "";
                     }else{
                         helper.WarningMsg(res.msg);
                     }
+                    this.submit = false
                 }).catch(err => {
                     helper.WarningMsg(err.msg);
                 });
             }
         },
 
+        textSorten(str,len){
+            return helper.textSort(str,len);
+        },
+
 
             
-
+        BackFromEdit(){
+            this.form ={
+                id: '',
+                parent: '',
+                category_name: '',
+                description: '',
+                thumbnail: ''
+            }
+        },
 
         /**
          * Search the table data with search input
@@ -217,13 +248,57 @@ export default {
             // Trigger pagination to update the number of buttons/pages due to filtering
             this.totalRows = filteredItems.length
             this.currentPage = 1
-        }
+        },
+
+        OnEdit(item){
+            this.form.id = item._id
+            this.form.category_name = item.name
+            this.form.description = item.description
+            // this.form.thumbnail = item.thumbnail
+        },
+
+        confirmToDelete(item) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.value) {
+                    // this.removeCategory(item);
+                    // console.log(item._id);
+                    // Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                    this.removeCategory(item).then(res => {
+                        // console.log(res);
+                        if(res.error === false){
+                            helper.SuccessMsg(res.msg);
+                        }else{
+                            helper.WarningMsg(res.msg);
+                        }
+                    }).catch(err => {
+                        helper.WarningMsg(err.msg);
+                    });
+
+
+                }
+            });
+        },
+
 
     },
     created(){
         this.cat();
     },
-    
+    directives: {
+    focus: {
+        // directive definition
+        inserted: function (el) {
+        el.focus()
+        }
+    }
+    },
     middleware: 'router-auth'
 }
 </script>
@@ -240,11 +315,11 @@ export default {
                     <form @submit.prevent="handleSubmit" id="parentCategoryForm">
                         <div class="form-group">
                             <label for="category_name">
-                                User Name
+                                Category Name
                                 <span class="text-danger">*</span>
                             </label>
-                            <input id="category_name" v-model="form.category_name" name="category_name" class="form-control"  type="text" placeholder="Enter user name" />
-                            <!-- <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div> :class="{ 'is-invalid': submitted && $v.form.category_name.$error }"-->
+                            <input id="category_name" v-model="form.category_name" v-focus name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter Category name" />
+                            <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div> 
                         </div>
                         <div class="form-group">
                             <label for="category_name">
@@ -270,8 +345,10 @@ export default {
                         </div> -->
 
                         <div class="form-group text-right m-b-0">
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                            <button type="reset" class="btn btn-secondary m-l-5 ml-1">Cancel</button>
+                            <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Submit</button>
+                            <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-else>Update</button>
+                            <button type="reset" class="btn btn-secondary m-l-5 ml-1" v-if="!form.id">Cancel</button>
+                            <button class="btn btn-secondary m-l-5 ml-1" v-else @click="BackFromEdit">Back</button>
                         </div>
                     </form>
                 </div>
@@ -313,6 +390,27 @@ export default {
                                 <!-- {{data.value}} -->
                                  <img :src="data.value" height="auto" width="100" />
                             </template>
+
+                            <template #cell(description)="data">
+                                <!-- {{data.value}} -->
+                                {{textSorten(data.value,100)}}
+                            </template>
+
+                                <template #cell(actions)="row">
+                                    <div class="d-flex">
+                                        <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning">Remove</button>
+                                        <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info">Edit</button>
+                                        </div>
+                                </template>
+
+      <!-- <template #row-details="row">
+        <b-card>
+          <ul>
+            <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+          </ul>
+        </b-card>
+      </template> -->
+
                         </b-table>
                     </div>
                     <div class="row">
@@ -328,6 +426,7 @@ export default {
                 </div>
             </div>
         </div>
+
         <!-- end col -->
     </div>
 </div>

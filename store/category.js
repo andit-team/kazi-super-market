@@ -23,6 +23,11 @@ const mutations = {
 }
 const actions = {
     async createCategory ({dispatch},payload){
+
+        if(payload.id){
+            const data = dispatch('updateCategory',payload);
+            return data;
+        }
         var UploadData = {
             data:{
                 data:{
@@ -39,7 +44,7 @@ const actions = {
             thumbnail : UploadData.data.data.display_url,
             description : payload.description
         }
-        console.log(data);
+        // console.log(data);
         const response = await axios.post(process.env.API_URL+'/admin/category-create/',data);
         // console.log(response);
         
@@ -47,8 +52,41 @@ const actions = {
             dispatch('getCategories');
         }
         return response.data
+    },
 
-
+    async updateCategory({dispatch},payload){
+        // var UploadData = {
+        //     data:{
+        //         data:{
+        //             display_url : ""
+        //         }
+        //     }
+        // };
+        // if(payload.thumbnail){
+        //     UploadData = await helper.fileupload(payload.thumbnail);
+        // }
+        
+        const response = await axios.post(process.env.API_URL+'/admin/category-update/',{
+            _id : payload.id,
+            name : payload.category_name,
+            // thumbnail : UploadData.data.data.display_url,
+            description : payload.description
+        });
+        // console.log(response);
+        if(response.data.error === false){
+            dispatch('getCategories');
+        }
+        return response.data
+    },
+    async removeCategory({dispatch},payload){
+        const response = await axios.post(process.env.API_URL+'/admin/category-delete/',{
+            _id : payload._id
+        });
+        console.log(response);
+        if(response.data.error === false){
+            dispatch('getCategories');
+        }
+        return response.data
     },
 
     async getCategories({ commit }){
