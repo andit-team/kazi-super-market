@@ -11,7 +11,7 @@ import {
     url,
     alphaNum,
 } from 'vuelidate/lib/validators'
-
+import { helper } from '../../../helpers/helper'
 /**
  * Form Validation component
  */
@@ -129,9 +129,9 @@ export default {
             // parent: {
             //     required
             // },
-            category_name: {
-                required
-            },
+            // category_name: {
+            //     required
+            // },
             // description: {
             //     required
             // },
@@ -191,17 +191,24 @@ export default {
             if (this.$v.$invalid) {
                 console.log('error submit');
             } else {
-                this.newCat(this.form);
-                // const done = this.newCat(this.form);
-                // if(done){
-                //     this.form.parent= '';
-                //     this.form.category_name= '';
-                //     this.form.description= '';
-                //     this.form.thumbnail= '';
-                //     document.getElementById("thumbnail").value = "";
-                // }
+                this.newCat(this.form).then(res => {
+                    console.log(res);
+                    if(res.error === false){
+                        helper.SuccessMsg(res.msg);
+                        this.form = {}
+                        document.getElementById("thumbnail").value = "";
+                    }else{
+                        helper.WarningMsg(res.msg);
+                    }
+                }).catch(err => {
+                    helper.WarningMsg(err.msg);
+                });
             }
         },
+
+
+            
+
 
         /**
          * Search the table data with search input
@@ -230,14 +237,14 @@ export default {
                 <div class="card-body">
                     <h4 class="header-title m-t-0">Add Category as Parent</h4>
 
-                    <form @submit.prevent="handleSubmit">
+                    <form @submit.prevent="handleSubmit" id="parentCategoryForm">
                         <div class="form-group">
                             <label for="category_name">
                                 User Name
                                 <span class="text-danger">*</span>
                             </label>
-                            <input id="category_name" v-model="form.category_name" name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter user name" />
-                            <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div>
+                            <input id="category_name" v-model="form.category_name" name="category_name" class="form-control"  type="text" placeholder="Enter user name" />
+                            <!-- <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div> :class="{ 'is-invalid': submitted && $v.form.category_name.$error }"-->
                         </div>
                         <div class="form-group">
                             <label for="category_name">

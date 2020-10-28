@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from "sweetalert2";
 
 async function fileupload(file){
     const data = new FormData()
@@ -21,6 +22,27 @@ async function fileupload(file){
     return ''
 }
 
+function  WarningMsg(msg) {
+    Swal.fire({
+        position: "bottom-end",
+        icon: "warning",
+        title: msg,
+        showConfirmButton: false,
+        timer: 2500,
+    });
+}
+function  SuccessMsg(msg) {
+    Swal.fire({
+        position: "bottom-end",
+        icon: "success",
+        title: msg,
+        showConfirmButton: false,
+        timer: 2500,
+    });
+}
+
 export const helper = {
-    fileupload
+    fileupload,
+    WarningMsg,
+    SuccessMsg
 };

@@ -23,7 +23,16 @@ const mutations = {
 }
 const actions = {
     async createCategory ({dispatch},payload){
-        const UploadData = await helper.fileupload(payload.thumbnail);
+        var UploadData = {
+            data:{
+                data:{
+                    display_url : ""
+                }
+            }
+        };
+        if(payload.thumbnail){
+            UploadData = await helper.fileupload(payload.thumbnail);
+        }
         // console.log(UploadData.data.data.display_url)
         const data = {
             name : payload.category_name,
@@ -32,8 +41,13 @@ const actions = {
         }
         console.log(data);
         const response = await axios.post(process.env.API_URL+'/admin/category-create/',data);
-            
-        dispatch('getCategories')
+        // console.log(response);
+        
+        if(response.data.error === false){
+            dispatch('getCategories');
+        }
+        return response.data
+
 
     },
 
