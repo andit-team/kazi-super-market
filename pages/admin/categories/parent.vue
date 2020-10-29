@@ -1,52 +1,33 @@
 <script>
 import {
-    required,
-    email,
-    minLength,
-    sameAs,
-    maxLength,
-    minValue,
-    maxValue,
-    numeric,
-    url,
-    alphaNum,
+    required
 } from 'vuelidate/lib/validators'
 import Swal from "sweetalert2";
 import { helper } from '../../../helpers/helper'
 /**
  * Form Validation component
  */
-import Multiselect from 'vue-multiselect'
 import { mapGetters,mapActions } from 'vuex'
 import axios from 'axios'
 export default {
-   
-    // saveTodo(e){
-    //     e.preventDefault();
-    //     this.newTodo(this.title);
-    //     this.title = "";
-    // },
     head() {
         return {
-            title: `${this.title} | Minton - Nuxtjs Responsive Admin Dashboard Template`,
+            title: `${this.title} | KazisSuperMarket - Parent Category Management`,
         };
-    },
-    components: {
-        Multiselect
     },
     data() {
         return {
-            title: 'Form Validation',
+            title: 'Parent Categories',
             items: [{
-                    text: 'Minton',
+                    text: 'Home',
                     href: '/',
                 },
                 {
-                    text: 'Forms',
+                    text: 'Categories',
                     href: '/',
                 },
                 {
-                    text: 'Validation',
+                    text: 'Parent',
                     active: true,
                 },
             ],
@@ -58,50 +39,11 @@ export default {
                 description: '',
                 thumbnail: ''
             },
+            instantSrc: '',
             submitted: false,
             submit: false,
             value: null,
-            options: [
-                'Alaska',
-                'Hawaii',
-                'California',
-                'Nevada',
-                'Oregon',
-                'Washington',
-                'Arizona',
-                'Colorado',
-                'Idaho',
-                'Montana',
-                'Nebraska',
-                'New Mexico',
-                'North Dakota',
-                'Utah',
-                'Wyoming',
-                'Alabama',
-                'Arkansas',
-                'Illinois',
-                'Iowa',
-            ],
-            // submitStatus: null,
 
-
-//table data
-
-            // tableData: '',
-            title: 'Advanced Tables',
-            items: [{
-                    text: 'Minton',
-                    href: '/',
-                },
-                {
-                    text: 'Tables',
-                    href: '/',
-                },
-                {
-                    text: 'Advanced',
-                    active: true,
-                },
-            ],
             totalRows: 1,
             currentPage: 1,
             perPage: 10,
@@ -173,6 +115,7 @@ export default {
         // },
        async onFilePicked(event) {
             const files = event.target.files
+            
             if (files[0] !== undefined) {
                 this.fileName = files[0].name
                 // Check validity of file
@@ -184,7 +127,8 @@ export default {
                 fr.readAsDataURL(files[0])
                 fr.addEventListener('load', () => {
                 this.url = fr.result
-                 this.form.thumbnail = files[0] // this is an file that can be sent to server...
+                this.form.thumbnail = files[0] // this is an file that can be sent to server...
+                this.instantSrc = URL.createObjectURL(files[0]);
                 })
             } else {
                 this.fileName = ''
@@ -195,9 +139,8 @@ export default {
         /**
          * Basic Form submit
          */
-        handleSubmit(e) {
+        SaveParentCategory(e) {
            this.submitted = true
-            // stop here if form is invalid
             this.$v.$touch()
             if (this.$v.$invalid) {
                 console.log('error submit');
@@ -215,6 +158,7 @@ export default {
                             thumbnail: ''
                         }
                         document.getElementById("thumbnail").value = "";
+                        this.instantSrc = null
                     }else{
                         helper.WarningMsg(res.msg);
                     }
@@ -228,8 +172,6 @@ export default {
         textSorten(str,len){
             return helper.textSort(str,len);
         },
-
-
             
         BackFromEdit(){
             this.form ={
@@ -238,14 +180,14 @@ export default {
                 category_name: '',
                 description: '',
                 thumbnail: ''
-            }
+            },
+            this.instantSrc = ''
         },
 
         /**
          * Search the table data with search input
          */
         onFiltered(filteredItems) {
-            // Trigger pagination to update the number of buttons/pages due to filtering
             this.totalRows = filteredItems.length
             this.currentPage = 1
         },
@@ -254,7 +196,8 @@ export default {
             this.form.id = item._id
             this.form.category_name = item.name
             this.form.description = item.description
-            // this.form.thumbnail = item.thumbnail
+            this.form.thumbnail = item.thumbnail
+            this.instantSrc = item.thumbnail
         },
 
         confirmToDelete(item) {
@@ -267,11 +210,7 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.value) {
-                    // this.removeCategory(item);
-                    // console.log(item._id);
-                    // Swal.fire("Deleted!", "Your file has been deleted.", "success");
                     this.removeCategory(item).then(res => {
-                        // console.log(res);
                         if(res.error === false){
                             helper.SuccessMsg(res.msg);
                         }else{
@@ -285,24 +224,28 @@ export default {
                 }
             });
         },
-
-
     },
+
     created(){
         this.cat();
     },
     directives: {
-    focus: {
-        // directive definition
-        inserted: function (el) {
-        el.focus()
+        focus: {
+            // directive definition
+            inserted: function (el) {
+            el.focus()
+            }
         }
-    }
     },
     middleware: 'router-auth'
 }
 </script>
 
+<style scoped>
+.img1{
+    opacity :0
+}
+</style>
 <template>
 <div>
     <PageHeader :title="title" :items="items" />
@@ -312,41 +255,31 @@ export default {
                 <div class="card-body">
                     <h4 class="header-title m-t-0">Add Category as Parent</h4>
 
-                    <form @submit.prevent="handleSubmit" id="parentCategoryForm">
+                    <form @submit.prevent="SaveParentCategory" id="parentCategoryForm">
                         <div class="form-group">
-                            <label for="category_name">
-                                Category Name
-                                <span class="text-danger">*</span>
-                            </label>
+                            <label for="category_name">Category Name<span class="text-danger">*</span></label>
                             <input id="category_name" v-model="form.category_name" v-focus name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter Category name" />
                             <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div> 
                         </div>
+
                         <div class="form-group">
-                            <label for="category_name">
-                                Thumbnail
-                            </label>
-                            <input id="thumbnail" name="thumbnail" class="form-control img1" type="file" @change="onFilePicked"/>
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" v-model="form.description" class="form-control" rows="5" placeholder="Write about this category"></textarea>
                         </div>
+
                         <div class="form-group">
-                            <label for="category_name">
-                                Description
-                            </label>
-                            <textarea name="description" id="description" v-model="form.description" class="form-control" rows="5" placeholder="Write about this category">
-
-                            </textarea>
+                            <label for="thumbnail"><i class="fa fa-picture-o"></i> Set Thumbnail</label>
+                            <div class="btn btn-default btn-file">
+                                <input id="thumbnail" name="thumbnail" class="form-control img1"  type="file" @change="onFilePicked"/>
+                            </div>
+                            <div id="preview">
+                                <img v-if="instantSrc" class="img-fluid" :src="instantSrc" />
+                            </div>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="parent_category">Single Select</label>
-                            <multiselect v-model="form.parent" :options="options"></multiselect>
-                            <div v-if="submitted && !$v.form.parent.required" class="invalid-feedback">This value is required.</div>
-
-                            <input id="category_name" v-model="form.category_name" name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter user name" />
-                            <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div>
-                        </div> -->
-
                         <div class="form-group text-right m-b-0">
-                            <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Submit</button>
+                            <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Save</button>
                             <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-else>Update</button>
+
                             <button type="reset" class="btn btn-secondary m-l-5 ml-1" v-if="!form.id">Cancel</button>
                             <button class="btn btn-secondary m-l-5 ml-1" v-else @click="BackFromEdit">Back</button>
                         </div>
@@ -384,33 +317,18 @@ export default {
                     </div>
                     <!-- Table -->
                     <div class="table-responsive mb-0">
-                        <b-table :items="tableData.data" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
+                        <b-table :items="tableData.data" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
-                            <template #cell(thumbnail)="data">
-                                <!-- {{data.value}} -->
-                                 <img :src="data.value" height="auto" width="100" />
+                            <template #cell(thumbnail)="data"><img :src="data.value" height="50" width="50" /></template>
+
+                            <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
+
+                            <template #cell(actions)="row">
+                                <div class="d-flex">
+                                    <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning"><i class="fe-trash-2"></i></button>
+                                    <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info"><i class="fe-edit"></i></button>
+                                    </div>
                             </template>
-
-                            <template #cell(description)="data">
-                                <!-- {{data.value}} -->
-                                {{textSorten(data.value,100)}}
-                            </template>
-
-                                <template #cell(actions)="row">
-                                    <div class="d-flex">
-                                        <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning">Remove</button>
-                                        <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info">Edit</button>
-                                        </div>
-                                </template>
-
-      <!-- <template #row-details="row">
-        <b-card>
-          <ul>
-            <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
-          </ul>
-        </b-card>
-      </template> -->
-
                         </b-table>
                     </div>
                     <div class="row">
@@ -426,8 +344,6 @@ export default {
                 </div>
             </div>
         </div>
-
-        <!-- end col -->
     </div>
 </div>
 </template>

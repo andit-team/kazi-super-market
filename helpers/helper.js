@@ -2,23 +2,28 @@ import axios from 'axios'
 import Swal from "sweetalert2";
 
 async function fileupload(file){
-    const data = new FormData()
-    data.append('image', file)
-    let url = "https://api.imgbb.com/1/upload?key=dbe026b9378783fd76fb76f8dea82edb";
+    if(typeof file === 'object' && file !== null){
+        const data = new FormData()
+        data.append('image', file)
+        let url = "https://api.imgbb.com/1/upload?key=dbe026b9378783fd76fb76f8dea82edb";
 
-    const result = await axios.post(url, data, {}).then( res => {
-        if (res.data.success) {
-            return res
-        }else{
-            return ''
-        }
-    }).catch(err => {
-        return ''    
-    })
+        const result = await axios.post(url, data, {}).then( res => {
+            if (res.data.success) {
+                return res
+            }else{
+                return ''
+            }
+        }).catch(err => {
+            return ''    
+        })
 
-    if (result.data.success) {
-        return result
-    };
+        if (result.data.success) {
+            return result.data.data.display_url
+        };
+    }
+    if(typeof file === 'string' && file !== null){
+        return file
+     }
     return ''
 }
 
