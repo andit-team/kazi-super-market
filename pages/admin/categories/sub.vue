@@ -7,7 +7,7 @@ import { helper } from '../../../helpers/helper'
 /**
  * Form Validation component
  */
-import { mapGetters,mapActions } from 'vuex'
+import { mapGetters,mapActions, mapState } from 'vuex'
 import axios from 'axios'
 export default {
     head() {
@@ -62,6 +62,10 @@ export default {
                     sortable: true
                 },
                 {
+                    key: 'parent',
+                    sortable: true
+                },
+                {
                     key: 'description',
                     sortable: true
                 },
@@ -75,9 +79,9 @@ export default {
     },
     validations: {
         form: {
-            // parent: {
-            //     required
-            // },
+            parent: {
+                required
+            },
             category_name: {
                 required
             },
@@ -91,13 +95,21 @@ export default {
     },
     //  computed: mapGetters(['category/allCategories']),
     computed: {
-        ...mapGetters({tableData : 'category/getSubCategories'}),
+        // ...mapGetters({tableData : 'category/getSubCategories'}),
+        // ...mapGetters({parents : 'category/allCategories'}),
         /**
          * Total no. of records
          */
+        
+        parents(){
+            return this.$store.state.category.categories
+        },
+        tableData(){
+            return this.$store.state.category.subCategories
+        },
         rows() {
             return this.tableData.data.length
-        },
+        }
     },
     mounted() {
         // Set the initial number of items
@@ -105,7 +117,8 @@ export default {
     },
     methods: {
         ...mapActions({
-                cat : 'category/getCategories',
+                cat : 'category/getSubCategories',
+                parentCat : 'category/getCategories',
                 newCat : 'category/createCategory',
                 removeCategory:'category/removeCategory'
             }),
@@ -144,9 +157,10 @@ export default {
             this.$v.$touch()
             if (this.$v.$invalid) {
                 console.log('error submit');
+                console.log(this.form);
             } else {
                 this.submit = true
-                this.form.parent = "5f993eebb596f3c6762618b9"
+                // this.form.parent = "5f993eebb596f3c6762618b9"
                 this.newCat(this.form).then(res => {
                     // console.log(res);
                     if(res.error === false){
@@ -194,11 +208,13 @@ export default {
         },
 
         OnEdit(item){
+            console.log(item);
             this.form.id = item._id
             this.form.category_name = item.name
             this.form.description = item.description
             this.form.thumbnail = item.thumbnail
             this.instantSrc = item.thumbnail
+            this.form.parent = item.parent._id
         },
 
         confirmToDelete(item) {
@@ -229,6 +245,7 @@ export default {
 
     created(){
         this.cat();
+        this.parentCat();
     },
     directives: {
         focus: {
@@ -257,6 +274,14 @@ export default {
                     <h4 class="header-title m-t-0">Add Category as Parent</h4>
 
                     <form @submit.prevent="SaveParentCategory" id="parentCategoryForm">
+                        <div class="form-group">
+                            <label for="parent">Parent<span class="text-danger">*</span></label>
+                            <select name="parent" id="parent" class="form-control" v-model="form.parent">
+                                <option v-for="parent in this.parents.data" :key="parent._id" :value="parent._id">{{parent.name}}</option>
+                            </select>
+                            <!-- <input id="parent" v-model="form.parent" v-focus name="parent" class="form-control" :class="{ 'is-invalid': submitted && $v.form.parent.$error }" type="text" placeholder="Enter Category name" /> -->
+                            <div v-if="submitted && !$v.form.parent.required" class="invalid-feedback">This value is required.</div> 
+                        </div>
                         <div class="form-group">
                             <label for="category_name">Category Name<span class="text-danger">*</span></label>
                             <input id="category_name" v-model="form.category_name" v-focus name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter Category name" />
@@ -320,9 +345,10 @@ export default {
                     <div class="table-responsive mb-0">
                         <b-table :items="tableData.data" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
-                            <template #cell(thumbnail)="data"><img :src="data.value" height="50" width="50" /></template>
+                            <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
 
                             <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
+                            <template #cell(parent)="data">{{data.value.name ? data.value.name : 'no-category found'}}</template>
 
                             <template #cell(actions)="row">
                                 <div class="d-flex">
