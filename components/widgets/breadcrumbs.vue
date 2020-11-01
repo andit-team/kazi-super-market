@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb" class="theme-breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <nuxt-link :to="{ path: '#' }">Home</nuxt-link>
+                  <nuxt-link :to="{ path: '/' }">Home</nuxt-link>
                 </li>
                 <li class="breadcrumb-item active" v-if="title">{{ title }}</li>
               </ol>

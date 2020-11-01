@@ -2,7 +2,7 @@
   <div>
     <BannerHomeSlider />
     <!-- <BannerPage :bannerImg="bannerImg" /> -->
-    <Breadcrumbs title="Category Title" />
+    <Breadcrumbs title="All Category" />
     <!-- Area Start -->
     <section class="categories-page section-b-space">
       <div class="container">
