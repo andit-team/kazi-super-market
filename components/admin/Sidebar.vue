@@ -281,7 +281,7 @@ export default {
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-log-out mr-1"></i>
-                        <span>Logout</span>
+                        <span>Logouts</span>
                     </a>
                 </div>
             </div>

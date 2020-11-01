@@ -1,13 +1,18 @@
 import { getFirebaseBackend } from '../helpers/firebase/authUtils'
+import axios from 'axios'
 
 export const state = () => ({
-    currentUser: sessionStorage.getItem('authUser'),
+    currentUser: localStorage.getItem('authUser'),
 });
 
 export const mutations = {
     SET_CURRENT_USER(state, newValue) {
         state.currentUser = newValue
-        saveState('auth.currentUser', newValue)
+        saveState('authUser', newValue)
+    },
+    CLEAR_CURRENT_USER(state, newValue) {
+        state.currentUser = null
+        saveState('authUser', null)
     },
 }
 
@@ -27,58 +32,54 @@ export const actions = {
     },
 
     // Logs in the current user.
-    logIn({ commit, dispatch, getters }, { email, password } = {}) {
-        if (getters.loggedIn) return dispatch('validate')
-
-        return getFirebaseBackend().loginUser(email, password).then((response) => {
-            const user = response
-            commit('SET_CURRENT_USER', user)
-            return user
+   async logIn({ commit, dispatch, getters }, { username, password } = {}) {
+        // if (getters.loggedIn) return dispatch('validate')
+        const response = await axios.post(process.env.API_URL+'/admin/login/',{username,password}).then((result) => {
+            if(result.data.error === false){
+                commit('SET_CURRENT_USER', result.data.token)
+                dispatch('notification/success', "Login Success", { root: true });
+                return result.data.token
+            }else{
+                commit('CLEAR_CURRENT_USER');
+                dispatch('notification/error', "Invalid Login Info", { root: true });
+            }
         });
+        return response
     },
 
     // Logs out the current user.
     logOut({ commit }) {
-        // eslint-disable-next-line no-unused-vars
-        commit('SET_CURRENT_USER', null)
-        return new Promise((resolve, reject) => {
-            // eslint-disable-next-line no-unused-vars
-            getFirebaseBackend().logout().then((response) => {
-                resolve(true);
-            }).catch((error) => {
-                reject(this._handleError(error));
-            })
-        });
+        commit('CLEAR_CURRENT_USER');
     },
 
     // register the user
-    register({ commit, dispatch, getters }, { email, password } = {}) {
-        if (getters.loggedIn) return dispatch('validate')
+    // register({ commit, dispatch, getters }, { email, password } = {}) {
+    //     if (getters.loggedIn) return dispatch('validate')
 
-        return getFirebaseBackend().registerUser(email, password).then((response) => {
-            const user = response
-            commit('SET_CURRENT_USER', user)
-            return user
-        });
-    },
+    //     return getFirebaseBackend().registerUser(email, password).then((response) => {
+    //         const user = response
+    //         commit('SET_CURRENT_USER', user)
+    //         return user
+    //     });
+    // },
 
-    // register the user
+    // reset pass the user
     // eslint-disable-next-line no-unused-vars
-    resetPassword({ commit, dispatch, getters }, { email } = {}) {
-        if (getters.loggedIn) return dispatch('validate')
+    // resetPassword({ commit, dispatch, getters }, { email } = {}) {
+    //     if (getters.loggedIn) return dispatch('validate')
 
-        return getFirebaseBackend().forgetPassword(email).then((response) => {
-            const message = response.data
-            return message
-        });
-    },
+    //     return getFirebaseBackend().forgetPassword(email).then((response) => {
+    //         const message = response.data
+    //         return message
+    //     });
+    // },
 
     // Validates the current user's token and refreshes it
     // with new data from the API.
     // eslint-disable-next-line no-unused-vars
     validate({ commit, state }) {
         if (!state.currentUser) return Promise.resolve(null)
-        const user = getFirebaseBackend().getAuthenticatedUser();
+        const user = JSON.parse(localStorage.getItem('authUser'));//getFirebaseBackend().getAuthenticatedUser();
         commit('SET_CURRENT_USER', user)
         return user;
     },

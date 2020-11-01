@@ -9,7 +9,7 @@ import CKEditor from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
-
+import { mapGetters,mapActions, mapState } from 'vuex'
 /**
  * Product-create component
  */
@@ -53,7 +53,24 @@ export default {
             },
         };
     },
+    computed: {
+        parents(){
+            return this.$store.state.category.categories
+        },
+    },
+    created(){
+        this.parentCat();
+    },
     methods: {
+        ...mapActions({
+                parentCat : 'category/getCategories',
+            }),
+        childCategories(parentCategory){
+            const childs = this.$store.dispatch('category/getChilds',{parent : parentCategory});
+            return childs;
+            // console.log(childs);
+            // return [34,43,233];
+        },
         template: function () {
             return ` <div class="dropzone-previews mt-3">
             <div class="card mt-1 mb-0 shadow-none border">
@@ -115,14 +132,33 @@ export default {
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group mb-3">
-                                            <label for="product-reference">
-                                                Reference
+                                            <label for="product-category">
+                                                Categories
                                                 <span class="text-danger">*</span>
                                             </label>
-                                            <input type="text" id="product-reference" class="form-control" placeholder="e.g : Apple iMac" />
+                                            <select class="form-control select2" id="product-category">
+                                                <option>Select</option>
+                                                
+                                                <optgroup :label="parentCategory.name" v-for="parentCategory in this.parents.data" :key="parentCategory._id">
+                                                    <option value="">{{parentCategory._id}}</option>
+                                                    <option :value="childCategory" v-for="childCategory in childCategories(parentCategory._id)" :key="childCategory">{{childCategory}}</option>
+                                                    <option value="">{{parentCategory.name}}</option>
+
+                                                </optgroup>
+
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="product-price">
+                                        Price
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="product-price" placeholder="Enter amount" />
+                                </div>
+
                                 <div class="form-group mb-3">
                                     <label for="product-description">
                                         Product Description
@@ -132,69 +168,16 @@ export default {
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group mb-3">
                                             <label for="product-summary">Product Summary</label>
                                             <textarea class="form-control" id="product-summary" rows="5" placeholder="Please enter summary"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group mb-3">
-                                            <label for="product-category">
-                                                Categories
-                                                <span class="text-danger">*</span>
-                                            </label>
-                                            <select class="form-control select2" id="product-category">
-                                                <option>Select</option>
-                                                <optgroup label="Shopping">
-                                                    <option value="SH1">Shopping 1</option>
-                                                    <option value="SH2">Shopping 2</option>
-                                                    <option value="SH3">Shopping 3</option>
-                                                    <option value="SH4">Shopping 4</option>
-                                                </optgroup>
-                                                <optgroup label="CRM">
-                                                    <option value="CRM1">Crm 1</option>
-                                                    <option value="CRM2">Crm 2</option>
-                                                    <option value="CRM3">Crm 3</option>
-                                                    <option value="CRM4">Crm 4</option>
-                                                </optgroup>
-                                                <optgroup label="eCommerce">
-                                                    <option value="E1">eCommerce 1</option>
-                                                    <option value="E2">eCommerce 2</option>
-                                                    <option value="E3">eCommerce 3</option>
-                                                    <option value="E4">eCommerce 4</option>
-                                                </optgroup>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="product-price">
-                                                Price
-                                                <span class="text-danger">*</span>
-                                            </label>
-                                            <input type="text" class="form-control" id="product-price" placeholder="Enter amount" />
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
-                                <div class="form-group mb-3">
-                                    <label class="mb-2">
-                                        Status
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <br />
-                                    <div class="radio form-check-inline">
-                                        <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked />
-                                        <label for="inlineRadio1">Online</label>
-                                    </div>
-                                    <div class="radio form-check-inline">
-                                        <input type="radio" id="inlineRadio2" value="option2" name="radioInline" />
-                                        <label for="inlineRadio2">Offline</label>
-                                    </div>
-                                    <div class="radio form-check-inline">
-                                        <input type="radio" id="inlineRadio3" value="option3" name="radioInline" />
-                                        <label for="inlineRadio3">Draft</label>
-                                    </div>
-                                </div>
+                                
 
                                 <div class="form-group mb-0">
                                     <label>Comment</label>

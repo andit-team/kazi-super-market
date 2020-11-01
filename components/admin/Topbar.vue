@@ -106,13 +106,14 @@ export default {
          * Logout user
          */
         logoutUser() {
-            if (process.env.auth === "firebase") {
-                this.$store.dispatch("auth/logOut");
-            } else if (process.env.auth === "fakebackend") {
-                this.$store.dispatch("authfack/logout");
-            }
+            this.$store.dispatch("auth/logOut");
+            // if (process.env.auth === "firebase") {
+            //     this.$store.dispatch("auth/logOut");
+            // } else if (process.env.auth === "fakebackend") {
+            //     this.$store.dispatch("authfack/logout");
+            // }
             this.$router.push({
-                path: "/account/login",
+                path: "admin/account/login",
             });
         },
     },

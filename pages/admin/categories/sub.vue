@@ -277,7 +277,8 @@ export default {
                         <div class="form-group">
                             <label for="parent">Parent<span class="text-danger">*</span></label>
                             <select name="parent" id="parent" class="form-control" v-model="form.parent">
-                                <option v-for="parent in this.parents.data" :key="parent._id" :value="parent._id">{{parent.name}}</option>
+                                <option value="">Select a Parent</option>
+                                <option v-for="parent in this.parents.data" :key="parent._id" :value="parent._id" :class="{ 'is-invalid': submitted && $v.form.parent.$error }">{{parent.name}}</option>
                             </select>
                             <!-- <input id="parent" v-model="form.parent" v-focus name="parent" class="form-control" :class="{ 'is-invalid': submitted && $v.form.parent.$error }" type="text" placeholder="Enter Category name" /> -->
                             <div v-if="submitted && !$v.form.parent.required" class="invalid-feedback">This value is required.</div> 

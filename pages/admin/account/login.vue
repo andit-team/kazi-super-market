@@ -1,7 +1,6 @@
 <script>
 import {
-    required,
-    email
+    required
 } from "vuelidate/lib/validators";
 
 /**
@@ -10,8 +9,8 @@ import {
 export default {
     data() {
         return {
-            email: "kazi@kazissupermarket.com",
-            password: "123456",
+            username: "kazissupermarket",
+            password: "654321",
             submitted: false,
             authError: null,
             tryingToLogIn: false,
@@ -28,9 +27,8 @@ export default {
     },
     created() {},
     validations: {
-        email: {
-            required,
-            email
+        username: {
+            required
         },
         password: {
             required
@@ -47,13 +45,13 @@ export default {
             if (this.$v.$invalid) {
                 return;
             } else {
-                if (process.env.auth === "firebase") {
+                // if (process.env.auth === "firebase") {
                     this.tryingToLogIn = true;
                     // Reset the authError if it existed.
                     this.authError = null;
                     return (
                         this.$store.dispatch('auth/logIn', {
-                            email: this.email,
+                            username: this.username,
                             password: this.password,
                         })
                         // eslint-disable-next-line no-unused-vars
@@ -63,9 +61,12 @@ export default {
                             // Redirect to the originally requested page, or to the home page
                             this.$router.push(
                                 this.$route.query.redirectFrom || {
-                                    path: "/"
+                                    path: "/admin"
                                 }
                             );
+                            if(token){
+                                this.$store.dispatch('notification/clear')
+                            }
                         })
                         .catch((error) => {
                             this.tryingToLogIn = false;
@@ -73,23 +74,24 @@ export default {
                             this.isAuthError = true;
                         })
                     );
-                } else if (process.env.auth === "fakebackend") {
-                    const {
-                        email,
-                        password
-                    } = this;
-                    if (email && password) {
-                        this.$store.dispatch('authfack/login', {
-                            email,
-                            password
-                        });
-                        this.$store.dispatch('notification/clear')
-                    }
-                }
+                // } else if (process.env.auth === "fakebackend") {
+                //     console.log('fakebackend')
+                    // const {email,password} = this;
+                    // if (email && password) {
+                    //     this.$store.dispatch('authfack/login', {
+                    //         email,
+                    //         password
+                    //     });
+                    //     this.$store.dispatch('notification/clear')
+                    // }
+                // }
             }
         },
     },
-    layout: 'auth'
+    layout: 'auth',
+    // destroyed (){
+    //     this.$store.dispatch('notification/clear')
+    // }
 }
 </script>
 
@@ -112,19 +114,18 @@ export default {
                             </span>
                         </nuxt-link>
                     </div>
-                    <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
+                    <p class="text-muted mb-4 mt-3">Enter your username and password to access admin panel.</p>
                 </div>
 
                 <form action="#" @submit.prevent="tryToLogIn">
-                    <b-alert :variant="notification.type" class="mt-3" v-if="notification.message" :show="notificationAutoCloseDuration" dismissible>{{notification.message}}</b-alert>
+                    <b-alert :variant="notification.type" class="mt-3" v-if="notification.message" show>{{notification.message}}</b-alert>
 
-                    <b-alert variant="danger" class="mt-3" v-model="isAuthError" :show="notificationAutoCloseDuration" dismissible>{{authError}}</b-alert>
+                    <b-alert variant="danger" class="mt-3" v-model="isAuthError" show>{{authError}}</b-alert>
                     <div class="form-group mb-3">
-                        <label for="emailaddress">Email address</label>
-                        <input class="form-control" v-model="email" type="email" id="emailaddress" placeholder="Enter your email" :class="{ 'is-invalid': submitted && $v.email.$error }">
-                        <div v-if="submitted && $v.email.$error" class="invalid-feedback">
-                            <span v-if="!$v.email.required">Email is required.</span>
-                            <span v-if="!$v.email.email">Please enter valid email.</span>
+                        <label for="emailaddress">Username</label>
+                        <input class="form-control" v-model="username" type="text" id="emailaddress" placeholder="Enter your username" :class="{ 'is-invalid': submitted && $v.username.$error }">
+                        <div v-if="submitted && $v.username.$error" class="invalid-feedback">
+                            <span v-if="!$v.username.required">username is required.</span>
                         </div>
                     </div>
 
@@ -155,7 +156,7 @@ export default {
 
                 </form>
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <h5 class="mt-3 text-muted">Sign in with</h5>
                     <ul class="social-list list-inline mt-3 mb-0">
                         <li class="list-inline-item">
@@ -171,7 +172,7 @@ export default {
                             <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
 
             </div> <!-- end card-body -->
         </div>
@@ -182,7 +183,7 @@ export default {
                 <p>
                     <nuxt-link to="/account/forgot-password" class="text-muted ml-1">Forgot your password?</nuxt-link>
                 </p>
-                <p class="text-muted">Don't have an account? <nuxt-link to="/account/register" class="text-primary font-weight-medium ml-1">Sign Up</nuxt-link>
+                <!-- <p class="text-muted">Don't have an account? <nuxt-link to="/account/register" class="text-primary font-weight-medium ml-1">Sign Up</nuxt-link> -->
                 </p>
             </div> <!-- end col -->
         </div>

@@ -1,5 +1,5 @@
 export default function ({ store, route, redirect }) {
-    if (process.env.auth === "firebase") {
+    // if (process.env.auth === "firebase") {
         // Check if auth is required on this route
         // (including nested routes).
         // const authRequired = route.matched.some((route) => route.meta.authRequired)
@@ -25,18 +25,18 @@ export default function ({ store, route, redirect }) {
         // eslint-disable-next-line no-inner-declarations
         function redirectToLogin() {
           // Pass the original route to the login component
-          redirect('/account/login')
+          redirect('/admin/account/login')
         }
-      } else if (process.env.auth === "fakebackend") {
-        const publicPages = ['/account/login', '/account/register', '/account/forgot-password'];
-        const authpage = !publicPages.includes(route.path);
-        const loggeduser = localStorage.getItem('user');
+      // } else if (process.env.auth === "fakebackend") {
+      //   const publicPages = ['/admin/account/login', '/admin/account/register', '/admin/account/forgot-password'];
+      //   const authpage = !publicPages.includes(route.path);
+      //   const loggeduser = localStorage.getItem('user');
     
-        if (authpage && !loggeduser) {
-          return redirect('/account/login');
-        }
+      //   if (authpage && !loggeduser) {
+      //     return redirect('/admin/account/login');
+      //   }
     
-        redirect();
-      }
+      //   redirect();
+      // }
 }
   
