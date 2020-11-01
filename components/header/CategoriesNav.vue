@@ -3,7 +3,7 @@
   <h5 class="text-uppercase rounded-top">Categories</h5>
     <!-- Navigation -->
     <b-nav vertical>
-      <b-nav-item to="/categories/category-list" v-for="item in navData.data" :key="item.id">{{item.name}}<i class="fas fa-angle-right"></i></b-nav-item>
+      <b-nav-item to="/categories/category-list" v-for="categoryItem in categoryData.data" :key="categoryItem.id">{{categoryItem.name}}<i class="fas fa-angle-right"></i></b-nav-item>
 
       <!-- <b-nav-item to="/categories/category-list">Ocean Food<i class="fas fa-angle-right"></i></b-nav-item>
       <b-nav-item to="/categories/category-list">Butter & Eggs<i class="fas fa-angle-right"></i></b-nav-item>
@@ -23,7 +23,7 @@
 import { mapGetters,mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapGetters({navData : 'category/allCategories'}),
+    ...mapGetters({categoryData : 'category/allCategories'}),
   },
   methods: {
     ...mapActions({
@@ -37,5 +37,4 @@ export default {
 </script>
 
 <style>
-
 </style>
