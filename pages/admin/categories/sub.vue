@@ -295,7 +295,7 @@ export default {
                         </div>
 
                         <div class="form-group">
-                            <label for="thumbnail"><i class="fa fa-picture-o"></i> Set Thumbnail</label>
+                            <label for="thumbnail"><i class="fa fa-picture-o"></i>  Click to Upload Thumbnail</label>
                             <div class="btn btn-default btn-file">
                                 <input id="thumbnail" name="thumbnail" class="form-control img1"  type="file" @change="onFilePicked"/>
                             </div>

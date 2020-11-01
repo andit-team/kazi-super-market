@@ -10,6 +10,7 @@
     color: $text-muted;
     left: $leftbar-width;
     background-color: darken($body-bg,2.5%);
+    // position: absolute!important;
 
     .footer-links {
         a {

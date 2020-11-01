@@ -4,106 +4,13 @@
       "text": "Search..."
     },
     "dropdown": {
-      "createnew": {
-        "text": "Create New",
-        "list": {
-          "projects": "New Projects",
-          "users": "Create Users",
-          "revenue": "Revenue Report",
-          "settings": "Settings",
-          "help": "Help & Support"
-        }
-      },
-      "megamenu": {
-        "text": "Mega Menu",
-        "uicontent": {
-          "title": "UI Components",
-          "list": {
-            "widgets": "Widgets",
-            "nestable": "Nestable List",
-            "rangeslider": "Range Sliders",
-            "masonry": "Masonry Items",
-            "sweetalert": "Sweet Alerts",
-            "treeview": "Treeview Page",
-            "tour": "Tour Page"
-          }
-        },
-        "application": {
-          "title": "Applications",
-          "list": {
-            "ecommerce": "eCommerce Pages",
-            "crm": "CRM Pages",
-            "email": "Email",
-            "calendar": "Calendar",
-            "contacts": "Team Contacts",
-            "tasks": "Task Board",
-            "template": "Email Templates"
-          }
-        },
-        "extrapages": {
-          "title": "Extra Pages",
-          "list": {
-            "leftsidebaruser": "Left Sidebar with User",
-            "collapsed": "Menu Collapsed",
-            "leftsidebar": "Small Left Sidebar",
-            "header": "New Header Style",
-            "search": "Search Result",
-            "gallery": "Gallery Pages",
-            "maintenance": "Maintenance & Coming Soon"
-          }
-        },
-        "discount": "Special Discount Sale!",
-        "subtext": "Save up to 70% off.",
-        "buttontext": "Download Now"
-      },
-      "site": {
-        "list": {
-          "github": "GitHub",
-          "bitbucket": "Bitbucket",
-          "dribbble": "Dribbble",
-          "dropbox": "Dropbox",
-          "g-suite": "G Suite",
-          "slack": "Slack"
-        }
-      },
-      "notification": {
-        "badge": "5",
-        "text": "Notifications",
-        "subtext": "Clear All",
-        "1": {
-          "title": "Doug Dukes commented on Admin Dashboard",
-          "text": "1 min ago"
-        },
-        "2": {
-          "title": "Mario Drummond",
-          "text": "Hi, How are you? What about our next meeting"
-        },
-        "3": {
-          "title": "Karen Robinson",
-          "text": "Wow ! this admin looks good and awesome design"
-        },
-        "4": {
-          "title": "New user registered.",
-          "text": "5 hours ago"
-        },
-        "5": {
-          "title": "Caleb Flakelar commented on Admin",
-          "text": "4 days ago"
-        },
-        "6": {
-          "title": "Carlos Crouch liked",
-          "text": "13 days ago"
-        },
-        "button": "View all"
-      },
+
       "name": {
         "text": "Nik Patel",
         "list": {
           "greet": "Welcome !",
           "account": "My Account",
-          "mywallet": "My Wallet",
           "settings": "Settings",
-          "lockscreen": "Lock screen",
           "logout": "Logout"
         }
       }

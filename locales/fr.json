@@ -1,109 +1,14 @@
 {
     "navbar": {
-        "search": {
-            "text": "Chercher..."
-        },
+
         "dropdown": {
-            "createnew": {
-                "text": "Créer un nouveau",
-                "list": {
-                    "projects": "De nouveaux projets",
-                    "users": "Créer des utilisateurs",
-                    "revenue": "Rapport de revenus",
-                    "settings": "Paramètres",
-                    "help": "Support d'aide"
-                }
-            },
-            "megamenu": {
-                "text": "Méga menu",
-                "uicontent": {
-                    "title": "Composants de l'interface utilisateur",
-                    "list": {
-                        "widgets": "Widgets",
-                        "nestable": "Liste emboîtable",
-                        "rangeslider": "Curseurs de gamme",
-                        "masonry": "Articles de maçonnerie",
-                        "sweetalert": "Alertes douces",
-                        "treeview": "Page de l'arborescence",
-                        "tour": "Page de visite"
-                    }
-                },
-                "application": {
-                    "title": "Applications",
-                    "list": {
-                        "ecommerce": "Pages de commerce électronique",
-                        "crm": "Pages CRM",
-                        "email": "Email",
-                        "calendar": "Calendrier",
-                        "contacts": "Contacts de l'équipe",
-                        "tasks": "Tableau des tâches",
-                        "template": "Modèles d'e-mails"
-                    }
-                },
-                "extrapages": {
-                    "title": "Pages supplémentaires",
-                    "list": {
-                        "leftsidebaruser": "Barre latérale gauche avec utilisateur",
-                        "collapsed": "Menu réduit",
-                        "leftsidebar": "Petite barre latérale gauche",
-                        "header": "Nouveau style d'en-tête",
-                        "search": "Résultat de la recherche",
-                        "gallery": "Pages de la galerie",
-                        "maintenance": "Maintenance et à venir"
-                    }
-                },
-                "discount": "Vente à rabais spécial!",
-                "subtext": "Économisez jusqu'à 70%.",
-                "buttontext": "Télécharger maintenant"
-            },
-            "site": {
-                "list": {
-                    "github": "GitHub",
-                    "bitbucket": "Bitbucket",
-                    "dribbble": "Dribble",
-                    "dropbox": "Dropbox",
-                    "g-suite": "G Suite",
-                    "slack": "Molle"
-                }
-            },
-            "notification": {
-                "badge": "5",
-                "text": "Notifications",
-                "subtext": "Tout effacer",
-                "1": {
-                    "title": "Doug Dukes a commenté le tableau de bord d'administration",
-                    "text": "Il y a 1 min"
-                },
-                "2": {
-                    "title": "Mario Drummond",
-                    "text": "Salut comment ca va? Et notre prochaine réunion"
-                },
-                "3": {
-                    "title": "Karen Robinson",
-                    "text": "Hou la la ! cet administrateur a l'air bien et un design génial"
-                },
-                "4": {
-                    "title": "Nouvel utilisateur enregistré.",
-                    "text": "il y a 5 heures"
-                },
-                "5": {
-                    "title": "Caleb Flakelar a commenté Admin",
-                    "text": "il y a 4 jours"
-                },
-                "6": {
-                    "title": "Carlos Crouch a aimé",
-                    "text": "Il y a 13 jours"
-                },
-                "button": "Voir tout"
-            },
+
             "name": {
                 "text": "Nik Patel",
                 "list": {
                     "greet": "Bienvenue !",
                     "account": "Mon compte",
-                    "mywallet": "Mon portefeuille",
                     "settings": "Réglages",
-                    "lockscreen": "Écran verrouillé",
                     "logout": "Se déconnecter"
                 }
             }
