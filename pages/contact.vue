@@ -69,13 +69,10 @@
       </div>
     </section>
 
-    <div class="google-map">
-      <!-- Map with markers -->
-      <gmap-map :center="{ lat: 11, lng: 12 }" :zoom="3">
-        <gmap-marker v-for="(m, index) in markers" :key="index" :position="m.position" :clickable="true" :draggable="true" @click="center = m.position"></gmap-marker>
-      </gmap-map>
-
-    </div>
+    <!-- Map with markers -->
+    <gmap-map :center="{ lat: 11, lng: 12 }" :zoom="3">
+      <gmap-marker v-for="(m, index) in markers" :key="index" :position="m.position" :clickable="true" :draggable="true" @click="center = m.position"></gmap-marker>
+    </gmap-map>
 
     <Footer1 />
   </div>
@@ -84,6 +81,7 @@
 <script>
 
 import { mapState } from 'vuex'
+
 export default {
   layout: 'public',
 
@@ -96,26 +94,28 @@ export default {
       },
     show: true,
     markers: [{
-            position: {
-                lat: 10.0,
-                lng: 10.0
-            }
-        },
-        {
-            position: {
-                lat: 15.0,
-                lng: 13.0
-            }
-        }
+      position: {
+        lat: 10.0,
+        lng: 10.0
+      }
+    },
+    {
+      position: {
+        lat: 15.0,
+        lng: 13.0
+      }
+    }
       ],
 
     }
   },
   methods: {
+
     onSubmit(evt) {
       evt.preventDefault()
-      alert(JSON.stringify(this.form))
+      alert('Form Submitted Successfully')
     },
+
     onReset(evt) {
       evt.preventDefault()
       // Reset our form values
