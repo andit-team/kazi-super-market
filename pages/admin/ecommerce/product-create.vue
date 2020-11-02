@@ -68,8 +68,6 @@ export default {
         childCategories(parentCategory){
             const childs = this.$store.dispatch('category/getChilds',{parent : parentCategory});
             return childs;
-            // console.log(childs);
-            // return [34,43,233];
         },
         template: function () {
             return ` <div class="dropzone-previews mt-3">
@@ -137,15 +135,8 @@ export default {
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <select class="form-control select2" id="product-category">
-                                                <option>Select</option>
-                                                
-                                                <optgroup :label="parentCategory.name" v-for="parentCategory in this.parents.data" :key="parentCategory._id">
-                                                    <option value="">{{parentCategory._id}}</option>
-                                                    <option :value="childCategory" v-for="childCategory in childCategories(parentCategory._id)" :key="childCategory">{{childCategory}}</option>
-                                                    <option value="">{{parentCategory.name}}</option>
-
-                                                </optgroup>
-
+                                                <option>Select Parent</option>
+                                                <option v-for="parentCategory in this.parents.data" :key="parentCategory._id">{{parentCategory.name}}</option>
                                             </select>
                                         </div>
                                     </div>
