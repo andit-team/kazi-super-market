@@ -42,7 +42,7 @@ body {
 #body-content {
 	transition: ease-in-out 0.3s;
 	/* margin-left: 240px; */
-	margin-top: 60px;
+	// margin-top: 60px;
 }
 
 p{
@@ -173,6 +173,9 @@ figure {
 }
 .color-green{
   color: var(--green-color);
+}
+.color-orange{
+  color: var(--orange-color);
 }
 .bg-white{
   background-color: #fff;
@@ -548,6 +551,9 @@ del {
 /*=====================
 3.Home slider CSS start
 ==========================*/
+.slide-1.home-slider {
+	margin-top: 40px;
+}
 .home-slider {
 .swiper-button-prev, .swiper-button-next {
   opacity: 0;
@@ -670,7 +676,7 @@ padding: 0 100px;
 
 // breadcrumb section //
 .breadcrumb-section {
-padding: 30px 0;
+padding: 30px 0 0;
 .page-title {
 display: flex;
 height: 100%;
@@ -794,7 +800,7 @@ transition: all 0.3s ease;
 .menu-section-area {
 	padding: 0;
 	width: 100%;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 }
 .menu-section-area .navbar {
   padding: 0;
@@ -1197,7 +1203,6 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 .breadcrumb-title {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
 }
 .breadcrumb-title h4 {
 	min-width: 264px;
@@ -1206,10 +1211,12 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	margin: 0 10px;
 }
 .breadcrumb-title hr {
-  height: 1px;
-  background-color: var(--black-color);
-  width: 40%;
-  border: none;
+	height: 1px;
+	background-color: #000;
+	background-color: var(--black-color);
+	width: 40%;
+	border: none;
+	margin: 10px 0;
 }
 // 5. Breadcrumb Area CSS End
 
@@ -1349,4 +1356,36 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 }
 /*-------------------------------------------
     21. Footer Area/Copyright Area End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    21. Contact Area Start
+-------------------------------------------*/
+.contact-title {
+	margin-bottom: 35px;
+	border-bottom: 1px solid #C1C5C8;
+	padding-bottom: 20px;
+}
+.contact-address-wrap address {
+	margin-bottom: 1rem;
+	font-style: normal;
+	line-height: inherit;
+}
+.contact-address-wrap address:last-child {
+	border-top: 1px solid var(--border-color);
+	padding-top: 15px;
+}
+.contact-address-wrap address ul li {
+	margin-top: 10px;
+}
+.contact-address-wrap address ul li svg {
+	fill: var(--orange-color);
+	margin-right: 10px;
+}
+.vue-map-container {
+	height: 500px;
+	min-height: 300px;
+}
+/*-------------------------------------------
+    21. Contact Area End
 -------------------------------------------*/
