@@ -51,7 +51,11 @@ export default {
                 description : '',
                 summary   : '',
                 comments  : '',
-                thumbnail : ''
+                thumbnail : null,
+                images : null,
+                meta_title : null,
+                meta_keyword : null,
+                meta_description : null,
             },
             items: [{
                     text: "Kazissupermarket",
@@ -117,10 +121,6 @@ export default {
                  this.product.thumbnail = null
             }
         },
-
-        getAllFiles() {
-          const filess = this.$refs.myVueDropzone.getAcceptedFiles();
-        },
         maxFileReached(file){
             Swal.fire({
                 icon: 'error',
@@ -183,8 +183,27 @@ export default {
             return false;
         },
 
+        async onComplete(){
+            console.log(this.product);
+            const product = await this.$store.dispatch('product/create',this.product);
+            if(product){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Product created success'
+                }) 
+                this.$router.push({path: "/admin/products"});
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Product not created'
+                })  
+            }
+
+        },
+
         beforeTabSwitchBasicInfo: function(){
-            return true
             this.product.name === '' ? this.err.name =  true : this.err.name =  false
             this.product.price === '' ? this.err.price =  true : this.err.price =  false
             this.product.parent_category === '' ? this.err.parent_category =  true : this.err.parent_category =  false
@@ -194,9 +213,25 @@ export default {
             if(this.product.name != "" && this.product.price != "" && this.product.parent_category != "" && this.product.sub_category != "" && this.product.description != ""){
                 return true
             }
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please see the required filed'
+            })
+
             return false;
         },
         beforeTabSwitchImages: function(){
+            if(this.product.thumbnail === null){
+                 Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Thumbnail Must be required'
+                })
+                return false
+            }
+            this.product.images = this.$refs.myVueDropzone.getAcceptedFiles();
             return true
         }
     },
@@ -226,7 +261,7 @@ export default {
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form-wizard color="#3bafda" ref="wizard">
+                    <form-wizard color="#3bafda" ref="wizard"  @on-complete="onComplete">
                         <tab-content title="General" :before-change="beforeTabSwitchBasicInfo">
                             <h4 class="header-title">General Information</h4>
                             <p class="sub-header">Fill all information below</p>
@@ -287,8 +322,6 @@ export default {
                             </ul>
                         </tab-content>
 
-                        
-
                         <tab-content title="Product Images" :before-change="beforeTabSwitchImages">
                             <div class="row">
                                 <div class="col-lg-4">
@@ -304,7 +337,7 @@ export default {
                                         </div>
                                 </div>
                                 <div class="col-lg-8">
-                                    <h4 class="header-title" @click="getAllFiles">Product Images</h4>
+                                    <h4 class="header-title">Product Images</h4>
                                     <p class="sub-header">Upload product image</p>
 
                                     <vue-dropzone id="dropzone" ref="myVueDropzone" :use-custom-slot="true" :options="dropzoneOptions"  
@@ -321,10 +354,7 @@ export default {
                                         </div>
                                     </vue-dropzone>
                                 </div>
-                            </div>
-                            
-
-                            
+                            </div>                            
                         </tab-content>
 
                         <tab-content title="Meta Data">
@@ -334,17 +364,17 @@ export default {
                             <form>
                                 <div class="form-group mb-3">
                                     <label for="product-meta-title">Meta title</label>
-                                    <input type="text" class="form-control" id="product-meta-title" placeholder="Enter title" />
+                                    <input type="text" class="form-control" v-model="product.meta_title" id="product-meta-title" placeholder="Enter title" />
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="product-meta-keywords">Meta Keywords</label>
-                                    <input type="text" class="form-control" id="product-meta-keywords" placeholder="Enter keywords" />
+                                    <input type="text" class="form-control" v-model="product.meta_keyword" id="product-meta-keywords" placeholder="Enter keywords" />
                                 </div>
 
                                 <div class="form-group mb-0">
                                     <label for="product-meta-description">Meta Description</label>
-                                    <textarea class="form-control" rows="5" id="product-meta-description" placeholder="Please enter description"></textarea>
+                                    <textarea class="form-control" rows="5" v-model="product.meta_description" id="product-meta-description" placeholder="Please enter description"></textarea>
                                 </div>
                             </form>
                         </tab-content>
