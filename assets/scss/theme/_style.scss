@@ -1420,3 +1420,38 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 /*-------------------------------------------
     21. About Area End
 -------------------------------------------*/
+
+/*-------------------------------------------
+  21. Search page Area Start
+-------------------------------------------*/
+.filter-left-sidebar {
+	border: 1px solid #dfdcdc;
+	padding: 15px 20px;
+	background-color: #efeeee;
+}
+.filter-box {
+	margin-bottom: 30px;
+}
+.filter-box button {
+	background-color: transparent;
+	width: 100%;
+	justify-content: space-between;
+	display: flex;
+	border: none;
+	font-weight: 700;
+	font-size: 16px;
+	border-bottom: 1px solid #e2dfdf;
+	border-radius: 0;
+  padding: 0;
+}
+.filter-box button svg {
+	height: 14px;
+}
+.category-list li a {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 0;
+}
+/*-------------------------------------------
+    21. Search page Area End
+-------------------------------------------*/

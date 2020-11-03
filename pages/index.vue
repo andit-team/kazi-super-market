@@ -15,6 +15,7 @@
 import { mapState } from 'vuex'
 export default {
   layout: 'public',
+  
   /*
   ** Headers of the page
   */

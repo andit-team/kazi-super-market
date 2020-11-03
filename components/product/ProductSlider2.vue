@@ -41,12 +41,12 @@
 </template>
 
 <script>
-import ProductItem from '../product/ProductItem'
+// import ProductItem from '../product/ProductItem'
 export default {
   data() {
     return {
       title: 'Orange Juice Products',
-      btnValue: 'View all products',
+      btnValue: 'View all',
       linkUrl: '/',
       swiperOption: {
         slidesPerView: 5,
