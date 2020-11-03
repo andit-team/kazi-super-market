@@ -2,14 +2,14 @@
   <!-- Category Item box Start -->
   <div class="category-box text-center">
     <nuxt-link to="/products" class="offer-tile-block-link"></nuxt-link>
-    <div class="offer-tile-header d-flex align-items-center">
-        <div class="offer-tile-header-roundel">
+    <!-- <div class="offer-tile-header d-flex align-items-center">
+      <div class="offer-tile-header-roundel">
         <img :src="categoryItem.offerImage" alt="offer">
       </div>
       <div class="offer-tile-header-title">
         <span>{{categoryItem.name}}</span>
       </div>
-    </div>
+    </div> -->
     
     <div class="offer-tile-item-image-wrapper">
       <div class="offer-tile-image-price"></div>

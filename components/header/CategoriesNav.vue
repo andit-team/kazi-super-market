@@ -25,13 +25,15 @@ export default {
   computed: {
     ...mapGetters({categoryData : 'category/allCategories'}),
   },
+
   methods: {
-    ...mapActions({
-        cat : 'category/getCategories',
-      }),
+  ...mapActions({
+      cat : 'category/getCategories',
+    }),
   },
+
   created(){
-      this.cat();
+    this.cat();
   },
 }
 </script>

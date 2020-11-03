@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       title: 'Recently Viewed Products',
-      btnValue: 'View all products',
+      btnValue: 'View all',
       linkUrl: '/',
       swiperOption: {
         slidesPerView: 5,

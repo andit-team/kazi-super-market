@@ -13,7 +13,7 @@
         </div>
         <div class="row categories-wrap">
 
-          <div class="col-md-6 col-lg-3 col-sm-12" v-for="categoryItem in categoryData.data.slice(0, 4)" :key="categoryItem.id">
+          <div class="col-md-6 col-lg-3 col-sm-12" v-for="categoryItem in categoryData.data" :key="categoryItem.id">
 
             <CategoryItem :categoryItem = "categoryItem" />
 

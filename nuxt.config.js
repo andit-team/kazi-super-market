@@ -30,12 +30,26 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      // { rel: 'https://unpkg.com/vue-range-component@1.0.3/dist/vue-range-slider.min.css' }
+    ],
+    script: [
+      { src: 'https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw'}
+      // { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw&callback=initMap'},
+      // { src: 'https://unpkg.com/vue-range-component@1.0.3/dist/vue-range-slider.min.js'},
     ]
   },
   /*
   ** Global CSS
   */
-  css: ["~/assets/admin/scss/app.scss", 'quill/dist/quill.core.css', 'quill/dist/quill.snow.css', 'quill/dist/quill.bubble.css','@/assets/scss/app.scss','swiper/dist/css/swiper.css'],
+  css: [
+    "~/assets/admin/scss/app.scss",
+    'quill/dist/quill.core.css',
+    'quill/dist/quill.snow.css',
+    'quill/dist/quill.bubble.css',
+    '@/assets/scss/app.scss',
+    'swiper/dist/css/swiper.css',
+    'vue-range-component/dist/vue-range-slider.css'
+    ],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins

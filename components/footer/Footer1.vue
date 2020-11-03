@@ -26,11 +26,11 @@
                       <div class="footer-widget">
                           <h5 class="text-uppercase">Information</h5>
                           <ul>                            
-                              <li><a href="#">Home</a></li>
-                              <li><a href="#">About Us</a></li>
-                              <li><a href="#">Quick Contact</a></li>
-                              <li><a href="#">Blog Pages</a></li>
-                              <li><a href="#">Client Feeds</a></li>
+                            <li><nuxt-link to="/">Home</nuxt-link></li>
+                            <li><nuxt-link to="/about">About Us</nuxt-link></li>
+                            <li><nuxt-link to="/contact">Contact Us</nuxt-link></li>
+                            <li><a href="#">Blog Pages</a></li>
+                            <li><a href="#">Client Feeds</a></li>
                           </ul>
                       </div>
                   </div>
@@ -41,11 +41,11 @@
                       <div class="footer-widget">
                           <h5 class="text-uppercase">Extras</h5>
                           <ul>
-                              <li><a href="#">Home</a></li>
-                              <li><a href="#">About Us</a></li>
-                              <li><a href="#">Quick Contact</a></li>
-                              <li><a href="#">Blog Pages</a></li>
-                              <li><a href="#">Client Feeds</a></li>
+                            <li><nuxt-link to="/">Home</nuxt-link></li>
+                            <li><nuxt-link to="/about">About Us</nuxt-link></li>
+                            <li><nuxt-link to="/contact">Contact Us</nuxt-link></li>
+                            <li><a href="#">Blog Pages</a></li>
+                            <li><a href="#">Client Feeds</a></li>
                           </ul>
                       </div>
                   </div>
