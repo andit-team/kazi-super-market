@@ -230,6 +230,9 @@
 	    height: 350px !important;
 	    min-height: 350px !important;
     }
+    .what-clients-say-slider {
+      margin-top: 30px;
+    }
 
   section ,.section-t-space{
     padding-top: 40px;
@@ -405,10 +408,11 @@
       }
     }
     .breadcrumb {
-      justify-content: center;
+      // justify-content: center;
       padding: 0;
       line-height: 1;
       margin-top: 10px;
+      margin-bottom: 15px;
     }
   }
 }

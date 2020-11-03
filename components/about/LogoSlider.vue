@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- products Area Start -->
-    <section class="home-deals-product-area different-bg product-slider-area section-b-40-space">
+    <section class="home-deals-product-area different-bg section-b-space">
       <div class="container">
         <!-- product Area Start -->
         <div class="row">
@@ -16,8 +16,6 @@
                   <!-- Logo box End -->
                 </div>
               </div>
-              <!-- <div class="swiper-button-prev testi_prev" slot="button-prev"><i class="fas fa-angle-left"></i></div>
-              <div class="swiper-button-next testi_next" slot="button-next"><i class="fas fa-angle-right"></i></div> -->
             </div>
           </div>
         </div>
@@ -33,24 +31,19 @@ export default {
     return {
       swiperOption: {
         slidesPerView: 6,
-        autoPlay: true,
-        // navigation: {
-        //   nextEl: '.testi_next',
-        //   prevEl: '.testi_prev'
-        // },
         spaceBetween: 20,
         freeMode: false,
         breakpoints: {
           1199: {
-            slidesPerView: 3,
+            slidesPerView: 6,
             spaceBetween: 20
           },
           991: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 20
           },
           480: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 20
           }
         }

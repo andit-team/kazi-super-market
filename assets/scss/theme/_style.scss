@@ -174,6 +174,9 @@ figure {
 .color-green{
   color: var(--green-color);
 }
+.color-light-green, .slide-content h5, .slide-content i{
+  color: var(--light-green);
+}
 .color-orange{
   color: var(--orange-color);
 }
@@ -201,7 +204,7 @@ figure {
 .font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a{
   font-size: 16px;
 }
-.font-18, .cart-sidebar header > strong{
+.font-18, .cart-sidebar header > strong, .slide-content i{
   font-size: 18px;
 }
 
@@ -1398,6 +1401,21 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 }
 .card.about-support-box .card-title, .card.about-support-box i {
 	margin-bottom: 15px;
+}
+.why-choose-area .card-header {
+	background-color: var(--light-green);
+}
+.carousel-caption {
+	position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.slide-content img {
+	border: 5px solid #eee;
+}
+.slide-content i {
+  margin: 15px 0;
 }
 /*-------------------------------------------
     21. About Area End
