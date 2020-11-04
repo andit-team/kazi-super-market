@@ -1,46 +1,44 @@
 <script>
-import {required} from 'vuelidate/lib/validators'
+import {
+    required
+} from 'vuelidate/lib/validators'
 import Swal from "sweetalert2";
 import { helper } from '../../../helpers/helper'
 /**
  * Form Validation component
  */
-import { mapGetters,mapActions, mapState } from 'vuex'
+import { mapGetters,mapActions } from 'vuex'
 import axios from 'axios'
 export default {
     head() {
         return {
-            title: `${this.title} | KazisSuperMarket - Parent Category Management`,
+            title: `${this.title} | KazisSuperMarket - Tags Management`,
         };
     },
     data() {
         return {
-            title: 'Parent Categories',
+            title: 'Tags',
             items: [{
                     text: 'Home',
                     href: '/',
                 },
                 {
-                    text: 'Categories',
+                    text: 'Products',
                     href: '/',
                 },
                 {
-                    text: 'Parent',
+                    text: 'Tags',
                     active: true,
                 },
             ],
 
             form: {
                 id: '',
-                parent: '',
-                category_name: '',
-                description: '',
-                thumbnail: ''
+                tag_name: '',
+                description: ''
             },
-            instantSrc: '',
             submitted: false,
             submit: false,
-            value: null,
 
             totalRows: 1,
             currentPage: 1,
@@ -52,15 +50,7 @@ export default {
             sortDesc: false,
             fields: [
                 {
-                    key: 'thumbnail',
-                    sortable: true
-                },
-                {
                     key: 'name',
-                    sortable: true
-                },
-                {
-                    key: 'parent',
                     sortable: true
                 },
                 {
@@ -77,10 +67,10 @@ export default {
     },
     validations: {
         form: {
-            parent: {
-                required
-            },
-            category_name: {
+            // parent: {
+            //     required
+            // },
+            tag_name: {
                 required
             },
             // description: {
@@ -93,85 +83,45 @@ export default {
     },
     //  computed: mapGetters(['category/allCategories']),
     computed: {
-        // ...mapGetters({tableData : 'category/getSubCategories'}),
-        // ...mapGetters({parents : 'category/allCategories'}),
+        ...mapGetters({tableData : 'product/allTags'}),
         /**
          * Total no. of records
          */
-        
-        parents(){
-            return this.$store.state.category.categories
-        },
-        tableData(){
-            return this.$store.state.category.subCategories
-        },
         rows() {
-            return this.tableData.data.length
-        }
+            return this.tableData.length
+        },
     },
     mounted() {
-        // Set the initial number of items
         this.totalRows = this.items.length
     },
     methods: {
         ...mapActions({
-                cat : 'category/getSubCategories',
-                parentCat : 'category/getCategories',
-                newCat : 'category/createCategory',
-                removeCategory:'category/removeCategory'
+                Tags : 'product/getTags',
+                newTag : 'product/createTag',
+                removeTag : 'product/removeTag',
             }),
 
         // setFile(event){
         //     this.form.thumbnail = event.target.files[0];
         // },
-       async onFilePicked(event) {
-            const files = event.target.files
-            
-            if (files[0] !== undefined) {
-                this.fileName = files[0].name
-                // Check validity of file
-                if (this.fileName.lastIndexOf('.') <= 0) {
-                return
-                }
-                // If valid, continue
-                const fr = new FileReader()
-                fr.readAsDataURL(files[0])
-                fr.addEventListener('load', () => {
-                this.url = fr.result
-                this.form.thumbnail = files[0] // this is an file that can be sent to server...
-                this.instantSrc = URL.createObjectURL(files[0]);
-                })
-            } else {
-                this.fileName = ''
-                 this.form.thumbnail = null
-                this.url = ''
-            }
-        },
         /**
          * Basic Form submit
          */
-        SaveParentCategory(e) {
+        SaveTag(e) {
            this.submitted = true
             this.$v.$touch()
             if (this.$v.$invalid) {
                 console.log('error submit');
-                console.log(this.form);
             } else {
                 this.submit = true
-                // this.form.parent = "5f993eebb596f3c6762618b9"
-                this.newCat(this.form).then(res => {
-                    // console.log(res);
+                this.newTag(this.form).then(res => {
                     if(res.error === false){
                         helper.SuccessMsg(res.msg);
                         this.form = {
                             id: '',
-                            parent: '',
-                            category_name: '',
+                            tag_name: '',
                             description: '',
-                            thumbnail: ''
                         }
-                        document.getElementById("thumbnail").value = "";
-                        this.instantSrc = null
                     }else{
                         helper.WarningMsg(res.msg);
                     }
@@ -189,12 +139,9 @@ export default {
         BackFromEdit(){
             this.form ={
                 id: '',
-                parent: '',
-                category_name: '',
-                description: '',
-                thumbnail: ''
-            },
-            this.instantSrc = ''
+                tag_name: '',
+                description: ''
+            }
         },
 
         /**
@@ -206,13 +153,9 @@ export default {
         },
 
         OnEdit(item){
-            console.log(item);
             this.form.id = item._id
-            this.form.category_name = item.name
+            this.form.tag_name = item.name
             this.form.description = item.description
-            this.form.thumbnail = item.thumbnail
-            this.instantSrc = item.thumbnail
-            this.form.parent = item.parent._id
         },
 
         confirmToDelete(item) {
@@ -225,7 +168,7 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.value) {
-                    this.removeCategory(item).then(res => {
+                    this.removeTag(item).then(res => {
                         if(res.error === false){
                             helper.SuccessMsg(res.msg);
                         }else{
@@ -242,8 +185,7 @@ export default {
     },
 
     created(){
-        this.cat();
-        this.parentCat();
+        this.Tags();
     },
     directives: {
         focus: {
@@ -257,11 +199,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.img1{
-    opacity :0
-}
-</style>
 <template>
 <div>
     <PageHeader :title="title" :items="items" />
@@ -271,20 +208,11 @@ export default {
                 <div class="card-body">
                     <h4 class="header-title m-t-0">Add Category as Parent</h4>
 
-                    <form @submit.prevent="SaveParentCategory" id="parentCategoryForm">
+                    <form @submit.prevent="SaveTag">
                         <div class="form-group">
-                            <label for="parent">Parent<span class="text-danger">*</span></label>
-                            <select name="parent" id="parent" class="form-control" v-model="form.parent">
-                                <option value="">Select a Parent</option>
-                                <option v-for="parent in this.parents.data" :key="parent._id" :value="parent._id" :class="{ 'is-invalid': submitted && $v.form.parent.$error }">{{parent.name}}</option>
-                            </select>
-                            <!-- <input id="parent" v-model="form.parent" v-focus name="parent" class="form-control" :class="{ 'is-invalid': submitted && $v.form.parent.$error }" type="text" placeholder="Enter Category name" /> -->
-                            <div v-if="submitted && !$v.form.parent.required" class="invalid-feedback">This value is required.</div> 
-                        </div>
-                        <div class="form-group">
-                            <label for="category_name">Category Name<span class="text-danger">*</span></label>
-                            <input id="category_name" v-model="form.category_name" v-focus name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter Category name" />
-                            <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div> 
+                            <label for="tag_name">Tag Name<span class="text-danger">*</span></label>
+                            <input id="tag_name" v-model="form.tag_name" v-focus name="tag_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.tag_name.$error }" type="text" placeholder="Enter Category name" />
+                            <div v-if="submitted && !$v.form.tag_name.required" class="invalid-feedback">This value is required.</div> 
                         </div>
 
                         <div class="form-group">
@@ -292,15 +220,6 @@ export default {
                             <textarea name="description" id="description" v-model="form.description" class="form-control" rows="5" placeholder="Write about this category"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="thumbnail"><i class="fa fa-picture-o"></i>  Click to Upload Thumbnail</label>
-                            <div class="btn btn-default btn-file">
-                                <input id="thumbnail" name="thumbnail" class="form-control img1"  type="file" @change="onFilePicked"/>
-                            </div>
-                            <div id="preview">
-                                <img v-if="instantSrc" class="img-fluid" :src="instantSrc" />
-                            </div>
-                        </div>
                         <div class="form-group text-right m-b-0">
                             <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Save</button>
                             <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-else>Update</button>
@@ -342,12 +261,10 @@ export default {
                     </div>
                     <!-- Table -->
                     <div class="table-responsive mb-0">
-                        <b-table :items="tableData.data" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
+                        <b-table :items="tableData" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
-                            <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
 
                             <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
-                            <template #cell(parent)="data">{{data.value.name ? data.value.name : 'no-category found'}}</template>
 
                             <template #cell(actions)="row">
                                 <div class="d-flex">

@@ -88,19 +88,19 @@ const actions = {
         commit('SET_CATEGORIES',response.data)
     },
 
-    getChilds({ commit },payload){
+    async getChilds({ commit },payload){
         // console.log('asdf');
-        return [12,35,35];
-        // const response = await axios.post(process.env.API_URL+'/admin/child-categories',payload).then(result => {
-        //     if(result.data.error === false){
-        //         return result.data.data
-        //     }else{
-        //         return [];
-        //     }
-        // }).catch(err => {
-        //     return []
-        // });
-        // return response;
+        // return [12,35,35];
+        const response = await axios.post(process.env.API_URL+'/admin/child-categories',payload).then(result => {
+            if(result.data.error === false){
+                return result.data.data
+            }else{
+                return [];
+            }
+        }).catch(err => {
+            return []
+        });
+        return response;
         // commit('SET_CATEGORIES',response.data)
     },
 

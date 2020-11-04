@@ -28,6 +28,62 @@ export const menuItems = [
         //     },
         // ]
     },
+   
+
+   
+    {
+        id: 22,
+        label: "Products",
+        icon: "fe-package",
+        isMenuCollapsed: false,
+        subItems: [
+            {
+                id: 23,
+                label: "Products list",
+                link: "/admin/products"
+            },
+            {
+                id: 24,
+                label: "New Product",
+                link: "/admin/products/product-create"
+            }
+        ]
+    },
+    {
+        id: 19,
+        label: "Categories",
+        icon: "fe-sliders",
+        isMenuCollapsed: false,
+        subItems: [
+            {
+                id: 20,
+                label: "Parent Categories",
+                link: "/admin/categories/parent"
+            },
+            {
+                id: 21,
+                label: "Sub Categories",
+                link: "/admin/categories/sub"
+            }
+        ]
+    },
+
+    {
+        id: 25,
+        label: "Tags",
+        icon: "fe-tag",
+        link: '/admin/products/tags'
+    },
+    {
+        id: 26,
+        label: "Units",
+        icon: "fe-anchor",
+        link: '/admin/products/units'
+    },
+
+    
+
+    
     {
         id: 8,
         label: "menuitems.ecommerce.text",
@@ -38,26 +94,26 @@ export const menuItems = [
         },
         isMenuCollapsed: false,
         subItems: [
-            {
-                id: 9,
-                label: "menuitems.ecommerce.list.products",
-                link: "/admin/ecommerce/products"
-            },
-            {
-                id: 10,
-                label: "menuitems.ecommerce.list.productsgrid",
-                link: "/admin/ecommerce/products-grid"
-            },
+            // {
+            //     id: 9,
+            //     label: "menuitems.ecommerce.list.products",
+            //     link: "/admin/ecommerce/products"
+            // },
+            // {
+            //     id: 10,
+            //     label: "menuitems.ecommerce.list.productsgrid",
+            //     link: "/admin/ecommerce/products-grid"
+            // },
             {
                 id: 11,
                 label: 'menuitems.ecommerce.list.productdetail',
                 link: '/admin/ecommerce/product-detail/1'
             },
-            {
-                id: 12,
-                label: 'menuitems.ecommerce.list.createproduct',
-                link: '/admin/ecommerce/product-create'
-            },
+            // {
+            //     id: 12,
+            //     label: 'menuitems.ecommerce.list.createproduct',
+            //     link: '/admin/ecommerce/product-create'
+            // },
             {
                 id: 13,
                 label: "menuitems.ecommerce.list.customers",
@@ -91,24 +147,6 @@ export const menuItems = [
         ]
     },
 
-    {
-        id: 19,
-        label: "Categories",
-        icon: "ri-shopping-cart-2-line",
-        isMenuCollapsed: false,
-        subItems: [
-            {
-                id: 20,
-                label: "Parent Categories",
-                link: "/admin/categories/parent"
-            },
-            {
-                id: 20,
-                label: "Sub Categories",
-                link: "/admin/categories/sub"
-            }
-        ]
-    },
     // {
     //     id: 19,
     //     label: 'menuitems.calendar.text',

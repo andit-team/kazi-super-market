@@ -8,6 +8,7 @@ import {
 // import {required} from 'vuelidate/lib/validators'
 import Swal from "sweetalert2";
 import { helper } from '../../../helpers/helper'
+import Multiselect from 'vue-multiselect'
 
 import vue2Dropzone from "vue2-dropzone";
 import CKEditor from "@ckeditor/ckeditor5-vue";
@@ -15,6 +16,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 import { mapGetters,mapActions, mapState } from 'vuex'
+import { products } from '../ecommerce/data-products';
 /**
  * Product-create component
  */
@@ -28,6 +30,7 @@ export default {
         FormWizard,
         TabContent,
         WizardButton,
+        Multiselect,
         vueDropzone: vue2Dropzone,
         ckeditor: CKEditor.component,
     },
@@ -40,18 +43,28 @@ export default {
                 parent_category : false,
                 sub_category : false,
                 description : false,
+                unit : false,
             },
             subcategories : [],
+            value1 : '',
+            ArrTags : [],
             instantSrc : 'https://content.hostgator.com/img/weebly_image_sample.png',
             product:{
                 name : '',
                 price : '',
+                discount_percent : '',
+                unit : '',
+                tags : '',
                 parent_category : '',
                 sub_category  : '',
                 description : '',
                 summary   : '',
                 comments  : '',
-                thumbnail : ''
+                thumbnail : null,
+                images : null,
+                meta_title : null,
+                meta_keyword : null,
+                meta_description : null,
             },
             items: [{
                     text: "Kazissupermarket",
@@ -79,23 +92,65 @@ export default {
     },
     computed: {
         parents(){
-            return this.$store.state.category.categories
+            // return this.$store.state.category.categories
+            const v = this.$store.state.category.categories;
+            var data = [];
+            if(v.data.length){
+                v.data.map(arr => {
+                    data.push({
+                        name : arr.name,
+                        _id : arr._id
+                    })
+                })
+            }
+            console.log(data)
+            return data
+        },
+        units(){
+            const v = this.$store.state.product.units;
+            var data = [];
+            if(v.length){
+                v.map(arr => {
+                    data.push({name:arr.name,_id:arr._id})
+                })
+            }
+            return data
+        },
+        tags(){
+            const v = this.$store.state.product.tags;
+            var data = [];
+            if(v.length){
+                v.map(arr => {
+                    data.push(arr.name)
+                })
+            }
+            return data
         },
     },
     created(){
         this.parentCat();
+        this.FatchUnits();
+        this.FatchTags();
     },
     methods: {
         ...mapActions({
                 parentCat : 'category/getCategories',
+                FatchUnits : 'product/getUnits',
+                FatchTags : 'product/getTags',
             }),
-        async getSubCategory(){
-            const childs = await this.$store.dispatch('category/getChilds',{parent : this.product.parent_category});
-            console.log(childs);
-            this.subcategories =  childs;
+        async getSubCategory(option){
+            const childs = await this.$store.dispatch('category/getChilds',{parent : option._id});
+            var data = []
+            if(childs.length){
+                childs.map(arr => {
+                    data.push({name:arr.name,_id:arr._id})
+                })
+            }
+            // console.log(data)
+            this.subcategories =  data;
         },
 
-
+        
 //Dropzone start
         onFilePicked(event) {
             const files = event.target.files
@@ -116,10 +171,6 @@ export default {
             } else {
                  this.product.thumbnail = null
             }
-        },
-
-        getAllFiles() {
-          const filess = this.$refs.myVueDropzone.getAcceptedFiles();
         },
         maxFileReached(file){
             Swal.fire({
@@ -183,20 +234,55 @@ export default {
             return false;
         },
 
+        async onComplete(){
+            console.log(this.product);
+            const product = await this.$store.dispatch('product/create',this.product);
+            if(product){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Product created success'
+                }) 
+                this.$router.push({path: "/admin/products"});
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Product not created'
+                })  
+            }
+
+        },
+
         beforeTabSwitchBasicInfo: function(){
-            return true
             this.product.name === '' ? this.err.name =  true : this.err.name =  false
             this.product.price === '' ? this.err.price =  true : this.err.price =  false
+            this.product.description === '' ? this.err.description =  true : this.err.description =  false
             this.product.parent_category === '' ? this.err.parent_category =  true : this.err.parent_category =  false
             this.product.sub_category === '' ? this.err.sub_category =  true : this.err.sub_category =  false
-            this.product.description === '' ? this.err.description =  true : this.err.description =  false
-
+            this.product.unit === '' ? this.err.unit =  true : this.err.unit =  false
             if(this.product.name != "" && this.product.price != "" && this.product.parent_category != "" && this.product.sub_category != "" && this.product.description != ""){
                 return true
             }
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please see the required filed'
+            })
+
             return false;
         },
         beforeTabSwitchImages: function(){
+            if(this.product.thumbnail === null){
+                 Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Thumbnail Must be required'
+                })
+                return false
+            }
+            this.product.images = this.$refs.myVueDropzone.getAcceptedFiles();
             return true
         }
     },
@@ -216,6 +302,7 @@ export default {
 .sub-header {
     margin-bottom: 38px;
 }
+
 </style>
 
 <template>
@@ -226,7 +313,7 @@ export default {
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form-wizard color="#3bafda" ref="wizard">
+                    <form-wizard color="#3bafda" ref="wizard"  @on-complete="onComplete">
                         <tab-content title="General" :before-change="beforeTabSwitchBasicInfo">
                             <h4 class="header-title">General Information</h4>
                             <p class="sub-header">Fill all information below</p>
@@ -238,36 +325,57 @@ export default {
                                             <input type="text" id="product-name" :class="this.err.name ? 'border-danger' : ''" v-model="product.name" class="form-control" placeholder="e.g : Apple iMac" />
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <div class="form-group mb-3">
                                             <label for="product-price" :class="this.err.price ? 'text-danger' : ''">Price<span class="text-danger">*</span></label>
-                                            <input type="number" :class="this.err.price ? 'border-danger' : ''" v-model="product.price" class="form-control" id="product-price" placeholder="Enter amount" />
+                                            <input type="number" :class="this.err.price ? 'border-danger' : ''" v-model="product.price" class="form-control" id="product-price" placeholder="Enter amount e.g: 50.10" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group mb-3">
+                                            <label for="product-discount_percent" :class="this.err.discount_percent ? 'text-danger' : ''">Discount Percent</label>
+                                            <input type="number" v-model="product.discount_percent" class="form-control" id="product-discount_percent" placeholder="% of discount" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label for="product-category" :class="this.err.parent_category ? 'text-danger' : ''">Parent Category<span class="text-danger">*</span></label>
-                                            <select class="form-control select2" id="product-category" :class="this.err.parent_category ? 'border-danger' : ''" v-model="product.parent_category" @change="getSubCategory">
-                                                <option value="">Select Parent</option>
-                                                <option v-for="parentCategory in this.parents.data" :key="parentCategory._id" :value="parentCategory._id">{{parentCategory.name}}</option>
+                                            <!-- <select class="form-control select2" id="product-category" :class="this.err.parent_category ? 'border-danger' : ''" v-model="product.parent_category" @change="getSubCategory"> -->
+                                                <!-- <option value="">Select Parent</option> @select="getSubCategory"-->
+                                                <multiselect :class="this.err.parent_category === true ? 'border border-danger' : ''" v-model="product.parent_category" :options="this.parents" label="name" @select="getSubCategory" ></multiselect>
+
+                                                <!-- <option v-for="parentCategory in this.parents.data" :key="parentCategory._id" :value="parentCategory._id">{{parentCategory.name}}</option> -->
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group mb-3">
-                                            <label for="product-category" :class="this.err.sub_category ? 'text-danger' : ''">Sub Category<span class="text-danger">*</span></label>
-                                            <select class="form-control select2" id="product-category" :class="this.err.sub_category ? 'border-danger' : ''" v-model="product.sub_category">
+                                            <label for="product-sub-category" :class="this.err.sub_category ? 'text-danger' : ''">Sub Category<span class="text-danger">*</span></label>
+
+                                            <multiselect :class="this.err.sub_category === true ? 'border border-danger' : ''" v-model="product.sub_category" placeholder="Please select a sub category" :options="this.subcategories" label="name" ></multiselect>
+
+                                            <!-- <select class="form-control select2" id="product-sub-category" :class="this.err.sub_category ? 'border-danger' : ''" v-model="product.sub_category">
                                                 <option value="">Select sub category</option>
                                                 <option v-for="subCategory in this.subcategories" :key="subCategory._id" :value="subCategory._id">{{subCategory.name}}</option>
-                                            </select>
+                                            </select> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group mb-3">
+                                            <label for="product-unit" :class="this.err.unit ? 'text-danger' : ''">Unit<span class="text-danger">*</span></label>
+                                            <multiselect :class="this.err.unit === true ? 'border border-danger' : ''" v-model="product.unit" placeholder="Please select a unit" :options="this.units" label="name" ></multiselect>
+                                            <!-- <select class="form-control select2" id="product-unit" :class="this.err.unit ? 'border-danger' : ''" v-model="product.unit">
+                                                <option value="">Select Unit</option>
+                                                <option v-for="unit in this.units" :key="unit._id" :value="unit._id">{{unit.name}}</option>
+                                            </select> -->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="product-description" :class="this.err.description ? 'text-danger' : ''">Product Description<span class="text-danger">*</span></label>
-                                    <ckeditor :class="this.err.description ? 'border-danger' : ''" v-model="product.description" :editor="editor"></ckeditor>
+                                    <ckeditor :class="this.err.description ? 'border border-danger' : ''" v-model="product.description" :editor="editor"></ckeditor>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -277,17 +385,27 @@ export default {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
                                 <div class="form-group mb-0">
                                     <label>Comment</label>
                                     <textarea v-model="product.comments" class="form-control" rows="3" placeholder="Please enter comment"></textarea>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                <div class="form-group mb-0">
+                                    <label>Comment</label>
+                                    <multiselect v-model="value1" :options="this.tags" :multiple="true"></multiselect>
+                                </div>
+                                </div>
                                 </div>
                             </div>
                             <ul class="pager wizard mb-0 list-inline text-right mt-3">
                                 <li class="next list-inline-item"></li>
                             </ul>
                         </tab-content>
-
-                        
 
                         <tab-content title="Product Images" :before-change="beforeTabSwitchImages">
                             <div class="row">
@@ -304,7 +422,7 @@ export default {
                                         </div>
                                 </div>
                                 <div class="col-lg-8">
-                                    <h4 class="header-title" @click="getAllFiles">Product Images</h4>
+                                    <h4 class="header-title">Product Images</h4>
                                     <p class="sub-header">Upload product image</p>
 
                                     <vue-dropzone id="dropzone" ref="myVueDropzone" :use-custom-slot="true" :options="dropzoneOptions"  
@@ -321,10 +439,7 @@ export default {
                                         </div>
                                     </vue-dropzone>
                                 </div>
-                            </div>
-                            
-
-                            
+                            </div>                            
                         </tab-content>
 
                         <tab-content title="Meta Data">
@@ -334,17 +449,17 @@ export default {
                             <form>
                                 <div class="form-group mb-3">
                                     <label for="product-meta-title">Meta title</label>
-                                    <input type="text" class="form-control" id="product-meta-title" placeholder="Enter title" />
+                                    <input type="text" class="form-control" v-model="product.meta_title" id="product-meta-title" placeholder="Enter title" />
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="product-meta-keywords">Meta Keywords</label>
-                                    <input type="text" class="form-control" id="product-meta-keywords" placeholder="Enter keywords" />
+                                    <input type="text" class="form-control" v-model="product.meta_keyword" id="product-meta-keywords" placeholder="Enter keywords" />
                                 </div>
 
                                 <div class="form-group mb-0">
                                     <label for="product-meta-description">Meta Description</label>
-                                    <textarea class="form-control" rows="5" id="product-meta-description" placeholder="Please enter description"></textarea>
+                                    <textarea class="form-control" rows="5" v-model="product.meta_description" id="product-meta-description" placeholder="Please enter description"></textarea>
                                 </div>
                             </form>
                         </tab-content>
