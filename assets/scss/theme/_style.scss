@@ -1452,6 +1452,19 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	justify-content: space-between;
 	padding: 8px 0;
 }
+// Range Slider CSS
+.simple-range-slider .simple-range-slider-popover, .simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor .simple-range-slider-popover-arrow {
+	display: none;
+}
+.simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor {
+	top: -5.5px;
+	background: var(--light-green);
+	box-shadow: none;
+	border-radius: 50%;
+}
+.filter-box p strong {
+  color: var(--text-color);
+}
 /*-------------------------------------------
     21. Search page Area End
 -------------------------------------------*/
