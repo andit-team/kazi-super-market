@@ -6,7 +6,16 @@ const state = {
         data : {
         }
     },
-    tags : {},
+    tags :  {},
+    //    { "_id": "5fa13ca4480e6f0700fbd43e",
+    //     "name": "tags",
+    //     "description": "asfd asfd asfd",
+    //     "createdAt": "2020-11-03T11:19:00.769Z",
+    //     "updatedAt": "2020-11-03T11:19:08.020Z",
+    //     "slug": "asdf-tags",
+    //     "__v": 0
+    //   }
+    // ],
     units : {}
 }
 const getters = {
