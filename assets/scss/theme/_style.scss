@@ -1425,14 +1425,14 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
   21. Search page Area Start
 -------------------------------------------*/
 .filter-left-sidebar {
-	border: 1px solid #dfdcdc;
+	border: 1px solid #ebebeb;
 	padding: 15px 20px;
-	background-color: #efeeee;
+	background-color: #f9f9f9;
 }
 .filter-box {
 	margin-bottom: 30px;
 }
-.filter-box button {
+.filter-box button.btn-light {
 	background-color: transparent;
 	width: 100%;
 	justify-content: space-between;
@@ -1440,9 +1440,9 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	border: none;
 	font-weight: 700;
 	font-size: 16px;
-	border-bottom: 1px solid #e2dfdf;
+	border-bottom: 1px solid #ebebeb;
 	border-radius: 0;
-  padding: 0;
+  padding: 0 0 10px;
 }
 .filter-box button svg {
 	height: 14px;
@@ -1456,7 +1456,7 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 .simple-range-slider .simple-range-slider-popover, .simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor .simple-range-slider-popover-arrow {
 	display: none;
 }
-.simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor {
+.simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor[data-v-06329002] {
 	top: -5.5px;
 	background: var(--light-green);
 	box-shadow: none;
@@ -1465,6 +1465,43 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 .filter-box p strong {
   color: var(--text-color);
 }
+.price-slider .theme-button {
+	padding: 7px 25px;
+	height: 38px;
+	background-color: #333333;
+	margin-top: 15px;
+}
+// Tag CSS
+.tags-list li {
+	display: inline-block;
+	background-color: transparent;
+	border-radius: 25px;
+	border: 1px solid gray;
+	margin: 5px 5px 5px 0;
+}
+.tags-list li a {
+	padding: 7px 15px;
+	font-size: 12px;
+	display: block;
+}
+.search-page-sort{
+	border-bottom: 1px solid #ebebeb;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.search-page-sort .custom-select {
+	width: auto;
+	min-width: 30%;
+	max-width: 50%;
+}
+// Product Search Product Item
+  @media only screen and (min-width: 1200px) {
+    .product-search-page div.product {
+      width: auto!important;
+      padding: 6px!important;
+    }
+  }
+
 /*-------------------------------------------
     21. Search page Area End
 -------------------------------------------*/

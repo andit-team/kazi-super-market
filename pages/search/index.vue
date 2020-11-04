@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumbs title="Product Title" />
-    <section class="product-page section-b-space">
+    <section class="product-page product-search-page section-b-space">
       <div class="container">
         <div class="row">
 
@@ -24,7 +24,7 @@
                 </b-collapse>
               </div>
 
-              <div class="filter-box">
+              <div class="filter-box price-slider">
                 <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                 <b-collapse visible id="collapse-2" class="mt-2">
                   <VueSimpleRangeSlider
@@ -46,9 +46,8 @@
                 <b-collapse visible id="collapse-3" class="mt-2">
 
                     <ul class="tags-list">
-                        
-                      <li v-for="categoryItem in categoryData.data" :key="categoryItem.id">
-                        <nuxt-link to="/">{{categoryItem.name}}</nuxt-link>
+                      <li v-for="tagItem in tagData" :key="tagItem.id">
+                        <nuxt-link to="/">{{tagItem.name}}</nuxt-link>
                       </li>
 
                     </ul>
@@ -63,6 +62,13 @@
           <div class="col-12 col-lg-9">
           
             <BannerPage :bannerImg="bannerImg" />
+
+            <div class="col-12">
+              <div class="search-page-sort d-flex align-items-center">
+                <label>Sort By:&nbsp;</label>
+                <b-form-select v-model="perPage" :options="pageOptions"></b-form-select>
+              </div>
+            </div>
 
             <!-- Home product box Start -->
             <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
@@ -90,6 +96,8 @@ export default {
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
 
       range: [20,1000],
+
+      pageOptions: ['New', 'Old', 'Low to high', 'High to low'],
 
       "products": [
           {
@@ -261,12 +269,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({categoryData : 'category/allCategories'}),
+    ...mapGetters({
+      categoryData : 'category/allCategories',
+      tagData : 'product/allTags'
+      }),
   },
 
   methods: {
     ...mapActions({
       cat : 'category/getCategories',
+      Tags : 'product/getTags',
     }),
     getImgUrl(path) {
       return require('@/assets/images/product-img/' + path)
@@ -276,6 +288,7 @@ export default {
 
   created(){
     this.cat();
+    this.Tags();
 
     // this.min = min
     // this.max = max
