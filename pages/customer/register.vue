@@ -1,12 +1,25 @@
 <template>
   <section class="login-register-page">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <b-tabs>
 
                     <b-tab title="Login">
-                        <b-card-text>Tab contents 1</b-card-text>
+                        
+                        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+
+                            <b-form-input id="username" v-model="form.username" type="text" required placeholder="Enter name" ></b-form-input>
+                            <b-form-input id="password" type="password" required placeholder="Password" ></b-form-input>
+
+                            <div class="d-flex justify-content-between">
+                                <b-form-checkbox id="remember" v-model="form.checked" value="remember">Remember me</b-form-checkbox>
+                                <nuxt-link to="/customer/forgot-password" class="text-danger">Forgot password?</nuxt-link>
+                            </div>
+
+                            <button type="submit" class="theme-button mt-4">Login</button>
+                        </b-form>
+
                     </b-tab>
 
                     <b-tab title="Register" active>
@@ -16,11 +29,6 @@
                             <b-form-input id="username" v-model="form.username" type="text" required placeholder="Enter name" ></b-form-input>
                             <b-form-input id="email" v-model="form.email" type="email" required placeholder="Enter email" ></b-form-input>
                             <b-form-input id="password" type="password" required placeholder="Password" ></b-form-input>
-
-                            <div class="d-flex justify-content-between">
-                                <b-form-checkbox id="remember" v-model="form.checked" value="remember">Remember me</b-form-checkbox>
-                                <nuxt-link to="/customer/forgot-password" class="text-danger">Forgot password?</nuxt-link>
-                            </div>
 
                             <button type="submit" class="theme-button mt-4">Register</button>
                         </b-form>

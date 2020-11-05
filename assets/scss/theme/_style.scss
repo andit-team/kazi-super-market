@@ -1295,6 +1295,30 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 // 	padding: 30px;
 // 	border-radius: 0.25rem;
 // }
+.login-register-page .nav-tabs {
+	border-bottom: none;
+	justify-content: center;
+}
+.login-register-page .nav-tabs li{
+  position: relative;
+}
+.login-register-page .nav-tabs:last-child li::after {
+	content: "";
+	position: absolute;
+	z-index: 99;
+	height: 15px;
+	width: 1px;
+	background-color: var(--orange-color);
+	top: 32%;
+}
+.login-register-page .tabs .nav-tabs .nav-link {
+	border: transparent;
+	color: var(--text-color);
+	font-size: 18px;
+}
+.login-register-page .tabs .nav-tabs .nav-link.active, .login-register-page .tabs .nav-tabs .nav-item.show .nav-link {
+	color: var(--light-green);
+}
 .login-register-page .tab-content {
 	padding: 30px;
 	border: 1px solid var(--border-color);
