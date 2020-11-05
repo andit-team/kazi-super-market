@@ -124,7 +124,7 @@ button{
   cursor: pointer;
 }
 label {
-  margin-bottom: 5px;
+  margin-bottom: 0
 }
 
 /*------------------------------------------
@@ -201,7 +201,7 @@ figure {
 .font-15{
   font-size: 15px;
 }
-.font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a{
+.font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a, .offer-tile-header-title{
   font-size: 16px;
 }
 .font-18, .cart-sidebar header > strong, .slide-content i{
@@ -1286,14 +1286,23 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 // 7. Deals of the day Product Area CSS End
 
 /*-------------------------------------------
-    32. Login Page CSS Start
+    32. Login / Register Page CSS Start
 -------------------------------------------*/
-.login-area form {
-	width: 52%;
-	margin: 30px auto;
-	background-color: #fff;
+// .login-area form {
+// 	width: 52%;
+// 	margin: 30px auto;
+// 	background-color: #fff;
+// 	padding: 30px;
+// 	border-radius: 0.25rem;
+// }
+.login-register-page .tab-content {
 	padding: 30px;
-	border-radius: 0.25rem;
+	border: 1px solid var(--border-color);
+	margin-top: 30px;
+	box-shadow: 0 0px 6px 10px rgba(0,0,0,.02);
+}
+.login-register-page form .form-control {
+	margin-bottom: 15px;
 }
 /*-------------------------------------------
     32. Login Page CSS End
@@ -1425,24 +1434,33 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
   21. Search page Area Start
 -------------------------------------------*/
 .filter-left-sidebar {
-	border: 1px solid #dfdcdc;
-	padding: 15px 20px;
-	background-color: #efeeee;
+	border: 1px solid #ebebeb;
+	padding: 0 20px 20px;
+	background-color: #f9f9f9;
 }
 .filter-box {
-	margin-bottom: 30px;
+	margin: 10px 0 10px;
 }
-.filter-box button {
+.filter-box button.btn-light {
 	background-color: transparent;
 	width: 100%;
 	justify-content: space-between;
+  align-items: center;
 	display: flex;
 	border: none;
 	font-weight: 700;
 	font-size: 16px;
-	border-bottom: 1px solid #e2dfdf;
+	border-bottom: 1px solid #ebebeb;
 	border-radius: 0;
-  padding: 0;
+	padding: 10px 0 10px;
+}
+.filter-box button.btn-light:not(:disabled):not(.disabled):active, .filter-box button.btn-light:not(:disabled):not(.disabled).active, .show > .filter-box button.btn-light.dropdown-toggle {
+  // color: #343a40;
+  background-color: transparent;
+  border-color: transparent;
+}
+.filter-box button.btn-light:not(:disabled):not(.disabled):active:focus, .filter-box button.btn-light:not(:disabled):not(.disabled).active:focus, .show > .filter-box button.btn-light.dropdown-toggle:focus {
+  box-shadow: none;
 }
 .filter-box button svg {
 	height: 14px;
@@ -1452,6 +1470,56 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	justify-content: space-between;
 	padding: 8px 0;
 }
+// Range Slider CSS
+.simple-range-slider .simple-range-slider-popover, .simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor .simple-range-slider-popover-arrow {
+	display: none;
+}
+.simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor[data-v-06329002] {
+	top: -5.5px;
+	background: var(--light-green);
+	box-shadow: none;
+	border-radius: 50%;
+}
+.filter-box p strong {
+  color: var(--text-color);
+}
+.price-slider .theme-button {
+	padding: 7px 25px;
+	height: 38px;
+	background-color: #333333;
+	margin-top: 15px;
+}
+// Tag CSS
+.tags-list li {
+	display: inline-block;
+	background-color: transparent;
+	border-radius: 25px;
+	border: 1px solid gray;
+	margin: 5px 5px 5px 0;
+}
+.tags-list li a {
+	padding: 7px 15px;
+	font-size: 12px;
+	display: block;
+}
+.search-page-sort{
+	border-bottom: 1px solid #ebebeb;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.search-page-sort .custom-select {
+	width: 30%;
+	min-width: 30%;
+	max-width: 30%;
+}
+// Product Search Product Item
+  @media only screen and (min-width: 1200px) {
+    .product-search-page div.product {
+      width: auto!important;
+      padding: 6px!important;
+    }
+  }
+
 /*-------------------------------------------
     21. Search page Area End
 -------------------------------------------*/

@@ -1,14 +1,14 @@
 <template>
   <div>
     <Breadcrumbs title="Product Title" />
-    <section class="product-page section-b-space">
+    <section class="product-page product-search-page section-b-space">
       <div class="container">
         <div class="row">
 
           <!-- Search Filter LeftSidebar -->
           <div class="col-12 col-lg-3">
 
-            <div class="filter-left-sidebar">
+            <div class="filter-left-sidebar mb-30 rounded">
 
               <div class="filter-box">
                 <b-button v-b-toggle.collapse-1 variant="light">Product Categories <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
@@ -24,12 +24,33 @@
                 </b-collapse>
               </div>
 
-              <div class="filter-box">
+              <div class="filter-box price-slider">
                 <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                 <b-collapse visible id="collapse-2" class="mt-2">
-                  <vue-range-slider v-model="value" :min="min" :max="max" :enable-cross="enableCross"></vue-range-slider>
-                  <p>Price: ${{value}}</p>
-                  <button>Filter</button>
+                  <VueSimpleRangeSlider
+                  style="width: auto"
+                  activeBarColor="#178841"
+                  :min="0"
+                  :max="100000000"
+                  :logarithmic="true"
+                  v-model="range"
+                  />
+                  <p>Price: <strong>${{range[0]}} - ${{range[1]}}</strong></p>
+
+                  <button class="theme-button">Filter</button>
+                </b-collapse>
+              </div>
+
+              <div class="filter-box">
+                <b-button v-b-toggle.collapse-3 variant="light">Product Tags <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
+                <b-collapse visible id="collapse-3" class="mt-2">
+
+                    <ul class="tags-list">
+                      <li v-for="tagItem in tagData" :key="tagItem.id">
+                        <nuxt-link to="/">{{tagItem.name}}</nuxt-link>
+                      </li>
+
+                    </ul>
                 </b-collapse>
               </div>
 
@@ -40,11 +61,20 @@
 
           <div class="col-12 col-lg-9">
           
-            <BannerPage :bannerImg="bannerImg" />
+            <BannerSmall :bannerImg="bannerImg" />
 
-            <!-- Home product box Start -->
-            <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
-            <!-- Home product box End -->
+            <div>
+              <div class="search-page-sort d-flex align-items-center">
+                <label>Sort By:&nbsp;</label>
+                <b-form-select v-model="perPage" :options="pageOptions"></b-form-select>
+              </div>
+            </div>
+
+            <div class="search-page-product-wrap d-flex flex-wrap justify-content-center">
+              <!-- Home product box Start -->
+              <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
+              <!-- Home product box End -->
+            </div>
           </div>
         </div>
       </div>
@@ -55,17 +85,22 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
-import VueRangeSlider from 'vue-range-component'
+import VueSimpleRangeSlider from 'vue-simple-range-slider';
+
 export default {
   layout: 'public',
 
   components: {
-    VueRangeSlider
+    VueSimpleRangeSlider
   },
   data() {
     return {
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
-      value: [0,10000],
+
+      range: [20,1000],
+
+      pageOptions: ['New', 'Old', 'Low to high', 'High to low'],
+
       "products": [
           {
               "id": 1,
@@ -236,25 +271,29 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({categoryData : 'category/allCategories'}),
+    ...mapGetters({
+      categoryData : 'category/allCategories',
+      tagData : 'product/allTags'
+      }),
   },
 
   methods: {
     ...mapActions({
       cat : 'category/getCategories',
+      Tags : 'product/getTags',
     }),
     getImgUrl(path) {
       return require('@/assets/images/product-img/' + path)
     },
+    
   },
 
   created(){
     this.cat();
+    this.Tags();
 
-    // Range slider
-    this.min = 0
-    this.max = 250
-    this.enableCross = false
+    // this.min = min
+    // this.max = max
   },
 
     /*
@@ -270,5 +309,8 @@ export default {
 </script>
 
 <style>
-
+.slider {
+  /* overwrite slider styles */
+  width: 150px;
+}
 </style>
