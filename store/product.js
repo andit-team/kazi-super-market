@@ -7,24 +7,18 @@ const state = {
         }
     },
     tags :  {},
-    //    { "_id": "5fa13ca4480e6f0700fbd43e",
-    //     "name": "tags",
-    //     "description": "asfd asfd asfd",
-    //     "createdAt": "2020-11-03T11:19:00.769Z",
-    //     "updatedAt": "2020-11-03T11:19:08.020Z",
-    //     "slug": "asdf-tags",
-    //     "__v": 0
-    //   }
-    // ],
-    units : {}
+    units : {},
+    singleProduct : {},
 }
 const getters = {
     allProducts: (state) => state.products,
+    singleProduct: (state) => state.singleProduct,
     allTags: (state) => state.tags,
     allUnits: (state) => state.units,
 }
 const mutations = {
     SET_PRODUCTS : (state,products) => (state.products = products),
+    SET_PRODUCT : (state,product) => (state.product = product),
     SET_TAGS : (state,tags) => (state.tags = tags),
     SET_UNITS : (state,units) => (state.units = units),
 }
@@ -45,15 +39,23 @@ const actions = {
             const uploadUrl = await helper.fileupload(element);
             all_images.push(uploadUrl);
         };
-
+        var tagsArr = [];
+        if(payload.tags){
+            payload.tags.map(ar => {
+                tagsArr.push(ar)    
+            })
+        }
         const data = {
             name : payload.name,
             price : payload.price,
-            parent_category : payload.parent_category,
-            sub_category  : payload.sub_category,
+            parent_category : payload.parent_category._id,
+            sub_category  : payload.sub_category._id,
+            unit  : payload.unit._id,
             description : payload.description,
             summary   : payload.summary,
             comments  : payload.comments,
+            tags  : tagsArr,
+            discount  : payload.discount_percent,
             thumbnail : main_thumbnail,
             images : all_images,
             meta_title : payload.meta_title,
@@ -62,6 +64,13 @@ const actions = {
         }
         const response = await axios.post(process.env.API_URL+'/product/create/',data);
         return response.data
+    },
+
+    async fatchProduct({commit},slug){
+        console.log(slug);
+        const response = await axios.get(process.env.API_URL+'/product/'+slug);
+        commit('SET_PRODUCT',response.data.data)
+        return response.data.data[0]
     },
 
     async updateCategory({dispatch},payload){
@@ -85,14 +94,12 @@ const actions = {
         }
         return response.data
     },
-    async removeCategory({dispatch},payload){
-        const response = await axios.post(process.env.API_URL+'/admin/category-delete/',{
+    async deleteProduct({dispatch},payload){
+        const response = await axios.post(process.env.API_URL+'/product/delete',{
             _id : payload._id
         });
-        console.log(response);
         if(response.data.error === false){
             dispatch('getProducts');
-            dispatch('getSubCategories');
         }
         return response.data
     },

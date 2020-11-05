@@ -140,6 +140,7 @@ export default {
          * Basic Form submit
          */
         SaveParentCategory(e) {
+            this.$nuxt.$loading.start()
            this.submitted = true
             this.$v.$touch()
             if (this.$v.$invalid) {
@@ -148,6 +149,7 @@ export default {
                 this.submit = true
                 this.newCat(this.form).then(res => {
                     // console.log(res);
+                    this.$nuxt.$loading.finish()
                     if(res.error === false){
                         helper.SuccessMsg(res.msg);
                         this.form = {

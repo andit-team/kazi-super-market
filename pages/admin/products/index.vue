@@ -1,5 +1,7 @@
 <script>
 import { mapGetters,mapActions } from 'vuex';
+import { helper } from '../../../helpers/helper'
+import Swal from "sweetalert2";
 // import {
 //     productData
 // } from "./data";
@@ -86,7 +88,8 @@ export default {
     },
     methods: {
         ...mapActions({
-                FatchProduct : 'product/getProducts'
+                FatchProduct    : 'product/getProducts',
+                removeProduct   : 'product/deleteProduct'
             }),
         /**
          * Search the table data with search input
@@ -95,7 +98,33 @@ export default {
             // Trigger pagination to update the number of buttons/pages due to filtering
             this.totalRows = filteredItems.length;
             this.currentPage = 1;
-        }
+        },
+
+        confirmToDelete(item) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.value) {
+                    this.removeProduct(item).then(res => {
+                        if(res.error === false){
+                            helper.SuccessMsg(res.msg);
+                        }else{
+                            helper.WarningMsg(res.msg);
+                        }
+                    }).catch(err => {
+                        helper.WarningMsg(err.msg);
+                    });
+
+
+                }
+            });
+        },
+
     },
     middleware: 'router-auth',
 };
@@ -150,7 +179,7 @@ export default {
                             </template> -->
 
                             <template v-slot:cell(name)="data">
-                                <img v-if="data.item.thumbnail" :src="data.item.thumbnail" alt="" class="rounded mr-3 border" height="48" width="80" />
+                                <img v-if="data.item.thumbnail" :src="data.item.thumbnail" alt="" class="rounded mr-3 border" height="48" />
                                 <div v-if="!data.item.thumbnail" class="avatar-xs d-inline-block mr-2">
                                     <div class="avatar-title bg-soft-primary rounded-circle text-primary">
                                         <i class="mdi mdi-account-circle m-0"></i>
@@ -173,19 +202,16 @@ export default {
                                 <span class="badge badge-soft-success" :class="{'badge-soft-danger': data.item.status === 'Deactive'}">{{ data.item.status }}</span>
                             </template>
 
-                            <template v-slot:cell(action)>
+                            <template v-slot:cell(action)="row">
                                 <ul class="list-inline table-action m-0">
                                     <li class="list-inline-item">
-                                        <a href="javascript:void(0);" class="action-icon">
-                                            <i class="mdi mdi-eye"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"><i class="mdi mdi-eye"></i></a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="javascript:void(0);" class="action-icon">
-                                            <i class="mdi mdi-square-edit-outline"></i></a>
+                                        <a :href="'/admin/products/edit/'+row.item.slug" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="javascript:void(0);" class="action-icon">
-                                            <i class="mdi mdi-delete"></i></a>
+                                        <a href="javascript:void(0);" @click="confirmToDelete(row.item)" class="action-icon"><i class="mdi mdi-delete"></i></a>
                                     </li>
                                 </ul>
                             </template> 
