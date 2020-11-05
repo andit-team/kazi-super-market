@@ -201,7 +201,7 @@ figure {
 .font-15{
   font-size: 15px;
 }
-.font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a{
+.font-16, .middle-nav-left-list li a, .bottom-nav .col-12 ul > li a, .offer-tile-header-title{
   font-size: 16px;
 }
 .font-18, .cart-sidebar header > strong, .slide-content i{
@@ -1286,14 +1286,23 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 // 7. Deals of the day Product Area CSS End
 
 /*-------------------------------------------
-    32. Login Page CSS Start
+    32. Login / Register Page CSS Start
 -------------------------------------------*/
-.login-area form {
-	width: 52%;
-	margin: 30px auto;
-	background-color: #fff;
+// .login-area form {
+// 	width: 52%;
+// 	margin: 30px auto;
+// 	background-color: #fff;
+// 	padding: 30px;
+// 	border-radius: 0.25rem;
+// }
+.login-register-page .tab-content {
 	padding: 30px;
-	border-radius: 0.25rem;
+	border: 1px solid var(--border-color);
+	margin-top: 30px;
+	box-shadow: 0 0px 6px 10px rgba(0,0,0,.02);
+}
+.login-register-page form .form-control {
+	margin-bottom: 15px;
 }
 /*-------------------------------------------
     32. Login Page CSS End
