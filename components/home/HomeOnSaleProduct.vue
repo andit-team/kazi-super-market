@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       title: 'On Sale Products',
-      btnValue: 'View All Products',
+      btnValue: 'View All',
       linkUrl: '#',
         "products": [
         {

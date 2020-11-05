@@ -521,17 +521,21 @@
   }
   @media only screen and (min-width:320px) and (max-width:430px){
   .menu-section-area form.form-inline input {
-        width: 150px !important;
-        min-width: 150px !important;
-    }
-    #mainNav .navbar-toggler {
-        margin: 0 4px 0 0 !important;
-    }
-    #mainNav .navbar-brand {
-        margin: 0 4px 0 30px !important;
-    }
-    
+    width: 150px !important;
+    min-width: 150px !important;
   }
+  #mainNav .navbar-toggler {
+    margin: 0 4px 0 0 !important;
+  }
+  #mainNav .navbar-brand {
+    margin: 0 4px 0 30px !important;
+  }
+  .search-page-sort .custom-select {
+    width: 50%!important;
+    max-width: 50%!important;
+  }
+    
+}
 
 @media (max-width: 420px) {
   h2 {

@@ -8,7 +8,7 @@
           <!-- Search Filter LeftSidebar -->
           <div class="col-12 col-lg-3">
 
-            <div class="filter-left-sidebar">
+            <div class="filter-left-sidebar mb-30 rounded">
 
               <div class="filter-box">
                 <b-button v-b-toggle.collapse-1 variant="light">Product Categories <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
@@ -61,18 +61,20 @@
 
           <div class="col-12 col-lg-9">
           
-            <BannerPage :bannerImg="bannerImg" />
+            <BannerSmall :bannerImg="bannerImg" />
 
-            <div class="col-12">
+            <div>
               <div class="search-page-sort d-flex align-items-center">
                 <label>Sort By:&nbsp;</label>
                 <b-form-select v-model="perPage" :options="pageOptions"></b-form-select>
               </div>
             </div>
 
-            <!-- Home product box Start -->
-            <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
-            <!-- Home product box End -->
+            <div class="search-page-product-wrap d-flex flex-wrap justify-content-center">
+              <!-- Home product box Start -->
+              <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
+              <!-- Home product box End -->
+            </div>
           </div>
         </div>
       </div>

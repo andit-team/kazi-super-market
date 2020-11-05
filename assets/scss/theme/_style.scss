@@ -124,7 +124,7 @@ button{
   cursor: pointer;
 }
 label {
-  margin-bottom: 5px;
+  margin-bottom: 0
 }
 
 /*------------------------------------------
@@ -1426,23 +1426,32 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 -------------------------------------------*/
 .filter-left-sidebar {
 	border: 1px solid #ebebeb;
-	padding: 15px 20px;
+	padding: 0 20px 20px;
 	background-color: #f9f9f9;
 }
 .filter-box {
-	margin-bottom: 30px;
+	margin: 10px 0 10px;
 }
 .filter-box button.btn-light {
 	background-color: transparent;
 	width: 100%;
 	justify-content: space-between;
+  align-items: center;
 	display: flex;
 	border: none;
 	font-weight: 700;
 	font-size: 16px;
 	border-bottom: 1px solid #ebebeb;
 	border-radius: 0;
-  padding: 0 0 10px;
+	padding: 10px 0 10px;
+}
+.filter-box button.btn-light:not(:disabled):not(.disabled):active, .filter-box button.btn-light:not(:disabled):not(.disabled).active, .show > .filter-box button.btn-light.dropdown-toggle {
+  // color: #343a40;
+  background-color: transparent;
+  border-color: transparent;
+}
+.filter-box button.btn-light:not(:disabled):not(.disabled):active:focus, .filter-box button.btn-light:not(:disabled):not(.disabled).active:focus, .show > .filter-box button.btn-light.dropdown-toggle:focus {
+  box-shadow: none;
 }
 .filter-box button svg {
 	height: 14px;
@@ -1490,9 +1499,9 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
   margin-bottom: 15px;
 }
 .search-page-sort .custom-select {
-	width: auto;
+	width: 30%;
 	min-width: 30%;
-	max-width: 50%;
+	max-width: 30%;
 }
 // Product Search Product Item
   @media only screen and (min-width: 1200px) {
