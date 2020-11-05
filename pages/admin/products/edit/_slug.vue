@@ -7,7 +7,7 @@ import {
 
 // import {required} from 'vuelidate/lib/validators'
 import Swal from "sweetalert2";
-import { helper } from '../../../helpers/helper'
+import { helper } from '../../../../helpers/helper'
 import Multiselect from 'vue-multiselect'
 
 import vue2Dropzone from "vue2-dropzone";
@@ -16,7 +16,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 import { mapGetters,mapActions, mapState } from 'vuex'
-import { products } from '../ecommerce/data-products';
+import { products } from '../../ecommerce/data-products';
 /**
  * Product-create component
  */
@@ -52,7 +52,7 @@ export default {
             product:{
                 name : '',
                 price : '',
-                discount_percent : '',
+                discount : '',
                 unit : '',
                 tags : '',
                 parent_category : '',
@@ -127,13 +127,17 @@ export default {
             return data
         },
     },
-    created(){
+   async created(){
         this.parentCat();
         this.FatchUnits();
         this.FatchTags();
+        this.product = await this.FatchProduct(this.$route.params.slug);
+        console.log(this.product)
+        
     },
     methods: {
         ...mapActions({
+                FatchProduct : 'product/fatchProduct',
                 parentCat : 'category/getCategories',
                 FatchUnits : 'product/getUnits',
                 FatchTags : 'product/getTags',
@@ -337,8 +341,8 @@ export default {
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group mb-3">
-                                            <label for="product-discount_percent" :class="this.err.discount_percent ? 'text-danger' : ''">Discount Percent</label>
-                                            <input type="number" v-model="product.discount_percent" class="form-control" id="product-discount_percent" placeholder="% of discount" />
+                                            <label for="product-discount" :class="this.err.discount ? 'text-danger' : ''">Discount Percent</label>
+                                            <input type="number" v-model="product.discount" class="form-control" id="product-discount" placeholder="% of discount" />
                                         </div>
                                     </div>
                                 </div>
@@ -348,7 +352,7 @@ export default {
                                             <label for="product-category" :class="this.err.parent_category ? 'text-danger' : ''">Parent Category<span class="text-danger">*</span></label>
                                             <!-- <select class="form-control select2" id="product-category" :class="this.err.parent_category ? 'border-danger' : ''" v-model="product.parent_category" @change="getSubCategory"> -->
                                                 <!-- <option value="">Select Parent</option> @select="getSubCategory"-->
-                                                <multiselect :class="this.err.parent_category === true ? 'border border-danger' : ''" v-model="product.parent_category" :options="this.parents" label="name" @select="getSubCategory" ></multiselect>
+                                                <multiselect :class="this.err.parent_category === true ? 'border border-danger' : ''" v-model="product.parent_category" :value="product.parent_category" :options="this.parents" label="name" @select="getSubCategory" ></multiselect>
 
                                                 <!-- <option v-for="parentCategory in this.parents.data" :key="parentCategory._id" :value="parentCategory._id">{{parentCategory.name}}</option> -->
                                             </select>
@@ -369,7 +373,7 @@ export default {
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label for="product-unit" :class="this.err.unit ? 'text-danger' : ''">Unit<span class="text-danger">*</span></label>
-                                            <multiselect :class="this.err.unit === true ? 'border border-danger' : ''" v-model="product.unit" placeholder="Please select a unit" :options="this.units" label="name" ></multiselect>
+                                            <multiselect :class="this.err.unit === true ? 'border border-danger' : ''" v-model="product.unit" :value="product.unit" placeholder="Please select a unit" :options="this.units" label="name" ></multiselect>
                                             <!-- <select class="form-control select2" id="product-unit" :class="this.err.unit ? 'border-danger' : ''" v-model="product.unit">
                                                 <option value="">Select Unit</option>
                                                 <option v-for="unit in this.units" :key="unit._id" :value="unit._id">{{unit.name}}</option>
@@ -438,7 +442,7 @@ export default {
                             </div>                            
                         </tab-content>
 
-                        <tab-content title="Meta Data" :before-change="loaging">
+                        <tab-content title="Meta Data">
                             <h4 class="header-title">Meta Data</h4>
                             <p class="sub-header">Fill all information below</p>
 
