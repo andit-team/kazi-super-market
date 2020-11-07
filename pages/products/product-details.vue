@@ -1,15 +1,221 @@
 <template>
   <div>
-    <BannerHomeSlider />
-    <!-- <BannerPage :bannerImg="bannerImg" /> -->
-    <Breadcrumbs title="Product Title" />
-    <section class="product-page section-b-space">
+    <Breadcrumbs title="Product Details" />
+    <section class="product-page product-details-page section-b-space">
       <div class="container">
         <div class="row">
+            <div class="col-lg-7">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8">
+                        <div id="product-carousel" class="carousel slide product-detail-carousel" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div>
+                                        <img src="~/assets/admin/images/products/product-6.png" alt="product-img" id="myImage" class="img-fluid" />
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div>
+                                        <img src="~/assets/admin/images/products/product-8.png" alt="product-img" class="img-fluid" />
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div>
+                                        <img src="~/assets/admin/images/products/product-1.png" alt="product-img" class="img-fluid" />
+                                    </div>
+                                </div>
+                            </div>
+                            <ol class="carousel-indicators product-carousel-indicators mt-2">
+                                <li data-target="#product-carousel" data-slide-to="0" class="active">
+                                    <img src="~/assets/admin/images/products/product-6.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
+                                </li>
+                                <li data-target="#product-carousel" data-slide-to="1">
+                                    <img src="~/assets/admin/images/products/product-8.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
+                                </li>
+                                <li data-target="#product-carousel" data-slide-to="2">
+                                    <img src="~/assets/admin/images/products/product-1.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div>
+                    <div>
+                        <a href="#" class="color-orange">Ocean Food</a>
+                    </div>
+                    <h4 class="mb-1">
+                        Chingri
+                    </h4>
+
+                    <p class="text-muted mr-3 font-16">
+                        <span class="mdi mdi-star text-warning"></span>
+                        <span class="mdi mdi-star text-warning"></span>
+                        <span class="mdi mdi-star text-warning"></span>
+                        <span class="mdi mdi-star text-warning"></span>
+                        <span class="mdi mdi-star"></span>
+                    </p>
+
+                    <div class="mt-3">
+                        <h6 class="text-danger text-uppercase">10 % Off</h6>
+                        <h4>
+                            Price :
+                            <span class="text-muted mr-2">
+                                <del>$ 50</del>
+                            </span>
+                            <b>$ 45</b>
+                        </h4>
+                    </div>
+                    <hr />
+
+                    <div>
+                        <p>
+                            If several languages coalesce, the grammar of the resulting
+                            language is more simple and regular than that of the individual
+                            new common simple and regular than existing
+                        </p>
+
+                        <div class="mt-3">
+                            <h5 class="font-size-14">Specification :</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled product-desc-list">
+                                        <li>
+                                            <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
+                                            Full Sleeve
+                                        </li>
+                                        <li>
+                                            <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
+                                            Cotton
+                                        </li>
+                                        <li>
+                                            <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
+                                            All Sizes available
+                                        </li>
+                                        <li>
+                                            <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
+                                            4 Different Color
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled product-desc-list">
+                                        <li>
+                                            <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
+                                            All Sizes available
+                                        </li>
+                                        <li>
+                                            <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
+                                            4 Different Color
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <form class="form-inline mb-3">
+                                <label class="my-1 mr-2" for="quantityinput">Quantity</label>
+                                <select class="custom-select my-1 mr-sm-3" id="quantityinput">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </form>
+
+                            <div>
+                                <button type="button" class="btn bg-light-green text-white waves-effect waves-light">
+                                    <span class="btn-label">
+                                        <i class="mdi mdi-cart"></i>
+                                    </span>Add to cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row">
           <div class="col">
-            <!-- Home product box Start -->
-            <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
-            <!-- Home product box End -->
+           <b-card no-body class="mt-5">
+              <b-tabs card>
+                <b-tab title="Description" active>
+                  <div class="product-details-content-box">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
+                    unde molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa. <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
+                    unde molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
+                    unde molestias abculpa porro recusandae quod 
+                    unde molestias ab. </p>
+                  </div>
+                </b-tab>
+                <b-tab title="Reviews">
+
+                  <div class="product-details-content-box">
+                    <div class="media comment-box mb-3">
+                      <img :src="require('@/assets/images/profile-img/owner2.png')" class="mr-3" alt="author" height="50px">
+                      <div class="media-body">
+                        <h5 class="mt-0">Suraiya Aysha</h5>
+                        <div class="given-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                      </div>
+                    </div>
+                    <div class="media comment-box mb-3">
+                      <img :src="require('@/assets/images/profile-img/owner2.png')" class="mr-3" alt="author" height="50px">
+                      <div class="media-body">
+                        <h5 class="mt-0">Suraiya Aysha</h5>
+                        <div class="given-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                      </div>
+                    </div>
+                    <div class="media comment-box mb-3">
+                      <img :src="require('@/assets/images/profile-img/owner2.png')" class="mr-3" alt="author" height="50px">
+                      <div class="media-body">
+                        <h5 class="mt-0">Suraiya Aysha</h5>
+                        <div class="given-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="product-details-content-box write-review mt-4">
+                    <h4 class="mb-2">Submit review:</h4>
+
+                    <div v-if="!isLogin">
+                      <p>To submit review <nuxt-link to="/customer/login">Login</nuxt-link> please!</p>
+                      <h5 class="d-block mt-4"><nuxt-link to="/customer/login" class="theme-button">Login</nuxt-link></h5>
+                    </div>
+                    
+                    <form v-else>
+                      <textarea id="textarea-default" placeholder="Write review here..." rows="2" class="mb-2 form-control" wrap="soft"></textarea>
+                      <b-form-rating v-model="ratingValue" id="rating-inline" inline color="#ff8800" class="mb-2"></b-form-rating>
+                      <button type="submit" class="theme-button d-block">Submit Review</button>
+                    </form>
+                  </div>
+
+                </b-tab>
+              </b-tabs>
+            </b-card>
           </div>
         </div>
       </div>
@@ -24,180 +230,11 @@ export default {
 
   data() {
     return {
-        bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
-          "products": [
-          {
-              "id": 1,
-              "title": "Elsha Fish",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-1.png"
-          },
-          {
-              "id": 2,
-              "title": "Potato",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-2.png"
-          },
-          {
-              "id": 3,
-              "title": "Ice-cream",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-3.png"
-          },
-          {
-              "id": 4,
-              "title": "Checken Egg(Layer)",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-3.png"
-          },
-          {
-              "id": 4,
-              "title": "Checken Egg(Layer)",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-1.png"
-          },
-          {
-              "id": 5,
-              "title": "Checken Egg(Layer)",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-2.png"
-          },
-          {
-              "id": 6,
-              "title": "Checken Egg(Layer)",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-3.png"
-          },
-          {
-              "id": 7,
-              "title": "Tomato",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-4.png"
-          },
-          {
-              "id": 8,
-              "title": "Tomato",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-1.png"
-          },
-          {
-              "id": 9,
-              "title": "Tomato",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-2.png"
-          },
-          {
-              "id": 10,
-              "title": "Tomato",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-3.png"
-          },
-          {
-              "id": 11,
-              "title": "Horlics",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-4.png"
-          },
-          {
-              "id": 12,
-              "title": "Chingri",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-1.png"
-          },
-          {
-              "id": 13,
-              "title": "Meat",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-4.png"
-          },
-          {
-              "id": 14,
-              "title": "Tomato",
-              "description": "Citronella oil in combination with Eucalyptus oil & Peppermint oil acts as a fantastic natural solution to repel mosquito like annoying insects from the body. Purnava Mosquito Repellent repels unwanted insects and safe guard your health with this easy to use product which can be sprayed directly on the skin and clothes. A reliable formula that soothes your skin and makes an environment-conscious choice. ",
-              "type": "popular",
-              "alt": "kazis supermarket",
-              "price": "89",
-              "oldPrice": "95",
-              "tag": "on sale",
-              "productImage": "product-2.png"
-          }
-      ]
+      ratingValue: 4, 
+      isLogin: false
     }
   },
   methods: {
-    getImgUrl(path) {
-      return require('@/assets/images/product-img/' + path)
-    },
   },
 
 }

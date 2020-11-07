@@ -44,13 +44,11 @@
               <div class="filter-box">
                 <b-button v-b-toggle.collapse-3 variant="light">Product Tags <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                 <b-collapse visible id="collapse-3" class="mt-2">
-
-                    <ul class="tags-list">
-                      <li v-for="tagItem in tagData" :key="tagItem.id">
-                        <nuxt-link to="/">{{tagItem.name}}</nuxt-link>
-                      </li>
-
-                    </ul>
+                  <ul class="tags-list">
+                    <li v-for="tagItem in tagData" :key="tagItem.id">
+                      <nuxt-link to="/">{{tagItem.name}}</nuxt-link>
+                    </li>
+                  </ul>
                 </b-collapse>
               </div>
 
@@ -66,7 +64,8 @@
             <div>
               <div class="search-page-sort d-flex align-items-center">
                 <label>Sort By:&nbsp;</label>
-                <b-form-select v-model="perPage" :options="pageOptions"></b-form-select>
+                <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
+                </b-form-select>
               </div>
             </div>
 

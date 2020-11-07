@@ -186,6 +186,9 @@ figure {
 .different-bg{
   background-color: var(--bg-secondary);
 }
+.bg-light-green{
+  background-color: var(--light-green);
+}
 /*--------------------------------
     2.3 Theme Font Style
 -----------------------------------*/
@@ -1188,6 +1191,35 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	opacity: 1;
 }
 // 3. Product Area CSS End
+
+// 3. Product Details Page Area CSS Start
+.product-details-page .card-header {
+	background: #fff;
+  padding-top: 0;
+}
+.product-details-page .card-header li {
+  margin: 0;
+}
+.product-details-page .card-header li a{
+	border: none;
+  padding: 1rem 1rem;
+  font-size: 18px;
+  color: var(--text-color);
+}
+.product-details-page .card-header li a.active{
+  color: var(--light-green);
+}
+.product-details-page .tab-content {
+	padding: 20px 0;
+}
+.product-details-content-box form .b-rating {
+	border: 0;
+}
+.given-rating i{
+  color: #ff8800;
+  font-size: 10px;
+}
+// 3. Product Details Page Area CSS End
 
 // 4. Advartisement Area CSS Start
 .advartise-img-wrap {
