@@ -1302,7 +1302,7 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 .login-register-page .nav-tabs li{
   position: relative;
 }
-.login-register-page .nav-tabs:last-child li::after {
+.login-register-page .nav-tabs li:last-child::after {
 	content: "";
 	position: absolute;
 	z-index: 99;

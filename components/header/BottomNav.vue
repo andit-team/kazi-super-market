@@ -15,8 +15,8 @@
           <b-nav>
             <b-nav-item><b-button class="cart-small-view" v-b-toggle.sidebar-right><b-badge variant="success" class="rounded-circle">9+</b-badge><b-icon-bag-fill></b-icon-bag-fill>$120</b-button></b-nav-item>
          
-            <b-nav-item to="#">Login</b-nav-item>
-            <b-nav-item to="#">Signup</b-nav-item>
+            <b-nav-item to="/customer/login">Login</b-nav-item>
+            <b-nav-item to="/customer/register">Signup</b-nav-item>
 
             <b-nav-item-dropdown class="dropdown-box" right v-if="isLogin">
               <template v-slot:button-content>
