@@ -1288,38 +1288,28 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 /*-------------------------------------------
     32. Login / Register Page CSS Start
 -------------------------------------------*/
-// .login-area form {
-// 	width: 52%;
-// 	margin: 30px auto;
-// 	background-color: #fff;
-// 	padding: 30px;
-// 	border-radius: 0.25rem;
-// }
-.login-register-page .nav-tabs {
-	border-bottom: none;
-	justify-content: center;
-}
-.login-register-page .nav-tabs li{
+.login-register-page-title li{
   position: relative;
 }
-.login-register-page .nav-tabs li:last-child::after {
+.login-register-page-title li:first-child::after {
 	content: "";
 	position: absolute;
 	z-index: 99;
 	height: 15px;
-	width: 1px;
+	width: 2px;
 	background-color: var(--orange-color);
-	top: 32%;
+	top: 22%;
 }
-.login-register-page .tabs .nav-tabs .nav-link {
+.login-register-page-title li a {
 	border: transparent;
 	color: var(--text-color);
 	font-size: 18px;
+  padding: 16px;
 }
-.login-register-page .tabs .nav-tabs .nav-link.active, .login-register-page .tabs .nav-tabs .nav-item.show .nav-link {
+.login-register-page-title li a.nuxt-link-exact-active {
 	color: var(--light-green);
 }
-.login-register-page .tab-content {
+.login-register-content-wrap form {
 	padding: 30px;
 	border: 1px solid var(--border-color);
 	margin-top: 30px;
@@ -1463,7 +1453,7 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	background-color: #f9f9f9;
 }
 .filter-box {
-	margin: 10px 0 10px;
+	margin: 10px 0 30px;
 }
 .filter-box button.btn-light {
 	background-color: transparent;
@@ -1477,6 +1467,7 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	border-bottom: 1px solid #ebebeb;
 	border-radius: 0;
 	padding: 10px 0 10px;
+  margin-bottom: 30px;
 }
 .filter-box button.btn-light:not(:disabled):not(.disabled):active, .filter-box button.btn-light:not(:disabled):not(.disabled).active, .show > .filter-box button.btn-light.dropdown-toggle {
   // color: #343a40;
