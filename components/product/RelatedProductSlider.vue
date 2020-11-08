@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- products Area Start -->
-    <section class="product-slider-area section-b-40-space">
+    <section class="product-slider-area light-layout section-b-40-space">
       <div class="container">
         <!-- product Area Start -->
         <div class="row">
@@ -44,7 +44,7 @@
 export default {
   data() {
     return {
-      title: 'Orange Juice Products',
+      title: 'Related Products',
       btnValue: 'View all',
       linkUrl: '/products',
       swiperOption: {
@@ -57,7 +57,7 @@ export default {
         freeMode: false,
         breakpoints: {
           1199: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 20
           },
           991: {
@@ -231,13 +231,12 @@ export default {
 	background-image: none;
 }
 .swiper-button-next i, .swiper-button-prev i {
-	/* font-size: 19px; */
-	color: #fff;
+	font-size: 19px;
+	color: var(--orange-color);
 }
 .swiper-button-prev, .swiper-button-next {
 	width: 30px;
 	height: 30px;
-	background-color: var(--green-color);
-  /* color: #fff; */
+	background-color: #fff;
 }
 </style>

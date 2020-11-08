@@ -20,10 +20,10 @@
       <div class="overlay text">
         <p class="addText">Add to Shopping Bag</p>
         <span>
-          <a href="/tatka-egg-pack-12pcs" class="btnShowDetails">
+          <nuxt-link to="/products/product-details" class="btnShowDetails">
             <span>Details</span>
             <span>  &gt;</span>
-          </a>
+          </nuxt-link>
         </span>
       </div>
     </div>

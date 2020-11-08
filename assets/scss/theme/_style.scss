@@ -1193,6 +1193,35 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 // 3. Product Area CSS End
 
 // 3. Product Details Page Area CSS Start
+
+// Product Details Photo Tab CSS
+.product-details-photo-tab .nav-tabs {
+	display: flex;
+	justify-content: center;
+	border-bottom: 0;
+}
+.product-details-photo-tab .nav-tabs li a img {
+  height: 51px;
+}
+.product-details-photo-tab .nav-tabs li a {
+	padding: 0;
+	margin: 10px;
+	border-color: #dee2e6;
+  opacity: 0.7;
+}
+.product-details-photo-tab .nav-tabs li a.active, .product-details-photo-tab .nav-tabs li.show a {
+	opacity: 1;
+	border: 1px solid var(--light-green);
+}
+.product-details-photo-tab .tab-content > .tab-pane {
+	overflow: hidden;
+}
+.product-details-photo-tab .tab-content > .tab-pane img {
+	height: 400px;
+	width: auto;
+}
+// Product Details Photo Tab CSS
+
 .product-details-page .card-header {
 	background: #fff;
   padding-top: 0;
@@ -1210,10 +1239,11 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
   color: var(--light-green);
 }
 .product-details-page .tab-content {
-	padding: 20px 0;
+	padding: 0 0 20px;
 }
 .product-details-content-box form .b-rating {
 	border: 0;
+	padding-left: 0;
 }
 .given-rating i{
   color: #ff8800;

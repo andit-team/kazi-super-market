@@ -41,13 +41,12 @@
 </template>
 
 <script>
-import ProductItem from '../product/ProductItem'
 export default {
   data() {
     return {
       title: 'Recently Viewed Products',
       btnValue: 'View all',
-      linkUrl: '/',
+      linkUrl: '/products',
       swiperOption: {
         slidesPerView: 5,
         navigation: {

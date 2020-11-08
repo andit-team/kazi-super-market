@@ -67,11 +67,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters({categoryData : 'category/allCategories'}),
+    ...mapGetters({categoryData : 'category/getFeaturedCategories'}),
   },
   methods: {
     ...mapActions({
-        cat : 'category/getCategories',
+        cat : 'category/getFeaturedCategories',
       }),
   },
   created(){

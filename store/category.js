@@ -10,14 +10,22 @@ const state = {
         data : {
 
         }
+    },
+    featuredCategories : {
+        data : {
+
+        }
     }
+
 }
 const getters = {
     allCategories: (state) => state.categories,
-    getSubCategories: (state) => state.subCategories
+    getSubCategories: (state) => state.subCategories,
+    getFeaturedCategories: (state) => state.featuredCategories
 }
 const mutations = {
     SET_CATEGORIES : (state,categories) => (state.categories = categories),
+    SET_FEATURED_CATEGORIES : (state,featuredCategories) => (state.featuredCategories = featuredCategories),
     SET_SUB_CATEGORIES : (state,categories) => (state.subCategories = categories),
 
 }
@@ -86,6 +94,10 @@ const actions = {
     async getCategories({ commit }){
         const response = await axios.get(process.env.API_URL+'/admin/categories');
         commit('SET_CATEGORIES',response.data)
+    },
+    async getFeaturedCategories({ commit }){
+        const response = await axios.get(process.env.API_URL+'/admin/featured-categories');
+        commit('SET_FEATURED_CATEGORIES',response.data)
     },
 
     async getChilds({ commit },payload){

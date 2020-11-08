@@ -6,38 +6,21 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <div id="product-carousel" class="carousel slide product-detail-carousel" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div>
-                                        <img src="~/assets/admin/images/products/product-6.png" alt="product-img" id="myImage" class="img-fluid" />
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div>
-                                        <img src="~/assets/admin/images/products/product-8.png" alt="product-img" class="img-fluid" />
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div>
-                                        <img src="~/assets/admin/images/products/product-1.png" alt="product-img" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </div>
-                            <ol class="carousel-indicators product-carousel-indicators mt-2">
-                                <li data-target="#product-carousel" data-slide-to="0" class="active">
-                                    <img src="~/assets/admin/images/products/product-6.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
-                                </li>
-                                <li data-target="#product-carousel" data-slide-to="1">
-                                    <img src="~/assets/admin/images/products/product-8.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
-                                </li>
-                                <li data-target="#product-carousel" data-slide-to="2">
-                                    <img src="~/assets/admin/images/products/product-1.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
+                  <div class="col-xl-8">
+
+                  <b-card no-body class="product-details-photo-tab">
+                    <h4 class="content-title">{{title}}</h4>
+                    <b-tabs end>
+                      <b-tab v-for="(photo, index) in photos" :key="index">
+                        <div><b-card-img bottom :src="photo.photo"></b-card-img></div>
+                        <template v-slot:title>
+                          <b-card-img bottom :src="photo.photo"></b-card-img>
+                        </template>
+                      </b-tab>
+                    </b-tabs>
+                  </b-card>
+
+                  </div>
                 </div>
             </div>
 
@@ -77,8 +60,8 @@
                             new common simple and regular than existing
                         </p>
 
-                        <div class="mt-3">
-                            <h5 class="font-size-14">Specification :</h5>
+                        <div class="mt-3 mb-2">
+                            <h5 class="font-size-14 mb-2">Specification :</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <ul class="list-unstyled product-desc-list">
@@ -220,6 +203,9 @@
         </div>
       </div>
     </section>
+    <!-- Related Product Slider Area -->
+    <RelatedProductSlider />
+
     <Footer1 />
   </div>
 </template>
@@ -231,7 +217,22 @@ export default {
   data() {
     return {
       ratingValue: 4, 
-      isLogin: false
+      isLogin: true,
+
+      photos: [
+        {
+          photo: 'https://cdn.pixabay.com/photo/2016/08/01/17/08/tomatoes-1561565_960_720.jpg'
+        },
+        {
+          photo: 'https://cdn.pixabay.com/photo/2016/03/26/16/44/tomatoes-1280859_960_720.jpg'
+        },
+        {
+          photo: 'https://cdn.pixabay.com/photo/2018/07/06/08/49/tomato-3520004_960_720.jpg'
+        },
+        {
+          photo: 'https://cdn.pixabay.com/photo/2014/12/20/14/03/vegetables-573961_960_720.jpg'
+        }
+      ]
     }
   },
   methods: {

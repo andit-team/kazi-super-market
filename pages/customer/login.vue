@@ -43,7 +43,7 @@ export default {
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-        alert(JSON.stringify(this.form))
+        alert('Login Success')
       },
       onReset(evt) {
         evt.preventDefault()
