@@ -28,6 +28,14 @@
 
 }
 
+/*--------Min 1600px Width Screen---------*/
+@media only screen and (min-width: 1600px) {
+  .dashboard-home-page .container-fluid {
+    padding: 0 120px;
+  }
+  
+}
+
 /*--------Max 1366px Width Screen---------*/
 @media(max-width: 1367px) {
   h2 {

@@ -327,7 +327,7 @@ export default {
 
                             <template #cell(actions)="row">
                                 <div class="d-flex">
-                                    <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning"><i class="fe-trash-2"></i></button>
+                                    <button @click="confirmToDelete(row.item)" </button>
                                     <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info"><i class="fe-edit"></i></button>
                                     </div>
                             </template>
