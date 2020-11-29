@@ -1,5 +1,5 @@
 <template>
-<div class="card border-0 different-bg p-3">
+<div class="card border-0 bg-darker p-3">
     <div class="card-body">
         <b-dropdown class="float-right" variant="black" toggle-class="arrow-none card-drop" right>
             <template v-slot:button-content>

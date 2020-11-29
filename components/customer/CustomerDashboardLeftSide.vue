@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-left-bar different-bg rounded pt-4 sticky">
+  <div class="dashboard-left-bar bg-darker rounded pt-4 sticky">
     <!-- Account User Photo -->
     <div class="user-profile-photo-wrap mb-3 rounded-0 border-right-0 border-left-0 border-top-0 border-bottom border-light bg-transparent text-center">
       
@@ -18,9 +18,9 @@
     <div class="dashboard-menu-wrap pb-4 mb-4">
       <ul class="dashboard-left-menu-list">
         <li><nuxt-link to="/customer/dashboard/">Dashboard</nuxt-link></li>
-        <li><nuxt-link to="/customer/dashboard/order">Order history</nuxt-link></li>
+        <li><nuxt-link to="/customer/dashboard/invoice">Order history</nuxt-link></li>
         <li><nuxt-link to="/customer/dashboard/shipping">Shipping address</nuxt-link></li>
-        <li><nuxt-link to="/customer/dashboard/">Billing address</nuxt-link></li>
+        <li><nuxt-link to="/customer/dashboard/billing">Billing address</nuxt-link></li>
         <li><nuxt-link to="/customer/dashboard/transaction">Transactions</nuxt-link></li>
         <li><nuxt-link to="/customer/dashboard/profile">Profile</nuxt-link></li>
         <li><nuxt-link to="/">Logout</nuxt-link></li>

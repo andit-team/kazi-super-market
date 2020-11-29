@@ -16,7 +16,6 @@
         <!-- Area End -->
       </div>
     </section>
-    <Footer1 />
   </div>
 </template>
 

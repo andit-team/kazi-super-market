@@ -1,8 +1,8 @@
 <template>
-  <div class="login-register-content-wrap profile-update-page different-bg section-t-space section-b-space">
+  <div class="login-register-content-wrap profile-update-page bg-darker section-t-space section-b-space">
 
     <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
+      <div class="col-12 col-md-10 col-lg-10">
 
         <h3>Update Profile</h3>
 
@@ -58,3 +58,15 @@ export default {
 
 }
 </script>
+<style lang="scss" scoped>
+.login-register-content-wrap.profile-update-page {
+  form {
+    box-shadow: none;
+    background-color: #fff;
+      
+    .form-control {
+      margin-bottom: 15px;
+    }
+  }
+}
+</style>

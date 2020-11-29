@@ -27,11 +27,21 @@
                       </div>
                       <!-- Table -->
                       <div class="table-responsive mb-0">
-                          <b-table :items="tableData" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered"></b-table>
+                          <b-table :items="tableData" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
+     
+                            <template v-slot:cell(invoice_no)="data">
+                              <nuxt-link to='/customer/dashboard/invoice/1' class="color-light-green">{{ data.item.invoice_no }}</nuxt-link>
+                            </template>
+
+                            <template v-slot:cell(payment_status)="data">
+                              <span class="badge" :class="{'badge-soft-success': data.item.payment_status === 'Done', 'badge-soft-danger': data.item.payment_status === 'Cancel'}"> {{ data.item.payment_status }}</span>
+                            </template>
+
+                          </b-table>
                       </div>
                       <div class="row">
-                          <div class="col">
-                                <div class="dataTables_paginate paging_simple_numbers float-right">
+                          <div class="col-12">
+                              <div class="dataTables_paginate paging_simple_numbers float-right">
                                   <ul class="pagination pagination-rounded mb-0 d-flex">
                                       <!-- pagination -->
                                       <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" class="d-flex"></b-pagination>
@@ -57,7 +67,7 @@ export default {
   layout: 'customer-dashboard',
   head() {
       return {
-          title: 'Transactions - Kazissupermarket'
+          title: 'Invoice list - Kazissupermarket'
       }
   },
     data() {
@@ -74,29 +84,25 @@ export default {
             sortBy: 'age',
             sortDesc: false,
             fields: [{
-                    key: 'order_id',
+                    key: 'serial_no',
                     sortable: true
                 },
                 {
-                    key: 'date',
+                    key: 'invoice_no',
                     sortable: true
                 },
                 {
-                    key: 'trans_id',
+                    key: 'products',
                     sortable: true
                 },
                 {
-                    key: 'paid_amount',
+                    key: 'total',
                     sortable: true
                 },
                 {
-                    key: 'order_amount',
+                    key: 'payment_status',
                     sortable: true
-                },
-                {
-                    key: 'order_invoice',
-                    sortable: true
-                },
+                }
             ],
         }
     },
