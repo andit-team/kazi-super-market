@@ -1,7 +1,10 @@
 <script>
+import { mapGetters,mapActions } from 'vuex';
+import { helper } from '../../../helpers/helper'
+
 import {
     products
-} from "../data-products";
+} from "../products/data-products";
 
 /**
  * Product-detail component
@@ -12,16 +15,16 @@ export default {
             title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
-    asyncData({
-        params
-    }) {
-        const productDetail = products.find(
-            (user) => String(user.id) === params.id
-        );
-        return {
-            productDetail,
-        };
-    },
+    // asyncData({
+    //     params
+    // }) {
+    //     const productDetail = products.find(
+    //         (user) => String(user.id) === params.id
+    //     );
+    //     return {
+    //         productDetail,
+    //     };
+    // },
     data() {
         return {
             title: "Product Detail",
@@ -38,8 +41,17 @@ export default {
             ],
         };
     },
-    middleware: "router-auth",
+
+    computed: {
+        ...mapGetters({singleData : 'product/singleProduct'}),
+    },
+    created(){
+        this.FatchProduct();
+    },
     methods: {
+        ...mapActions({
+                FatchProduct : 'product/fatchProduct',
+            }),
         /**
          * Change the product
          */
@@ -47,6 +59,8 @@ export default {
             document.getElementById("myImage").src = data.target.src
         },
     },
+
+    middleware: "router-auth",
 };
 </script>
 
@@ -97,6 +111,9 @@ export default {
 
                         <div class="col-lg-7">
                             <div>
+
+    <div> {{singleData.name}}</div>
+
                                 <div>
                                     <a href="#" class="text-primary">T-shirts</a>
                                 </div>
@@ -128,7 +145,7 @@ export default {
                                 <hr />
 
                                 <div>
-                                    <p>
+                                    <p> {{singleData.name}}
                                         If several languages coalesce, the grammar of the resulting
                                         language is more simple and regular than that of the individual
                                         new common simple and regular than existing
