@@ -81,7 +81,7 @@ export default {
             dropzoneOptions: {
                 url: "https://httpbin.org/post",
                 maxFiles: 5,
-                maxFilesize: 0.5,
+                maxFilesize: 5,
                 // headers: {
                 //     "My-Awesome-Header": "header value",
                 // },
@@ -438,7 +438,7 @@ export default {
                             </div>                            
                         </tab-content>
 
-                        <tab-content title="Meta Data" :before-change="loaging">
+                        <tab-content title="Meta Data">
                             <h4 class="header-title">Meta Data</h4>
                             <p class="sub-header">Fill all information below</p>
 

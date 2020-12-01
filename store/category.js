@@ -39,7 +39,7 @@ const actions = {
 
         var UploadData = '';
         if(payload.thumbnail){
-            UploadData = await helper.fileupload(payload.thumbnail);
+            UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
 
         const data = {
@@ -62,7 +62,7 @@ const actions = {
 
         var UploadData = '';
         if(payload.thumbnail){
-            UploadData = await helper.fileupload(payload.thumbnail);
+            UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
         
         const response = await axios.post(process.env.API_URL+'/admin/category-update/',{

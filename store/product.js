@@ -31,7 +31,7 @@ const actions = {
     async create({dispatch},payload){
         var main_thumbnail = '';
         if(payload.thumbnail){
-            main_thumbnail = await helper.fileupload(payload.thumbnail);
+            main_thumbnail = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
 
         var all_images = [];
@@ -77,7 +77,7 @@ const actions = {
 
         var UploadData = '';
         if(payload.thumbnail){
-            UploadData = await helper.fileupload(payload.thumbnail);
+            UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
         
         const response = await axios.post(process.env.API_URL+'/admin/category-update/',{

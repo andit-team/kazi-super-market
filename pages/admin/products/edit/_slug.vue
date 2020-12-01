@@ -36,7 +36,7 @@ export default {
     },
     data() {
         return {
-            title: "Create Product",
+            title: "Update Product",
             err : {
                 name : false,
                 price : false,
@@ -56,7 +56,7 @@ export default {
                 unit : '',
                 tags : '',
                 parent_category : '',
-                sub_category  : '',
+                category  : '',
                 description : '',
                 summary   : '',
                 comments  : '',
@@ -81,10 +81,9 @@ export default {
             dropzoneOptions: {
                 url: "https://httpbin.org/post",
                 maxFiles: 5,
-                maxFilesize: 0.5,
-                // headers: {
-                //     "My-Awesome-Header": "header value",
-                // },
+                maxFilesize: 5,
+                thumbnailHeight:40,
+                thumbnailWidth:40,
                 previewTemplate: this.template(),
             },
             
@@ -103,7 +102,6 @@ export default {
                     })
                 })
             }
-            console.log(data)
             return data
         },
         units(){
@@ -131,10 +129,19 @@ export default {
         this.parentCat();
         this.FatchUnits();
         this.FatchTags();
-        this.product = await this.FatchProduct(this.$route.params.slug);
+        
         console.log(this.product)
         
+        // this.product.images.map(img => {
+        //     var file = { size: img.size, name: img.title, type: img.type };
+        //     var url = img.url;
+        //     this.$refs.myVueDropzone.manuallyAddFile(file, url);
+        // });
     },
+    // async mounted(){
+    //     console.log('sdf');
+    //     console.log(this.product);
+    // },
     methods: {
         ...mapActions({
                 FatchProduct : 'product/fatchProduct',
@@ -154,7 +161,16 @@ export default {
             this.subcategories =  data;
         },
 
-        
+        async check(){
+            this.product = await this.FatchProduct(this.$route.params.slug);
+            this.instantSrc = this.product.thumbnail;
+            console.log(this.product);
+            this.product.images.map(img => {
+                var file = { size: img.size, name: img.title, type: img.type, img : img };
+                var url = img.url;
+                this.$refs.myVueDropzone.manuallyAddFile(file, url);
+            });
+        },
 //Dropzone start
         onFilePicked(event) {
             const files = event.target.files
@@ -185,6 +201,7 @@ export default {
             this.$refs.myVueDropzone.removeFile(file)
         },
         fileAdded( file ){
+            console.log(file);
             if(file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg"){}else{
                 Swal.fire({
                     icon: 'error',
@@ -237,24 +254,25 @@ export default {
             }
             return false;
         },
-
+        
         async onComplete(){
-            const product = await this.$store.dispatch('product/create',this.product);
-            // this.$nuxt.$loading.finish()
-            if(!product.error){
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: product.msg
-                }) 
-                this.$router.push({path: "/admin/products"});
-            }else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: product.msg
-                })  
-            }
+            // console.log(this.product);
+            await this.$store.dispatch('product/update',this.product);
+            // // this.$nuxt.$loading.finish()
+            // if(!product.error){
+            //     Swal.fire({
+            //         icon: 'success',
+            //         title: 'Success',
+            //         text: product.msg
+            //     }) 
+            //     this.$router.push({path: "/admin/products"});
+            // }else{
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Oops...',
+            //         text: product.msg
+            //     })  
+            // }
 
         },
         // loaging: function(){
@@ -290,7 +308,7 @@ export default {
                 })
                 return false
             }
-            this.product.images = this.$refs.myVueDropzone.getAcceptedFiles();
+            this.product.images = this.$refs.myVueDropzone.dropzone.files;
             return true
         }
     },
@@ -354,15 +372,15 @@ export default {
                                                 <!-- <option value="">Select Parent</option> @select="getSubCategory"-->
                                                 <multiselect :class="this.err.parent_category === true ? 'border border-danger' : ''" v-model="product.parent_category" :value="product.parent_category" :options="this.parents" label="name" @select="getSubCategory" ></multiselect>
 
-                                                <!-- <option v-for="parentCategory in this.parents.data" :key="parentCategory._id" :value="parentCategory._id">{{parentCategory.name}}</option> -->
-                                            </select>
+                                                <!-- <option v-for="parentCategory in this.parents" :key="parentCategory._id" :value="parentCategory._id">{{parentCategory.name}}</option> -->
+                                            <!-- </select> -->
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group mb-3">
                                             <label for="product-sub-category" :class="this.err.sub_category ? 'text-danger' : ''">Sub Category<span class="text-danger">*</span></label>
 
-                                            <multiselect :class="this.err.sub_category === true ? 'border border-danger' : ''" v-model="product.sub_category" placeholder="Please select a sub category" :options="this.subcategories" label="name" ></multiselect>
+                                            <multiselect :class="this.err.sub_category === true ? 'border border-danger' : ''" v-model="product.category" :value="product.category" placeholder="Please select a sub category" :options="this.subcategories" label="name" ></multiselect>
 
                                             <!-- <select class="form-control select2" id="product-sub-category" :class="this.err.sub_category ? 'border-danger' : ''" v-model="product.sub_category">
                                                 <option value="">Select sub category</option>
@@ -425,7 +443,7 @@ export default {
                                     <h4 class="header-title">Product Images</h4>
                                     <p class="sub-header">Upload product image</p>
 
-                                    <vue-dropzone id="dropzone" ref="myVueDropzone" :use-custom-slot="true" :options="dropzoneOptions"  
+                                    <vue-dropzone id="dropzone" ref="myVueDropzone" @vdropzone-mounted="check" :use-custom-slot="true" :options="dropzoneOptions"  
                                     @vdropzone-file-added="fileAdded"
                                     @vdropzone-max-files-exceeded="maxFileReached"
                                     >
@@ -449,17 +467,17 @@ export default {
                             <form>
                                 <div class="form-group mb-3">
                                     <label for="product-meta-title">Meta title</label>
-                                    <input type="text" class="form-control" v-model="product.meta_title" id="product-meta-title" placeholder="Enter title" />
+                                    <input type="text" class="form-control" v-model="product.metaTitle" id="product-meta-title" placeholder="Enter title" />
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="product-meta-keywords">Meta Keywords</label>
-                                    <input type="text" class="form-control" v-model="product.meta_keyword" id="product-meta-keywords" placeholder="Enter keywords" />
+                                    <input type="text" class="form-control" v-model="product.metaKeywords" id="product-meta-keywords" placeholder="Enter keywords" />
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="product-meta-description">Meta Description</label>
-                                    <textarea class="form-control" rows="5" v-model="product.meta_description" id="product-meta-description" placeholder="Please enter description"></textarea>
+                                    <textarea class="form-control" rows="5" v-model="product.metaDescription" id="product-meta-description" placeholder="Please enter description"></textarea>
                                 </div>
 
                                 <div class="form-group mb-3">

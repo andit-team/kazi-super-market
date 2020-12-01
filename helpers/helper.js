@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from "sweetalert2";
 
-async function fileupload(file){
+async function fileupload(file,thumb=null){
     if(typeof file === 'object' && file !== null){
         const data = new FormData()
         data.append('image', file)
@@ -17,12 +17,27 @@ async function fileupload(file){
             return ''    
         })
 
+        // if (result.data.success) {
+        //     return result.data.data.display_url
+        // };
         if (result.data.success) {
-            return result.data.data.display_url
+            if(thumb){
+                return result.data.data.display_url;
+            }
+            var imgdata = {
+                'id'   : result.data.data.id,
+                'url'   : result.data.data.display_url,
+                'title'   : result.data.data.title,
+                'size'   : result.data.data.size,
+                'type'  : result.data.data.image.mime,
+                'delete_url'    : result.data.data.delete_url
+            }
+            console.log(imgdata);
+            return imgdata
         };
     }
     if(typeof file === 'string' && file !== null){
-        return file
+        return file.img
      }
     return ''
 }
