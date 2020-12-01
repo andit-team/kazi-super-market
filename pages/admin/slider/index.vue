@@ -85,7 +85,6 @@ export default {
             }
         }
     },
-    //  computed: mapGetters(['category/allCategories']),
     computed: {
         ...mapGetters({tableData : 'main_slider/getMainSliders'}),
         /**
@@ -196,6 +195,12 @@ export default {
             this.form.btn_link = item.btn_link,
             this.form.active = item.active,
             this.instantSrc = item.thumbnail
+        },
+
+        triggerActiveBtn(item){
+            console.log(item);
+            // this.form.id = item._id
+            // this.form.active = item.active
         },
 
         confirmToDelete(item) {
@@ -334,12 +339,12 @@ export default {
                     <div class="table-responsive mb-0">
                         <b-table :items="tableData.data" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
-                            <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
+                            <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50"/></template>
 
                             <template #cell(active)>
                                 <div>
-                                    <b-form-checkbox v-model="form.active" name="check-button" switch>
-                                    </b-form-checkbox>
+                                    <!-- <b-form-checkbox @click="triggerActiveBtn(row.item)" v-model="form.active" name="check-button" switch> -->
+                                    <b-form-checkbox @change="triggerActiveBtn('asdf')" true name="check-button" switch></b-form-checkbox>
                                 </div>
                             </template>
                             <template #cell(actions)="row">

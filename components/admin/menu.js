@@ -87,9 +87,6 @@ export const menuItems = [
         icon: "fe-anchor",
         link: '/admin/products/units'
     },
-
-    
-
     
     {
         id: 8,
@@ -720,4 +717,3 @@ export const menuItems = [
     //     ]
     // }
 ];
-
