@@ -28,7 +28,8 @@
                       <div>
                         <h1>{{ sliderItem.slider_title }}</h1>
                         <h4>{{ sliderItem.slider_subtitle }}</h4>
-                        <nuxt-link :to="{ path: '/collection/leftsidebar/all'}" class="btn theme-button mt-20">Read More</nuxt-link>
+                        <nuxt-link :to="sliderItem.btn_link" class="btn theme-button mt-20">Read More</nuxt-link>
+                        <!-- <nuxt-link :to="{ path: '/collection/leftsidebar/all'}" class="btn theme-button mt-20">Read More</nuxt-link> -->
                       </div>
                     </div>
                   </div>
