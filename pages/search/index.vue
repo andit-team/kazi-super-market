@@ -78,7 +78,6 @@
         </div>
       </div>
     </section>
-    <Footer1 />
   </div>
 </template>
 

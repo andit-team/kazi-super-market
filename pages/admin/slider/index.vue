@@ -1,53 +1,47 @@
 <script>
-import {
-    required
-} from 'vuelidate/lib/validators'
+import {required} from 'vuelidate/lib/validators'
 import Swal from "sweetalert2";
 import { helper } from '../../../helpers/helper'
 /**
  * Form Validation component
  */
-import { mapGetters,mapActions } from 'vuex'
+import { mapGetters,mapActions, mapState } from 'vuex'
 import axios from 'axios'
 export default {
     head() {
         return {
-            title: `${this.title} | KazisSuperMarket - Parent Category Management`,
+            title: `${this.title} | KazisSuperMarket - Slider`,
         };
     },
     data() {
         return {
-            title: 'Parent Categories',
+            title: 'Slider',
             items: [{
                     text: 'Home',
                     href: '/',
                 },
                 {
-                    text: 'Categories',
-                    href: '/',
-                },
-                {
-                    text: 'Parent',
+                    text: 'Slider',
                     active: true,
-                },
+                }
             ],
 
             form: {
                 id: '',
-                parent: '',
-                category_name: '',
-                description: '',
-                thumbnail: ''
+                slider_title: '',
+                slider_subtitle: '',
+                thumbnail: '',
+                btn_link: '',
+                active: true,
             },
             instantSrc: '',
             submitted: false,
             submit: false,
             value: null,
-
             totalRows: 1,
             currentPage: 1,
             perPage: 10,
-            pageOptions: [10, 25, 50, 100],
+            pageOptions: [5, 10, 20, 100],
             filter: null,
             filterOn: [],
             sortBy: 'age',
@@ -58,12 +52,20 @@ export default {
                     sortable: true
                 },
                 {
-                    key: 'name',
+                    key: 'slider_title',
                     sortable: true
                 },
                 {
-                    key: 'description',
+                    key: 'slider_subtitle',
                     sortable: true
+                },
+                {
+                    key: 'btn_link',
+                    sortable: false
+                },
+                {
+                    key: 'active',
+                    sortable: false
                 },
                 {
                     key: 'Actions',
@@ -75,29 +77,26 @@ export default {
     },
     validations: {
         form: {
-            // parent: {
-            //     required
-            // },
-            category_name: {
+            slider_title: {
                 required
             },
-            // description: {
-            //     required
-            // },
-            // thumbnail: {
-            //     required
-            // },
+            slider_subtitle: {
+                required
+            }
         }
     },
     //  computed: mapGetters(['category/allCategories']),
     computed: {
-        ...mapGetters({tableData : 'category/allCategories'}),
+        ...mapGetters({tableData : 'main_slider/getMainSliders'}),
         /**
          * Total no. of records
          */
+        tableData(){
+            return this.$store.state.main_slider.mainSliders
+        },
         rows() {
             return this.tableData.data.length
-        },
+        }
     },
     mounted() {
         // Set the initial number of items
@@ -105,14 +104,11 @@ export default {
     },
     methods: {
         ...mapActions({
-                cat : 'category/getCategories',
-                newCat : 'category/createCategory',
-                removeCategory:'category/removeCategory'
+                mainSliders : 'main_slider/getMainSliders',
+                newSlider : 'main_slider/createSlider',
+                removeSlider:'main_slider/removeSlider'
             }),
 
-        // setFile(event){
-        //     this.form.thumbnail = event.target.files[0];
-        // },
        async onFilePicked(event) {
             const files = event.target.files
             
@@ -139,25 +135,25 @@ export default {
         /**
          * Basic Form submit
          */
-        SaveParentCategory(e) {
-            this.$nuxt.$loading.start()
+        SaveMainSlider(e) {
            this.submitted = true
             this.$v.$touch()
             if (this.$v.$invalid) {
                 console.log('error submit');
+                console.log(this.form);
             } else {
                 this.submit = true
-                this.newCat(this.form).then(res => {
+                this.newSlider(this.form).then(res => {
                     // console.log(res);
-                    this.$nuxt.$loading.finish()
                     if(res.error === false){
                         helper.SuccessMsg(res.msg);
                         this.form = {
                             id: '',
-                            parent: '',
-                            category_name: '',
-                            description: '',
-                            thumbnail: ''
+                            slider_title: '',
+                            slider_subtitle: '',
+                            thumbnail: '',
+                            'btn_link' : '',
+                            'active' : true
                         }
                         document.getElementById("thumbnail").value = "";
                         this.instantSrc = null
@@ -171,17 +167,15 @@ export default {
             }
         },
 
-        textSorten(str,len){
-            return helper.textSort(str,len);
-        },
             
         BackFromEdit(){
-            this.form ={
+            this.form = {
                 id: '',
-                parent: '',
-                category_name: '',
-                description: '',
-                thumbnail: ''
+                slider_title: '',
+                slider_subtitle: '',
+                thumbnail: '',
+                'btn_link' : '',
+                'active' :true
             },
             this.instantSrc = ''
         },
@@ -195,10 +189,13 @@ export default {
         },
 
         OnEdit(item){
+            console.log(item);
             this.form.id = item._id
-            this.form.category_name = item.name
-            this.form.description = item.description
-            this.form.thumbnail = item.thumbnail
+            this.form.slider_title = item.slider_title
+            this.form.slider_subtitle = item.slider_subtitle
+            this.form.thumbnail = item.thumbnail,
+            this.form.btn_link = item.btn_link,
+            this.form.active = item.active,
             this.instantSrc = item.thumbnail
         },
 
@@ -212,7 +209,7 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.value) {
-                    this.removeCategory(item).then(res => {
+                    this.removeSlider(item).then(res => {
                         if(res.error === false){
                             helper.SuccessMsg(res.msg);
                         }else{
@@ -229,7 +226,8 @@ export default {
     },
 
     created(){
-        this.cat();
+        this.newSlider();
+        this.mainSliders();
     },
     directives: {
         focus: {
@@ -255,22 +253,33 @@ export default {
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title m-t-0">Add Category as Parent</h4>
+                    <h4 class="header-title m-t-0">Add Slider</h4>
 
-                    <form @submit.prevent="SaveParentCategory" id="parentCategoryForm">
+                    <form @submit.prevent="SaveMainSlider" id="mainSliderForm">
                         <div class="form-group">
-                            <label for="category_name">Category Name<span class="text-danger">*</span></label>
-                            <input id="category_name" v-model="form.category_name" v-focus name="category_name" class="form-control" :class="{ 'is-invalid': submitted && $v.form.category_name.$error }" type="text" placeholder="Enter Category name" />
-                            <div v-if="submitted && !$v.form.category_name.required" class="invalid-feedback">This value is required.</div> 
+                            <label for="slider_title">Slider Title<span class="text-danger">*</span></label>
+                            <input id="slider_title" v-model="form.slider_title" v-focus name="slider_title" class="form-control" :class="{ 'is-invalid': submitted && $v.form.slider_title.$error }" type="text" placeholder="Enter Slider title" />
+                            <div v-if="submitted && !$v.form.slider_title.required" class="invalid-feedback">This value is required.</div> 
+                        </div>
+                        <div class="form-group">
+                            <label for="slider_subtitle">Slider Sub-title<span class="text-danger">*</span></label>
+                            <input id="slider_subtitle" v-model="form.slider_subtitle" v-focus name="slider_subtitle" class="form-control" :class="{ 'is-invalid': submitted && $v.form.slider_subtitle.$error }" type="text" placeholder="Enter Slider sub-title" />
+                            <div v-if="submitted && !$v.form.slider_subtitle.required" class="invalid-feedback">This value is required.</div> 
+                        </div>
+                        <div class="form-group">
+                            <label for="btn_link">Slider Button Link<span class="text-danger">*</span></label>
+                            <input id="btn_link" v-model="form.btn_link" v-focus name="btn_link" class="form-control" type="text" placeholder="Enter Slider button link" />
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <b-form-checkbox v-model="form.active" name="check-button" switch>
+                                Slider Active/Inactive <b> {{ form.active }}</b>
+                                </b-form-checkbox>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" v-model="form.description" class="form-control" rows="5" placeholder="Write about this category"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="thumbnail"><i class="fa fa-picture-o"></i> Click to Upload Thumbnail</label>
+                            <label for="thumbnail"><i class="fa fa-picture-o"></i>  Click to Upload Thumbnail</label>
                             <div class="btn btn-default btn-file">
                                 <input id="thumbnail" name="thumbnail" class="form-control img1"  type="file" @change="onFilePicked"/>
                             </div>
@@ -295,7 +304,7 @@ export default {
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">List of Parent Categories</h4>
+                    <h4 class="header-title">Sliders List</h4>
                     <p class="text-muted font-13 mb-4"></p>
                     <div class="row mb-md-2">
                         <div class="col-sm-12 col-md-6">
@@ -321,13 +330,10 @@ export default {
                     <div class="table-responsive mb-0">
                         <b-table :items="tableData.data" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
-                            <template #cell(thumbnail)="data"><img :src="data.value" height="50" width="50" /></template>
-
-                            <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
-
+                            <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
                             <template #cell(actions)="row">
                                 <div class="d-flex">
-                                    <button @click="confirmToDelete(row.item)" </button>
+                                    <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning"><i class="fe-trash-2"></i></button>
                                     <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info"><i class="fe-edit"></i></button>
                                     </div>
                             </template>

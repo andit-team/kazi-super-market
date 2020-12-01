@@ -108,6 +108,7 @@ a, #mainNav, .theme-button, .category-box{
   height: 47px;
   color: #777c87;
   border: 1px solid #B9C1C9;
+  // margin-bottom: 15px;
 }
 .form-control:focus {
   background-color: #fff;
@@ -128,7 +129,7 @@ label {
 }
 
 /*------------------------------------------
-            2.  Typography
+  2.  Typography
 -------------------------------------------*/
 h1,
 h2,
@@ -188,6 +189,9 @@ figure {
 }
 .bg-light-green{
   background-color: var(--light-green);
+}
+.bg-darker {
+  background-color: $darker-bg;
 }
 /*--------------------------------
     2.3 Theme Font Style
@@ -294,11 +298,12 @@ section{
 	justify-content: center;
 }
 .pagination .page-item.active .page-link{
-  background-color: var(--heading-color);
-  border-color: var(--heading-color);
+  background-color: transparent;
+  // border-color: var(--heading-color);
+  color: var(--green-color);
 }
 .pagination .page-link{
-  color: var(--heading-color);
+  color: var(--light-green);
 }
 
 .link-text-hover-style, .footer-widget a:hover, .bottom-footer-left ul li a:hover, .bottom-footer-right ul li a:hover {
@@ -925,6 +930,10 @@ transition: all 0.3s ease;
 	width: 400px;
 	border-top-left-radius: 25px;
 	border-bottom-left-radius: 25px;
+  margin-bottom: 0;
+}
+.menu-section-area form.form-inline input.form-control:valid:focus {
+    box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.06) !important;
 }
 .input-group > .form-control:focus, .input-group > .custom-select:focus, .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
     z-index: 1;
@@ -1599,5 +1608,51 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
   }
 
 /*-------------------------------------------
-    21. Search page Area End
+  21. Search page Area End
+-------------------------------------------*/
+
+/*-------------------------------------------
+  22. Customer Dashboard Layout Area Start
+-------------------------------------------*/
+
+// Customer Dashboard Left Side
+.user-photo-wrap {
+	background-color: gray;
+	height: 100px;
+	width: 100px;
+}
+.customer-info-box.theme-button {
+	width: 95px;
+	font-size: 12px;
+	padding: 5px;
+	max-width: 100%;
+	height: 36px;
+}
+.customer-info-box .form-control-file {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+.dashboard-left-menu-list li a {
+	padding: 12px 30px;
+	display: block;
+  color: #000;
+}
+.dashboard-left-menu-list li a.nuxt-link-exact-active.nuxt-link-active {
+  color: var(--green-color)
+}
+
+// Dashboard Right Side
+
+// Profile update
+// .custom-file-label, .custom-file-input, .custom-file, .custom-file-label::after {
+// 	height: 47px;
+// 	// display: flex;
+// 	// align-items: center;
+// }
+// .custom-file-label::after
+/*-------------------------------------------
+  22. Customer Dashboard Layout Area End
 -------------------------------------------*/

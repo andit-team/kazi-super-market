@@ -205,8 +205,6 @@
     </section>
     <!-- Related Product Slider Area -->
     <RelatedProductSlider />
-
-    <Footer1 />
   </div>
 </template>
 

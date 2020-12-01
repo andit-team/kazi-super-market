@@ -69,6 +69,13 @@ export const menuItems = [
     },
 
     {
+        id: 27,
+        label: "Slider",
+        icon: "fe-tag",
+        link: '/admin/slider'
+    },
+
+    {
         id: 25,
         label: "Tags",
         icon: "fe-tag",

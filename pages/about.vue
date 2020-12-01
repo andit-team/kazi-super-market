@@ -214,8 +214,6 @@
     </section>
 
     <LogoSlider />
-
-    <Footer1 />
   </div>
 </template>
 

@@ -20,8 +20,8 @@
                   >
                     <div class="slider-contain">
                       <div>
-                        <h1>{{ item.subtitle }}</h1>
-                        <h4>{{ item.title }}</h4>
+                        <h1>{{ item.title }}</h1>
+                        <h4>{{ item.subtitle }}</h4>
                         <nuxt-link :to="{ path: '/collection/leftsidebar/all'}" class="btn theme-button mt-20">Read More</nuxt-link>
                       </div>
                     </div>
@@ -53,20 +53,20 @@ export default {
       items: [
         {
           imagepath: require('@/assets/images/banner-img/1.jpg'),
-          title: 'Fresh organic Tomatoes',
-          subtitle: 'Spring Sale 50% Off',
+          subtitle: 'Fresh organic Tomatoes',
+          title: 'Spring Sale 50% Off',
           alignclass: 'p-left'
         },
         {
           imagepath: require('@/assets/images/banner-img/2.jpg'),
-          title: 'Exclusive offer-20% off this week',
-          subtitle: 'Double BBQ Bacon Cheese 2019',
+          subtitle: 'Exclusive offer-20% off this week',
+          title: 'Double BBQ Bacon Cheese 2019',
           alignclass: 'p-left'
         },
         {
           imagepath: require('@/assets/images/banner-img/3.jpg'),
-          title: 'Fresh organic Tomatoes',
-          subtitle: 'Spring Sale 50% Off',
+          subtitle: 'Fresh organic Tomatoes',
+          title: 'Spring Sale 50% Off',
           alignclass: 'p-left'
         }
       ]

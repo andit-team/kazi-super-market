@@ -9,6 +9,8 @@
       </div>
     </div>
     <CartSidebar />
+        
+    <Footer1 />
   </div>
 </template>
 

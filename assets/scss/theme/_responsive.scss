@@ -28,6 +28,14 @@
 
 }
 
+/*--------Min 1600px Width Screen---------*/
+@media only screen and (min-width: 1600px) {
+  .dashboard-home-page .container-fluid {
+    padding: 0 120px;
+  }
+  
+}
+
 /*--------Max 1366px Width Screen---------*/
 @media(max-width: 1367px) {
   h2 {
@@ -154,53 +162,71 @@
 /*======================================
         Tablet layout
 =========================================*/
-  @media only screen and (max-width: 991px) {
-    p {
-        font-size: 14px;
-    }
-    h2 {
-      font-size: 28px;
-    }
-    section ,.section-t-space{
-      padding-top: 50px;
-    }
-    .section-b-space {
-      padding-bottom: 50px;
-    }
-
-    /*Menu CSS*/
-    #mainNav .navbar-brand img {
-      height: 45px;
-    }
-    #mainNav {
-	    padding: 0;
-    }
-    .desktop-logo, .middle-nav-wrap{
-      display: none;
-    }
-    .mobile-logo{
-      display: block;
-    }
-    #mainNav .navbar-brand {
-      margin: 0 20px 0 30px!important;
-    }
-    .cart-small-view {
-	    margin-right: 0;
-    }
-    .contact-address-wrap {
-      margin-bottom: 30px;
-    }
-
+@media only screen and (max-width: 991px) {
+  p {
+    font-size: 14px;
   }
-  @media only screen and (min-width: 991px) {
-
+  h2 {
+    font-size: 28px;
+  }
+  section ,.section-t-space{
+    padding-top: 50px;
+  }
+  .section-b-space {
+    padding-bottom: 50px;
   }
 
-  @media only screen and (min-width: 768px) and (max-width: 991px){
-    .menu-section-area form.form-inline input {
-        width: 450px !important;
-    }
+  /*Menu CSS*/
+  #mainNav .navbar-brand img {
+    height: 45px;
   }
+  #mainNav {
+    padding: 0;
+  }
+  .desktop-logo, .middle-nav-wrap{
+    display: none;
+  }
+  .mobile-logo{
+    display: block;
+  }
+  #mainNav .navbar-brand {
+    margin: 0 20px 0 30px!important;
+  }
+  .cart-small-view {
+    margin-right: 0;
+  }
+  .contact-address-wrap {
+    margin-bottom: 30px;
+  }
+
+  // Customer Dashboard CSS
+  .dashboard-menu-wrap {
+    overflow-x: scroll;
+    padding-bottom: 20px !important;
+  }
+  .dashboard-left-menu-list {
+    min-width: 1200px;
+    width: 100%;
+  }
+  .dashboard-left-menu-list li {
+    display: inline-block;
+  }
+  .dashboard-left-menu-list li a {
+    padding: 5px 12px;
+    display: block;
+  }
+
+
+}
+@media only screen and (min-width: 991px) {
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+  .menu-section-area form.form-inline input {
+    width: 450px !important;
+  }
+}
 
 @media only screen and (max-width: 768px) {
     /*Main Menu Bar*/
@@ -292,21 +318,32 @@
     margin-bottom: 20px;
   }
 
-    /* Style started from here */
-    .home-deals-product-area .section-title p {
-      margin-bottom: 30px!important;
-    }
-    .advartise-img-wrap {
-	    margin-bottom: 20px;
-    }
-    .subscribe-area p {
-	    margin: 15px 0;
-    }
-
+  /* Style started from here */
+  .home-deals-product-area .section-title p {
+    margin-bottom: 30px!important;
+  }
+  .advartise-img-wrap {
+    margin-bottom: 20px;
+  }
+  .subscribe-area p {
+    margin: 15px 0;
   }
 
+    // Customer Dashboard CSS
+  .customer-dashboard-right-content ul.top-list {
+    flex-direction: column;
+  }
+  .customer-dashboard-right-content ul.top-list li {
+    margin-bottom: 15px;
+  }
+  #tickets-table_length {
+    margin-bottom: 20px;
+  }
+
+}
+
   /*========================================
-            For large mobile
+    For large mobile
   =========================================*/
 
 @media only screen and (max-width: 766px){

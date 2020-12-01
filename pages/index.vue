@@ -7,7 +7,6 @@
     <ProductSlider />
     <BannerAdvartise />
     <ProductSlider2 />
-    <Footer1 />
   </div>
 </template>
 

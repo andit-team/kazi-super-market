@@ -20,7 +20,6 @@
         </div>
       </div>
     </section>
-    <Footer1 />
   </div>
 </template>
 
@@ -40,7 +39,8 @@ export default {
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-        alert('Form Submitted Successfully')
+        // alert('Form Submitted Successfully')
+        this.$router.push({path: "/customer/dashboard"});
       },
       onReset(evt) {
         evt.preventDefault()
