@@ -66,6 +66,49 @@ const actions = {
         return response.data
     },
 
+    async update({dispatch},payload){
+        // console.log('asdf');
+        console.log(payload);
+        var main_thumbnail = '';
+        if(payload.thumbnail){
+            main_thumbnail = await helper.fileupload(payload.thumbnail,'thumbnail');
+        }
+        console.log(main_thumbnail);
+
+        var all_images = [];
+        for (const element of payload.images) {
+            const uploadUrl = await helper.fileupload(element);
+            all_images.push(uploadUrl);
+        };
+
+        var tagsArr = [];
+        if(payload.tags){
+            payload.tags.map(ar => {
+                tagsArr.push(ar)    
+            })
+        }
+        const data = {
+            _id : payload._id,
+            name : payload.name,
+            price : payload.price,
+            parent_category : payload.parent_category._id,
+            sub_category  : payload.category._id,
+            unit  : payload.unit._id,
+            description : payload.description,
+            summary   : payload.summary,
+            comments  : payload.comments,
+            tags  : tagsArr,
+            discount  : payload.discount,
+            thumbnail : main_thumbnail,
+            images : all_images,
+            meta_title : payload.metaTitle,
+            meta_keyword : payload.metaKeywords,
+            meta_description : payload.metaDescription
+        }
+        const response = await axios.post(process.env.API_URL+'/product/update/',data);
+        return response.data 
+    },
+
     async fatchProduct({commit},slug){
         console.log(slug);
         const response = await axios.get(process.env.API_URL+'/product/'+slug);

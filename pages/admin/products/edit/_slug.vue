@@ -129,19 +129,7 @@ export default {
         this.parentCat();
         this.FatchUnits();
         this.FatchTags();
-        
-        console.log(this.product)
-        
-        // this.product.images.map(img => {
-        //     var file = { size: img.size, name: img.title, type: img.type };
-        //     var url = img.url;
-        //     this.$refs.myVueDropzone.manuallyAddFile(file, url);
-        // });
     },
-    // async mounted(){
-    //     console.log('sdf');
-    //     console.log(this.product);
-    // },
     methods: {
         ...mapActions({
                 FatchProduct : 'product/fatchProduct',
@@ -164,7 +152,6 @@ export default {
         async check(){
             this.product = await this.FatchProduct(this.$route.params.slug);
             this.instantSrc = this.product.thumbnail;
-            console.log(this.product);
             this.product.images.map(img => {
                 var file = { size: img.size, name: img.title, type: img.type, img : img };
                 var url = img.url;
@@ -201,7 +188,6 @@ export default {
             this.$refs.myVueDropzone.removeFile(file)
         },
         fileAdded( file ){
-            console.log(file);
             if(file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg"){}else{
                 Swal.fire({
                     icon: 'error',
@@ -257,22 +243,22 @@ export default {
         
         async onComplete(){
             // console.log(this.product);
-            await this.$store.dispatch('product/update',this.product);
+            const product = await this.$store.dispatch('product/update',this.product);
             // // this.$nuxt.$loading.finish()
-            // if(!product.error){
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Success',
-            //         text: product.msg
-            //     }) 
-            //     this.$router.push({path: "/admin/products"});
-            // }else{
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Oops...',
-            //         text: product.msg
-            //     })  
-            // }
+            if(!product.error){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: product.msg
+                }) 
+                this.$router.push({path: "/admin/products"});
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: product.msg
+                })  
+            }
 
         },
         // loaging: function(){
