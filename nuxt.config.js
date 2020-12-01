@@ -1,5 +1,9 @@
 export default {
-  loading: "~/components/admin/loading.vue",
+  // loading: "~/components/admin/loading.vue",
+  loading: {
+    color: '#e76732',
+    height: '5px'
+  },
   router: {
     extendRoutes(routes) {
       routes.push({

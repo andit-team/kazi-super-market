@@ -132,6 +132,12 @@ export default {
         this.FatchUnits();
         this.FatchTags();
     },
+    mounted() {
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
+    //   setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+    // })
+    },
     methods: {
         ...mapActions({
                 parentCat : 'category/getCategories',
@@ -235,9 +241,10 @@ export default {
         },
 
         async onComplete(){
+            this.$nuxt.$loading.start()
             const product = await this.$store.dispatch('product/create',this.product);
-            // this.$nuxt.$loading.finish()
             if(!product.error){
+                this.$nuxt.$loading.finish()
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',

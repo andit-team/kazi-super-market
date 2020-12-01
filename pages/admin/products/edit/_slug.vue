@@ -242,10 +242,10 @@ export default {
         },
         
         async onComplete(){
-            // console.log(this.product);
+            this.$nuxt.$loading.start()
             const product = await this.$store.dispatch('product/update',this.product);
-            // // this.$nuxt.$loading.finish()
             if(!product.error){
+                this.$nuxt.$loading.finish()
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',

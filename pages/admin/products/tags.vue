@@ -93,6 +93,10 @@ export default {
     },
     mounted() {
         this.totalRows = this.items.length
+    //     this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
+    //   setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+    // })
     },
     methods: {
         ...mapActions({
@@ -108,6 +112,7 @@ export default {
          * Basic Form submit
          */
         SaveTag(e) {
+            this.$nuxt.$loading.start()
            this.submitted = true
             this.$v.$touch()
             if (this.$v.$invalid) {
@@ -122,6 +127,7 @@ export default {
                             tag_name: '',
                             description: '',
                         }
+                        this.$nuxt.$loading.finish()
                     }else{
                         helper.WarningMsg(res.msg);
                     }
