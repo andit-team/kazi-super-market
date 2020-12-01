@@ -39,6 +39,3 @@ export default {
   props: ['categoryItem', 'index'],
 }
 </script>
-
-<style>
-</style>

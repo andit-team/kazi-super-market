@@ -167,7 +167,6 @@ export default {
             }
         },
 
-            
         BackFromEdit(){
             this.form = {
                 id: '',
@@ -270,23 +269,28 @@ export default {
                             <label for="btn_link">Slider Button Link<span class="text-danger">*</span></label>
                             <input id="btn_link" v-model="form.btn_link" v-focus name="btn_link" class="form-control" type="text" placeholder="Enter Slider button link" />
                         </div>
+
                         <div class="form-group">
                             <div>
                                 <b-form-checkbox v-model="form.active" name="check-button" switch>
-                                Slider Active/Inactive <b> {{ form.active }}</b>
+                                <b>Slider Active/Inactive</b>
                                 </b-form-checkbox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="thumbnail"><i class="fa fa-picture-o"></i>  Click to Upload Thumbnail</label>
-                            <div class="btn btn-default btn-file">
-                                <input id="thumbnail" name="thumbnail" class="form-control img1"  type="file" @change="onFilePicked"/>
+                            <label>Upload Slider Image</label>
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input form-control" name="thumbnail" id="thumbnail" @change="onFilePicked">
+                                    <label class="custom-file-label" for="thumbnail">Choose file</label>
+                                </div>
                             </div>
                             <div id="preview">
                                 <img v-if="instantSrc" class="img-fluid" :src="instantSrc" />
                             </div>
                         </div>
+
                         <div class="form-group text-right m-b-0">
                             <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Save</button>
                             <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-else>Update</button>
@@ -331,6 +335,13 @@ export default {
                         <b-table :items="tableData.data" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
                             <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
+
+                            <template #cell(active)>
+                                <div>
+                                    <b-form-checkbox v-model="form.active" name="check-button" switch>
+                                    </b-form-checkbox>
+                                </div>
+                            </template>
                             <template #cell(actions)="row">
                                 <div class="d-flex">
                                     <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning"><i class="fe-trash-2"></i></button>
