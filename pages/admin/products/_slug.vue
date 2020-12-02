@@ -5,7 +5,6 @@ import { helper } from '../../../helpers/helper'
 import {
     products
 } from "../products/data-products";
-import _slugVue from './edit/_slug.vue';
 
 /**
  * Product-detail component
