@@ -76,7 +76,7 @@ export default {
         document.getElementById("brand").innerHTML = this.brand;
         document.getElementById("regular").innerHTML = this.regular;
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

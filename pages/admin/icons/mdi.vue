@@ -71,7 +71,7 @@ export default {
             return typeof icon.deprecated == "undefined" ? false : icon.deprecated;
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

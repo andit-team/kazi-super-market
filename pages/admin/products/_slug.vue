@@ -25,6 +25,7 @@ export default {
     //         productDetail,
     //     };
     // },
+    middleware: "admin-auth",
     data() {
         return {
             title: "Product Detail",
@@ -59,8 +60,6 @@ export default {
             document.getElementById("myImage").src = data.target.src
         },
     },
-
-    middleware: "router-auth",
 };
 </script>
 

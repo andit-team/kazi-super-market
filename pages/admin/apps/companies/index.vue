@@ -85,7 +85,7 @@ export default {
             this.company = {};
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 };
 </script>
 

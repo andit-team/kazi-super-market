@@ -215,7 +215,7 @@ export default {
             this.$v.$touch()
         },
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

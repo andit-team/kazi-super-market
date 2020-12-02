@@ -69,7 +69,7 @@ export default {
         this.scatterplot.$emit('init', this.scatterplotChart)
         this.linechart.$emit('init', this.lineChart)
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

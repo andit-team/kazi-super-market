@@ -73,7 +73,7 @@ export default {
             ]
         };
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 };
 </script>
 

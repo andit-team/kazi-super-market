@@ -34,6 +34,7 @@ export default {
         vueDropzone: vue2Dropzone,
         ckeditor: CKEditor.component,
     },
+    middleware: 'admin-auth',
     data() {
         return {
             title: "Create Product",
@@ -297,7 +298,6 @@ export default {
             return true
         }
     },
-    middleware: "router-auth",
 };
 </script>
 <style scoped>

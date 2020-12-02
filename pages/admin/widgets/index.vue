@@ -87,7 +87,7 @@ export default {
             }, ]
         }, 1000)
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

@@ -40,7 +40,7 @@ export default {
             telephone: ""
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

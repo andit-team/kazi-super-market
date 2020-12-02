@@ -298,7 +298,7 @@ export default {
             return true
         }
     },
-    middleware: "router-auth",
+    middleware: "admin-auth",
 };
 </script>
 <style scoped>

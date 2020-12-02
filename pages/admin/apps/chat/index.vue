@@ -91,7 +91,7 @@ export default {
             this.form = {};
         },
     },
-    middleware: "router-auth",
+    middleware: "admin-auth",
 };
 </script>
 

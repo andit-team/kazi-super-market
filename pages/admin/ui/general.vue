@@ -27,7 +27,7 @@ export default {
             currentpage: 3,
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

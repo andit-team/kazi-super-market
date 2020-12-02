@@ -9,7 +9,7 @@ export default {
         }
     },
     layout: 'auth',
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 
