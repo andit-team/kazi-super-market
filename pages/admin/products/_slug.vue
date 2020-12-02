@@ -16,21 +16,7 @@ export default {
             title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
-<<<<<<< HEAD
-
-=======
-    // asyncData({
-    //     params
-    // }) {
-    //     const productDetail = products.find(
-    //         (user) => String(user.id) === params.id
-    //     );
-    //     return {
-    //         productDetail,
-    //     };
-    // },
     middleware: "admin-auth",
->>>>>>> 2a91b714edbd9501f8ba9d0638aa4a356f8e0cb7
     data() {
         return {
             title: "Product Detail",
@@ -50,11 +36,11 @@ export default {
     },
 
     computed: {
-        ...mapGetters({singleData : 'product/singleProduct'}),
+        // ...mapGetters({singleData : 'product/singleProduct'}),
         
-        singleData(){
-            return this.$store.state.product.FatchProduct;
-        },
+        // singleData(){
+        //     return this.$store.state.product.FatchProduct;
+        // },
     },
     async created(){
        this.product = await this.FatchProduct(this.$route.params.slug);
@@ -121,8 +107,8 @@ export default {
                         <div class="col-lg-7">
                             <div>
                                 <div>
-                                    <a href="#" class="text-primary">{{product.parent_category.name}} </a> ->
-                                    <a href="#" class="text-primary">{{product.category.name}} </a>
+                                    <!-- <nuxt-link to="#" class="text-primary">{{product.parent_category.name}} </nuxt-link> <i class="fas fa-angle-right"></i>
+                                    <nuxt-link to="#" class="text-primary">{{product.category.name}} </nuxt-link> -->
                                 </div>
                                 <h4 class="mb-1">
                                     {{product.name}}
@@ -140,22 +126,17 @@ export default {
                                 </p>
 
                                 <div class="mt-3">
-                                    <h6 class="text-danger text-uppercase">10 % Off</h6>
+                                    <h6 class="text-danger text-uppercase">{{product.discount}} % Off</h6>
                                     <h4>
                                         Price :
-                                        <span class="text-muted mr-2">
-                                            <del>$ 50</del>
-                                        </span>
-                                        <b>$ 45</b>
+                                        <b>$ {{product.price}}</b>
                                     </h4>
                                 </div>
                                 <hr />
 
                                 <div>
                                     <p> 
-                                        If several languages coalesce, the grammar of the resulting
-                                        language is more simple and regular than that of the individual
-                                        new common simple and regular than existing
+                                        {{product.description}}
                                     </p>
 
                                     <div class="mt-3">
@@ -165,65 +146,18 @@ export default {
                                                 <ul class="list-unstyled product-desc-list">
                                                     <li>
                                                         <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        Full Sleeve
+                                                        <!-- {{product.unit.name}} -->
                                                     </li>
                                                     <li>
                                                         <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        Cotton
+                                                        {{product.metaTitle}}
                                                     </li>
                                                     <li>
                                                         <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        All Sizes available
-                                                    </li>
-                                                    <li>
-                                                        <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        4 Different Color
+                                                        {{product.tags}}
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="col-md-6">
-                                                <ul class="list-unstyled product-desc-list">
-                                                    <li>
-                                                        <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        All Sizes available
-                                                    </li>
-                                                    <li>
-                                                        <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        4 Different Color
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <form class="form-inline mb-3">
-                                            <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                            <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                            </select>
-
-                                            <label class="my-1 mr-2" for="sizeinput">Size</label>
-                                            <select class="custom-select my-1 mr-sm-3" id="sizeinput">
-                                                <option selected>Small</option>
-                                                <option value="1">Medium</option>
-                                                <option value="2">Large</option>
-                                                <option value="3">X-large</option>
-                                            </select>
-                                        </form>
-
-                                        <div>
-                                            <button type="button" class="btn btn-success waves-effect waves-light">
-                                                <span class="btn-label">
-                                                    <i class="mdi mdi-cart"></i>
-                                                </span>Add to cart
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
