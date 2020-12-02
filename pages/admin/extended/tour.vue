@@ -68,7 +68,7 @@ export default {
     mounted: function () {
         this.$tours['myTour'].start()
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

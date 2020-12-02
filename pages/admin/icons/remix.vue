@@ -78,7 +78,7 @@ export default {
         });
         document.getElementById("icons").innerHTML = this.iconData;
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

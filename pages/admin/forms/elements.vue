@@ -31,7 +31,7 @@ export default {
             selected: 'A'
         };
     },
-    middleware: "router-auth",
+    middleware: "admin-auth",
 };
 </script>
 

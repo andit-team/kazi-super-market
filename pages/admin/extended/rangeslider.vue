@@ -105,7 +105,7 @@ export default {
             }, 100);
         },
     },
-    middleware: "router-auth",
+    middleware: "admin-auth",
 };
 </script>
 

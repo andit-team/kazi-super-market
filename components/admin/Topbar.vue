@@ -35,7 +35,7 @@ export default {
             //     this.$store.dispatch("authfack/logout");
             // }
             this.$router.push({
-                path: "admin/account/login",
+                path: "/admin/account/login",
             });
         },
     },

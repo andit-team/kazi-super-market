@@ -63,7 +63,7 @@ export default {
             this.visibleCaption = false;
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

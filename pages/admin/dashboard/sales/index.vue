@@ -8,7 +8,7 @@ export default {
             title: `Sales Dashboard | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
-    middleware: 'router-auth',
+    middleware: 'admin-auth',
     data() {
         return {
             title: "Welcome !",

@@ -99,7 +99,7 @@ export default {
             this.currentPage = 1;
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 };
 </script>
 

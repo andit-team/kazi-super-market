@@ -38,7 +38,7 @@ export default {
             ],
         };
     },
-    middleware: "router-auth",
+    middleware: "admin-auth",
     methods: {
         /**
          * Change the product

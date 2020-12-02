@@ -16,7 +16,21 @@ export default {
             title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
+<<<<<<< HEAD
 
+=======
+    // asyncData({
+    //     params
+    // }) {
+    //     const productDetail = products.find(
+    //         (user) => String(user.id) === params.id
+    //     );
+    //     return {
+    //         productDetail,
+    //     };
+    // },
+    middleware: "admin-auth",
+>>>>>>> 2a91b714edbd9501f8ba9d0638aa4a356f8e0cb7
     data() {
         return {
             title: "Product Detail",
@@ -56,8 +70,6 @@ export default {
             document.getElementById("myImage").src = data.target.src
         },
     },
-
-    middleware: "router-auth",
 };
 </script>
 

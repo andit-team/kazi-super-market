@@ -16,6 +16,7 @@ export default {
             title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
         };
     },
+    middleware: 'admin-auth',
     data() {
         return {
             // productData: productData,
@@ -125,7 +126,6 @@ export default {
         },
 
     },
-    middleware: 'router-auth',
 };
 </script>
 

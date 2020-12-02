@@ -29,7 +29,7 @@ export default {
             sliding: null,
         }
     },
-    middleware: 'router-auth'
+    middleware: 'admin-auth'
 }
 </script>
 

@@ -49,7 +49,7 @@ export default {
             return map[showText];
         },
     },
-    middleware: "router-auth",
+    middleware: "admin-auth",
 };
 </script>
 
