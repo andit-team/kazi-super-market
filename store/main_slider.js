@@ -26,7 +26,7 @@ const actions = {
 
         var UploadData = '';
         if(payload.thumbnail){
-            UploadData = await helper.fileupload(payload.thumbnail);
+            UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
 
         const data = {
@@ -45,12 +45,14 @@ const actions = {
 
         return response.data
     },
-
+    async statusUpdate({dispatch},payload){
+        await axios.post(process.env.API_URL+'/admin/slider/status',payload)
+    },
     async updateSlider({dispatch},payload){
 
         var UploadData = '';
         if(payload.thumbnail){
-            UploadData = await helper.fileupload(payload.thumbnail);
+            UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
         
         const response = await axios.post(process.env.API_URL+'/admin/slider/update',{

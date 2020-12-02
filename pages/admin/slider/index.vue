@@ -34,6 +34,11 @@ export default {
                 btn_link: '',
                 active: true,
             },
+            // status:[
+            //     {"sdf":false},
+            //     {"5fc61aad9d616a2534d53b76":false},
+            //     {"5fc61abc9d616a2534d53b77":true},
+            // ],
             instantSrc: '',
             submitted: false,
             submit: false,
@@ -106,6 +111,7 @@ export default {
         ...mapActions({
                 mainSliders : 'main_slider/getMainSliders',
                 newSlider : 'main_slider/createSlider',
+                updateStatus : 'main_slider/statusUpdate',
                 removeSlider:'main_slider/removeSlider'
             }),
 
@@ -222,6 +228,11 @@ export default {
                 }
             });
         },
+
+        statusUpdate(id, status){
+            this.updateStatus({"_id":id,"active":status});
+            // console.log(status);
+        }
     },
 
     created(){
@@ -336,10 +347,9 @@ export default {
                             <!-- A custom formatted column -->
                             <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
 
-                            <template #cell(active)>
+                            <template #cell(active)="row">
                                 <div>
-                                    <b-form-checkbox v-model="form.active" name="check-button" switch>
-                                    </b-form-checkbox>
+                                    <b-form-checkbox @change="statusUpdate(row.item._id, $event)" switch :checked="row.item.active"></b-form-checkbox> 
                                 </div>
                             </template>
                             <template #cell(actions)="row">
