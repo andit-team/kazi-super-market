@@ -24,6 +24,12 @@ const actions = {
             return data;
         }
 
+        // If Switch Active Button Update
+        if(payload.id) {
+            const data = dispatch('updateSwitchActiveBtn', payload);
+            return data;
+        }
+
         var UploadData = '';
         if(payload.thumbnail){
             UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
@@ -72,6 +78,20 @@ const actions = {
     async removeSlider({dispatch},payload){
         const response = await axios.post(process.env.API_URL+'/admin/slider/delete',{
             _id : payload._id
+        });
+        console.log(response);
+        if(response.data.error === false){
+            dispatch('getMainSliders');
+        }
+        return response.data
+    },
+
+    // Switch Status Active Update
+
+    async updateSwitchActiveBtn({dispatch},payload){
+        const response = await axios.post(process.env.API_URL+'/admin/slider/status',{
+            _id : payload._id,
+            active : payload.active
         });
         console.log(response);
         if(response.data.error === false){

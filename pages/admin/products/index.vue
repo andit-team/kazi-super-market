@@ -120,7 +120,6 @@ export default {
                         helper.WarningMsg(err.msg);
                     });
 
-
                 }
             });
         },
@@ -142,11 +141,6 @@ export default {
 
                             <nuxt-link to="/admin/products/product-create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle mr-1"></i> Add Products</nuxt-link>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="float-sm-right">
-                                <button type="button" class="btn btn-success mb-2 mb-sm-0"><i class="mdi mdi-cog"></i></button>
-                            </div>
-                        </div><!-- end col-->
                     </div>
                     <div class="row mb-2">
                         <div class="col-sm-12 col-md-6">
@@ -205,10 +199,10 @@ export default {
                             <template v-slot:cell(action)="row">
                                 <ul class="list-inline table-action m-0">
                                     <li class="list-inline-item">
-                                        <a href="javascript:void(0);" class="action-icon"><i class="mdi mdi-eye"></i></a>
+                                        <nuxt-link :to="'/admin/products/'+row.item.slug" class="action-icon"><i class="mdi mdi-eye"></i></nuxt-link>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a :href="'/admin/products/edit/'+row.item.slug" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                        <nuxt-link :to="'/admin/products/edit/'+row.item.slug" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></nuxt-link>
                                     </li>
                                     <li class="list-inline-item">
                                         <a href="javascript:void(0);" @click="confirmToDelete(row.item)" class="action-icon"><i class="mdi mdi-delete"></i></a>
