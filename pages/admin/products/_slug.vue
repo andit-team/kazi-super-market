@@ -23,10 +23,10 @@ export default {
                     text: "Kazissupermarket",
                 },
                 {
-                    text: "Ecommerce",
+                    text: "Products",
                 },
                 {
-                    text: "Product Detail",
+                    text: "Product Details",
                     active: true,
                 },
             ],
@@ -48,6 +48,10 @@ export default {
         ...mapActions({
                 FatchProduct : 'product/fatchProduct',
             }),
+        discountedPrice(product) {
+            return product.price - (product.price *(product.discount)/100)
+            console.log(product);
+            },
         /**
          * Change the product
          */
@@ -111,9 +115,9 @@ export default {
                                 </div>
                                 <h4 class="mb-1">
                                     {{product.name}}
-                                    <a href="javascript: void(0);" class="text-muted">
+                                    <nuxt-link :to="'/admin/products/edit/'+product.slug" class="text-muted">
                                         <i class="mdi mdi-square-edit-outline ml-2"></i>
-                                    </a>
+                                    </nuxt-link>
                                 </h4>
 
                                 <p class="text-muted mr-3 font-16">
@@ -127,8 +131,8 @@ export default {
                                 <div class="mt-3">
                                     <h6 class="text-danger text-uppercase">{{product.discount}} % Off</h6>
                                     <h4>
-                                        Price :
-                                        <b>$ {{product.price}}</b>
+                                        Price : <span class="text-muted mr-2"><del>$ {{product.price}}</del></span>
+                                        <b>$ {{discountedPrice(product)}}</b>
                                     </h4>
                                 </div>
                                 <hr />

@@ -3,21 +3,20 @@
   <div class="product">
     <div class="imageWrapper">
       <div class="imageWrapperWrapper">
-        <div class="tag position-absolute">on sale</div>
-          <img :src="product.thumbnail" :alt="product.name">
+        <div class="tag position-absolute">{{product.tag}}</div>
+          <!-- <img :src='getImgUrl(imageSrc ? imageSrc : product.productImage)' :alt="product.title"> -->
       </div>
       <div class="discountedPriceSection">
         <div class="discountedPrice">
           <span>$ </span>
-          <span>{{discountedPrice(product)}}</span>
+          <span>{{product.price}}</span>
         </div>
         <div class="price">
           <span>$ </span>
-          <span>{{product.price}}</span>
+          <span>{{product.oldPrice}}</span>
         </div>
       </div>
-
-      <div class="name">{{product.name}}</div>
+      <div class="name">{{product.title}}</div>
       <div class="overlay text">
         <p class="addText">Add to Shopping Bag</p>
         <span>
@@ -38,12 +37,15 @@
 <script>
 export default {
   props: ['product', 'index'],
-
-  methods: {
-    discountedPrice(product) {
-        return product.price - (product.price *(product.discount)/100)
-        console.log(product);
+  data(){
+    return {
+      imageSrc: '',
     }
+  },
+  methods: {
+    getImgUrl(path) {
+      return require('@/assets/images/product-img/' + path)
+    },
   }
 }
 </script>

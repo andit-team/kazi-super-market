@@ -9,6 +9,7 @@
           <div class="col">
             <!-- Home product box Start -->
             <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
+            {{productItems}}
             <!-- Home product box End -->
           </div>
         </div>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   layout: 'public',
 
@@ -50,7 +52,16 @@ export default {
         ]
     }
   },
+  computed: {
+    ...mapGetters({productItems : 'product/allProducts'})
+  },
+  created() {
+    this.FetchProduct();
+  },
   methods: {
+    ...mapActions({
+      FetchProduct: 'product/getProducts',
+    }),
     getImgUrl(path) {
       return require('@/assets/images/product-img/' + path)
     },
