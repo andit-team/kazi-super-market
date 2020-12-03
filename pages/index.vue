@@ -6,7 +6,7 @@
     <HomeDealsProduct />
     <ProductSlider />
     <BannerAdvartise />
-    <ProductSlider2 />
+    <!-- <ProductSlider2 /> -->
   </div>
 </template>
 

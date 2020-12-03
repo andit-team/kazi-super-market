@@ -68,13 +68,13 @@ export default {
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="row justify-content-center">
-                                <div class="col-xl-8">
-                                    <b-card no-body class="product-details-photo-tab">
+                                <div class="col-xl-12">
+                                    <b-card no-body class="product-details-photo-tab border-0">
                                         <b-tabs end>
                                         <b-tab v-for="imageItem in product.images" :key="imageItem.id">
-                                            <div><b-card-img bottom :src="imageItem.url"></b-card-img></div>
+                                            <div class="text-center"><b-card-img bottom :src="imageItem.url"></b-card-img></div>
                                             <template v-slot:title>
-                                            <b-card-img bottom :src="imageItem.url"></b-card-img>
+                                            <b-card-img bottom :src="imageItem.url" class="rounded"></b-card-img>
                                             </template>
                                         </b-tab>
                                         </b-tabs>

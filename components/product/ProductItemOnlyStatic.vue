@@ -3,8 +3,8 @@
   <div class="product">
     <div class="imageWrapper">
       <div class="imageWrapperWrapper">
-        <div class="tag position-absolute">{{product.tag}}</div>
-          <!-- <img :src='getImgUrl(imageSrc ? imageSrc : product.productImage)' :alt="product.title"> -->
+        <!-- <div class="tag position-absolute">{{product.tag}}</div> -->
+          <img :src='getImgUrl(imageSrc ? imageSrc : product.productImage)' :alt="product.title">
       </div>
       <div class="discountedPriceSection">
         <div class="discountedPrice">
