@@ -66,13 +66,13 @@ export default {
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="row justify-content-center">
                                 <div class="col-xl-12">
                                     <b-card no-body class="product-details-photo-tab border-0">
                                         <b-tabs end>
                                         <b-tab v-for="imageItem in product.images" :key="imageItem.id">
-                                            <div class="text-center"><b-card-img bottom :src="imageItem.url"></b-card-img></div>
+                                            <div class="text-center"><b-card-img bottom :src="imageItem.url" class="img-fluid"></b-card-img></div>
                                             <template v-slot:title>
                                             <b-card-img bottom :src="imageItem.url" class="rounded"></b-card-img>
                                             </template>
@@ -83,7 +83,7 @@ export default {
                             </div>
                         </div>
 
-                        <div class="col-lg-7">
+                        <div class="col-lg-6">
                             <div>
                                 <div>
                                     <nuxt-link to="#" class="text-primary">{{product.parent_category.name}} </nuxt-link> <i class="fas fa-angle-right"></i>
