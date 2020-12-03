@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumbs title="Product Details" />
+    <Breadcrumbs :title="product.name" />
     <section class="product-page product-details-page section-b-space">
       <div class="container">
         <div class="row">
@@ -9,12 +9,11 @@
                   <div class="col-xl-8">
 
                   <b-card no-body class="product-details-photo-tab">
-                    <h4 class="content-title">{{title}}</h4>
                     <b-tabs end>
-                      <b-tab v-for="(photo, index) in photos" :key="index">
-                        <div><b-card-img bottom :src="photo.photo"></b-card-img></div>
+                      <b-tab v-for="imageItem in product.images" :key="imageItem.id">
+                        <div><b-card-img bottom :src="imageItem.url"></b-card-img></div>
                         <template v-slot:title>
-                          <b-card-img bottom :src="photo.photo"></b-card-img>
+                          <b-card-img bottom :src="imageItem.url"></b-card-img>
                         </template>
                       </b-tab>
                     </b-tabs>
@@ -27,10 +26,10 @@
             <div class="col-lg-5">
                 <div>
                     <div>
-                        <a href="#" class="color-orange">Ocean Food</a>
+                        <!-- <nuxt-link to="#" class="color-orange">{{product.category.name}}</nuxt-link> -->
                     </div>
                     <h4 class="mb-1">
-                        Chingri
+                        {{product.name}}
                     </h4>
 
                     <p class="text-muted mr-3 font-16">
@@ -42,22 +41,19 @@
                     </p>
 
                     <div class="mt-3">
-                        <h6 class="text-danger text-uppercase">10 % Off</h6>
+                        <h6 class="text-danger text-uppercase">{{product.discount}} % Off</h6>
                         <h4>
                             Price :
                             <span class="text-muted mr-2">
-                                <del>$ 50</del>
+                                <del>$ {{product.price}}</del>
                             </span>
-                            <b>$ 45</b>
+                            <b>$ {{discountedPrice(product)}}</b>
                         </h4>
                     </div>
                     <hr />
 
                     <div>
-                        <p>
-                            If several languages coalesce, the grammar of the resulting
-                            language is more simple and regular than that of the individual
-                            new common simple and regular than existing
+                        <p> {{product.summary}}
                         </p>
 
                         <div class="mt-3 mb-2">
@@ -65,11 +61,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <ul class="list-unstyled product-desc-list">
-                                        <li>
+                                        <li v-for="tagItem in product.tags" :key="tagItem.key">
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                            Full Sleeve
+                                            {{tagItem}}
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
                                             Cotton
                                         </li>
@@ -80,10 +76,10 @@
                                         <li>
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
                                             4 Different Color
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <ul class="list-unstyled product-desc-list">
                                         <li>
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
@@ -94,7 +90,7 @@
                                             4 Different Color
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -132,11 +128,7 @@
               <b-tabs card>
                 <b-tab title="Description" active>
                   <div class="product-details-content-box">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
-                    unde molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa. <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
-                    unde molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
-                    unde molestias abculpa porro recusandae quod 
-                    unde molestias ab. </p>
+                    <p>{{product.description}}</p>
                   </div>
                 </b-tab>
                 <b-tab title="Reviews">
@@ -209,6 +201,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   layout: 'public',
 
@@ -216,24 +209,20 @@ export default {
     return {
       ratingValue: 4, 
       isLogin: true,
-
-      photos: [
-        {
-          photo: 'https://cdn.pixabay.com/photo/2016/08/01/17/08/tomatoes-1561565_960_720.jpg'
-        },
-        {
-          photo: 'https://cdn.pixabay.com/photo/2016/03/26/16/44/tomatoes-1280859_960_720.jpg'
-        },
-        {
-          photo: 'https://cdn.pixabay.com/photo/2018/07/06/08/49/tomato-3520004_960_720.jpg'
-        },
-        {
-          photo: 'https://cdn.pixabay.com/photo/2014/12/20/14/03/vegetables-573961_960_720.jpg'
-        }
-      ]
+      product: {},
     }
   },
+  async created() {
+    this.product = await this.FetchProduct(this.$route.params.slug);
+  },
   methods: {
+    ...mapActions ({
+      FetchProduct: 'product/fatchProduct'
+    }),
+    discountedPrice(product) {
+      return product.price - (product.price *(product.discount)/100)
+      console.log(product);
+    },
   },
 
 }

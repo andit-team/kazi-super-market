@@ -71,7 +71,7 @@ export default {
                     text: "Kazissupermarket",
                 },
                 {
-                    text: "eCommerce",
+                    text: "Product",
                 },
                 {
                     text: "Create Product",

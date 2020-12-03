@@ -21,7 +21,7 @@
       <div class="overlay text">
         <p class="addText">Add to Shopping Bag</p>
         <span>
-          <nuxt-link to="/products/product-details" class="btnShowDetails">
+          <nuxt-link :to="'/products/'+product.slug" class="btnShowDetails">
             <span>Details</span>
             <span>  &gt;</span>
           </nuxt-link>

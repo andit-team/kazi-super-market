@@ -34,24 +34,17 @@ export default {
         };
     },
 
-    computed: {
-        // ...mapGetters({singleData : 'product/singleProduct'}),
-        
-        // singleData(){
-        //     return this.$store.state.product.FatchProduct;
-        // },
-    },
     async created(){
-       this.product = await this.FatchProduct(this.$route.params.slug);
+       this.product = await this.FetchProduct(this.$route.params.slug);
     },
     methods: {
         ...mapActions({
-                FatchProduct : 'product/fatchProduct',
-            }),
+            FetchProduct : 'product/fatchProduct',
+        }),
         discountedPrice(product) {
             return product.price - (product.price *(product.discount)/100)
             console.log(product);
-            },
+        },
         /**
          * Change the product
          */
@@ -73,36 +66,16 @@ export default {
                         <div class="col-lg-5">
                             <div class="row justify-content-center">
                                 <div class="col-xl-8">
-                                    <div id="product-carousel" class="carousel slide product-detail-carousel" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div>
-                                                    <img src="~/assets/admin/images/products/product-6.png" alt="product-img" id="myImage" class="img-fluid" />
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>
-                                                    <img src="~/assets/admin/images/products/product-8.png" alt="product-img" class="img-fluid" />
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>
-                                                    <img src="~/assets/admin/images/products/product-1.png" alt="product-img" class="img-fluid" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <ol class="carousel-indicators product-carousel-indicators mt-2">
-                                            <li data-target="#product-carousel" data-slide-to="0" class="active">
-                                                <img src="~/assets/admin/images/products/product-6.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
-                                            </li>
-                                            <li data-target="#product-carousel" data-slide-to="1">
-                                                <img src="~/assets/admin/images/products/product-8.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
-                                            </li>
-                                            <li data-target="#product-carousel" data-slide-to="2">
-                                                <img src="~/assets/admin/images/products/product-1.png" @click="changeImage($event)" alt="product-img" class="img-fluid product-nav-img" />
-                                            </li>
-                                        </ol>
-                                    </div>
+                                    <b-card no-body class="product-details-photo-tab">
+                                        <b-tabs end>
+                                        <b-tab v-for="imageItem in product.images" :key="imageItem.id">
+                                            <div><b-card-img bottom :src="imageItem.url"></b-card-img></div>
+                                            <template v-slot:title>
+                                            <b-card-img bottom :src="imageItem.url"></b-card-img>
+                                            </template>
+                                        </b-tab>
+                                        </b-tabs>
+                                    </b-card>
                                 </div>
                             </div>
                         </div>
@@ -147,17 +120,9 @@ export default {
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <ul class="list-unstyled product-desc-list">
-                                                    <li>
+                                                    <li v-for="tagItem in product.tags" :key="tagItem.key">
                                                         <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        <!-- {{product.unit.name}} -->
-                                                    </li>
-                                                    <li>
-                                                        <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        {{product.metaTitle}}
-                                                    </li>
-                                                    <li>
-                                                        <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                                        {{product.tags}}
+                                                        {{tagItem}}
                                                     </li>
                                                 </ul>
                                             </div>
