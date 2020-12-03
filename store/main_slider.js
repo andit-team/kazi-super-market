@@ -6,13 +6,16 @@ const state = {
         data : [
         ]
     },
+    activeSliders : {},
 
 }
 const getters = {
     getMainSliders: (state) => state.mainSliders,
+    getActiveSliders: (state) => state.activeSliders,
 }
 const mutations = {
     SET_MAIN_SLIDERS : (state,mainSliders) => (state.mainSliders = mainSliders),
+    SET_ACTIVE_SLIDERS : (state,activeSliders) => (state.activeSliders = activeSliders),
 }
 const actions = {
     async createSlider ({dispatch},payload){
@@ -74,6 +77,11 @@ const actions = {
             dispatch('getMainSliders');
         }
         return response.data
+    },
+
+    async getActiveSliders({ commit }){
+        const response = await axios.get(process.env.API_URL+'/sliders/active');
+        commit('SET_ACTIVE_SLIDERS',response.data)
     },
 
     async getMainSliders({ commit }){
