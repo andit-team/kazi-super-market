@@ -105,13 +105,13 @@ const actions = {
             meta_keyword : payload.metaKeywords,
             meta_description : payload.metaDescription
         }
-        const response = await axios.post(process.env.API_URL+'/product/update/',data);
+        const response = await axios.post(process.env.API_URL+'/product/update/',data,helper.AuthHeader());
         return response.data 
     },
 
     async fatchProduct({commit},slug){
         console.log(slug);
-        const response = await axios.get(process.env.API_URL+'/product/'+slug);
+        const response = await axios.get(process.env.API_URL+'/product/'+slug,{},helper.AuthHeader());
         commit('SET_PRODUCT',response.data.data)
         return response.data.data[0]
     },
@@ -129,7 +129,7 @@ const actions = {
             thumbnail : UploadData,//.data.data.display_url,
             description : payload.description,
             parent : payload.parent
-        });
+        },helper.AuthHeader());
         // console.log(response);
         if(response.data.error === false){
             dispatch('getProducts');
@@ -140,7 +140,7 @@ const actions = {
     async deleteProduct({dispatch},payload){
         const response = await axios.post(process.env.API_URL+'/product/delete',{
             _id : payload._id
-        });
+        },helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getProducts');
         }
@@ -156,7 +156,7 @@ const actions = {
     //tag module 
 
     async getTags({ commit }){
-        const response = await axios.post(process.env.API_URL+'/product/tags');
+        const response = await axios.post(process.env.API_URL+'/product/tags',{},helper.AuthHeader());
         commit('SET_TAGS',response.data.data)
     },
 
@@ -169,7 +169,7 @@ const actions = {
             name : payload.tag_name,
             description : payload.description
         }
-        const response = await axios.post(process.env.API_URL+'/product/tag/create/',data);
+        const response = await axios.post(process.env.API_URL+'/product/tag/create/',data,helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getTags');
         }
@@ -182,7 +182,7 @@ const actions = {
             name : payload.tag_name,
             description : payload.description
         }
-        const response = await axios.post(process.env.API_URL+'/product/tag/update/',data);
+        const response = await axios.post(process.env.API_URL+'/product/tag/update/',data,helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getTags');
         }
@@ -192,7 +192,7 @@ const actions = {
     async removeTag({dispatch},payload){
         const response = await axios.post(process.env.API_URL+'/product/tag/delete',{
             _id : payload._id
-        });
+        },helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getTags');
         }
@@ -206,7 +206,7 @@ const actions = {
     //Unit module 
 
     async getUnits({ commit }){
-        const response = await axios.post(process.env.API_URL+'/product/units');
+        const response = await axios.post(process.env.API_URL+'/product/units',{},helper.AuthHeader());
         commit('SET_UNITS',response.data.data)
     },
 
@@ -219,7 +219,7 @@ const actions = {
             name : payload.unit_name,
             description : payload.description
         }
-        const response = await axios.post(process.env.API_URL+'/product/unit/create/',data);
+        const response = await axios.post(process.env.API_URL+'/product/unit/create/',data,helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getUnits');
         }
@@ -232,7 +232,7 @@ const actions = {
             name : payload.unit_name,
             description : payload.description
         }
-        const response = await axios.post(process.env.API_URL+'/product/unit/update/',data);
+        const response = await axios.post(process.env.API_URL+'/product/unit/update/',data,helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getUnits');
         }
@@ -242,7 +242,7 @@ const actions = {
     async removeUnit({dispatch},payload){
         const response = await axios.post(process.env.API_URL+'/product/unit/delete',{
             _id : payload._id
-        });
+        },helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getUnits');
         }

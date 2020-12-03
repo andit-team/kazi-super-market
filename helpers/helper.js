@@ -62,11 +62,21 @@ function textSort(str, n){
     return (str.length > n) ? str.substr(0, n-1) + '...' : str;
 };
 
+function AuthHeader(){
+    let config = {
+        headers : {
+            'Content-Type'  : 'application/json',
+            'authorization' : "authorization "+JSON.parse(localStorage.getItem('_token'))
+        }
+    }
+    return config
+}
 function dateFormat(timestamp){
     // return (str.length > n) ? str.substr(0, n-1) + '...' : str;
 };
 
 export const helper = {
+    AuthHeader,
     fileupload,
     WarningMsg,
     SuccessMsg,
