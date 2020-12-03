@@ -116,7 +116,6 @@ const actions = {
     },
 
     async updateCategory({dispatch},payload){
-
         var UploadData = '';
         if(payload.thumbnail){
             UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');

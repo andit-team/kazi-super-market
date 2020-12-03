@@ -10,6 +10,7 @@ import {
  * Product-detail component
  */
 export default {
+    name: 'productDetails',
     head() {
         return {
             title: `${this.title} | Kazissupermarket - Nuxtjs Responsive Admin Dashboard Template`,
@@ -31,11 +32,14 @@ export default {
                 },
             ],
             product:{},
+            loaded:false
+            
         };
     },
 
     async created(){
        this.product = await this.FetchProduct(this.$route.params.slug);
+       this.loaded=true;
     },
     methods: {
         ...mapActions({
@@ -43,7 +47,6 @@ export default {
         }),
         discountedPrice(product) {
             return product.price - (product.price *(product.discount)/100)
-            console.log(product);
         },
         /**
          * Change the product
@@ -58,7 +61,7 @@ export default {
 <template>
 <div>
     <PageHeader :title="title" :items="items" />
-    <div class="row">
+    <div class="row" v-if="loaded">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
@@ -83,8 +86,8 @@ export default {
                         <div class="col-lg-7">
                             <div>
                                 <div>
-                                    <!-- <nuxt-link to="#" class="text-primary">{{product.parent_category.name}} </nuxt-link> <i class="fas fa-angle-right"></i>
-                                    <nuxt-link to="#" class="text-primary">{{product.category.name}} </nuxt-link> -->
+                                    <nuxt-link to="#" class="text-primary">{{product.parent_category.name}} </nuxt-link> <i class="fas fa-angle-right"></i>
+                                    <nuxt-link to="#" class="text-primary">{{product.category.name}} </nuxt-link>
                                 </div>
                                 <h4 class="mb-1">
                                     {{product.name}}
@@ -111,10 +114,7 @@ export default {
                                 <hr />
 
                                 <div>
-                                    <p> 
-                                        {{product.description}}
-                                    </p>
-
+                                    <p v-html="product.description"></p>
                                     <div class="mt-3">
                                         <h5 class="font-size-14">Specification :</h5>
                                         <div class="row">

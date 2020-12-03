@@ -13,7 +13,6 @@ const getters = {
 }
 const mutations = {
     SET_MAIN_SLIDERS : (state,mainSliders) => (state.mainSliders = mainSliders),
-
 }
 const actions = {
     async createSlider ({dispatch},payload){

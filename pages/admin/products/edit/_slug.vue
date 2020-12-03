@@ -149,7 +149,7 @@ export default {
             this.subcategories =  data;
         },
 
-        async check(){
+        async dropzoneImg(){
             this.product = await this.FatchProduct(this.$route.params.slug);
             this.instantSrc = this.product.thumbnail;
             this.product.images.map(img => {
@@ -429,7 +429,7 @@ export default {
                                     <h4 class="header-title">Product Images</h4>
                                     <p class="sub-header">Upload product image</p>
 
-                                    <vue-dropzone id="dropzone" ref="myVueDropzone" @vdropzone-mounted="check" :use-custom-slot="true" :options="dropzoneOptions"  
+                                    <vue-dropzone id="dropzone" ref="myVueDropzone" @vdropzone-mounted="dropzoneImg" :use-custom-slot="true" :options="dropzoneOptions"  
                                     @vdropzone-file-added="fileAdded"
                                     @vdropzone-max-files-exceeded="maxFileReached"
                                     >
