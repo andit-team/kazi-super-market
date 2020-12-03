@@ -110,8 +110,7 @@ const actions = {
     },
 
     async fatchProduct({commit},slug){
-        console.log(slug);
-        const response = await axios.get(process.env.API_URL+'/product/'+slug,{},helper.AuthHeader());
+        const response = await axios.get(process.env.API_URL+'/product/'+slug);
         commit('SET_PRODUCT',response.data.data)
         return response.data.data[0]
     },
@@ -146,11 +145,6 @@ const actions = {
         }
         return response.data
     },
-
-
-
-
-
 
 
     //tag module 
@@ -198,10 +192,6 @@ const actions = {
         }
         return response.data
     },
-
-
-
-
 
     //Unit module 
 
