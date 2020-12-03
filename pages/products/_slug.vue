@@ -9,12 +9,11 @@
                   <div class="col-xl-8">
 
                   <b-card no-body class="product-details-photo-tab">
-                    <h4 class="content-title">{{title}}</h4>
                     <b-tabs end>
-                      <b-tab v-for="(photo, index) in photos" :key="index">
-                        <div><b-card-img bottom :src="photo.photo"></b-card-img></div>
+                      <b-tab v-for="imageItem in product.images" :key="imageItem.id">
+                        <div><b-card-img bottom :src="imageItem.url"></b-card-img></div>
                         <template v-slot:title>
-                          <b-card-img bottom :src="photo.photo"></b-card-img>
+                          <b-card-img bottom :src="imageItem.url"></b-card-img>
                         </template>
                       </b-tab>
                     </b-tabs>
@@ -54,10 +53,7 @@
                     <hr />
 
                     <div>
-                        <p> {{product.description}}
-                            If several languages coalesce, the grammar of the resulting
-                            language is more simple and regular than that of the individual
-                            new common simple and regular than existing
+                        <p> {{product.summary}}
                         </p>
 
                         <div class="mt-3 mb-2">
@@ -65,11 +61,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <ul class="list-unstyled product-desc-list">
-                                        <li>
+                                        <li v-for="tagItem in product.tags" :key="tagItem.key">
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
-                                            Full Sleeve
+                                            {{tagItem}}
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
                                             Cotton
                                         </li>
@@ -80,10 +76,10 @@
                                         <li>
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
                                             4 Different Color
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <ul class="list-unstyled product-desc-list">
                                         <li>
                                             <i class="mdi mdi-circle-medium mr-1 align-middle"></i>
@@ -94,7 +90,7 @@
                                             4 Different Color
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -132,11 +128,7 @@
               <b-tabs card>
                 <b-tab title="Description" active>
                   <div class="product-details-content-box">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
-                    unde molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa. <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
-                    unde molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sint provident ducimus consequuntur culpa porro recusandae quod 
-                    unde molestias abculpa porro recusandae quod 
-                    unde molestias ab. </p>
+                    <p>{{product.description}}</p>
                   </div>
                 </b-tab>
                 <b-tab title="Reviews">
@@ -218,20 +210,6 @@ export default {
       ratingValue: 4, 
       isLogin: true,
       product: {},
-      photos: [
-        {
-          photo: 'https://cdn.pixabay.com/photo/2016/08/01/17/08/tomatoes-1561565_960_720.jpg'
-        },
-        {
-          photo: 'https://cdn.pixabay.com/photo/2016/03/26/16/44/tomatoes-1280859_960_720.jpg'
-        },
-        {
-          photo: 'https://cdn.pixabay.com/photo/2018/07/06/08/49/tomato-3520004_960_720.jpg'
-        },
-        {
-          photo: 'https://cdn.pixabay.com/photo/2014/12/20/14/03/vegetables-573961_960_720.jpg'
-        }
-      ]
     }
   },
   async created() {
