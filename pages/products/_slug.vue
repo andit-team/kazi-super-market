@@ -1,23 +1,23 @@
 <template>
-  <div>
+  <div v-if="loaded">
     <Breadcrumbs :title="product.name" />
     <section class="product-page product-details-page section-b-space">
       <div class="container">
         <div class="row">
             <div class="col-lg-7">
                 <div class="row justify-content-center">
-                  <div class="col-xl-8">
+                  <div class="col-xl-12">
 
-                  <b-card no-body class="product-details-photo-tab">
-                    <b-tabs end>
-                      <b-tab v-for="imageItem in product.images" :key="imageItem.id">
-                        <div><b-card-img bottom :src="imageItem.url"></b-card-img></div>
-                        <template v-slot:title>
-                          <b-card-img bottom :src="imageItem.url"></b-card-img>
-                        </template>
-                      </b-tab>
-                    </b-tabs>
-                  </b-card>
+                    <b-card no-body class="product-details-photo-tab">
+                      <b-tabs end>
+                        <b-tab v-for="imageItem in product.images" :key="imageItem.id">
+                          <div class="text-center"><b-card-img bottom :src="imageItem.url" class="img-fluid"></b-card-img></div>
+                          <template v-slot:title>
+                            <b-card-img bottom :src="imageItem.url" class="rounded"></b-card-img>
+                          </template>
+                        </b-tab>
+                      </b-tabs>
+                    </b-card>
 
                   </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="col-lg-5">
                 <div>
                     <div>
-                        <!-- <nuxt-link to="#" class="color-orange">{{product.category.name}}</nuxt-link> -->
+                        <nuxt-link to="#" class="color-orange">{{product.category.name}}</nuxt-link>
                     </div>
                     <h4 class="mb-1">
                         {{product.name}}
@@ -128,7 +128,7 @@
               <b-tabs card>
                 <b-tab title="Description" active>
                   <div class="product-details-content-box">
-                    <p>{{product.description}}</p>
+                    <p v-html="product.description"></p>
                   </div>
                 </b-tab>
                 <b-tab title="Reviews">
@@ -210,10 +210,12 @@ export default {
       ratingValue: 4, 
       isLogin: true,
       product: {},
+      loaded: false,
     }
   },
   async created() {
     this.product = await this.FetchProduct(this.$route.params.slug);
+    this.loaded = true
   },
   methods: {
     ...mapActions ({
@@ -221,7 +223,6 @@ export default {
     }),
     discountedPrice(product) {
       return product.price - (product.price *(product.discount)/100)
-      console.log(product);
     },
   },
 

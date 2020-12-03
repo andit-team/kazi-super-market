@@ -8,8 +8,9 @@
         <div class="row">
           <div class="col">
             <!-- Home product box Start -->
-            <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
-            {{productItems}}
+            <ProductItem  v-for="productItem in productItems" :key="productItem._id"
+            :product="productItem"
+            />
             <!-- Home product box End -->
           </div>
         </div>

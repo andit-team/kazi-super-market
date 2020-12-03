@@ -20,7 +20,7 @@
                   :key="index"
                 >
                   <!-- product box Start -->
-                  <ProductItem
+                  <ProductItemOnlyStatic
                   :product="product"
                   :index="index"
                   />
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import ProductItem from '../product/ProductItem'
 export default {
   data() {
     return {
