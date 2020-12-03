@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumbs title="Product Details" />
+    <Breadcrumbs :title="product.name" />
     <section class="product-page product-details-page section-b-space">
       <div class="container">
         <div class="row">
@@ -27,10 +27,10 @@
             <div class="col-lg-5">
                 <div>
                     <div>
-                        <a href="#" class="color-orange">Ocean Food</a>
+                        <!-- <nuxt-link to="#" class="color-orange">{{product.category.name}}</nuxt-link> -->
                     </div>
                     <h4 class="mb-1">
-                        Chingri
+                        {{product.name}}
                     </h4>
 
                     <p class="text-muted mr-3 font-16">
@@ -42,19 +42,19 @@
                     </p>
 
                     <div class="mt-3">
-                        <h6 class="text-danger text-uppercase">10 % Off</h6>
+                        <h6 class="text-danger text-uppercase">{{product.discount}} % Off</h6>
                         <h4>
                             Price :
                             <span class="text-muted mr-2">
-                                <del>$ 50</del>
+                                <del>$ {{product.price}}</del>
                             </span>
-                            <b>$ 45</b>
+                            <b>$ {{discountedPrice(product)}}</b>
                         </h4>
                     </div>
                     <hr />
 
                     <div>
-                        <p>
+                        <p> {{product.description}}
                             If several languages coalesce, the grammar of the resulting
                             language is more simple and regular than that of the individual
                             new common simple and regular than existing
@@ -209,6 +209,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   layout: 'public',
 
@@ -216,7 +217,7 @@ export default {
     return {
       ratingValue: 4, 
       isLogin: true,
-
+      product: {},
       photos: [
         {
           photo: 'https://cdn.pixabay.com/photo/2016/08/01/17/08/tomatoes-1561565_960_720.jpg'
@@ -233,7 +234,17 @@ export default {
       ]
     }
   },
+  async created() {
+    this.product = await this.FetchProduct(this.$route.params.slug);
+  },
   methods: {
+    ...mapActions ({
+      FetchProduct: 'product/fatchProduct'
+    }),
+    discountedPrice(product) {
+      return product.price - (product.price *(product.discount)/100)
+      console.log(product);
+    },
   },
 
 }

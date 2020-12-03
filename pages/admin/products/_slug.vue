@@ -34,24 +34,17 @@ export default {
         };
     },
 
-    computed: {
-        // ...mapGetters({singleData : 'product/singleProduct'}),
-        
-        // singleData(){
-        //     return this.$store.state.product.FatchProduct;
-        // },
-    },
     async created(){
-       this.product = await this.FatchProduct(this.$route.params.slug);
+       this.product = await this.FetchProduct(this.$route.params.slug);
     },
     methods: {
         ...mapActions({
-                FatchProduct : 'product/fatchProduct',
-            }),
+            FetchProduct : 'product/fatchProduct',
+        }),
         discountedPrice(product) {
             return product.price - (product.price *(product.discount)/100)
             console.log(product);
-            },
+        },
         /**
          * Change the product
          */
