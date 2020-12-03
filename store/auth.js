@@ -56,9 +56,7 @@ export const actions = {
     },
 
     validate({ commit, state }) {
-        console.log(state.currentUser);
         if (!state.currentUser) return Promise.resolve(null)
-        console.log('asdf');
         const data = {token:JSON.parse(localStorage.getItem('_token')),user:JSON.parse(localStorage.getItem('AuthUser'))};
         // commit('SET_CURRENT_USER', data)
         return data;

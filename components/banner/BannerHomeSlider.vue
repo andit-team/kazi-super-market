@@ -52,12 +52,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      sliders : 'main_slider/getMainSliders'
+      sliders : 'main_slider/getActiveSliders'
     })
   },
   methods: {
     ...mapActions({
-      mainSliders : 'main_slider/getMainSliders',
+      mainSliders : 'main_slider/getActiveSliders',
     })
   },
   created() {
