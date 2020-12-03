@@ -14,7 +14,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <div v-swiper:mySwiper="swiperOption">
+            <div v-swiper:mySwiper="swiperOption" v-if="recentlyViewedProduct">
               <div class="swiper-wrapper">
                 <div
                   class="swiper-slide"
@@ -32,6 +32,12 @@
               <div class="swiper-button-prev testi_prev" slot="button-prev"><i class="fas fa-angle-left"></i></div>
               <div class="swiper-button-next testi_next" slot="button-next"><i class="fas fa-angle-right"></i></div>
             </div>
+
+            <!-- If no recentlyViewedProduct -->
+            <div class="no-recently-product text-center d-flex justify-content-center align-items-center" v-else>
+              <p class="font-21 color-green pb-20">You have no recently viewed product.</p>
+            </div>
+
           </div>
         </div>
         <!-- product Area End -->
@@ -217,6 +223,8 @@ export default {
             "productImage": "product-1.png"
         }
     ],
+
+    recentlyViewedProduct: false,
 
     }
   },

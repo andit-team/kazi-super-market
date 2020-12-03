@@ -148,7 +148,7 @@ figure {
   margin-bottom: 0;
 }
 /*--------------------------------
-            2.1 Theme Color
+  2.1 Theme Color
 -----------------------------------*/
 
 :root{
@@ -214,6 +214,9 @@ figure {
 .font-18, .cart-sidebar header > strong, .slide-content i{
   font-size: 18px;
 }
+.font-21 {
+  font-size: 21px;
+}
 
 /*--------------------------------
     2.5 Theme Margin and Padding
@@ -265,6 +268,9 @@ figure {
 }
 .p-20{
   padding: 20px;
+}
+.pb-30 {
+  padding-bottom: 30px;
 }
 /*--------------------------------
    2.4 Template Default CSS
@@ -1199,6 +1205,10 @@ div.product .imageWrapper:active .overlay.text, div.product .imageWrapper:hover 
 div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .overlay {
 	opacity: 1;
 }
+//  Recently Viewed Product Area CSS
+.no-recently-product {
+	min-height: 370px;
+}
 // 3. Product Area CSS End
 
 // 3. Product Details Page Area CSS Start
@@ -1226,9 +1236,15 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 .product-details-photo-tab .tab-content > .tab-pane {
 	overflow: hidden;
 }
+// .product-details-photo-tab .tab-content > .tab-pane img {
+// 	height: 400px;
+// 	width: auto;
+// }
 .product-details-photo-tab .tab-content > .tab-pane img {
-	height: 400px;
+	min-height: auto;
 	width: auto;
+	height: 400px;
+	max-height: 100%;
 }
 // Product Details Photo Tab CSS
 
