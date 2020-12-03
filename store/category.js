@@ -48,7 +48,7 @@ const actions = {
             description : payload.description,
             parent : payload.parent
         }
-        const response = await axios.post(process.env.API_URL+'/admin/category-create/',data);
+        const response = await axios.post(process.env.API_URL+'/admin/category-create/',data,helper.AuthHeader());
         
         if(response.data.error === false){
             dispatch('getCategories');
@@ -59,20 +59,17 @@ const actions = {
     },
 
     async updateCategory({dispatch},payload){
-
         var UploadData = '';
         if(payload.thumbnail){
             UploadData = await helper.fileupload(payload.thumbnail,'thumbnail');
         }
-        
         const response = await axios.post(process.env.API_URL+'/admin/category-update/',{
             _id : payload.id,
             name : payload.category_name,
             thumbnail : UploadData,//.data.data.display_url,
             description : payload.description,
             parent : payload.parent
-        });
-        // console.log(response);
+        },helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getCategories');
             dispatch('getSubCategories');
@@ -82,7 +79,7 @@ const actions = {
     async removeCategory({dispatch},payload){
         const response = await axios.post(process.env.API_URL+'/admin/category-delete/',{
             _id : payload._id
-        });
+        },helper.AuthHeader());
         console.log(response);
         if(response.data.error === false){
             dispatch('getCategories');
@@ -92,18 +89,16 @@ const actions = {
     },
 
     async getCategories({ commit }){
-        const response = await axios.get(process.env.API_URL+'/admin/categories');
+        const response = await axios.get(process.env.API_URL+'/categories');
         commit('SET_CATEGORIES',response.data)
     },
     async getFeaturedCategories({ commit }){
-        const response = await axios.get(process.env.API_URL+'/admin/featured-categories');
+        const response = await axios.get(process.env.API_URL+'/category/featured-categories');
         commit('SET_FEATURED_CATEGORIES',response.data)
     },
 
     async getChilds({ commit },payload){
-        // console.log('asdf');
-        // return [12,35,35];
-        const response = await axios.post(process.env.API_URL+'/admin/child-categories',payload).then(result => {
+        const response = await axios.post(process.env.API_URL+'/category/child-categories',payload).then(result => {
             if(result.data.error === false){
                 return result.data.data
             }else{
@@ -120,7 +115,7 @@ const actions = {
 
     //Sub categories
     async getSubCategories({ commit }){
-        const response = await axios.get(process.env.API_URL+'/admin/categories/sub');
+        const response = await axios.get(process.env.API_URL+'/categories/subcats');
         commit('SET_SUB_CATEGORIES',response.data)
     },
 }
