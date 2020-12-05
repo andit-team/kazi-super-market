@@ -201,7 +201,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   layout: 'public',
 
@@ -210,6 +210,8 @@ export default {
       ratingValue: 4, 
       isLogin: true,
       product: {},
+      // productCategoryId: '',
+      // productCategorySlug: '',
       loaded: false,
     }
   },
@@ -217,6 +219,16 @@ export default {
     this.product = await this.FetchProduct(this.$route.params.slug);
     this.loaded = true
   },
+  // computed: {
+  //   getDetail: function () {
+  //     return this.$store.getters['product/getProductByCategory'](
+  //       this.$route.params.parent_category.slug
+  //     )
+  //   },
+  // },
+  // mounted () {
+  //   this.relatedProducts()
+  // },
   methods: {
     ...mapActions ({
       FetchProduct: 'product/fatchProduct'

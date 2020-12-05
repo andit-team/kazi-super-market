@@ -15,6 +15,12 @@ const getters = {
     singleProduct: (state) => state.singleProduct,
     allTags: (state) => state.tags,
     allUnits: (state) => state.units,
+
+    getProductByCategory: (state) => {
+    return slug => state.products.find((product) => {
+      return product.parent_category.slug === +slug
+    })
+  },
 }
 const mutations = {
     SET_PRODUCTS : (state,products) => (state.products = products),
