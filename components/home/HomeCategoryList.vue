@@ -12,11 +12,8 @@
           </div>
         </div>
         <div class="row categories-wrap">
-
           <div class="col-md-6 col-lg-3 col-sm-12" v-for="categoryItem in categoryData.data" :key="categoryItem.id">
-
             <CategoryItem :categoryItem = "categoryItem" />
-
           </div>
         </div>
         <!-- Area End -->

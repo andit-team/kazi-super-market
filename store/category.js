@@ -2,6 +2,10 @@ import axios from 'axios'
 import { helper } from '../helpers/helper.js';
 
 const state = {
+    category : {
+        data : {
+        }
+    },
     categories : {
         data : {
         }
@@ -21,13 +25,14 @@ const state = {
 const getters = {
     allCategories: (state) => state.categories,
     getSubCategories: (state) => state.subCategories,
+    getCategory: (state) => state.category,
     getFeaturedCategories: (state) => state.featuredCategories
 }
 const mutations = {
     SET_CATEGORIES : (state,categories) => (state.categories = categories),
     SET_FEATURED_CATEGORIES : (state,featuredCategories) => (state.featuredCategories = featuredCategories),
     SET_SUB_CATEGORIES : (state,categories) => (state.subCategories = categories),
-
+    SET_CATEGORIY : (state,category) => (state.category = category)
 }
 const actions = {
     async createCategory ({dispatch},payload){
@@ -76,6 +81,7 @@ const actions = {
         }
         return response.data
     },
+
     async removeCategory({dispatch},payload){
         const response = await axios.post(process.env.API_URL+'/admin/category-delete/',{
             _id : payload._id
@@ -92,6 +98,7 @@ const actions = {
         const response = await axios.get(process.env.API_URL+'/categories');
         commit('SET_CATEGORIES',response.data)
     },
+
     async getFeaturedCategories({ commit }){
         const response = await axios.get(process.env.API_URL+'/category/featured-categories');
         commit('SET_FEATURED_CATEGORIES',response.data)
@@ -114,10 +121,20 @@ const actions = {
 
 
     //Sub categories
-    async getSubCategories({ commit }){
-        const response = await axios.get(process.env.API_URL+'/categories/subcats');
+    async fatchCategory({ commit },slug){
+        const response = await axios.get(process.env.API_URL+'/category/'+slug);
+        commit('SET_CATEGORIY',response.data)
+    },
+    async getSubCategories({ commit },slug){
+        const response = await axios.get(process.env.API_URL+'/category/'+slug+'/sub-categories');
         commit('SET_SUB_CATEGORIES',response.data)
     },
+    // http://localhost:3001/api/category/category_slug/sub-categories
+    //Sub categories
+    // async getSubCategories({ commit }){
+    //     const response = await axios.get(process.env.API_URL+'/categories/subcats');
+    //     commit('SET_SUB_CATEGORIES',response.data)
+    // },
 }
 
 export default {

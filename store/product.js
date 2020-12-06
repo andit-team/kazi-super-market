@@ -9,12 +9,14 @@ const state = {
     tags :  {},
     units : {},
     singleProduct : {},
+    categoryWiseProduct : {},
 }
 const getters = {
     allProducts: (state) => state.products,
     singleProduct: (state) => state.singleProduct,
     allTags: (state) => state.tags,
     allUnits: (state) => state.units,
+    category_wise_product: (state) => state.categoryWiseProduct,
 
 }
 const mutations = {
@@ -22,6 +24,7 @@ const mutations = {
     SET_PRODUCT : (state,product) => (state.product = product),
     SET_TAGS : (state,tags) => (state.tags = tags),
     SET_UNITS : (state,units) => (state.units = units),
+    SET_CATEGORY_WISE_PRODUCT : (state,categoryWiseProduct) => (state.categoryWiseProduct = categoryWiseProduct),
 }
 const actions = {
     async getProducts({ commit }){
@@ -114,6 +117,12 @@ const actions = {
         const response = await axios.get(process.env.API_URL+'/product/'+slug);
         commit('SET_PRODUCT',response.data.data)
         return response.data.data[0]
+    },
+
+    async categoryWiseProduct({commit},cat_slug){
+        const response = await axios.get(process.env.API_URL+'/'+cat_slug+'/products');
+        commit('SET_CATEGORY_WISE_PRODUCT',response.data.data)
+        return response.data.data
     },
 
     async updateCategory({dispatch},payload){

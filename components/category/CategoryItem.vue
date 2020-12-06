@@ -1,7 +1,8 @@
 <template>
   <!-- Category Item box Start -->
   <div class="category-box text-center">
-    <nuxt-link to="/products" class="offer-tile-block-link"></nuxt-link>
+    <nuxt-link v-if="parentCat" :to="'/products?parent_category='+this.parentCat.slug+'&category='+categoryItem.slug" class="offer-tile-block-link"></nuxt-link>
+    <nuxt-link v-else :to="'/categories/'+categoryItem.slug" class="offer-tile-block-link"></nuxt-link>
     <div class="offer-tile-header d-flex align-items-center justify-content-center">
       <!-- <div class="offer-tile-header-roundel">
         <img :src="categoryItem.offerImage" alt="offer">
@@ -36,6 +37,6 @@ export default {
   //   subTitle: String
 
   // },
-  props: ['categoryItem', 'index'],
+  props: ['categoryItem', 'index','parentCat'],
 }
 </script>

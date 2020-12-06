@@ -3,7 +3,7 @@
   <h5 class="text-uppercase rounded-top">Categories</h5>
     <!-- Navigation -->
     <b-nav vertical>
-      <b-nav-item to="/categories/category-list" v-for="categoryItem in categoryData.data" :key="categoryItem.id">{{categoryItem.name}}<i class="fas fa-angle-right"></i></b-nav-item>
+      <b-nav-item :to="'/categories/'+categoryItem.slug" v-for="categoryItem in categoryData.data" :key="categoryItem.id">{{categoryItem.name}}<i class="fas fa-angle-right"></i></b-nav-item>
 
       <!-- <b-nav-item to="/categories/category-list">Ocean Food<i class="fas fa-angle-right"></i></b-nav-item>
       <b-nav-item to="/categories/category-list">Butter & Eggs<i class="fas fa-angle-right"></i></b-nav-item>
