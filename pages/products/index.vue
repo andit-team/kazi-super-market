@@ -27,18 +27,18 @@
           <!-- Search Filter LeftSidebar -->
             <div class="col-12 col-lg-3">
                 <div class="filter-left-sidebar mb-30 rounded">
-                <div class="filter-box">
+                  <div class="filter-box">
                     <b-button v-b-toggle.collapse-1 variant="light">Product Categories <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                     <b-collapse visible id="collapse-1" class="mt-2">
-                        <ul class="category-list">
-                        <li v-for="categoryItem in categoriesData.data" :key="categoryItem.id">
-                            <nuxt-link :to="'/categories/'+categoryItem.slug">{{categoryItem.name}}<i class="fas fa-angle-right"></i></nuxt-link>
-                        </li>
-                        </ul>
+                      <ul class="category-list">
+                      <li v-for="categoryItem in categoriesData.data" :key="categoryItem.id">
+                        <nuxt-link :to="'/categories/'+categoryItem.slug">{{categoryItem.name}}<i class="fas fa-angle-right"></i></nuxt-link>
+                      </li>
+                      </ul>
                     </b-collapse>
-                </div>
+                  </div>
 
-                <div class="filter-box price-slider">
+                  <div class="filter-box price-slider">
                     <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                     <b-collapse visible id="collapse-2" class="mt-2">
                     <VueSimpleRangeSlider
@@ -52,7 +52,7 @@
                     <p>Price: <strong>${{range[0]}} - ${{range[1]}}</strong></p>
                     <button class="theme-button">Filter</button>
                     </b-collapse>
-                </div>
+                  </div>
 
                 <div class="filter-box">
                     <b-button v-b-toggle.collapse-3 variant="light">Product Tags <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
@@ -72,14 +72,14 @@
           <div class="col-12 col-lg-9">
             <BannerSmall :bannerImg="bannerImg" />
             
-                <div class="search-page-sort d-flex align-items-center">
-                    <label>Sort By:&nbsp;</label>
-                    <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
-                    </b-form-select>
-                </div>
-                <div class="search-page-product-wrap d-flex flex-wrap justify-content-center">
-                    <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
-                </div>
+            <div class="search-page-sort d-flex align-items-center">
+                <label>Sort By:&nbsp;</label>
+                <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
+                </b-form-select>
+            </div>
+            <div class="search-page-product-wrap d-flex flex-wrap justify-content-center">
+              <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
+            </div>
           </div>
         </div>
       </div>
