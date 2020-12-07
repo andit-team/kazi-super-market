@@ -70,7 +70,7 @@
           <!-- Search Filter LeftSidebar -->
 
           <div class="col-12 col-lg-9">
-            <BannerSmall :bannerImg="bannerImg" />
+            <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             
             <div class="search-page-sort d-flex align-items-center">
                 <label>Sort By:&nbsp;</label>

@@ -1573,6 +1573,9 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	justify-content: space-between;
 	padding: 8px 0;
 }
+.category-list li a.nuxt-link-exact-active.nuxt-link-active, .category-list li a:hover {
+	color: var(--green-color);
+}
 // Range Slider CSS
 .simple-range-slider .simple-range-slider-popover, .simple-range-slider .simple-range-slider-bg-bar .simple-range-slider-anchor .simple-range-slider-popover-arrow {
 	display: none;

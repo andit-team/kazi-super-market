@@ -75,6 +75,14 @@ export const menuItems = [
         link: '/admin/slider'
     },
 
+
+    {
+        id: 28,
+        label: "Promotional Banner",
+        icon: "fe-tag",
+        link: '/admin/promotional-banner'
+    },
+
     {
         id: 25,
         label: "Tags",

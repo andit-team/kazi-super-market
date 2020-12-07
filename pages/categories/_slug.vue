@@ -40,7 +40,7 @@
           <!-- Search Filter LeftSidebar -->
 
           <div class="col-12 col-lg-9">
-            <BannerSmall :bannerImg="bannerImg" />
+            <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             <div class="search-page-product-wrap d-flex flex-wrap">
             <div class="col-md-6 col-lg-4 col-sm-12" v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
               <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
