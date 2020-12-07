@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="offer-tile-item-description">
-        <p class="offer-tile-item-paragraph mb-2">{{categoryItem.description}}</p>
+        <p class="offer-tile-item-paragraph mb-2 mt-2">{{categoryItem.description}}</p>
     </div>
     <nuxt-link class="button theme-button" to="/products">
       Shop now<i class="fas fa-chevron-right pl-2"></i>

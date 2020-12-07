@@ -75,7 +75,7 @@
                 <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
                 </b-form-select>
             </div>
-            <div class="search-page-product-wrap d-flex flex-wrap justify-content-center">
+            <div class="search-page-product-wrap d-flex flex-wrap">
               <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
             </div>
           </div>

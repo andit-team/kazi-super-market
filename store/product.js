@@ -66,7 +66,7 @@ const actions = {
             meta_keyword : payload.meta_keyword,
             meta_description : payload.meta_description
         }
-        const response = await axios.post(process.env.API_URL+'/product/create/',data);
+        const response = await axios.post(process.env.API_URL+'/product/create/',data,helper.AuthHeader());
         return response.data
     },
 
