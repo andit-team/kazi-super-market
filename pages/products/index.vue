@@ -11,6 +11,7 @@
                                 <nuxt-link :to="{ path: '/' }">Home</nuxt-link>
                             </li>
                             <li class="breadcrumb-item active" v-if="parent_category">{{parent_category}}</li>
+                            <li class="breadcrumb-item active" v-else>Products</li>
                             <li class="breadcrumb-item active" v-if="category">{{category}}</li>
                         </ol>
                         </nav>
@@ -58,7 +59,8 @@
                     <b-collapse visible id="collapse-3" class="mt-2">
                     <ul class="tags-list">
                         <li v-for="tagItem in tagData" :key="tagItem.id">
-                        <nuxt-link to="/">{{tagItem.name}}</nuxt-link>
+                        <span @click="selectTag(tagItem.name)" :class="checkSelectedTags(tagItem.name) ? 'bg-info' : ''" >{{tagItem.name}}</span>
+                        <!-- <nuxt-link to="/">{{tagItem.name}}</nuxt-link> -->
                         </li>
                     </ul>
                     </b-collapse>
@@ -106,8 +108,9 @@ export default {
         range: [20,1000],
         perPage:10,
         pageOptions: ['New', 'Old', 'Low to high', 'High to low'],
-
-        
+        searchOptions:{
+        },
+        selectedTags:[]
     }
   },
   computed: {
@@ -133,6 +136,19 @@ export default {
     getImgUrl(path) {
       return require('@/assets/images/product-img/' + path)
     },
+    checkSelectedTags(name){
+      return this.selectedTags.includes(name)
+    },
+    selectTag(tag){
+      if(this.selectedTags.includes(tag)){
+        const index = this.selectedTags.indexOf(tag);
+        if (index > -1) {
+          this.selectedTags.splice(index, 1);
+        }
+      }else{
+        this.selectedTags.push(tag);
+      }
+    }
     
   },
 
@@ -144,12 +160,11 @@ export default {
     // this.min = min
     // this.max = max
   },
-//   watch: {
-//     'parent_category'(newVal, oldVal) {
-//       console.log(oldVal);
-//       console.log(newVal);
-//     }
-//   },
+  // watch: {
+  //   'selectTag'(newVal, oldVal) {
+  //     console.log(this.selectedTags);
+  //   }
+  // },
 
     /*
   ** Headers of the page
