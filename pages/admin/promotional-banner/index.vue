@@ -33,11 +33,6 @@ export default {
                 description: '',
                 link: ''
             },
-            // status:[
-            //     {"sdf":false},
-            //     {"5fc61aad9d616a2534d53b76":false},
-            //     {"5fc61abc9d616a2534d53b77":true},
-            // ],
             instantSrc: '',
             submitted: false,
             submit: false,
@@ -253,12 +248,14 @@ export default {
 
                         <div class="form-group">
                             <label for="title">Title<span class="text-danger">*</span></label>
-                            <input id="title" v-model="form.title" v-focus name="title" class="form-control" type="text" placeholder="Banner title" />
+                            <input id="title" v-model="form.title" v-focus name="title" class="form-control" :class="{ 'is-invalid': submitted && $v.form.title.$error }" type="text" placeholder="Banner title" />
+                            <div v-if="submitted && !$v.form.title.required" class="invalid-feedback">This value is required.</div> 
                         </div>
                         <div class="form-group">
                             <label for="description">Description<span class="text-danger">*</span></label>
-                                <textarea class="form-control" v-model="form.description" id="description" rows="5" placeholder="Please banner description"></textarea>
-                            </div>
+                            <textarea class="form-control" v-model="form.description" id="description" rows="5" :class="{ 'is-invalid': submitted && $v.form.description.$error }" placeholder="Type banner description"></textarea>
+                            <div v-if="submitted && !$v.form.description.required" class="invalid-feedback">This value is required.</div> 
+                        </div>
 
                         <div class="form-group">
                             <label class="d-block">Upload Slider Image</label>
