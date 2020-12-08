@@ -7,12 +7,18 @@ const state = {
         ]
     },
 
+    bannerTitle: {}
+
 }
 const getters = {
     getPromotionalBanners: (state) => state.promotionalBanners,
+    
+    bannerTitle: (state) => state.bannerTitle,
 }
 const mutations = {
     SET_PROMOTIONAL_BANNERS : (state,promotionalBanners) => (state.promotionalBanners = promotionalBanners),
+    
+    SET_BANNER_TITLE : (state,bannerTitle) => (state.bannerTitle = bannerTitle),
 }
 const actions = {
     async createBanner ({dispatch},payload){
@@ -76,10 +82,12 @@ const actions = {
     },
 
     // Fetch Title Only Home
-    async fetchBanners({ commit }){
-        const response = await axios.post(process.env.API_URL+'/banar/',{});
+    async getBannersTitle({ commit }){
+        const response = await axios.get(process.env.API_URL+'/banar/',{
+            title: payload.title
+        });
         console.log(response),
-        commit('SET_PROMOTIONAL_BANNERS',response.data)
+        commit('SET_BANNER_TITLE',response.data)
     },
 
 }

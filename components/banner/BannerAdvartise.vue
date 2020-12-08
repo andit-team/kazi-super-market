@@ -6,7 +6,7 @@
 
       <div class="test-wrap">
       
-        {{bannerItems.data}}
+        <!-- {{bannerItems.data}} -->
       </div>
 
 
@@ -34,7 +34,10 @@ export default {
     }
   },
     computed: {
-    ...mapGetters({bannerItems : 'promotional_banner/getPromotionalBanners'})
+    ...mapGetters(
+      {bannerItems : 'promotional_banner/getPromotionalBanners'}, 
+      {bannerTitle : 'promotional_banner/getBannersTitle'}
+    )
   },
   created() {
     this.FetchBanner();
@@ -43,7 +46,7 @@ export default {
   methods: {
     ...mapActions({
       FetchBanner: 'promotional_banner/getPromotionalBanners',
-      FetchBannerTitle: 'promotional_banner/fetchBanners',
+      FetchBannerTitle: 'promotional_banner/getBannersTitle',
   }),
   }
 
