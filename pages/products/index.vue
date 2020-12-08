@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <section class="product-page product-search-page section-b-space">
+    <section class="product-page product-search-page section-t-40-space section-b-space">
       <div class="container">
         <div class="row">
           <!-- Search Filter LeftSidebar -->
@@ -55,8 +55,8 @@
                     <b-button v-b-toggle.collapse-3 variant="light">Product Tags <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                     <b-collapse visible id="collapse-3" class="mt-2">
                     <ul class="tags-list">
-                        <li v-for="tagItem in tagData" :key="tagItem.id">
-                        <span @click="selectTag(tagItem.name)" :class="checkSelectedTags(tagItem.name) ? 'bg-info' : ''" >{{tagItem.name}}</span>
+                        <li v-for="tagItem in tagData" :key="tagItem.id" class="rounded-pill">
+                        <span class="rounded-pill" @click="selectTag(tagItem.name)" :class="checkSelectedTags(tagItem.name) ? 'tag-hover-style' : ''" >{{tagItem.name}}</span>
                         <!-- <nuxt-link to="/">{{tagItem.name}}</nuxt-link> -->
                         </li>
                     </ul>
@@ -69,8 +69,8 @@
           <div class="col-12 col-lg-9">
             <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             <div class="search-page-sort d-flex align-items-center">
-                <label>Sort By:&nbsp;&nbsp;&nbsp;</label>
-                <input type="text" v-model="searchOptions.key" @keyup="searchProduct()" class="form-control">
+                <label style="min-width:120px;">Search By key:</label>
+                <input type="text" v-model="searchOptions.key" @keyup="searchProduct()" placeholder="Search with key..." class="form-control rounded">
                 <!-- <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
                 </b-form-select> -->
             </div>

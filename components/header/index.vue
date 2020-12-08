@@ -31,7 +31,7 @@
 
             <b-nav-form inline class="product-search-form ml-auto">
               <div class="input-group">
-                <input type="text" class="form-control" v-model="searchKeyWord" placeholder="Your email addressssssss">
+                <input type="text" class="form-control" v-model="searchKeyWord" placeholder="Search product/category">
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-search theme-button"><b-icon-search /></button>
                 </div>

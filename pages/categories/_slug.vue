@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <section class="product-page product-search-page section-b-space">
+    <section class="product-page product-search-page section-t-40-space section-b-space">
       <div class="container">
         <div class="row">
           <!-- Search Filter LeftSidebar -->
@@ -42,9 +42,9 @@
           <div class="col-12 col-lg-9">
             <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             <div class="search-page-product-wrap d-flex flex-wrap">
-            <div class="col-md-6 col-lg-4 col-sm-12" v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
-              <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
-            </div>
+              <div class="col-md-6 col-lg-4 col-sm-12" v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
+                <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
+              </div>
             </div>
           </div>
         </div>
