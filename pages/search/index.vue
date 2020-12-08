@@ -25,14 +25,14 @@
               <div class="filter-box price-slider">
                 <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
                 <b-collapse visible id="collapse-2" class="mt-2">
-                  <VueSimpleRangeSlider
+                  <!-- <VueSimpleRangeSlider
                   style="width: auto"
                   activeBarColor="#178841"
                   :min="0"
                   :max="100000000"
                   :logarithmic="true"
                   v-model="range"
-                  />
+                  /> -->
                   <p>Price: <strong>${{range[0]}} - ${{range[1]}}</strong></p>
 
                   <button class="theme-button">Filter</button>
@@ -81,13 +81,13 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
-import VueSimpleRangeSlider from 'vue-simple-range-slider';
+// import VueSimpleRangeSlider from 'vue-simple-range-slider';
 
 export default {
   layout: 'public',
 
   components: {
-    VueSimpleRangeSlider
+    // VueSimpleRangeSlider
   },
   data() {
     return {
