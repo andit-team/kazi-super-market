@@ -50,8 +50,8 @@ export default {
     ...mapActions({
       FetchProduct: 'product/getProducts',
   }),
-
   }
+  
 }
 
 </script>

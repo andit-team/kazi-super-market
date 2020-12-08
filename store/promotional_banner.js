@@ -38,7 +38,6 @@ const actions = {
         if(response.data.error === false){
             dispatch('getPromotionalBanners');
         }
-
         return response.data
     },
     async updateBanner({dispatch},payload){
@@ -73,6 +72,13 @@ const actions = {
 
     async getPromotionalBanners({ commit }){
         const response = await axios.post(process.env.API_URL+'/admin/banars',{},helper.AuthHeader());
+        commit('SET_PROMOTIONAL_BANNERS',response.data)
+    },
+
+    // Fetch Title Only Home
+    async fetchBanners({ commit }){
+        const response = await axios.post(process.env.API_URL+'/banar/',{});
+        console.log(response),
         commit('SET_PROMOTIONAL_BANNERS',response.data)
     },
 
