@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="loaded">
       <div>
         <div class="breadcrumb-section">
             <div class="container">
@@ -86,9 +86,11 @@ export default {
     }),    
   },
   async created(){
+    this.$nuxt.$loading.start()
     await this.allcategory();
     await this.category(this.$route.params.slug);
     await this.subCat(this.$route.params.slug);
+    this.$nuxt.$loading.finish()
     this.loaded = true;
   },
 
@@ -108,7 +110,7 @@ export default {
 </script>
 
 <style>
-.slider {
+.loading {
   /* overwrite slider styles */
   width: 150px;
 }

@@ -40,16 +40,14 @@
 
                 <div class="filter-box price-slider">
                     <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
-                    <b-collapse visible id="collapse-2" class="mt-2">
-                    <VueSimpleRangeSlider
-                    style="width: auto"
-                    activeBarColor="#178841"
-                    :min="0"
-                    :max="5000"
-                    v-model="range"
-                    />
-                    <p>Price: <strong>${{range[0]}} - ${{range[1]}}</strong></p>
-                    <button class="theme-button">Filter</button>
+                    <b-collapse visible id="collapse-2" class="mt-4">
+                      <vue-slider  
+                        :min="0" 
+                        :max="5000"
+                        v-model="range"
+                        :enable-cross="false"
+                        @drag-end="sliderRange()"
+                      ></vue-slider>
                     </b-collapse>
                 </div>
 
@@ -71,9 +69,10 @@
           <div class="col-12 col-lg-9">
             <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             <div class="search-page-sort d-flex align-items-center">
-                <label>Sort By:&nbsp;</label>
-                <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
-                </b-form-select>
+                <label>Sort By:&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" v-model="searchOptions.key" @keyup="searchProduct()" class="form-control">
+                <!-- <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
+                </b-form-select> -->
             </div>
             <div class="search-page-product-wrap d-flex flex-wrap">
               <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
@@ -86,24 +85,26 @@
 </template>
 
 <script>
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/default.css'
+
 import { mapGetters,mapActions } from 'vuex'
-import VueSimpleRangeSlider from 'vue-simple-range-slider';
 
 export default {
     name: 'producSearch',
     head() {
         return {
-        title: `${this.title} | Kazissupermarket online`,
+          title: `${this.title} | Kazissupermarket online`,
         };
     },
   layout: 'public',
   components: {
-    VueSimpleRangeSlider
+    VueSlider
   },
   data() {
     return {
         bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
-        range: [20,1000],
+        range: [0,5000],
         perPage:10,
         pageOptions: ['New', 'Old', 'Low to high', 'High to low'],
         searchOptions:{
@@ -139,8 +140,11 @@ export default {
       getCategory : 'category/fatchCategory',
     }),
     sliderRange(){
-      console.log(this.range);
+      this.searchOptions.min_price = this.range[0];
+      this.searchOptions.max_price = this.range[1];
+      this.searchProduct()
     },
+
     getImgUrl(path) {
       return require('@/assets/images/product-img/' + path)
     },
@@ -161,7 +165,7 @@ export default {
     },
 
     searchProduct(){
-        this.category_wise_products({category: this.categoryData.data._id,options:this.searchOptions});
+        this.category_wise_products({category: this.categoryData.data ? this.categoryData.data._id : "",options:this.searchOptions});
     }
     
     
@@ -171,10 +175,7 @@ export default {
     await this.getCategory(this.category)
     await this.allParentCategories();
     await this.Tags();
-    await this.category_wise_products({category: this.categoryData.data._id});
-
-    // this.min = min
-    // this.max = max
+    await this.category_wise_products({category: this.categoryData.data ? this.categoryData.data._id : ""});
   },
   // watch: {
   //   'selectTag'(newVal, oldVal) {
