@@ -119,8 +119,9 @@ const actions = {
         return response.data.data[0]
     },
 
-    async categoryWiseProduct({commit},cat_slug){
-        const response = await axios.get(process.env.API_URL+'/'+cat_slug+'/products');
+    async categoryWiseProduct({commit},payload){
+        console.log(payload);
+        const response = await axios.post(process.env.API_URL+'/product/search',payload);
         commit('SET_CATEGORY_WISE_PRODUCT',response.data.data)
         return response.data.data
     },
