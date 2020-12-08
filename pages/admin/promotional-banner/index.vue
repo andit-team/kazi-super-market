@@ -10,29 +10,28 @@ import axios from 'axios'
 export default {
     head() {
         return {
-            title: `${this.title} | KazisSuperMarket - Slider`,
+            title: `${this.title} | KazisSuperMarket - Promotional Banner`,
         };
     },
     data() {
         return {
-            title: 'Slider',
+            title: 'Add Promotional Banner',
             items: [{
                     text: 'Home',
                     href: '/',
                 },
                 {
-                    text: 'Slider',
+                    text: 'Promotional Banner',
                     active: true,
                 }
             ],
 
             form: {
                 id: '',
-                slider_title: '',
-                slider_subtitle: '',
                 thumbnail: '',
-                btn_link: '',
-                active: true,
+                title: '',
+                description: '',
+                link: ''
             },
             // status:[
             //     {"sdf":false},
@@ -57,19 +56,15 @@ export default {
                     sortable: true
                 },
                 {
-                    key: 'slider_title',
+                    key: 'title',
                     sortable: true
                 },
                 {
-                    key: 'slider_subtitle',
-                    sortable: true
-                },
-                {
-                    key: 'btn_link',
+                    key: 'description',
                     sortable: false
                 },
                 {
-                    key: 'active',
+                    key: 'link',
                     sortable: false
                 },
                 {
@@ -82,21 +77,21 @@ export default {
     },
     validations: {
         form: {
-            slider_title: {
+            title: {
                 required
             },
-            slider_subtitle: {
+            description: {
                 required
             }
         }
     },
     computed: {
-        ...mapGetters({tableData : 'main_slider/getMainSliders'}),
+        ...mapGetters({tableData : 'promotional_banner/getPromotionalBanners'}),
         /**
          * Total no. of records
          */
         tableData(){
-            return this.$store.state.main_slider.mainSliders
+            return this.$store.state.promotional_banner.promotionalBanners
         },
         rows() {
             return this.tableData.data.length
@@ -108,10 +103,9 @@ export default {
     },
     methods: {
         ...mapActions({
-                mainSliders : 'main_slider/getMainSliders',
-                newSlider : 'main_slider/createSlider',
-                updateStatus : 'main_slider/statusUpdate',
-                removeSlider:'main_slider/removeSlider'
+                promotionalBanners : 'promotional_banner/getPromotionalBanners',
+                newBanner : 'promotional_banner/createBanner',
+                removeBanner:'promotional_banner/removeBanner'
             }),
 
        async onFilePicked(event) {
@@ -140,7 +134,7 @@ export default {
         /**
          * Basic Form submit
          */
-        SaveMainSlider(e) {
+        SavePromotionalBanner(e) {
            this.submitted = true
             this.$v.$touch()
             if (this.$v.$invalid) {
@@ -148,17 +142,16 @@ export default {
                 console.log(this.form);
             } else {
                 this.submit = true
-                this.newSlider(this.form).then(res => {
-                    // console.log(res);
+                this.newBanner(this.form).then(res => {
+                    console.log(res);
                     if(res.error === false){
                         helper.SuccessMsg(res.msg);
                         this.form = {
                             id: '',
-                            slider_title: '',
-                            slider_subtitle: '',
                             thumbnail: '',
-                            'btn_link' : '',
-                            'active' : true
+                            title: '',
+                            description: '',
+                            'link' : '',
                         }
                         document.getElementById("thumbnail").value = "";
                         this.instantSrc = null
@@ -175,11 +168,10 @@ export default {
         BackFromEdit(){
             this.form = {
                 id: '',
-                slider_title: '',
-                slider_subtitle: '',
                 thumbnail: '',
-                'btn_link' : '',
-                'active' :true
+                title: '',
+                description: '',
+                'link' : '',
             },
             this.instantSrc = ''
         },
@@ -195,18 +187,11 @@ export default {
         OnEdit(item){
             console.log(item);
             this.form.id = item._id
-            this.form.slider_title = item.slider_title
-            this.form.slider_subtitle = item.slider_subtitle
             this.form.thumbnail = item.thumbnail,
-            this.form.btn_link = item.btn_link,
-            this.form.active = item.active,
-            this.instantSrc = item.thumbnail
-        },
-
-        triggerActiveBtn(item){
-            console.log(item);
-            // this.form.id = item._id
-            // this.form.active = item.active
+            this.form.link = item.link,
+            this.instantSrc = item.thumbnail,
+            this.form.title = item.title,
+            this.form.description = item.description
         },
 
         confirmToDelete(item) {
@@ -219,7 +204,7 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.value) {
-                    this.removeSlider(item).then(res => {
+                    this.removeBanner(item).then(res => {
                         if(res.error === false){
                             helper.SuccessMsg(res.msg);
                         }else{
@@ -229,20 +214,14 @@ export default {
                         helper.WarningMsg(err.msg);
                     });
 
-
                 }
             });
         },
-
-        statusUpdate(id, status){
-            this.updateStatus({"_id":id,"active":status});
-            // console.log(status);
-        }
     },
 
     created(){
-        this.newSlider();
-        this.mainSliders();
+        this.newBanner();
+        this.promotionalBanners();
     },
     directives: {
         focus: {
@@ -268,43 +247,37 @@ export default {
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title m-t-0">Add Slider</h4>
+                    <h4 class="header-title m-t-0">Add Promotional Banner</h4>
 
-                    <form @submit.prevent="SaveMainSlider" id="mainSliderForm">
-                        <div class="form-group">
-                            <label for="slider_title">Slider Title<span class="text-danger">*</span></label>
-                            <input id="slider_title" v-model="form.slider_title" v-focus name="slider_title" class="form-control" :class="{ 'is-invalid': submitted && $v.form.slider_title.$error }" type="text" placeholder="Enter Slider title" />
-                            <div v-if="submitted && !$v.form.slider_title.required" class="invalid-feedback">This value is required.</div> 
-                        </div>
-                        <div class="form-group">
-                            <label for="slider_subtitle">Slider Sub-title<span class="text-danger">*</span></label>
-                            <input id="slider_subtitle" v-model="form.slider_subtitle" v-focus name="slider_subtitle" class="form-control" :class="{ 'is-invalid': submitted && $v.form.slider_subtitle.$error }" type="text" placeholder="Enter Slider sub-title" />
-                            <div v-if="submitted && !$v.form.slider_subtitle.required" class="invalid-feedback">This value is required.</div> 
-                        </div>
-                        <div class="form-group">
-                            <label for="btn_link">Slider Button Link<span class="text-danger">*</span></label>
-                            <input id="btn_link" v-model="form.btn_link" v-focus name="btn_link" class="form-control" type="text" placeholder="Enter Slider button link" />
-                        </div>
+                    <form @submit.prevent="SavePromotionalBanner" id="mainSliderForm">
 
                         <div class="form-group">
-                            <div>
-                                <b-form-checkbox v-model="form.active" name="check-button" switch>
-                                <b>Slider Active/Inactive</b>
-                                </b-form-checkbox>
+                            <label for="title">Title<span class="text-danger">*</span></label>
+                            <input id="title" v-model="form.title" v-focus name="title" class="form-control" type="text" placeholder="Banner title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description<span class="text-danger">*</span></label>
+                                <textarea class="form-control" v-model="form.description" id="description" rows="5" placeholder="Please banner description"></textarea>
                             </div>
-                        </div>
 
                         <div class="form-group">
-                            <label>Upload Slider Image</label>
-                            <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input form-control" name="thumbnail" id="thumbnail" @change="onFilePicked">
-                                    <label class="custom-file-label" for="thumbnail">Choose file</label>
-                                </div>
+                            <label class="d-block">Upload Slider Image</label>
+
+                            <label for="thumbnail-file">
+                            <span class="btn btn-info"> <i class="fe-upload"></i> Upload </span></label>
+
+                            <div class="btn btn-default btn-file">
+                                <input id="thumbnail-file" name="thumbnail" class="form-control img1"  type="file" @change="onFilePicked"/>
                             </div>
                             <div id="preview">
-                                <img v-if="instantSrc" class="img-fluid" :src="instantSrc" />
+                                <img v-if="instantSrc" class="img-fluid"  :src="instantSrc" />
                             </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="link">Promotion Link<span class="text-danger">*</span></label>
+                            <input id="link" v-model="form.link" v-focus name="link" class="form-control" type="text" placeholder="Enter promotion link" />
                         </div>
 
                         <div class="form-group text-right m-b-0">
@@ -324,7 +297,7 @@ export default {
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Sliders List</h4>
+                    <h4 class="header-title">Promotional Advartise Banner List</h4>
                     <p class="text-muted font-13 mb-4"></p>
                     <div class="row mb-md-2">
                         <div class="col-sm-12 col-md-6">
@@ -352,11 +325,6 @@ export default {
                             <!-- A custom formatted column -->
                             <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50"/></template>
 
-                            <template #cell(active)="row">
-                                <div>
-                                    <b-form-checkbox @change="statusUpdate(row.item._id, $event)" switch :checked="row.item.active"></b-form-checkbox> 
-                                </div>
-                            </template>
                             <template #cell(actions)="row">
                                 <div class="d-flex">
                                     <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning"><i class="fe-trash-2"></i></button>
