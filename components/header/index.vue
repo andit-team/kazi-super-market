@@ -31,7 +31,7 @@
 
             <b-nav-form inline class="product-search-form ml-auto">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Your email address">
+                <input type="text" class="form-control" v-model="searchKeyWord" placeholder="Your email addressssssss">
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-search theme-button"><b-icon-search /></button>
                 </div>
@@ -89,7 +89,8 @@ export default {
   },
   data() {
     return {
-      scrollPosition: null
+      scrollPosition: null,
+      searchKeyWord : null
     }
   },
   computed: {
