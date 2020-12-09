@@ -12,6 +12,8 @@
 
 <script>
 import { mapState } from 'vuex'
+
+import { helper } from '../helpers/helper'
 export default {
   layout: 'public',
   

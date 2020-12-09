@@ -17,7 +17,8 @@
         </div>
       </div>
 
-      <div class="name">{{textSorten(product.name,40)}}</div>
+      <div class="name">{{ product.name }}</div>
+      <!-- <div class="name">{{ textSorten(product.name,25) }}</div> -->
       <div class="overlay text">
         <p class="addText">Add to Shopping Bag</p>
         <span>
@@ -45,9 +46,10 @@ export default {
       return product.price - (product.price *(product.discount)/100)
       console.log(product);
     },
-    textSorten(str,len){
-      return helper.textSort(str,len);
-    },
+
+    // textSorten(str,len){
+    //   return helper.textSort(str,len);
+    // },
   }
 }
 </script>
