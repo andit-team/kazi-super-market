@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- products Area Start -->
-    <section class="home-deals-product-area product-slider-area section-b-40-space" :style="{ 'background-image': 'url(' + bannerImg + ')' }">
+    <section class="home-deals-product-area product-slider-area section-b-40-space" :style="{ 'background-image': 'url(' + bannerImg.thumbnail + ')' }">
       <div class="container">
         <!-- product Area Start -->
         <div class="row">
@@ -39,10 +39,11 @@
 </template>
 
 <script>
+import { helper } from '../../helpers/helper'
 export default {
   data() {
     return {
-      bannerImg: require('@/assets/images/banner-img/deal-banner.jpg'),
+      // bannerImg: require('@/assets/images/banner-img/deal-banner.jpg'),
       title: 'Deals of the Day',
       subTitle: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, dolore. Lorem ipsum dolor sit.',
       swiperOption: {
@@ -218,6 +219,11 @@ export default {
 
     }
   },
+  computed :{
+    bannerImg(){
+      return helper.getBanarSrc('special-product-for-you')
+    }
+  }
 
 }
 </script>

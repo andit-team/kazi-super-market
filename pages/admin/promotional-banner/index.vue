@@ -74,9 +74,6 @@ export default {
         form: {
             title: {
                 required
-            },
-            description: {
-                required
             }
         }
     },
@@ -122,7 +119,7 @@ export default {
                 })
             } else {
                 this.fileName = ''
-                 this.form.thumbnail = null
+                this.form.thumbnail = null
                 this.url = ''
             }
         },
@@ -134,7 +131,6 @@ export default {
             this.$v.$touch()
             if (this.$v.$invalid) {
                 console.log('error submit');
-                console.log(this.form);
             } else {
                 this.submit = true
                 this.newBanner(this.form).then(res => {
@@ -146,9 +142,9 @@ export default {
                             thumbnail: '',
                             title: '',
                             description: '',
-                            'link' : '',
+                            link : '',
                         }
-                        document.getElementById("thumbnail").value = "";
+                        document.getElementById("thumbnail-file").value = "";
                         this.instantSrc = null
                     }else{
                         helper.WarningMsg(res.msg);
@@ -166,7 +162,7 @@ export default {
                 thumbnail: '',
                 title: '',
                 description: '',
-                'link' : '',
+                link : '',
             },
             this.instantSrc = ''
         },
@@ -253,8 +249,7 @@ export default {
                         </div>
                         <div class="form-group">
                             <label for="description">Description<span class="text-danger">*</span></label>
-                            <textarea class="form-control" v-model="form.description" id="description" rows="5" :class="{ 'is-invalid': submitted && $v.form.description.$error }" placeholder="Type banner description"></textarea>
-                            <div v-if="submitted && !$v.form.description.required" class="invalid-feedback">This value is required.</div> 
+                            <textarea class="form-control" v-model="form.description" id="description" rows="5"  placeholder="Type banner description"></textarea>
                         </div>
 
                         <div class="form-group">

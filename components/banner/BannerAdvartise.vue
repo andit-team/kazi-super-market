@@ -18,6 +18,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { helper } from '../../helpers/helper'
 export default {
   data() {
     return {
@@ -25,22 +26,9 @@ export default {
       imagepath2: require('@/assets/images/banner-img/addvartise-2.jpg'),
     }
   },
-    computed: {
-    ...mapGetters(
-      {bannerItems : 'promotional_banner/getPromotionalBanners'}, 
-      {bannerTitle : 'promotional_banner/getBannersTitle'}
-    )
-  },
   created() {
-    this.FetchBanner();
-    this.FetchBannerTitle();
+    this.imagepath1 = helper.getBanarSrc('footer-top-banner-first') ? helper.getBanarSrc('footer-top-banner-first').thumbnail : require('@/assets/images/banner-img/addvartise-1.jpg');
+    this.imagepath2 = helper.getBanarSrc('footer-top-banner-second') ? helper.getBanarSrc('footer-top-banner-second').thumbnail : require('@/assets/images/banner-img/addvartise-2.jpg');
   },
-  methods: {
-    ...mapActions({
-      FetchBanner: 'promotional_banner/getPromotionalBanners',
-      FetchBannerTitle: 'promotional_banner/getBannersTitle',
-  }),
-  }
-
 }
 </script>

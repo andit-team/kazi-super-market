@@ -19,12 +19,13 @@ async function fileupload(file,thumb=null){
             return ''    
         })
         if (result.data.success) {
+            // console.log(result);
             if(thumb){
-                return result.data.data.display_url;
+                return result.data.data.image.url;
             }
             var imgdata = {
                 'id'   : result.data.data.id,
-                'url'   : result.data.data.display_url,
+                'url'   : result.data.data.image.url,
                 'title'   : result.data.data.title,
                 'size'   : result.data.data.size,
                 'type'  : result.data.data.image.mime,
@@ -61,6 +62,16 @@ function  SuccessMsg(msg) {
 function textSort(str, n){
     return (str.length > n) ? str.substr(0, n-1) + '...' : str;
 };
+function getBanarSrc(slug){
+   let banners =  JSON.parse(localStorage.getItem('banners'))
+   if(banners){
+    var d = banners.filter(el => {
+        return el.slug == slug
+    })
+    return d[0]
+   }
+   return false
+};
 
 function AuthHeader(){
     let config = {
@@ -81,5 +92,6 @@ export const helper = {
     WarningMsg,
     SuccessMsg,
     textSort,
+    getBanarSrc,
     dateFormat
 };

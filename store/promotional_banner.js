@@ -7,6 +7,7 @@ const state = {
         ]
     },
 
+    banners: {},
     bannerTitle: {}
 
 }
@@ -17,7 +18,7 @@ const getters = {
 }
 const mutations = {
     SET_PROMOTIONAL_BANNERS : (state,promotionalBanners) => (state.promotionalBanners = promotionalBanners),
-    
+    SET_PROMOTIONAL_BANNERS_FOR_FRONTEND : (state,banners) => (state.banners = banners),
     SET_BANNER_TITLE : (state,bannerTitle) => (state.bannerTitle = bannerTitle),
 }
 const actions = {
@@ -76,6 +77,10 @@ const actions = {
         return response.data
     },
 
+    async getPromotionalBannersForFrontend({ commit }){
+        const response = await axios.get(process.env.API_URL+'/banars');
+        commit('SET_PROMOTIONAL_BANNERS_FOR_FRONTEND',response.data)
+    },
     async getPromotionalBanners({ commit }){
         const response = await axios.post(process.env.API_URL+'/admin/banars',{},helper.AuthHeader());
         commit('SET_PROMOTIONAL_BANNERS',response.data)
