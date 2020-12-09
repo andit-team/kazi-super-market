@@ -29,8 +29,6 @@
                             <li><nuxt-link to="/">Home</nuxt-link></li>
                             <li><nuxt-link to="/about">About Us</nuxt-link></li>
                             <li><nuxt-link to="/contact">Contact Us</nuxt-link></li>
-                            <li><a href="#">Blog Pages</a></li>
-                            <li><a href="#">Client Feeds</a></li>
                           </ul>
                       </div>
                   </div>
@@ -41,11 +39,9 @@
                       <div class="footer-widget">
                           <h5 class="text-uppercase">Extras</h5>
                           <ul>
-                            <li><nuxt-link to="/">Home</nuxt-link></li>
-                            <li><nuxt-link to="/about">About Us</nuxt-link></li>
-                            <li><nuxt-link to="/contact">Contact Us</nuxt-link></li>
-                            <li><a href="#">Blog Pages</a></li>
-                            <li><a href="#">Client Feeds</a></li>
+                            <li><nuxt-link to="#">Terms</nuxt-link></li>
+                            <li><nuxt-link to="#">Privacy policy</nuxt-link></li>
+                            <li><nuxt-link to="#">Collection notice</nuxt-link></li>
                           </ul>
                       </div>
                   </div>
@@ -54,12 +50,12 @@
                   <!-- Column Start-->
                   <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                       <div class="footer-widget footer-get-app">
-                          <h5 class="text-uppercase">Get the app</h5>
-                          <ul>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam veritatis!</p>
-                              <li><a href="#"><img :src="btnImg1" alt="google"></a></li>
-                              <li><a href="#"><img :src="btnImg2" alt="google"></a></li>
-                          </ul>
+                        <h5 class="text-uppercase">Get the app</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Magnam veritatis!</p>
+                        <ul>
+                            <li><a href="#"><img :src="btnImg1" alt="google"></a></li>
+                            <li><a href="#"><img :src="btnImg2" alt="google"></a></li>
+                        </ul>
                       </div>
                   </div>
                   <!-- Column End-->
@@ -98,17 +94,17 @@
                               <ul class="d-flex align-items-center">
                                   <li><a href="#">Terms</a></li>
                                   <li><a href="#">Privacy Policy</a></li>
-                                  <li><a href="#">Collection Nocice</a></li>
+                                  <li><a href="#">Collection Notice</a></li>
                                   <li><a href="#">Accessibility</a></li>
                               </ul>
                           </div>
                           <div class="bottom-footer-right">
                             <ul class="payment-images d-flex">
-                                <li><a href="#"><img :src="require('@/assets/images/payment-img/1.png')" alt="payment"></a></li>
-                                <li><a href="#"><img :src="require('@/assets/images/payment-img/2.png')" alt="payment"></a></li>
-                                <li><a href="#"><img :src="require('@/assets/images/payment-img/3.png')" alt="payment"></a></li>
-                                <li><a href="#"><img :src="require('@/assets/images/payment-img/4.png')" alt="payment"></a></li>
-                                <li><a href="#"><img :src="require('@/assets/images/payment-img/5.png')" alt="payment"></a></li>
+                                <li><img :src="require('@/assets/images/payment-img/1.png')" alt="payment"></li>
+                                <li><img :src="require('@/assets/images/payment-img/2.png')" alt="payment"></li>
+                                <li><img :src="require('@/assets/images/payment-img/3.png')" alt="payment"></li>
+                                <li><img :src="require('@/assets/images/payment-img/4.png')" alt="payment"></li>
+                                <li><img :src="require('@/assets/images/payment-img/5.png')" alt="payment"></li>
                             </ul>
                           </div>
                       </div>
