@@ -18,10 +18,13 @@
               <div class="swiper-wrapper">
                 <div
                   class="swiper-slide"
-                  v-for="(product,index) in products"
+                  v-for="(product,index) in recentlyViewedProduct"
                   :key="index"
                 >
                   <!-- product box Start -->
+                  <!-- <ProductItem  v-for="productItem in product" :key="productItem._id"
+                  :product="productItem"
+                  /> -->
                   <ProductItem
                   :product="product"
                   :index="index"
@@ -50,6 +53,7 @@
 export default {
   data() {
     return {
+      recentlyViewedProduct : JSON.parse(localStorage.getItem('recently_view_products')),
       title: 'Recently Viewed Products',
       btnValue: 'View all',
       linkUrl: '/products',
@@ -224,7 +228,7 @@ export default {
         }
     ],
 
-    recentlyViewedProduct: false,
+    // recentlyViewedProduct: false,
 
     }
   },
