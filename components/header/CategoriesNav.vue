@@ -6,7 +6,7 @@
       <b-nav-item :to="'/categories/'+categoryItem.slug" v-for="categoryItem in categoryData.data" :key="categoryItem.id">{{categoryItem.name}}<i class="fas fa-angle-right"></i></b-nav-item>
     </b-nav>
     <h6><nuxt-link to="/categories/"><b-icon-plus></b-icon-plus> More Categories</nuxt-link></h6>
-
+    
   </div>
 </template>
 
@@ -28,6 +28,3 @@ export default {
   },
 }
 </script>
-
-<style>
-</style>
