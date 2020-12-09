@@ -36,7 +36,7 @@ export default {
       return {
         title: 'On Sale Products',
         btnValue: 'View All',
-        linkUrl: '#',
+        linkUrl: '/products',
     }
   },
 
