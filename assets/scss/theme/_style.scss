@@ -990,6 +990,7 @@ transition: all 0.3s ease;
 }
 .categories-nav ul li a, .categories-sidebar-mobile ul li a {
 	padding: 0 10px 25px 0;
+	// padding: 0 22px 25px 0;
 	display: flex;
 	justify-content: space-between;
   font-weight: 500;
@@ -997,6 +998,25 @@ transition: all 0.3s ease;
 }
 .categories-nav h6 {
 	margin: 15px 25px;
+}
+// Custom Scrollbar
+
+/* Works on Firefox */
+.categories-nav *{
+  scrollbar-width: thin;
+  scrollbar-color: #178841 transparent;
+}
+/* Works on Chrome, Edge, and Safari */
+.categories-nav *::-webkit-scrollbar {
+  width: 8px;
+}
+.categories-nav *::-webkit-scrollbar-track {
+  background: transparent;
+}
+.categories-nav *::-webkit-scrollbar-thumb {
+  background-color: #178841;
+  border-radius: 0;
+  border: 0 solid transparent;
 }
 // Categories Sidebar Menu Items CSS End
 
