@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="offer-tile-item-description">
-        <p class="offer-tile-item-paragraph mb-2 mt-2">{{categoryItem.description}}</p>
+        <p class="offer-tile-item-paragraph mb-2 mt-2">{{textSorten(categoryItem.description,25)}}</p>
     </div>
     <nuxt-link class="button theme-button" to="/products">
       Shop now<i class="fas fa-chevron-right pl-2"></i>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { helper } from '../../helpers/helper'
 export default {
   // props: {
   //   offerImage: String,
@@ -38,5 +39,10 @@ export default {
 
   // },
   props: ['categoryItem', 'index','parentCat'],
+  methods: {
+    textSorten(str,len){
+      return helper.textSort(str,len);
+    },
+  }
 }
 </script>

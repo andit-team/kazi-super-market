@@ -11,7 +11,7 @@
               <p>{{subTitle}}</p>
             </div>
           </div>
-          <div class="col-12 col-md-8 col-lg-9">
+          <div class="col-12 col-md-8 col-lg-9 pr-0">
             <div v-swiper:mySwiper="swiperOption">
               <div class="swiper-wrapper">
                 <div
@@ -52,7 +52,7 @@ export default {
           nextEl: '.testi_next',
           prevEl: '.testi_prev'
         },
-        spaceBetween: 20,
+        spaceBetween: 0,
         freeMode: false,
         breakpoints: {
           1199: {

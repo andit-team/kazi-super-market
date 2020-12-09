@@ -990,6 +990,7 @@ transition: all 0.3s ease;
 }
 .categories-nav ul li a, .categories-sidebar-mobile ul li a {
 	padding: 0 10px 25px 0;
+	// padding: 0 22px 25px 0;
 	display: flex;
 	justify-content: space-between;
   font-weight: 500;
@@ -997,6 +998,25 @@ transition: all 0.3s ease;
 }
 .categories-nav h6 {
 	margin: 15px 25px;
+}
+// Custom Scrollbar
+
+/* Works on Firefox */
+.categories-nav *{
+  scrollbar-width: thin;
+  scrollbar-color: #178841 transparent;
+}
+/* Works on Chrome, Edge, and Safari */
+.categories-nav *::-webkit-scrollbar {
+  width: 8px;
+}
+.categories-nav *::-webkit-scrollbar-track {
+  background: transparent;
+}
+.categories-nav *::-webkit-scrollbar-thumb {
+  background-color: #178841;
+  border-radius: 0;
+  border: 0 solid transparent;
 }
 // Categories Sidebar Menu Items CSS End
 
@@ -1045,6 +1065,10 @@ transition: all 0.3s ease;
 .offer-tile-header-title {
 	color: var(--black-color);
 	margin-left: 10px;
+}
+// Category/Product Not Found
+.no-data-found {
+  min-height: 200px;
 }
 // 2. Category Product Area CSS End
 
@@ -1466,10 +1490,10 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
   padding: 0 15px 0 0;
   display: inline-block;
 }
-.payment-images li a {
+.payment-images li {
 	margin-left: 10px;
 }
-.payment-images li a img {
+.payment-images li img {
 	height: 25px;
   border-radius: 5px;
 }

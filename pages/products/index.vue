@@ -75,7 +75,10 @@
                 </b-form-select> -->
             </div>
             <div class="search-page-product-wrap d-flex flex-wrap">
-              <ProductItem :product="product" :index="index"  v-for="(product,index) in products" :key="index" />
+
+              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="products == 0"><h4 class="color-light-green">No Data Found</h4></div>
+
+              <ProductItem :product="product" :index="index" v-else  v-for="(product,index) in products" :key="index" />
             </div>
           </div>
         </div>
