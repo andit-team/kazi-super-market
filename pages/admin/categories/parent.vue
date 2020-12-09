@@ -105,10 +105,10 @@ export default {
     },
     methods: {
         ...mapActions({
-                cat : 'category/getCategories',
-                newCat : 'category/createCategory',
-                removeCategory:'category/removeCategory'
-            }),
+            cat : 'category/getCategories',
+            newCat : 'category/createCategory',
+            removeCategory:'category/removeCategory'
+        }),
 
         // setFile(event){
         //     this.form.thumbnail = event.target.files[0];
@@ -327,7 +327,7 @@ export default {
 
                             <template #cell(actions)="row">
                                 <div class="d-flex">
-                                    <button @click="confirmToDelete(row.item)" </button>
+                                    <button @click="confirmToDelete(row.item)"></button>
                                     <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info"><i class="fe-edit"></i></button>
                                     </div>
                             </template>
