@@ -1046,6 +1046,10 @@ transition: all 0.3s ease;
 	color: var(--black-color);
 	margin-left: 10px;
 }
+// Category/Product Not Found
+.no-data-found {
+  min-height: 200px;
+}
 // 2. Category Product Area CSS End
 
 // 3. Product Area CSS
