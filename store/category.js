@@ -15,24 +15,37 @@ const state = {
 
         }
     },
+    allSubCategories : {
+        data : {
+
+        }
+    },
     featuredCategories : {
         data : {
 
         }
-    }
+    },
+    SpecialFeaturedCategories : {
+        data : {
 
+        }
+    }
 }
 const getters = {
     allCategories: (state) => state.categories,
+    allSubCategories: (state) => state.allSubCategories,
     getSubCategories: (state) => state.subCategories,
     getCategory: (state) => state.category,
-    getFeaturedCategories: (state) => state.featuredCategories
+    getFeaturedCategories: (state) => state.featuredCategories,
+    SpecialFeaturedCategories: (state) => state.SpecialFeaturedCategories
 }
 const mutations = {
     SET_CATEGORIES : (state,categories) => (state.categories = categories),
     SET_FEATURED_CATEGORIES : (state,featuredCategories) => (state.featuredCategories = featuredCategories),
     SET_SUB_CATEGORIES : (state,categories) => (state.subCategories = categories),
-    SET_CATEGORIY : (state,category) => (state.category = category)
+    SET_ALL_SUB_CATEGORIES : (state,allSubCategories) => (state.allSubCategories = allSubCategories),
+    SET_CATEGORIY : (state,category) => (state.category = category),
+    SET_SPECIAL_FEATURED_CATEGORIES : (state,SpecialFeaturedCategories) => (state.SpecialFeaturedCategories = SpecialFeaturedCategories)
 }
 const actions = {
     async createCategory ({dispatch},payload){
@@ -133,10 +146,15 @@ const actions = {
     },
     // http://localhost:3001/api/category/category_slug/sub-categories
     //Sub categories
-    // async getSubCategories({ commit }){
-    //     const response = await axios.get(process.env.API_URL+'/categories/subcats');
-    //     commit('SET_SUB_CATEGORIES',response.data)
-    // },
+    async getAllSubCategories({ commit }){
+        const response = await axios.get(process.env.API_URL+'/categories/subcats');
+        commit('SET_ALL_SUB_CATEGORIES',response.data)
+    },
+
+    async getSpecialFeatureCategoriesProducts({ commit }){
+        const response = await axios.get(process.env.API_URL+'/category/features');
+        commit('SET_SPECIAL_FEATURED_CATEGORIES',response.data)
+    },
 }
 
 export default {

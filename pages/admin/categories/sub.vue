@@ -103,7 +103,7 @@ export default {
             return this.$store.state.category.categories
         },
         tableData(){
-            return this.$store.state.category.subCategories
+            return this.$store.state.category.allSubCategories
         },
         rows() {
             return this.tableData.data.length
@@ -115,7 +115,7 @@ export default {
     },
     methods: {
         ...mapActions({
-                cat : 'category/getSubCategories',
+                allSubCats : 'category/getAllSubCategories',
                 parentCat : 'category/getCategories',
                 newCat : 'category/createCategory',
                 removeCategory:'category/removeCategory'
@@ -241,9 +241,9 @@ export default {
         },
     },
 
-    created(){
-        this.cat();
-        this.parentCat();
+    async created(){
+        await this.allSubCats();
+        await this.parentCat();
     },
     directives: {
         focus: {
