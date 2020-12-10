@@ -44,7 +44,9 @@
             <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             <div class="search-page-product-wrap d-flex flex-wrap">
 
-              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0"><h4 class="color-light-green">No Data Found</h4></div>
+              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0">
+                <h4 class="color-light-green">No Data Found</h4>
+              </div>
 
               <div class="col-md-6 col-lg-4 col-sm-12" v-else v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
                 <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />

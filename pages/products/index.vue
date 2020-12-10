@@ -71,12 +71,19 @@
             <div class="search-page-sort d-flex align-items-center">
                 <label style="min-width:120px;">Search By key:</label>
                 <input type="text" v-model="searchOptions.key" @keyup="searchProduct()" placeholder="Search with key..." class="form-control rounded">
-                <!-- <b-form-select v-model="perPage" :options="pageOptions" selected="Asa">
-                </b-form-select> -->
             </div>
+
             <div class="search-page-product-wrap d-flex flex-wrap">
-              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="!products">
+
+              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="products == 0">
                 <h4 class="color-light-green">No Data Found</h4>
+              </div>
+
+              <!-- Loader -->
+              <div v-if="isLoading" class="card-disabled">
+                <div class="card-portlets-loader">
+                    <div class="spinner-border color-light-green m-2" role="status"></div>
+                </div>
               </div>
 
               <ProductItem :product="product" :index="index" v-else  v-for="(product,index) in products" :key="index" />
@@ -95,44 +102,47 @@ import 'vue-slider-component/theme/default.css'
 import { mapGetters,mapActions } from 'vuex'
 
 export default {
-    name: 'producSearch',
-    head() {
-        return {
-          title: `${this.title} | Kazissupermarket online`,
-        };
-    },
+  name: 'producSearch',
   layout: 'public',
+
   components: {
     VueSlider
   },
+  head() {
+    return {
+      title: `${this.title} | Kazissupermarket online`,
+    };
+  },
+
   data() {
     return {
-        title : "products",
-        bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
-        range: [0,5000],
-        perPage:10,
-        pageOptions: ['New', 'Old', 'Low to high', 'High to low'],
-        searchOptions:{
-          tags : [],
-          key : '',
-          min_price : '',
-          max_price: ''
-        },
+      title : "products",
+      bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
+      range: [0,5000],
+      perPage:10,
+      searchOptions:{
+        tags : [],
+        key : '',
+        min_price : '',
+        max_price: ''
+      },
+
+      isLoading: false
     }
   },
   computed: {
     ...mapGetters({
-        categoriesData : 'category/allCategories',
-        categoryData : 'category/getCategory',
-        tagData : 'product/allTags',
-        products : 'product/category_wise_product',
-      }),
-      parent_category(){
-          return this.$route.query.parent_category ? this.$route.query.parent_category : '';
-      },
-      category(){
-          return this.$route.query.category ? this.$route.query.category : "";
-      },
+      categoriesData : 'category/allCategories',
+      categoryData : 'category/getCategory',
+      tagData : 'product/allTags',
+      products : 'product/category_wise_product',
+    }),
+    parent_category(){
+      return this.$route.query.parent_category ? this.$route.query.parent_category : '';
+    },
+    category(){
+      return this.$route.query.category ? this.$route.query.category : "";
+    },
       
   },
 
@@ -149,9 +159,6 @@ export default {
       this.searchProduct()
     },
 
-    getImgUrl(path) {
-      return require('@/assets/images/product-img/' + path)
-    },
     checkSelectedTags(name){
       return this.searchOptions.tags.includes(name)
     },
@@ -169,9 +176,17 @@ export default {
     },
 
     searchProduct(){
-      console.log('loading start');
-      this.category_wise_products({category:  this.category ? this.categoryData.data._id : "",options:this.searchOptions});
-      console.log('loading end');
+      // console.log('loading start');
+      this.isLoading = true;
+
+      this.category_wise_products({category:  this.category ? this.categoryData.data._id : "",options:this.searchOptions}),
+
+      // setTimeout(() => {
+          this.isLoading = false;
+      // }, 1000);
+
+      // console.log('loading end');
+
     }
     
     
@@ -188,11 +203,6 @@ export default {
   //     console.log(this.searchOptions.tags);
   //   }
   // },
-
-    /*
-  ** Headers of the page
-  */
-
 
 }
 </script>
