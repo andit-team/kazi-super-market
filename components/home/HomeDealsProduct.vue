@@ -1,40 +1,43 @@
 <template>
-  <div>
+  <div v-if="specialFeatures.data.length > 0">
     <!-- products Area Start -->
-    <section class="home-deals-product-area product-slider-area section-b-40-space" :style="{ 'background-image': 'url(' + specialBanar.thumbnail + ')' }">
-      <div class="container">
-        <!-- product Area Start -->
-        <div class="row">
-          <div class="col-12 col-md-4 col-lg-3">
-            <div class="section-title d-flex flex-column justify-content-center align-content-center h-100">
-              <h2>{{specialBanar.title}}</h2>
-              <p>{{specialBanar.description}}</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-8 col-lg-9 pr-0">
-            <div v-swiper:mySwiper="swiperOption">
-              <div class="swiper-wrapper">
-                <div
-                  class="swiper-slide"
-                  v-for="(product,index) in products"
-                  :key="index"
-                >
-                  <!-- product box Start -->
-                  <ProductItemOnlyStatic
-                  :product="product"
-                  :index="index"
-                  />
-                  <!-- product box End -->
-                </div>
+    <div v-for="(specialParentCategories, index) in specialFeatures.data" :key="index">
+      <section v-for="(specialCategory, index1) in specialParentCategories.childs" :key="index1" class="home-deals-product-area product-slider-area section-b-40-space" :style="{ 'background-image': 'url(' + specialCategory.thumbnail + ')' }">
+        <div class="container">
+          <!-- product Area Start -->
+          <div class="row">
+            <div class="col-12 col-md-4 col-lg-3">
+              <div class="section-title d-flex flex-column justify-content-center align-content-center h-100">
+                <h2>{{specialCategory.name}}</h2>
+                <p>{{specialCategory.description}}</p>
               </div>
-              <div class="swiper-button-prev testi_prev" slot="button-prev"><i class="fas fa-angle-left"></i></div>
-              <div class="swiper-button-next testi_next" slot="button-next"><i class="fas fa-angle-right"></i></div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-9 pr-0">
+              <div v-swiper:mySwiper="swiperOption">
+                <div class="swiper-wrapper">
+                  <!-- <div v-for="dd in specialCategory.products"></div> -->
+                  <div
+                    class="swiper-slide"
+                    v-for="(product,index) in products"
+                    :key="index"
+                  >
+                    <!-- product box Start -->
+                    <ProductItemOnlyStatic
+                    :product="product"
+                    :index="index"
+                    />
+                    <!-- product box End -->
+                  </div>
+                </div>
+                <div class="swiper-button-prev testi_prev" slot="button-prev"><i class="fas fa-angle-left"></i></div>
+                <div class="swiper-button-next testi_next" slot="button-next"><i class="fas fa-angle-right"></i></div>
+              </div>
             </div>
           </div>
+          <!-- product Area End -->
         </div>
-        <!-- product Area End -->
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -219,9 +222,15 @@ export default {
 
     }
   },
+  mounted(){
+    this.$store.dispatch("category/getSpecialFeatureCategoriesProducts");
+  },
   computed :{
     specialBanar(){
       return helper.getBanarSrc('special-product-for-you')
+    },
+    specialFeatures(){
+      return this.$store.state.category.SpecialFeaturedCategories;
     }
   }
 
