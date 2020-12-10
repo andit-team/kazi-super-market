@@ -1,5 +1,11 @@
 <template>
-  <div v-if="loaded">
+<div>
+  <!-- Product/Category Searching Loader -->
+              <div v-if="!loaded" class="loading-div position-relative">
+                <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
+              </div>
+
+  <div v-else>
     <Breadcrumbs :title="product.name" />
     <section class="product-page product-details-page section-b-space">
       <div class="container">
@@ -197,6 +203,7 @@
     </section>
     <!-- Related Product Slider Area -->
     <RelatedProductSlider />
+  </div>
   </div>
 </template>
 
