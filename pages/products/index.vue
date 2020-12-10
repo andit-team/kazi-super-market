@@ -1,69 +1,68 @@
 <template>
   <div>
-      <div>
-        <div class="breadcrumb-section">
-            <div class="container">
-                <div class="row">         
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <nuxt-link :to="{ path: '/' }">Home</nuxt-link>
-                            </li>
-                            <li class="breadcrumb-item active" v-if="parent_category">{{parent_category}}</li>
-                            <li class="breadcrumb-item active" v-else>Products</li>
-                            <li class="breadcrumb-item active" v-if="categoryData.data">{{categoryData.data.name}}</li>
-                        </ol>
-                        </nav>
-                        <hr>
-                    </div>
-                </div>
+    <div>
+      <div class="breadcrumb-section">
+        <div class="container">
+          <div class="row">         
+            <div class="col-12">
+              <nav aria-label="breadcrumb" class="theme-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><nuxt-link :to="{ path: '/' }">Home</nuxt-link></li>
+                <li class="breadcrumb-item" v-if="parent_category"><nuxt-link :to="'/categories/'+parent_category">{{parent_category}}</nuxt-link></li>
+                <!-- <li class="breadcrumb-item active" v-if="parent_category">{{parent_category}}</li> -->
+                <li class="breadcrumb-item active" v-else>Products</li>
+                <li class="breadcrumb-item active" v-if="categoryData.data">{{categoryData.data.name}}</li>
+              </ol>
+              </nav>
+              <hr>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <section class="product-page product-search-page section-t-40-space section-b-space">
       <div class="container">
         <div class="row">
           <!-- Search Filter LeftSidebar -->
-            <div class="col-12 col-lg-3">
-                <div class="filter-left-sidebar mb-30 rounded">
-                <div class="filter-box">
-                    <b-button v-b-toggle.collapse-1 variant="light">Product Categories <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
-                    <b-collapse visible id="collapse-1" class="mt-2">
-                        <ul class="category-list">
-                        <li v-for="categoryItem in categoriesData.data" :key="categoryItem.id">
-                            <nuxt-link :to="'/categories/'+categoryItem.slug">{{categoryItem.name}}<i class="fas fa-angle-right"></i></nuxt-link>
-                        </li>
-                        </ul>
-                    </b-collapse>
-                </div>
+          <div class="col-12 col-lg-3">
+            <div class="filter-left-sidebar mb-30 rounded">
+              <div class="filter-box">
+                <b-button v-b-toggle.collapse-1 variant="light">Product Categories <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
+                <b-collapse visible id="collapse-1" class="mt-2">
+                  <ul class="category-list">
+                    <li v-for="categoryItem in categoriesData.data" :key="categoryItem.id">
+                      <nuxt-link :to="'/categories/'+categoryItem.slug">{{categoryItem.name}}<i class="fas fa-angle-right"></i></nuxt-link>
+                    </li>
+                  </ul>
+                </b-collapse>
+              </div>
 
-                <div class="filter-box price-slider">
-                    <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
-                    <b-collapse visible id="collapse-2" class="mt-4">
-                      <vue-slider  
-                        :min="0" 
-                        :max="5000"
-                        v-model="range"
-                        :enable-cross="false"
-                        @drag-end="sliderRange()"
-                      ></vue-slider>
-                    </b-collapse>
-                </div>
+              <div class="filter-box price-slider">
+                <b-button v-b-toggle.collapse-2 variant="light">Filter by price <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
+                <b-collapse visible id="collapse-2" class="mt-4">
+                  <vue-slider  
+                    :min="0" 
+                    :max="5000"
+                    v-model="range"
+                    :enable-cross="false"
+                    @drag-end="sliderRange()"
+                  ></vue-slider>
+                </b-collapse>
+              </div>
 
-                <div class="filter-box">
-                    <b-button v-b-toggle.collapse-3 variant="light">Product Tags <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
-                    <b-collapse visible id="collapse-3" class="mt-2">
-                    <ul class="tags-list">
-                        <li v-for="tagItem in tagData" :key="tagItem.id" class="rounded-pill">
-                        <span class="rounded-pill" @click="selectTag(tagItem.name)" :class="checkSelectedTags(tagItem.name) ? 'tag-hover-style' : ''" >{{tagItem.name}}</span>
-                        <!-- <nuxt-link to="/">{{tagItem.name}}</nuxt-link> -->
-                        </li>
-                    </ul>
-                    </b-collapse>
-                </div>
-                </div>
+              <div class="filter-box">
+                <b-button v-b-toggle.collapse-3 variant="light">Product Tags <b-icon-caret-down-fill></b-icon-caret-down-fill> </b-button>
+                <b-collapse visible id="collapse-3" class="mt-2">
+                <ul class="tags-list">
+                  <li v-for="tagItem in tagData" :key="tagItem.id" class="rounded-pill">
+                  <span class="rounded-pill" @click="selectTag(tagItem.name)" :class="checkSelectedTags(tagItem.name) ? 'tag-hover-style' : ''" >{{tagItem.name}}</span>
+                  <!-- <nuxt-link to="/">{{tagItem.name}}</nuxt-link> -->
+                  </li>
+                </ul>
+                </b-collapse>
+              </div>
             </div>
+          </div>
           <!-- Search Filter LeftSidebar -->
 
           <div class="col-12 col-lg-9">
@@ -181,7 +180,6 @@ export default {
       await this.category_wise_products({category:  this.category ? this.categoryData.data._id : "",options:this.searchOptions}),
       this.loading = false;
     }
-    
     
   },
 

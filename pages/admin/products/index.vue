@@ -2,14 +2,10 @@
 import { mapGetters,mapActions } from 'vuex';
 import { helper } from '../../../helpers/helper'
 import Swal from "sweetalert2";
-// import {
-//     productData
-// } from "./data";
 
 /**
  * Products-list component
  */
-// import { mapGetters,mapActions } from 'vuex'
 export default {
     head() {
         return {
@@ -89,9 +85,9 @@ export default {
     },
     methods: {
         ...mapActions({
-                FatchProduct    : 'product/getProducts',
-                removeProduct   : 'product/deleteProduct'
-            }),
+            FatchProduct    : 'product/getProducts',
+            removeProduct   : 'product/deleteProduct'
+        }),
         /**
          * Search the table data with search input
          */
@@ -123,6 +119,10 @@ export default {
 
                 }
             });
+        },
+
+        textSorten(str,len){
+            return helper.textSort(str,len);
         },
 
     },
@@ -180,7 +180,7 @@ export default {
                                     </div>
                                 </div>
                                 <h5 class="m-0 d-inline-block align-middle">
-                                    <a href="#" class="text-dark">{{ data.item.name }}</a>
+                                    <a href="#" class="text-dark">{{ textSorten(data.item.name, 18) }}</a>
                                 </h5>
                             </template>
 

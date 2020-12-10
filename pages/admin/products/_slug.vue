@@ -2,10 +2,6 @@
 import { mapGetters,mapActions } from 'vuex';
 import { helper } from '../../../helpers/helper'
 
-import {
-    products
-} from "../products/data-products";
-
 /**
  * Product-detail component
  */
