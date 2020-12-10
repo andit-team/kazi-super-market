@@ -37,6 +37,7 @@ export default {
                 parent: '',
                 category_name: '',
                 description: '',
+                featured: false,
                 thumbnail: ''
             },
             instantSrc: '',
@@ -157,7 +158,8 @@ export default {
                             parent: '',
                             category_name: '',
                             description: '',
-                            thumbnail: ''
+                            thumbnail: '',
+                            featured: false
                         }
                         document.getElementById("thumbnail").value = "";
                         this.instantSrc = null
@@ -181,7 +183,8 @@ export default {
                 parent: '',
                 category_name: '',
                 description: '',
-                thumbnail: ''
+                thumbnail: '',
+                featured: false
             },
             this.instantSrc = ''
         },
@@ -195,11 +198,13 @@ export default {
         },
 
         OnEdit(item){
+            console.log(item);
             this.form.id = item._id
             this.form.category_name = item.name
             this.form.description = item.description
             this.form.thumbnail = item.thumbnail
             this.instantSrc = item.thumbnail
+            this.form.featured = item.featured
         },
 
         confirmToDelete(item) {
@@ -267,6 +272,10 @@ export default {
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea name="description" id="description" v-model="form.description" class="form-control" rows="5" placeholder="Write about this category"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="featured" :checked="form.featured">
+                            <label for="featured">Featured home section</label>
                         </div>
 
                         <div class="form-group">

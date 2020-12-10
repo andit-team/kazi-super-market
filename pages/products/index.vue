@@ -78,7 +78,6 @@
               <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="!products">
                 <h4 class="color-light-green">No Data Found</h4>
               </div>
-
               <ProductItem :product="product" :index="index" v-else  v-for="(product,index) in products" :key="index" />
             </div>
           </div>
@@ -198,8 +197,8 @@ export default {
 </script>
 
 <style>
-.slider {
+.loading {
   /* overwrite slider styles */
-  width: 150px;
+  opacity: .5;
 }
 </style>

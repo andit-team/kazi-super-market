@@ -64,16 +64,18 @@ const actions = {
             name : payload.category_name,
             thumbnail : UploadData,//.data.data.display_url,
             description : payload.description,
-            parent : payload.parent
+            parent : payload.parent,
+            featured : payload.featured
         }
-        const response = await axios.post(process.env.API_URL+'/admin/category-create/',data,helper.AuthHeader());
+        console.log(data);
+        // const response = await axios.post(process.env.API_URL+'/admin/category-create/',data,helper.AuthHeader());
         
-        if(response.data.error === false){
-            dispatch('getCategories');
-            dispatch('getSubCategories');
-        }
+        // if(response.data.error === false){
+        //     dispatch('getCategories');
+        //     dispatch('getSubCategories');
+        // }
 
-        return response.data
+        // return response.data
     },
 
     async updateCategory({dispatch},payload){
@@ -86,7 +88,8 @@ const actions = {
             name : payload.category_name,
             thumbnail : UploadData,//.data.data.display_url,
             description : payload.description,
-            parent : payload.parent
+            parent : payload.parent,
+            featured : payload.featured
         },helper.AuthHeader());
         if(response.data.error === false){
             dispatch('getCategories');
