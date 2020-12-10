@@ -1237,7 +1237,28 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 //  Recently Viewed Product Area CSS
 .no-recently-product {
 	min-height: 370px;
+} 
+// Product Loading CSS Start
+.loading-div {
+	background-color: transparent;
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	min-height: 400px;
+	display: flex;
+	align-items: flex-start;
+	text-align: center;
+	justify-content: center;
+	padding-top: 90px;
 }
+.loading-div p {
+	position: absolute;
+	left: 0;
+	right: 0;
+  width: 100%;
+}
+// Product Loading CSS End
+
 // 3. Product Area CSS End
 
 // 3. Product Details Page Area CSS Start

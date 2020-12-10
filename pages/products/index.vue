@@ -75,18 +75,20 @@
 
             <div class="search-page-product-wrap d-flex flex-wrap">
 
-              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="products == 0">
-                <h4 class="color-light-green">No Data Found</h4>
+              <!-- Product/Category Searching Loader -->
+              <div v-if="loading" class="loading-div position-relative">
+                <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
               </div>
 
-              <!-- Loader -->
-              <div v-if="isLoading" class="card-disabled">
-                <div class="card-portlets-loader">
-                    <div class="spinner-border color-light-green m-2" role="status"></div>
+              <!-- <div v-else> -->
+
+                <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="products == 0">
+                  <h4 class="color-light-green">No Data Found</h4>
                 </div>
-              </div>
 
-              <ProductItem :product="product" :index="index" v-else  v-for="(product,index) in products" :key="index" />
+                <ProductItem :product="product" :index="index" v-else  v-for="(product,index) in products" :key="index" />
+              <!-- </div> -->
+
             </div>
           </div>
         </div>
@@ -127,7 +129,7 @@ export default {
         max_price: ''
       },
 
-      isLoading: false
+      loading: false
     }
   },
   computed: {
@@ -175,18 +177,10 @@ export default {
       }
     },
 
-    searchProduct(){
-      // console.log('loading start');
-      this.isLoading = true;
-
-      this.category_wise_products({category:  this.category ? this.categoryData.data._id : "",options:this.searchOptions}),
-
-      // setTimeout(() => {
-          this.isLoading = false;
-      // }, 1000);
-
-      // console.log('loading end');
-
+    async searchProduct(){
+      this.loading = true;
+      await this.category_wise_products({category:  this.category ? this.categoryData.data._id : "",options:this.searchOptions}),
+      this.loading = false;
     }
     
     
@@ -198,12 +192,6 @@ export default {
     this.Tags();
     this.category_wise_products({category: this.category?this.categoryData.data._id:""});
   },
-  // watch: {
-  //   'selectTag'(newVal, oldVal) {
-  //     console.log(this.searchOptions.tags);
-  //   }
-  // },
-
 }
 </script>
 
