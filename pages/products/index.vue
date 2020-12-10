@@ -75,8 +75,9 @@
                 </b-form-select> -->
             </div>
             <div class="search-page-product-wrap d-flex flex-wrap">
-
-              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="products == 0"><h4 class="color-light-green">No Data Found</h4></div>
+              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="!products">
+                <h4 class="color-light-green">No Data Found</h4>
+              </div>
 
               <ProductItem :product="product" :index="index" v-else  v-for="(product,index) in products" :key="index" />
             </div>
@@ -106,6 +107,7 @@ export default {
   },
   data() {
     return {
+        title : "products",
         bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
         range: [0,5000],
         perPage:10,
@@ -124,13 +126,12 @@ export default {
         categoryData : 'category/getCategory',
         tagData : 'product/allTags',
         products : 'product/category_wise_product',
-        products : 'product/category_wise_product',
       }),
       parent_category(){
-          return this.$route.query.parent_category;
+          return this.$route.query.parent_category ? this.$route.query.parent_category : '';
       },
       category(){
-          return this.$route.query.category;
+          return this.$route.query.category ? this.$route.query.category : "";
       },
       
   },
@@ -168,7 +169,9 @@ export default {
     },
 
     searchProduct(){
-        this.category_wise_products({category: this.categoryData.data ? this.categoryData.data._id : "",options:this.searchOptions});
+      console.log('loading start');
+      this.category_wise_products({category:  this.category ? this.categoryData.data._id : "",options:this.searchOptions});
+      console.log('loading end');
     }
     
     
@@ -176,9 +179,9 @@ export default {
 
   async created(){
     await this.getCategory(this.category)
-    await this.allParentCategories();
-    await this.Tags();
-    await this.category_wise_products({category: this.categoryData.data ? this.categoryData.data._id : ""});
+    this.allParentCategories();
+    this.Tags();
+    this.category_wise_products({category: this.category?this.categoryData.data._id:""});
   },
   // watch: {
   //   'selectTag'(newVal, oldVal) {

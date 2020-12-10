@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- products Area Start -->
-    <section class="home-deals-product-area product-slider-area section-b-40-space" :style="{ 'background-image': 'url(' + bannerImg.thumbnail + ')' }">
+    <section class="home-deals-product-area product-slider-area section-b-40-space" :style="{ 'background-image': 'url(' + specialBanar.thumbnail + ')' }">
       <div class="container">
         <!-- product Area Start -->
         <div class="row">
           <div class="col-12 col-md-4 col-lg-3">
             <div class="section-title d-flex flex-column justify-content-center align-content-center h-100">
-              <h2>{{title}}</h2>
-              <p>{{subTitle}}</p>
+              <h2>{{specialBanar.title}}</h2>
+              <p>{{specialBanar.description}}</p>
             </div>
           </div>
           <div class="col-12 col-md-8 col-lg-9 pr-0">
@@ -43,7 +43,7 @@ import { helper } from '../../helpers/helper'
 export default {
   data() {
     return {
-      // bannerImg: require('@/assets/images/banner-img/deal-banner.jpg'),
+      // specialBanar: require('@/assets/images/banner-img/deal-banner.jpg'),
       title: 'Deals of the Day',
       subTitle: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, dolore. Lorem ipsum dolor sit.',
       swiperOption: {
@@ -220,7 +220,7 @@ export default {
     }
   },
   computed :{
-    bannerImg(){
+    specialBanar(){
       return helper.getBanarSrc('special-product-for-you')
     }
   }

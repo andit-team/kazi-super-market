@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Swal from "sweetalert2";
+import { integer } from 'vuelidate/lib/validators';
 
 async function fileupload(file,thumb=null){
     if(typeof file === 'object' && file !== null){
@@ -60,7 +61,11 @@ function  SuccessMsg(msg) {
 }
 
 function textSort(str, n){
-    return (str.length > n) ? str.substr(0, n-1) + '...' : str;
+    if(str){
+        if(typeof n == 'number'){
+            return (str.length > n) ? str.substr(0, n-1) + '...' : str;
+        }
+    }
 };
 function getBanarSrc(slug){
    let banners =  JSON.parse(localStorage.getItem('banners'))

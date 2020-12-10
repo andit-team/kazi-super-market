@@ -1,4 +1,5 @@
 <template>
+<div>
   <div v-if="loaded">
     <div>
       <div class="breadcrumb-section">
@@ -54,6 +55,8 @@
       </div>
     </section>
   </div>
+  <div v-else style="min-height:850px; opacity:.5"></div>
+  </div>
 </template>
 
 <script>
@@ -67,6 +70,7 @@ export default {
     },
     data(){
         return{
+            title: this.$route.params.slug ? this.$route.params.slug :"Categories",
             loaded : false,
             bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
         }
@@ -89,11 +93,11 @@ export default {
     }),    
   },
   async created(){
-    this.$nuxt.$loading.start()
+    // this.$nuxt.$loading.start()
     await this.allcategory();
     await this.category(this.$route.params.slug);
     await this.subCat(this.$route.params.slug);
-    this.$nuxt.$loading.finish()
+    // this.$nuxt.$loading.finish()
     this.loaded = true;
   },
 

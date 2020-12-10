@@ -122,8 +122,10 @@ const actions = {
 
     //Sub categories
     async fatchCategory({ commit },slug){
-        const response = await axios.get(process.env.API_URL+'/category/'+slug);
-        commit('SET_CATEGORIY',response.data)
+        if(slug){
+            const response = await axios.get(process.env.API_URL+'/category/'+slug);
+            commit('SET_CATEGORIY',response.data)
+        }
     },
     async getSubCategories({ commit },slug){
         const response = await axios.get(process.env.API_URL+'/category/'+slug+'/sub-categories');
