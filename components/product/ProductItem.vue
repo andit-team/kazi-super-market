@@ -17,8 +17,7 @@
         </div>
       </div>
 
-      <!-- <div class="name">{{ product.name }}</div> -->
-      <div class="name">{{ textSorten(product.name,25) }}</div>
+      <div class="name">{{ textSorten(product.name,40) }}</div>
       <div class="overlay text">
         <p class="addText">Add to Shopping Bag</p>
         <span>
@@ -37,17 +36,15 @@
 </template>
 
 <script>
-// import { helper } from '../../helpers/helper'
+import { helper } from '../../helpers/helper'
 export default {
   props: ['product', 'index'],
   methods: {
     discountedPrice(product) {
       return product.price - (product.price *(product.discount)/100)
     },
-    textSorten(str,n){
-      if(str){
-        return (str.length > n) ? str.substr(0, n-1) + '...' : str;
-      }
+    textSorten(str,len){
+      return helper.textSort(str,len);
     },
   }
 }

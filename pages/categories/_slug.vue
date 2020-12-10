@@ -1,24 +1,21 @@
 <template>
-<div>
-  <div v-if="loaded">
-    <div>
-      <div class="breadcrumb-section">
-          <div class="container">
-              <div class="row">         
-                  <div class="col-12">
-                      <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                      <ol class="breadcrumb">
-                          <li class="breadcrumb-item">
-                              <nuxt-link :to="{ path: '/' }">Home</nuxt-link>
-                          </li>
-                          <li class="breadcrumb-item active">{{categoryData.data.name}}</li>
-                      </ol>
-                      </nav>
-                      <hr>
-                  </div>
-              </div>
-          </div>
-      </div>
+  <div>
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">         
+                <div class="col-12">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <nuxt-link :to="{ path: '/' }">Home</nuxt-link>
+                        </li>
+                        <li class="breadcrumb-item active">{{categoryData.data.name}}</li>
+                    </ol>
+                    </nav>
+                    <hr>
+                </div>
+            </div>
+        </div>
     </div>
     <section class="product-page product-search-page section-t-40-space section-b-space">
       <div class="container">
@@ -44,7 +41,14 @@
             <!-- <BannerSmall :bannerImg="bannerImg" /> -->
             <div class="search-page-product-wrap d-flex flex-wrap">
 
-              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0"><h4 class="color-light-green">No Data Found</h4></div>
+              <!-- Product/Category Searching Loader -->
+              <div v-if="loading" class="loading-div position-relative">
+                <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
+              </div>
+
+              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0">
+                <h4 class="color-light-green">No Data Found</h4>
+              </div>
 
               <div class="col-md-6 col-lg-4 col-sm-12" v-else v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
                 <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
@@ -54,8 +58,6 @@
         </div>
       </div>
     </section>
-  </div>
-  <div v-else style="min-height:850px; opacity:.5"></div>
   </div>
 </template>
 
@@ -69,11 +71,13 @@ export default {
         };
     },
     data(){
-        return{
-            title: this.$route.params.slug ? this.$route.params.slug :"Categories",
-            loaded : false,
-            bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
-        }
+      return{
+        title: this.$route.params.slug ? this.$route.params.slug :"Categories",
+        loaded : false,
+        bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
+        
+        loading: false  
+      }
     },
     name: 'producSearch',
     layout: 'public',
@@ -93,20 +97,12 @@ export default {
     }),    
   },
   async created(){
-    // this.$nuxt.$loading.start()
+    this.loading = true;
     await this.allcategory();
     await this.category(this.$route.params.slug);
     await this.subCat(this.$route.params.slug);
-    // this.$nuxt.$loading.finish()
-    this.loaded = true;
+    this.loading = false;
   },
-
-//   watch: {
-//     'parent_category'(newVal, oldVal) {
-//       console.log(oldVal);
-//       console.log(newVal);
-//     }
-//   },
 
 }
 </script>

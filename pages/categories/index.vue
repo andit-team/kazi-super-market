@@ -28,38 +28,6 @@ export default {
     return {
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
       // title: 'Explore this weeks specials',
-      
-      // categories:[
-      //       { 
-      //       id: 1,
-      //       title: "Freezer",
-      //       subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-      //       offerImage: require('@/assets/images/product-img/offer.svg'),
-      //       productImage: require('@/assets/images/product-img/product-1.png'),
-      //     },
-      //       { 
-      //       id: 2,
-      //       title: "Freezer",
-      //       subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-      //       offerImage: require('@/assets/images/product-img/offer.svg'),
-      //       productImage: require('@/assets/images/product-img/product-2.png'),
-      //     },
-      //       { 
-      //       id: 3,
-      //       title: "Freezer",
-      //       subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-      //       offerImage: require('@/assets/images/product-img/offer.svg'),
-      //       productImage: require('@/assets/images/product-img/product-1.png'),
-      //     },
-      //       { 
-      //       id: 4,  
-      //       title: "Freezer",
-      //       subTitle: "Patties Party Pack 1.25kg, Della Rosa Pizza 500g",
-      //       offerImage: require('@/assets/images/product-img/offer.svg'),
-      //       productImage: require('@/assets/images/product-img/product-2.png'),
-      //     },
-      // ],
-
     }
   },
 
@@ -68,11 +36,11 @@ export default {
   },
   methods: {
     ...mapActions({
-        cat : 'category/getCategories',
-      }),
+      cat : 'category/getCategories',
+    }),
   },
   created(){
-      this.cat();
+    this.cat();
   },
 
 }

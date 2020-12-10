@@ -34,17 +34,17 @@ export default {
     ...mapGetters({
       categoryData : 'category/allCategories',
       subCategoryData : 'category/getSubCategories'
-      }),
+    }),
   },
   methods: {
     ...mapActions({
-        cat : 'category/getCategories',
-        subCat : 'category/getSubCategories',
-      }),
+      cat : 'category/getCategories',
+      subCat : 'category/getSubCategories',
+    }),
   },
   created(){
-      this.cat();
-      this.subCat();
+    this.cat();
+    this.subCat();
   },
 
 }

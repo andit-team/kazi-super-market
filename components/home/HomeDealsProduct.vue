@@ -15,18 +15,15 @@
             <div class="col-12 col-md-8 col-lg-9 pr-0">
               <div v-swiper:mySwiper="swiperOption">
                 <div class="swiper-wrapper">
-                  <!-- <div v-for="dd in specialCategory.products"></div> -->
                   <div
                     class="swiper-slide"
-                    v-for="(product,index) in products"
-                    :key="index"
+                    v-for="productItem in specialCategory.products"
+                    :key="productItem.id"
                   >
                     <!-- product box Start -->
-                    <ProductItemOnlyStatic
-                    :product="product"
-                    :index="index"
-                    />
+                    <ProductItem :product="productItem"/>
                     <!-- product box End -->
+
                   </div>
                 </div>
                 <div class="swiper-button-prev testi_prev" slot="button-prev"><i class="fas fa-angle-left"></i></div>
