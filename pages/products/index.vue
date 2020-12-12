@@ -1,21 +1,19 @@
 <template>
   <div>
-    <div>
-      <div class="breadcrumb-section">
-        <div class="container">
-          <div class="row">         
-            <div class="col-12">
-              <nav aria-label="breadcrumb" class="theme-breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><nuxt-link :to="{ path: '/' }">Home</nuxt-link></li>
-                <li class="breadcrumb-item" v-if="parent_category"><nuxt-link :to="'/categories/'+parent_category">{{parent_category}}</nuxt-link></li>
-                <!-- <li class="breadcrumb-item active" v-if="parent_category">{{parent_category}}</li> -->
-                <li class="breadcrumb-item active" v-else>Products</li>
-                <li class="breadcrumb-item active" v-if="categoryData.data">{{categoryData.data.name}}</li>
-              </ol>
-              </nav>
-              <hr>
-            </div>
+    <div class="breadcrumb-section">
+      <div class="container">
+        <div class="row">         
+          <div class="col-12">
+            <nav aria-label="breadcrumb" class="theme-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><nuxt-link :to="{ path: '/' }">Home</nuxt-link></li>
+              <li class="breadcrumb-item" v-if="parent_category"><nuxt-link :to="'/categories/'+parent_category">{{parent_category}}</nuxt-link></li>
+              <!-- <li class="breadcrumb-item active" v-if="parent_category">{{parent_category}}</li> -->
+              <li class="breadcrumb-item active" v-else>Products</li>
+              <li class="breadcrumb-item active" v-if="categoryData.data">{{categoryData.data.name}}</li>
+            </ol>
+            </nav>
+            <hr>
           </div>
         </div>
       </div>

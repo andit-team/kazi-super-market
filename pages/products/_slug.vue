@@ -6,8 +6,29 @@
     </div>
 
     <div v-else>
-      <Breadcrumbs :title="textSorten(product.name, 25)" />
-      <section class="product-page product-details-page section-b-space">
+      <!-- <Breadcrumbs :title="textSorten(product.name, 25)" /> -->
+
+      <div class="breadcrumb-section">
+        <div class="container">
+          <div class="row">         
+            <div class="col-12">
+              <nav aria-label="breadcrumb" class="theme-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><nuxt-link :to="{ path: '/' }">Home</nuxt-link></li>
+
+                <li class="breadcrumb-item"><nuxt-link :to="'/categories/'+product.parent_category.slug">{{product.parent_category.name}}</nuxt-link></li>
+                <!-- <li class="breadcrumb-item active" v-else>Products</li> -->
+                <li class="breadcrumb-item"><nuxt-link to="#">{{product.category.name}}</nuxt-link></li>
+                <li class="breadcrumb-item active" >{{textSorten(product.name, 25)}}</li>
+              </ol>
+              </nav>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="product-page product-details-page section-t-40-space section-b-space">
         <div class="container">
           <div class="row">
               <div class="col-lg-7">
@@ -262,6 +283,16 @@ export default {
   // mounted () {
   //   this.relatedProducts()
   // },
+
+  // computed: {
+  //   ...mapGetters({
+  //     categoriesData : 'category/allCategories',
+  //     categoryData : 'category/getCategory',
+  //     tagData : 'product/allTags',
+  //     products : 'product/category_wise_product',
+  //   }),
+  // },
+
   methods: {
     ...mapActions ({
       FetchProduct: 'product/fatchProduct'

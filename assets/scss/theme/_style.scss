@@ -59,7 +59,7 @@ a {
 
 /* Theme All Transitions
 ------------------------------- */
-a, #mainNav, .theme-button, .category-box{
+a, #mainNav, .theme-button, .category-box, .search_result_box li a h5{
   transition: all .5s ease-in-out;
 }
 
@@ -70,6 +70,9 @@ a, #mainNav, .theme-button, .category-box{
   ul li {
     margin: 0;
     padding: 0;
+    list-style-type: none;
+  }
+  li {
     list-style-type: none;
   }
 
@@ -175,7 +178,7 @@ figure {
 .color-green{
   color: var(--green-color);
 }
-.color-light-green, .slide-content h5, .slide-content i{
+.color-light-green, .slide-content h5, .slide-content i, .search_result_box li a:hover h5{
   color: var(--light-green);
 }
 .color-orange{
@@ -857,12 +860,75 @@ transition: all 0.3s ease;
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link.active {
   color: var(--green-color);
 }
+.dropdown-toggle::after {
+	display: none;
+}
+#mainNav .navbar-toggler {
+	color: var(--black-color);
+	font-size: 30px;
+	padding: 0.15rem 2px;
+	margin: 0 30px 0 0;
+}
+.dropdown-item.active, .dropdown-item:active {
+	color: var(--color-blue);
+	background-color: transparent;
+}
+/* Search Box CSS only for Header Section */
+
+/* Mobile Menu CSS */
+@media only screen and (max-width: 991px) {
+  #nav-collapse.navbar-collapse {
+    background-color: #fff;
+  }
+  #nav-collapse ul.navbar-nav {
+    background-color: #fff;
+    top: 0;
+    position: relative;
+    align-items: flex-start;
+    box-shadow: 0 7px 14px 2px rgba(0,0,0,.05);
+    border-top: 1px solid var(--border-color);
+    padding: 0 15px 15px;
+  }
+  #nav-collapse ul li {
+    width: 100%;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link {
+    padding: 1em 22px;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
 .desktop-logo{
   display: block;
 }
 .mobile-logo{
   display: none;
 }
+
+// Menu Product Search Start
+.search_result_box {
+	background-color: #fff;
+	min-height: 50px;
+	left: 0;
+	top: 49px;
+	z-index: 9;
+	width: 100%;
+	box-shadow: 0 13px 13px -4px rgba(0, 0, 0, 0.05);
+	padding: 15px;
+	max-height: 460px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.search_result_box ul li {
+	margin-bottom: 15px;
+}
+.search-result-img-wrap {
+	width: 55px;
+	overflow: hidden;
+}
+.search_result_box li a img {
+	height: 55px;
+}
+// Menu Product Search End
 
 // TopBar
 .top-bar {
@@ -984,7 +1050,7 @@ transition: all 0.3s ease;
 	margin: 25px 0 0 25px;
 	border-bottom: 1px solid #e3e3e3;
 	height: 380px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 	display: block;
 }
@@ -1002,18 +1068,18 @@ transition: all 0.3s ease;
 // Custom Scrollbar
 
 /* Works on Firefox */
-.categories-nav *{
+.categories-nav *, #mainNav form *{
   scrollbar-width: thin;
   scrollbar-color: #178841 transparent;
 }
 /* Works on Chrome, Edge, and Safari */
-.categories-nav *::-webkit-scrollbar {
+.categories-nav *::-webkit-scrollbar, #mainNav form *::-webkit-scrollbar {
   width: 8px;
 }
-.categories-nav *::-webkit-scrollbar-track {
+.categories-nav *::-webkit-scrollbar-track, #mainNav form *::-webkit-scrollbar-track {
   background: transparent;
 }
-.categories-nav *::-webkit-scrollbar-thumb {
+.categories-nav *::-webkit-scrollbar-thumb, #mainNav form *::-webkit-scrollbar-thumb {
   background-color: #178841;
   border-radius: 0;
   border: 0 solid transparent;

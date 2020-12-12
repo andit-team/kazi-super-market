@@ -15,9 +15,28 @@
 
           <!-- For Mobile Search -->
           <b-navbar-nav class="d-xs-block d-sm-block d-md-block d-lg-none d-xl-none">
-            <b-nav-form inline class="product-search-form">
-              <b-form-input size="sm" placeholder="Search product/category"></b-form-input>
+            <b-nav-form inline class="product-search-form position-relative">
+              <b-form-input @keyup="searchProduct()" v-model="searchOptions.key" size="sm" placeholder="Search product/category"></b-form-input>
               <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
+
+              <!-- Product/Category Search result box Start -->
+              <div v-if="isSearch" class="search_result_box position-absolute rounded">
+                <ul class="list-unstyled">
+
+                  <li v-for="productItem in productItems" :key="productItem._id">
+                    <nuxt-link to="#" class="media align-items-center">
+                      <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
+                         <h5>${{discountedPrice(productItem)}} <span v-if="productItem.discount" class="text-muted" style="text-decoration: line-through">${{productItem.price}}</span></h5>
+                      </div>
+                    </nuxt-link>
+                  </li>
+
+                </ul>
+              </div>
+              <!-- Product/Category Search result box End -->
+
             </b-nav-form>
           </b-navbar-nav>
           <!-- For Mobile Search -->
@@ -29,14 +48,32 @@
               <b-nav-item to="/categories/category-list">Catalogue</b-nav-item>
             </b-navbar-nav>
 
-            <b-nav-form inline class="product-search-form ml-auto">
+            <b-nav-form inline class="product-search-form ml-auto position-relative">
               <div class="input-group">
-                <input type="text" class="form-control" v-model="searchKeyWord" placeholder="Search product/category">
+                <input type="text" @keyup="searchProduct()" v-model="searchOptions.key"  class="form-control"  placeholder="Search product/category">
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-search theme-button"><b-icon-search /></button>
                 </div>
               </div>
-              <!-- </form> -->
+
+              <!-- Product/Category Search result box Start -->
+              <div v-if="isSearch" class="search_result_box position-absolute rounded">
+                <ul class="list-unstyled">
+
+                  <li v-for="productItem in productItems" :key="productItem._id">
+                    <nuxt-link to="#" class="media align-items-center">
+                      <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
+                         <h5>${{discountedPrice(productItem)}} <span v-if="productItem.discount" class="text-muted" style="text-decoration: line-through">${{productItem.price}}</span></h5>
+                      </div>
+                    </nuxt-link>
+                  </li>
+
+                </ul>
+              </div>
+              <!-- Product/Category Search result box End -->
+
             </b-nav-form>
 
             <b-navbar-nav class="ml-auto middle-nav-desktop middle-nav-right-list">
@@ -81,7 +118,8 @@
 </template>
 <script>
 
-import {mapGetters} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import { helper } from '../../helpers/helper'
 import TopBar from './TopBar'
 import BottomNav from './BottomNav'
 export default {
@@ -90,18 +128,41 @@ export default {
   data() {
     return {
       scrollPosition: null,
-      searchKeyWord : null
+      // searchKeyWord : null,
+      isSearch: true,
+      searchOptions:{
+        key : '',
+      },
     }
   },
   computed: {
-    ...mapGetters({}),
+    ...mapGetters({
+      productItems : 'product/allProducts',
+    }),
 
   },
+  created() {
+   this.FetchProduct();
+    // await this.FetchProduct(this.products);
+    
+    // this.category_wise_products({products: this.products?this.productItems._id:""});
+  },
   methods: {
-    // getImgUrl(path) {
-    //   return require('@/assets/images/' + path)
+    ...mapActions({
+      FetchProduct: 'product/getProducts',
+      // category_wise_products : 'product/categoryWiseProduct',
+    }),
+
+    // async searchProduct(){
+    //   await this.category_wise_products({products: this.products?this.productItems._id:"",options:this.searchOptions})
     // },
 
+    discountedPrice(productItem) {
+      return productItem.price - (productItem.price *(productItem.discount)/100)
+    },
+    textSorten(str,len){
+      return helper.textSort(str,len);
+    },
     updateScroll() {
       this.scrollPosition = window.scrollY
     },
@@ -118,61 +179,4 @@ export default {
 }
 </script>
 <style>
-.dropdown-toggle::after {
-	display: none;
-}
-#mainNav .navbar-toggler {
-	color: var(--black-color);
-	font-size: 30px;
-	padding: 0.15rem 2px;
-	margin: 0 30px 0 0;
-}
-.dropdown-item.active, .dropdown-item:active {
-	color: var(--color-blue);
-	background-color: transparent;
-}
-/* Search Box CSS only for Header Section */
-header #mainNav .search-box h1 {
-	display: none;
-}
-header #mainNav .search-box .vs__selected {
-	/* margin: 0; */
-	padding: 0 0 0 5px;
-	/* width: 100%; */
-	height: 43px;
-	/* font-size: 14px; */
-}
-
-/* Mobile Menu CSS */
-@media only screen and (max-width: 991px) {
-  #nav-collapse ul.navbar-nav .search-box {
-	padding: 15px 0 0 15px;
-}
-  #nav-collapse.navbar-collapse {
-    /* height: 100vh;
-    min-height: 100%;
-    max-height: 100%; */
-    background-color: #fff;
-  }
-  #nav-collapse ul.navbar-nav {
-    background-color: #fff;
-    /* max-height: 100%; */
-    top: 0;
-    position: relative;
-    align-items: flex-start;
-    /* height: 100vh; */
-    /* min-height: 100%; */
-    box-shadow: 0 7px 14px 2px rgba(0,0,0,.05);
-    border-top: 1px solid var(--border-color);
-    padding: 0 15px 15px;
-  }
-  #nav-collapse ul li {
-    width: 100%;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link {
-	padding: 1em 22px;
-	border-bottom: 1px solid var(--border-color);
-}
-}
-
 </style>

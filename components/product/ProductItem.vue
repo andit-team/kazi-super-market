@@ -8,12 +8,12 @@
       </div>
       <div class="discountedPriceSection">
         <div class="discountedPrice">
-          <span>$ </span>
-          <span>{{discountedPrice(product)}}</span>
+          <!-- <span>$ </span> -->
+          <span>${{discountedPrice(product)}}</span>
         </div>
         <div class="price">
-          <span>$ </span>
-          <span>{{product.price}}</span>
+          <!-- <span> </span> -->
+          <span v-if="product.discount">${{product.price}}</span>
         </div>
       </div>
 

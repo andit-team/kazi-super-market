@@ -49,7 +49,7 @@ export default {
   methods: {
     ...mapActions({
       FetchProduct: 'product/getProducts',
-  }),
+    }),
   }
   
 }
