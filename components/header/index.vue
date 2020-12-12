@@ -61,7 +61,7 @@
                 <ul class="list-unstyled">
 
                   <li v-for="productItem in productItems" :key="productItem._id">
-                    <nuxt-link to="#" class="media align-items-center">
+                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center">
                       <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
                       <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
@@ -129,7 +129,7 @@ export default {
     return {
       scrollPosition: null,
       // searchKeyWord : null,
-      isSearch: true,
+      isSearch: false,
       searchOptions:{
         key : '',
       },

@@ -24,8 +24,14 @@
 import { mapGetters,mapActions } from 'vuex'
 export default {
   layout: 'public',
+    head() {
+      return {
+        title: `${this.title} | Kazissupermarket online`,
+      };
+    },
   data() {
     return {
+      title: 'All Categories',
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
       // title: 'Explore this weeks specials',
     }

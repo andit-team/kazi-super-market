@@ -233,9 +233,15 @@ import { mapActions, mapGetters } from 'vuex'
 import { helper } from '../../helpers/helper'
 export default {
   layout: 'public',
+  head() {
+    return {
+      title: `${this.title} | Kazissupermarket online`,
+    };
+  },
 
   data() {
     return {
+      title:this.$route.params.slug,
       ratingValue: 4, 
       isLogin: true,
       product: {},

@@ -114,7 +114,7 @@ export default {
 
   data() {
     return {
-      title : "products",
+      title: 'Products',
       bannerImg: require('@/assets/images/banner-img/addvartise-1.jpg'),
       range: [0,5000],
       perPage:10,
