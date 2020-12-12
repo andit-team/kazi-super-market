@@ -332,7 +332,7 @@ export default {
                             <!-- A custom formatted column -->
                             <template #cell(thumbnail)="data"><img :src="data.value" height="50" width="50" /></template>
 
-                            <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
+                            <template #cell(description)="data">{{textSorten(data.value,40)}}</template>
 
                             <template #cell(actions)="row">
                                 <div class="d-flex">

@@ -346,7 +346,7 @@ export default {
                             <!-- A custom formatted column -->
                             <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50" width="50" /></template>
 
-                            <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
+                            <template #cell(description)="data">{{textSorten(data.value,40)}}</template>
                             <template #cell(parent)="data">{{data.value.name ? data.value.name : 'no-category found'}}</template>
 
                             <template #cell(actions)="row">

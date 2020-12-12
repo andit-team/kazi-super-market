@@ -44,8 +44,8 @@
           <!-- For Desktop Device Only -->
           <div class="middle-nav-wrap align-items-center w-100 d-xs-none d-sm-none d-md-none d-lg-flex d-xl-flex">
             <b-navbar-nav class="middle-nav-desktop middle-nav-left-list">
-              <b-nav-item to="/categories/category-list">List</b-nav-item>
-              <b-nav-item to="/categories/category-list">Catalogue</b-nav-item>
+              <b-nav-item to="/categories/">List</b-nav-item>
+              <b-nav-item to="/categories/">Catalogue</b-nav-item>
             </b-navbar-nav>
 
             <b-nav-form inline class="product-search-form ml-auto position-relative">

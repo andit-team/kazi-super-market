@@ -3,7 +3,7 @@
     <b-sidebar id="categories-sidebar-mobile" title="Categories" bg-variant="white" shadow backdrop class="categories-sidebar-mobile">
       <div class="px-3 py-2">
         <b-nav vertical class="mt-3">
-          <b-nav-item to="/categories/category-list" v-for="categoryItem in categoryData.data" :key="categoryItem.id">{{categoryItem.name}}<i class="fas fa-angle-right"></i></b-nav-item>
+          <b-nav-item to="/categories/" v-for="categoryItem in categoryData.data" :key="categoryItem.id">{{categoryItem.name}}<i class="fas fa-angle-right"></i></b-nav-item>
       </b-nav>
       </div>
     </b-sidebar>

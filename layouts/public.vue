@@ -24,7 +24,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("promotional_banner/getPromotionalBannersForFrontend");
+    this.$store.dispatch("promotional_banner/getPromotionalBannersForFrontend"),
 
     this.$nextTick(() => {
       this.$nuxt.$loading.start()

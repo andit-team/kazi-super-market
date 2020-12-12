@@ -172,6 +172,10 @@ export default {
             }
         },
 
+        textSorten(str,len){
+            return helper.textSort(str,len);
+        },
+
         BackFromEdit(){
             this.form = {
                 id: '',
@@ -351,6 +355,8 @@ export default {
                         <b-table :items="tableData.data" :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
                             <template #cell(thumbnail)="data"><img :src="data.value ? data.value : 'https://library.cuni.cz/wp-content/plugins/ldd-directory-lite/public/images/noimage.png'" height="50"/></template>
+
+                            <template #cell(slider_subtitle)="data">{{textSorten(data.value,40)}}</template>
 
                             <template #cell(active)="row">
                                 <div>
