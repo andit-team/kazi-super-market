@@ -20,11 +20,11 @@
               <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
 
               <!-- Product/Category Search result box Start -->
-              <div v-if="isSearch" class="search_result_box position-absolute rounded">
+              <div v-if="searchKeyWord" class="search_result_box position-absolute rounded">
                 <ul class="list-unstyled">
 
-                  <li v-for="productItem in productItems" :key="productItem._id">
-                    <nuxt-link to="#" class="media align-items-center">
+                  <li v-for="productItem in SearchProductItems" :key="productItem._id" style="border-bottom:1px solid" class="pb-3">
+                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center">
                       <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
                       <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
@@ -60,8 +60,8 @@
               <div v-if="searchKeyWord" class="search_result_box position-absolute rounded">
                 <ul class="list-unstyled">
 
-                  <li v-for="productItem in SearchProductItems" :key="productItem._id" style="border-bottom:1px solid" class="pb-3">
-                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center" @click="dddd()">
+                  <li v-for="productItem in SearchProductItems" :key="productItem._id">
+                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center">
                       <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
                       <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
