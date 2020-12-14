@@ -70,14 +70,14 @@
                 <input type="text" v-model="searchOptions.key" @keyup="searchProduct()" placeholder="Search with key..." class="form-control rounded">
             </div>
 
-            <div class="search-page-product-wrap d-flex flex-wrap">
+            <div class="search-page-product-wrap">
 
               <!-- Product/Category Searching Loader -->
               <div v-if="loading" class="loading-div position-relative">
                 <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
               </div>
 
-              <div v-else>
+              <div v-else class="row">
                 <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="products == 0">
                   <h4 class="color-light-green">No Data Found</h4>
                 </div>

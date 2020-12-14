@@ -39,13 +39,13 @@
 
           <div class="col-12 col-lg-9">
             <!-- <BannerSmall :bannerImg="bannerImg" /> -->
-            <div class="search-page-product-wrap d-flex flex-wrap">
+            <div class="search-page-product-wrap">
 
               <!-- Product/Category Searching Loader -->
               <div v-if="loading" class="loading-div position-relative">
                 <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
               </div>
-              <div v-else>
+              <div v-else class="row">
                 <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0">
                   <h4 class="color-light-green">No Data Found</h4>
                 </div>
@@ -53,6 +53,7 @@
                 <div class="col-md-6 col-lg-4 col-sm-12" v-else v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
                   <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
                 </div>
+
               </div>
             </div>
           </div>

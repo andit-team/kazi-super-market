@@ -1766,6 +1766,11 @@ div.product .imageWrapper:active .overlay, div.product .imageWrapper:hover .over
 	max-width: 30%;
 }
 // Product Search Product Item
+
+.search-page-product-wrap {
+	min-height: 400px;
+}
+
   @media only screen and (min-width: 1200px) {
     .product-search-page div.product {
       width: auto!important;
