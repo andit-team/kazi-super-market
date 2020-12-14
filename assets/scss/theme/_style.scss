@@ -59,7 +59,7 @@ a {
 
 /* Theme All Transitions
 ------------------------------- */
-a, #mainNav, .theme-button, .category-box, .search_result_box li a h5{
+a, #mainNav, .theme-button, .category-box, .search_result_box li .media h5{
   transition: all .5s ease-in-out;
 }
 
@@ -178,7 +178,7 @@ figure {
 .color-green{
   color: var(--green-color);
 }
-.color-light-green, .slide-content h5, .slide-content i, .search_result_box li a:hover h5{
+.color-light-green, .slide-content h5, .slide-content i, .search_result_box li .media:hover h5{
   color: var(--light-green);
 }
 .color-orange{
@@ -913,7 +913,7 @@ transition: all 0.3s ease;
 	z-index: 9;
 	width: 100%;
 	box-shadow: 0 13px 13px -4px rgba(0, 0, 0, 0.05);
-	padding: 15px;
+	padding: 15px 15px 0;
 	max-height: 460px;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -921,11 +921,19 @@ transition: all 0.3s ease;
 .search_result_box ul li {
 	margin-bottom: 15px;
 }
+.search_result_box ul li:not(:first-child) {
+	border-top: 1px solid var(--border-color);
+	padding-top: 15px;
+	// margin-bottom: 15px;
+}
 .search-result-img-wrap {
 	width: 55px;
 	overflow: hidden;
 }
-.search_result_box li a img {
+.search_result_box li .media {
+	cursor: pointer;
+}
+.search_result_box li .media img {
 	height: 55px;
 }
 // Menu Product Search End

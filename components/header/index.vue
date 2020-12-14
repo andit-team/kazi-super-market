@@ -23,14 +23,18 @@
               <div v-if="searchKeyWord" class="search_result_box position-absolute rounded">
                 <ul class="list-unstyled">
 
-                  <li v-for="productItem in SearchProductItems" :key="productItem._id" style="border-bottom:1px solid" class="pb-3">
-                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center">
+                  <!-- Product Search Result Not Found Start -->
+                  <li v-if="SearchProductItems == 0"><h5>No product found!</h5></li>
+                  <!-- Product Search Result Not Found End -->
+
+                  <li v-else v-for="productItem in SearchProductItems" :key="productItem._id">
+                    <div class="media align-items-center" @click="goToDetails(productItem.slug)">
                       <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
                       <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
                          <h5>${{discountedPrice(productItem)}} <span v-if="productItem.discount" class="text-muted" style="text-decoration: line-through">${{productItem.price}}</span></h5>
                       </div>
-                    </nuxt-link>
+                    </div>
                   </li>
 
                 </ul>
@@ -60,14 +64,18 @@
               <div v-if="searchKeyWord" class="search_result_box position-absolute rounded">
                 <ul class="list-unstyled">
 
-                  <li v-for="productItem in SearchProductItems" :key="productItem._id">
-                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center">
+                  <!-- Product Search Result Not Found Start -->
+                  <li v-if="SearchProductItems == 0"><h5>No product found!</h5></li>
+                  <!-- Product Search Result Not Found End -->
+
+                  <li v-else v-for="productItem in SearchProductItems" :key="productItem._id">
+                    <div class="media align-items-center" @click="goToDetails(productItem.slug)">
                       <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
                       <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
                          <h5>${{discountedPrice(productItem)}} <span v-if="productItem.discount" class="text-muted" style="text-decoration: line-through">${{productItem.price}}</span></h5>
                       </div>
-                    </nuxt-link>
+                    </div>
                   </li>
 
                 </ul>
@@ -146,6 +154,12 @@ export default {
       // this.loading = true;
       await this.mainProductSearchResult({key:this.searchKeyWord})
       // this.loading = false;
+    },
+    goToDetails(slug){
+      this.searchKeyWord = null,
+      this.$router.push({
+          path: "/products/"+slug,
+      });
     },
     discountedPrice(productItem) {
       return productItem.price - (productItem.price *(productItem.discount)/100)
