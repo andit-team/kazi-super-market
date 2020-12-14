@@ -51,6 +51,15 @@
                   required
                 ></b-form-input>
               </b-form-group>
+              
+              <b-form-group>
+                <label for="name">Subject <span class="text-danger">*</span></label>
+                <b-form-input
+                  id="subject"
+                  v-model="form.subject"
+                  required
+                ></b-form-input>
+              </b-form-group>
 
               <b-form-group>
                 <label for="comment">Comment <span class="text-danger">*</span></label>
@@ -88,6 +97,7 @@ export default {
       form: {
         name: '',
         email: '',
+        subject: '',
         comment: ''
       },
     show: true,
@@ -112,6 +122,7 @@ export default {
     onSubmit(evt) {
       evt.preventDefault()
       alert('Form Submitted Successfully')
+      console.log(this.form)
     },
 
     onReset(evt) {

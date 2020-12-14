@@ -61,10 +61,10 @@
 <script>
 export default {
  data() {
-      return {
-        value: 50
-      }
+    return {
+      value: 50
     }
+  }
 }
 </script>
 
