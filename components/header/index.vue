@@ -62,8 +62,12 @@
 
               <!-- Product/Category Search result box Start -->
               <div v-if="searchKeyWord" class="search_result_box position-absolute rounded">
-                <ul class="list-unstyled">
 
+                <div v-if="loading" class="loading-div position-relative">
+                  <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
+                </div>
+
+                <ul v-else class="list-unstyled">
                   <!-- Product Search Result Not Found Start -->
                   <li v-if="SearchProductItems == 0"><h5>No product found!</h5></li>
                   <!-- Product Search Result Not Found End -->
@@ -138,6 +142,7 @@ export default {
       scrollPosition: null,
       searchKeyWord : null,
       isSearch: false,
+      loading: false
     }
   },
   computed: {
@@ -151,9 +156,9 @@ export default {
       mainProductSearchResult : 'product/mainSearchResult',
     }),
     async searchProduct(){
-      // this.loading = true;
+      this.loading = true;
       await this.mainProductSearchResult({key:this.searchKeyWord})
-      // this.loading = false;
+      this.loading = false;
     },
     goToDetails(slug){
       this.searchKeyWord = null,

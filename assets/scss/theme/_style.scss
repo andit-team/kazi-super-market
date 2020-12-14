@@ -907,7 +907,7 @@ transition: all 0.3s ease;
 // Menu Product Search Start
 .search_result_box {
 	background-color: #fff;
-	min-height: 50px;
+	min-height: 65px;
 	left: 0;
 	top: 49px;
 	z-index: 9;
@@ -917,6 +917,12 @@ transition: all 0.3s ease;
 	max-height: 460px;
 	overflow-y: auto;
 	overflow-x: hidden;
+
+    .loading-div {
+      min-height: 50px;
+      padding-top: 0;
+    }
+
 }
 .search_result_box ul li {
 	margin-bottom: 15px;
@@ -936,6 +942,7 @@ transition: all 0.3s ease;
 .search_result_box li .media img {
 	height: 55px;
 }
+
 // Menu Product Search End
 
 // TopBar
