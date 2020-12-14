@@ -45,13 +45,14 @@
               <div v-if="loading" class="loading-div position-relative">
                 <p><b-spinner label="Spinning" class="color-light-green"></b-spinner></p>
               </div>
+              <div v-else>
+                <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0">
+                  <h4 class="color-light-green">No Data Found</h4>
+                </div>
 
-              <div class="no-data-found d-flex align-items-center justify-content-center w-100" v-if="subCategoryData.data == 0">
-                <h4 class="color-light-green">No Data Found</h4>
-              </div>
-
-              <div class="col-md-6 col-lg-4 col-sm-12" v-else v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
-                <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
+                <div class="col-md-6 col-lg-4 col-sm-12" v-else v-for="subCategoryItem in subCategoryData.data" :key="subCategoryItem.id">
+                  <CategoryItem :categoryItem = "subCategoryItem" :parentCat = "categoryData.data" />
+                </div>
               </div>
             </div>
           </div>
