@@ -254,30 +254,19 @@ export default {
     this.product = await this.FetchProduct(this.$route.params.slug);
     this.title = this.product.name;
     let recentView = [];
+
     let fromLocal = JSON.parse(localStorage.getItem('recently_view_products'));
+
     if(fromLocal){
       fromLocal.map(function(LocalProduct){
           recentView.push(LocalProduct)
           recentView.push(this.p)
-          // if(LocalProduct._id !== this.p._id){
-          //   recentView.push(this.p)
-          // }
-
-        // if(LocalProduct._id === this.p._id){
-        //   console.log('sss')
-        // }else{
-        //   console.log('eee')
-        // }
       },{p : this.product})
     }else{
       recentView.push(this.product)
     }
     var uniq = recentView.filter((v,i,a)=>a.findIndex(t=>(t._id === v._id))===i)
-    console.log(uniq);
     localStorage.setItem('recently_view_products', JSON.stringify(uniq))
-    // recentView.push(this.product)
-    // localStorage.setItem('recently_view_products', JSON.stringify(recentView))
-    // console.log(this.product);
     this.loaded = true
   },
   // computed: {
