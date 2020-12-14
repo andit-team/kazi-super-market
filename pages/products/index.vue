@@ -187,6 +187,12 @@ export default {
     this.Tags();
     this.category_wise_products({category: this.category?this.categoryData.data._id:""});
   },
+  
+  watch: {
+    'categoryData'(newVal, oldVal) {
+      this.title = newVal.data.name
+    }
+  }
 }
 </script>
 

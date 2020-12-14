@@ -18,7 +18,7 @@
 
                 <li class="breadcrumb-item"><nuxt-link :to="'/categories/'+product.parent_category.slug">{{product.parent_category.name}}</nuxt-link></li>
                 <!-- <li class="breadcrumb-item active" v-else>Products</li> -->
-                <li class="breadcrumb-item"><nuxt-link to="#">{{product.category.name}}</nuxt-link></li>
+                <li class="breadcrumb-item"><nuxt-link :to="'/products/?parent_category='+product.parent_category.slug+'&category='+product.category.slug">{{product.category.name}}</nuxt-link></li>
                 <li class="breadcrumb-item active" >{{textSorten(product.name, 25)}}</li>
               </ol>
               </nav>
@@ -241,7 +241,7 @@ export default {
 
   data() {
     return {
-      title:this.$route.params.slug,
+      title:this.$route.params.name,
       ratingValue: 4, 
       isLogin: true,
       product: {},
@@ -252,6 +252,7 @@ export default {
   },
   async created() {
     this.product = await this.FetchProduct(this.$route.params.slug);
+    this.title = this.product.name;
     let recentView = [];
     let fromLocal = JSON.parse(localStorage.getItem('recently_view_products'));
     if(fromLocal){

@@ -10,6 +10,7 @@ const state = {
     units : {},
     singleProduct : {},
     categoryWiseProduct : {},
+    productSearchResultByKeyword : {},
 }
 const getters = {
     allProducts: (state) => state.products,
@@ -17,6 +18,7 @@ const getters = {
     allTags: (state) => state.tags,
     allUnits: (state) => state.units,
     category_wise_product: (state) => state.categoryWiseProduct,
+    productSearchResultByKeyword: (state) => state.productSearchResultByKeyword,
 
 }
 const mutations = {
@@ -25,6 +27,7 @@ const mutations = {
     SET_TAGS : (state,tags) => (state.tags = tags),
     SET_UNITS : (state,units) => (state.units = units),
     SET_CATEGORY_WISE_PRODUCT : (state,categoryWiseProduct) => (state.categoryWiseProduct = categoryWiseProduct),
+    SET_PRODUCT_SERARCH_RESULT_BY_KEYWORDS : (state,productSearchResultByKeyword) => (state.productSearchResultByKeyword = productSearchResultByKeyword),
 }
 const actions = {
     async getProducts({ commit }){
@@ -120,9 +123,14 @@ const actions = {
     },
 
     async categoryWiseProduct({commit},payload){
-        console.log(payload);
         const response = await axios.post(process.env.API_URL+'/product/search',payload);
         commit('SET_CATEGORY_WISE_PRODUCT',response.data.data)
+        return response.data.data
+    },
+    async mainSearchResult({commit},payload){
+        console.log(payload);
+        const response = await axios.post(process.env.API_URL+'/product/searchByKeywords',payload);
+        commit('SET_PRODUCT_SERARCH_RESULT_BY_KEYWORDS',response.data.data)
         return response.data.data
     },
 

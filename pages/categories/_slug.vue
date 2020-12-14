@@ -104,6 +104,12 @@ export default {
     this.loading = false;
   },
 
+  watch: {
+    'categoryData'(newVal, oldVal) {
+      this.title = newVal.data.name
+    }
+  }
+
 }
 </script>
 

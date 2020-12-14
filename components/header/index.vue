@@ -16,7 +16,7 @@
           <!-- For Mobile Search -->
           <b-navbar-nav class="d-xs-block d-sm-block d-md-block d-lg-none d-xl-none">
             <b-nav-form inline class="product-search-form position-relative">
-              <b-form-input @keyup="searchProduct()" v-model="searchOptions.key" size="sm" placeholder="Search product/category"></b-form-input>
+              <b-form-input @keyup="searchProduct()" v-model="searchKeyWord" size="sm" placeholder="Search product/category"></b-form-input>
               <b-button class="btn-search" size="sm" type="submit"><b-icon-search /></b-button>
 
               <!-- Product/Category Search result box Start -->
@@ -50,18 +50,18 @@
 
             <b-nav-form inline class="product-search-form ml-auto position-relative">
               <div class="input-group">
-                <input type="text" @keyup="searchProduct()" v-model="searchOptions.key"  class="form-control"  placeholder="Search product/category">
+                <input type="text" @keyup="searchProduct()" v-model="searchKeyWord"  class="form-control"  placeholder="Search product/category">
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-search theme-button"><b-icon-search /></button>
                 </div>
               </div>
 
               <!-- Product/Category Search result box Start -->
-              <div v-if="isSearch" class="search_result_box position-absolute rounded">
+              <div v-if="searchKeyWord" class="search_result_box position-absolute rounded">
                 <ul class="list-unstyled">
 
-                  <li v-for="productItem in productItems" :key="productItem._id">
-                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center">
+                  <li v-for="productItem in SearchProductItems" :key="productItem._id" style="border-bottom:1px solid" class="pb-3">
+                    <nuxt-link :to="'/products/'+productItem.slug" class="media align-items-center" @click="dddd()">
                       <div class="mr-3 search-result-img-wrap"><img :src="productItem.thumbnail" :alt="productItem.name"></div>
                       <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ textSorten(productItem.name,40) }}</h5>
@@ -128,35 +128,25 @@ export default {
   data() {
     return {
       scrollPosition: null,
-      // searchKeyWord : null,
+      searchKeyWord : null,
       isSearch: false,
-      searchOptions:{
-        key : '',
-      },
     }
   },
   computed: {
     ...mapGetters({
-      productItems : 'product/allProducts',
+      SearchProductItems : 'product/productSearchResultByKeyword',
     }),
 
-  },
-  created() {
-   this.FetchProduct();
-    // await this.FetchProduct(this.products);
-    
-    // this.category_wise_products({products: this.products?this.productItems._id:""});
   },
   methods: {
     ...mapActions({
-      FetchProduct: 'product/getProducts',
-      // category_wise_products : 'product/categoryWiseProduct',
+      mainProductSearchResult : 'product/mainSearchResult',
     }),
-
-    // async searchProduct(){
-    //   await this.category_wise_products({products: this.products?this.productItems._id:"",options:this.searchOptions})
-    // },
-
+    async searchProduct(){
+      // this.loading = true;
+      await this.mainProductSearchResult({key:this.searchKeyWord})
+      // this.loading = false;
+    },
     discountedPrice(productItem) {
       return productItem.price - (productItem.price *(productItem.discount)/100)
     },
