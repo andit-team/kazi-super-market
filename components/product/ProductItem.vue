@@ -36,9 +36,21 @@
 </template>
 
 <script>
+// import { mapActions, mapGetters } from 'vuex'
 import { helper } from '../../helpers/helper'
 export default {
   props: ['product', 'index'],
+
+  data() {
+    return {
+      isLogin: true,
+      // product: {},
+
+      value: 50
+    }
+  },
+
+
   methods: {
     discountedPrice(product) {
       return product.price - (product.price *(product.discount)/100)

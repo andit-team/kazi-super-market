@@ -245,8 +245,6 @@ export default {
       ratingValue: 4, 
       isLogin: true,
       product: {},
-      // productCategoryId: '',
-      // productCategorySlug: '',
       loaded: false,
     }
   },
@@ -259,8 +257,8 @@ export default {
 
     if(fromLocal){
       fromLocal.map(function(LocalProduct){
-          recentView.push(LocalProduct)
-          recentView.push(this.p)
+        recentView.push(LocalProduct)
+        recentView.push(this.p)
       },{p : this.product})
     }else{
       recentView.push(this.product)
@@ -269,25 +267,6 @@ export default {
     localStorage.setItem('recently_view_products', JSON.stringify(uniq))
     this.loaded = true
   },
-  // computed: {
-  //   getDetail: function () {
-  //     return this.$store.getters['product/getProductByCategory'](
-  //       this.$route.params.parent_category.slug
-  //     )
-  //   },
-  // },
-  // mounted () {
-  //   this.relatedProducts()
-  // },
-
-  // computed: {
-  //   ...mapGetters({
-  //     categoriesData : 'category/allCategories',
-  //     categoryData : 'category/getCategory',
-  //     tagData : 'product/allTags',
-  //     products : 'product/category_wise_product',
-  //   }),
-  // },
 
   methods: {
     ...mapActions ({
@@ -305,7 +284,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>

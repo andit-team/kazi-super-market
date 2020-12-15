@@ -79,7 +79,7 @@
     </section>
 
     <!-- Map with markers -->
-    <gmap-map :center="{ lat: 11, lng: 12 }" :zoom="3">
+    <gmap-map :center="{ lat: 22.821849999999998, lng: 89.559187 }" :zoom="3">
       <gmap-marker v-for="(m, index) in markers" :key="index" :position="m.position" :clickable="true" :draggable="true" @click="center = m.position"></gmap-marker>
     </gmap-map>
   </div>
@@ -103,17 +103,10 @@ export default {
     show: true,
     markers: [{
       position: {
-        lat: 10.0,
-        lng: 10.0
+        lat: 22.821849999999998,
+        lng: 89.559187
       }
-    },
-    {
-      position: {
-        lat: 15.0,
-        lng: 13.0
-      }
-    }
-      ],
+    },],
 
     }
   },
