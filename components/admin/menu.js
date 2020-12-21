@@ -97,22 +97,21 @@ export const menuItems = [
     },
     {
         id: 27,
+        label: "Contact",
+        icon: "fe-anchor",
+        link: '/admin/contact',
+    },
+    {
+        id: 28,
         label: "Settings",
         icon: "fe-anchor",
-        // link: '/admin/settings',
-        isMenuCollapsed: false,
-        subItems: [
-            {
-                id: 20,
-                label: "Contacts",
-                link: "/admin/settings/contact"
-            },
-            {
-                id: 21,
-                label: "Address",
-                link: "/admin/settings/address"
-            }
-        ]
+        link: '/admin/settings',
+    },
+    {
+        id: 29,
+        label: "Subscribers",
+        icon: "fe-anchor",
+        link: '/admin/subscribers',
     },
     
     {

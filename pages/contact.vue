@@ -5,9 +5,18 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-12 col-lg-6">
-            <div class="contact-address-wrap">
+            <div class="contact-address-wrap" v-if="loaded">
               <h3 class="contact-title">Our Address</h3>
               <address>
+                <h4>Address</h4>
+                <ul>
+                  <li>{{tableData[0].address.address}}</li>
+                  <li><b-icon-telephone-fill />Phone: {{tableData[0].address.Phone}}</li>
+                  <li><b-icon-telephone-fill />Fax: {{tableData[0].address.fax}}</li>
+                  <li><b-icon-envelope-fill />Email: <span class="color-orange">{{tableData[0].address.email}}</span></li>
+                </ul>
+              </address>
+              <!-- <address>
                 <h4>Address1</h4>
                 <ul>
                   <li> 1355 Market St, Suite 900 San Francisco, CA 94103 P: (123) 456-7890</li>
@@ -15,16 +24,7 @@
                   <li><b-icon-telephone-fill />Fax: 123456789xxx</li>
                   <li><b-icon-envelope-fill />Email: <a href="kazissupermarket@gmail.com" class="color-orange">kazissupermarket@gmail.com</a></li>
                 </ul>
-              </address>
-              <address>
-                <h4>Address1</h4>
-                <ul>
-                  <li> 1355 Market St, Suite 900 San Francisco, CA 94103 P: (123) 456-7890</li>
-                  <li><b-icon-telephone-fill />Phone: 9823xxx</li>
-                  <li><b-icon-telephone-fill />Fax: 123456789xxx</li>
-                  <li><b-icon-envelope-fill />Email: <a href="kazissupermarket@gmail.com" class="color-orange">kazissupermarket@gmail.com</a></li>
-                </ul>
-              </address>
+              </address> -->
             </div>
           </div>
 
@@ -128,65 +128,78 @@ export default {
         }
       },],
 
+      loaded: false,
+
     }
   },
-      validations: {
-        form: {
-          name: {
-            required
-          },
-          email: {
-            required
-          },
-          subject: {
-            required
-          },
-          message: {
-            required
-          },
-        }
-    },
-    methods: {
-      ...mapActions({
-            newContact : 'settings/createContact',
-          }),
-      SaveContact(e) {
-          this.submitted = true
-          this.$v.$touch()
-          if (this.$v.$invalid) {
-              console.log('error submit');
-          } else {
-              this.submit = true
-              this.newContact(this.form).then(res => {
-                  if(res.error === false){
-                      helper.SuccessMsg(res.msg);
-                      this.form = {
-                          id: '',
-                          name: '',
-                          email: '',
-                          subject: '',
-                          message: '',
-                      }
-                  }else{
-                      helper.WarningMsg(res.msg);
-                  }
-                  this.submit = false
-              }).catch(err => {
-                  helper.WarningMsg(err.msg);
-              });
-          }
-      },
-
-    },
-
-    directives: {
-      focus: {
-        // directive definition
-        inserted: function (el) {
-        el.focus()
-        }
+  validations: {
+      form: {
+        name: {
+          required
+        },
+        email: {
+          required
+        },
+        subject: {
+          required
+        },
+        message: {
+          required
+        },
       }
+  },
+  computed: {
+    ...mapGetters({tableData : 'settings/allAddress'}),
+  },
+  methods: {
+    ...mapActions({
+          newContact : 'settings/createContact',
+          // For Show Address
+          AddressData : 'settings/getAddress',
+        }),
+    SaveContact(e) {
+        this.submitted = true
+        this.$v.$touch()
+        if (this.$v.$invalid) {
+            console.log('error submit');
+        } else {
+            this.submit = true
+            this.newContact(this.form).then(res => {
+                if(res.error === false){
+                    helper.SuccessMsg(res.msg);
+                    this.form = {
+                        id: '',
+                        name: '',
+                        email: '',
+                        subject: '',
+                        message: '',
+                    }
+                }else{
+                    helper.WarningMsg(res.msg);
+                }
+                this.submit = false
+            }).catch(err => {
+                helper.WarningMsg(err.msg);
+            });
+        }
     },
+
+  },
+
+  async created(){
+    await this.AddressData();
+    this.loaded = true
+  },
+
+  directives: {
+    focus: {
+      // directive definition
+      inserted: function (el) {
+      el.focus()
+      }
+    }
+  },
+
 
   /*
   ** Headers of the page

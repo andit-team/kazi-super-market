@@ -13,29 +13,21 @@ import axios from 'axios'
 export default {
     head() {
         return {
-            title: `${this.title} | KazisSuperMarket - Units Management`,
+            title: `${this.title} | KazisSuperMarket - Subscribers List Management`,
         };
     },
     data() {
         return {
-            title: 'Address',
+            title: 'Subscribers List',
             items: [{
                     text: 'Home',
                     href: '/',
                 },
                 {
-                  text: 'Address',
+                  text: 'Subscribers List',
                     active: true,
                 },
             ],
-
-            form: {
-                id: '',
-                unit_name: '',
-                description: ''
-            },
-            submitted: false,
-            submit: false,
 
             totalRows: 1,
             currentPage: 1,
@@ -47,40 +39,25 @@ export default {
             sortDesc: false,
             fields: [
                 {
-                    key: 'name',
+                    key: 'email',
                     sortable: true
                 },
                 {
-                    key: 'description',
-                    sortable: true
+                    key: 'createdAt',
+                    sortable: false
                 },
                 {
                     key: 'Actions',
-                    sortable: true
+                    sortable: false
                 }
             ],
 
         }
     },
-    validations: {
-        form: {
-            // parent: {
-            //     required
-            // },
-            unit_name: {
-                required
-            },
-            // description: {
-            //     required
-            // },
-            // thumbnail: {
-            //     required
-            // },
-        }
-    },
+
     //  computed: mapGetters(['category/allCategories']),
     computed: {
-        ...mapGetters({tableData : 'product/allUnits'}),
+        ...mapGetters({tableData : 'subscribers/allSubscribers'}),
         /**
          * Total no. of records
          */
@@ -93,46 +70,14 @@ export default {
     },
     methods: {
         ...mapActions({
-                Units : 'product/getUnits',
-                newUnit : 'product/createUnit',
-                removeUnit : 'product/removeUnit',
+                Subscribers : 'subscribers/getSubscribers',
+                removeSubscriber : 'subscribers/removeSubscriber',
             }),
-        SaveUnit(e) {
-           this.submitted = true
-            this.$v.$touch()
-            if (this.$v.$invalid) {
-                console.log('error submit');
-            } else {
-                this.submit = true
-                this.newUnit(this.form).then(res => {
-                    if(res.error === false){
-                        helper.SuccessMsg(res.msg);
-                        this.form = {
-                            id: '',
-                            unit_name: '',
-                            description: '',
-                        }
-                    }else{
-                        helper.WarningMsg(res.msg);
-                    }
-                    this.submit = false
-                }).catch(err => {
-                    helper.WarningMsg(err.msg);
-                });
-            }
-        },
 
         textSorten(str,len){
             return helper.textSort(str,len);
         },
             
-        BackFromEdit(){
-            this.form ={
-                id: '',
-                unit_name: '',
-                description: ''
-            }
-        },
 
         /**
          * Search the table data with search input
@@ -140,12 +85,6 @@ export default {
         onFiltered(filteredItems) {
             this.totalRows = filteredItems.length
             this.currentPage = 1
-        },
-
-        OnEdit(item){
-            this.form.id = item._id
-            this.form.unit_name = item.name
-            this.form.description = item.description
         },
 
         confirmToDelete(item) {
@@ -158,7 +97,7 @@ export default {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.value) {
-                    this.removeUnit(item).then(res => {
+                    this.removeSubscriber(item).then(res => {
                         if(res.error === false){
                             helper.SuccessMsg(res.msg);
                         }else{
@@ -175,7 +114,7 @@ export default {
     },
 
     created(){
-        this.Units();
+        this.Subscribers();
     },
     directives: {
         focus: {
@@ -193,43 +132,8 @@ export default {
 <div>
     <PageHeader :title="title" :items="items" />
     <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="header-title m-t-0">Address Information</h4>
 
-                    <form @submit.prevent="SaveUnit">
-                        <div class="form-group">
-                            <label for="email">Email<span class="text-danger">*</span></label>
-                            <input id="email" v-model="form.email" v-focus name="email" class="form-control" :class="{ 'is-invalid': submitted && $v.form.email.$error }" type="text" placeholder="Enter email" />
-                            <div v-if="submitted && !$v.form.email.required" class="invalid-feedback">This value is required.</div> 
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone<span class="text-danger">*</span></label>
-                            <input id="phone" v-model="form.phone" v-focus name="phone" class="form-control" :class="{ 'is-invalid': submitted && $v.form.phone.$error }" type="text" placeholder="Enter phone" />
-                            <div v-if="submitted && !$v.form.phone.required" class="invalid-feedback">This value is required.</div> 
-                        </div>
-
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea id="address" v-model="form.address" v-focus name="address" class="form-control" :class="{ 'is-invalid': submitted && $v.form.address.$error }" rows="5" placeholder="Write address"></textarea>
-                        </div>
-
-                        <div class="form-group text-right m-b-0">
-                            <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Save</button>
-                            <button class="btn btn-primary" :class="{ 'disabled': submit}" id="submit" type="submit" v-else>Update</button>
-
-                            <button type="reset" class="btn btn-secondary m-l-5 ml-1" v-if="!form.id">Cancel</button>
-                            <button class="btn btn-secondary m-l-5 ml-1" v-else @click="BackFromEdit">Back</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- end card-box -->
-        </div>
-        <!-- end col -->
-
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">List of Parent Categories</h4>
@@ -259,12 +163,10 @@ export default {
                         <b-table :items="tableData" striped :fields="fields" responsive="sm" :per-page="perPage" :current-page="currentPage" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :filter="filter" :filter-included-fields="filterOn" @filtered="onFiltered">
                             <!-- A custom formatted column -->
 
-                            <template #cell(description)="data">{{textSorten(data.value,100)}}</template>
-
+                        
                             <template #cell(actions)="row">
                                 <div class="d-flex">
                                     <button @click="confirmToDelete(row.item)" class="btn btn-sm btn-warning"><i class="fe-trash-2"></i></button>
-                                    <button @click="OnEdit(row.item)" class="ml-1 btn btn-sm btn-info"><i class="fe-edit"></i></button>
                                     </div>
                             </template>
                         </b-table>

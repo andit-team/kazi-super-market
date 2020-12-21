@@ -3,13 +3,16 @@ import { helper } from '../helpers/helper.js';
 
 const state = {
     contacts : {},
+    address : {},
 }
 const getters = {
     allContacts: (state) => state.contacts,
+    allAddress: (state) => state.address,
 
 }
 const mutations = {
     SET_CONTACTS : (state,contacts) => (state.contacts = contacts),
+    SET_ADDRESS : (state,address) => (state.address = address),
 }
 const actions = {
     //Contact module 
@@ -37,11 +40,13 @@ const actions = {
         return response.data
     },
 
-    // async updateUnit({dispatch},payload){
+    // async updateContact({dispatch},payload){
     //     const data = {
     //         _id : payload.id,
-    //         name : payload.unit_name,
-    //         description : payload.description
+    //         address : payload.address,
+    //         Phone : payload.Phone,
+    //         email : payload.email,
+    //         fax : payload.fax
     //     }
     //     const response = await axios.post(process.env.API_URL+'/product/unit/update/',data,helper.AuthHeader());
     //     if(response.data.error === false){
@@ -57,6 +62,46 @@ const actions = {
         if(response.data.error === false){
             dispatch('getContacts');
         }
+        return response.data
+    },
+
+    //Address module 
+
+    async getAddress({ commit }){
+        const response = await axios.get(process.env.API_URL+'/settings/',{});
+        commit('SET_ADDRESS',response.data.data)
+        return response.data
+    },
+    // async createAddress({dispatch},payload){
+    //     if(payload.id){
+    //         const data = dispatch('updateAddress',payload);
+    //         return data;
+    //     }
+    //     const data = {
+    //         _id : payload.id,
+    //         address : payload.address,
+    //         Phone : payload.Phone,
+    //         email : payload.email,
+    //         fax : payload.fax
+    //     }
+    //     const response = await axios.post(process.env.API_URL+'/admin/settings/update',data,helper.AuthHeader());
+    //     if(response.data.error === false){
+    //         dispatch('getAddress');
+    //     }
+    //     return response.data
+    // },
+    async updateAddress({dispatch},payload){
+        const data = {
+            _id : payload.id,
+            address : payload.address,
+            Phone : payload.Phone,
+            email : payload.email,
+            fax : payload.fax
+        }
+        const response = await axios.post(process.env.API_URL+'/admin/settings/update',data,helper.AuthHeader());
+        // if(response.data.error === false){
+        //     dispatch('getAddress');
+        // }
         return response.data
     },
 

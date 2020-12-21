@@ -69,11 +69,12 @@
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, tempore! Amet.</p>
                     </div>
                     <div class="col-12 col-md-5">
-                        <form class="form-inline">                   
+                        <form class="form-inline" @submit.prevent="SaveSubscriber">                   
                             <div class="input-group w-100">
-                                <input type="text" class="form-control" placeholder="Your email address">
+                                <input type="text" class="form-control" v-model="form.email" v-focus name="email" :class="{ 'is-invalid': submitted && $v.form.email.$error }" placeholder="Your email address">
+                                <!-- <div v-if="submitted && !$v.form.email.required" class="invalid-feedback">This value is required.</div>  -->
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn theme-button">Subscribe</button>
+                                    <button class="btn theme-button" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Subscribe</button>
                                 </div>
                             </div>
                         </form>
@@ -119,13 +120,75 @@
 </template>
 
 <script>
+import {
+    required
+} from 'vuelidate/lib/validators'
+import Swal from "sweetalert2";
+import { helper } from '../../helpers/helper'
+/**
+ * Form Validation component
+ */
+import { mapGetters,mapActions } from 'vuex'
+import axios from 'axios'
 export default {
     data() {
         return {
             btnImg1: require('@/assets/images/button-img/google-app-btn.png'),
             btnImg2: require('@/assets/images/button-img/apple-app-btn.png'),
+            form: {
+                email: '',
+            },
+            submitted: false,
+            submit: false,
         }
+    },
+
+  validations: {
+    form: {
+        email: {
+            required
+        },
+
     }
+  },
+
+    methods: {
+        ...mapActions({
+            newSubscriber : 'subscribers/createSubscriber',
+            }),
+        SaveSubscriber(e) {
+            this.submitted = true
+            this.$v.$touch()
+            if (this.$v.$invalid) {
+                console.log('error submit');
+            } else {
+                this.submit = true
+                this.newSubscriber(this.form).then(res => {
+                    if(res.error === false){
+                        helper.SuccessMsg(res.msg);
+                        this.form = {
+                            id: '',
+                            email: '',
+                        }
+                    }else{
+                        helper.WarningMsg(res.msg);
+                    }
+                    this.submit = false
+                }).catch(err => {
+                    helper.WarningMsg(err.msg);
+                });
+            }
+        },
+
+  },
+    directives: {
+    focus: {
+      // directive definition
+      inserted: function (el) {
+      el.focus()
+      }
+    }
+  },
 }
 </script>
 <style>
