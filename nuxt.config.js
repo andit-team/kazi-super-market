@@ -36,7 +36,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ],
     script: [
-      { src: 'https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw'}
+      // { src: 'https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAuo-_NYLqOIQdCkQoInC-Z8bvE0NVMuC8'}
       // { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw&callback=initMap'},
     ]
   },
