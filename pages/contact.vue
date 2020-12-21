@@ -31,15 +31,17 @@
           <div class="col-12 col-md-12 col-lg-6">
           
             <h3 class="contact-title">Contact Information</h3>
-            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+            <b-form @submit.prevent="SaveContact">
             
               <b-form-group>
                 <label for="name">Name <span class="text-danger">*</span></label>
                 <b-form-input
                   id="name"
                   v-model="form.name"
-                  required
+                  v-focus name="name"
+                  :class="{ 'is-invalid': submitted && $v.form.name.$error }"
                 ></b-form-input>
+                <div v-if="submitted && !$v.form.name.required" class="invalid-feedback">This value is required.</div> 
               </b-form-group>
 
               <b-form-group>
@@ -48,30 +50,37 @@
                   id="email"
                   v-model="form.email"
                   type="email"
-                  required
+                  v-focus name="email"
+                  :class="{ 'is-invalid': submitted && $v.form.email.$error }"
                 ></b-form-input>
+                <div v-if="submitted && !$v.form.email.required" class="invalid-feedback">This value is required.</div> 
               </b-form-group>
               
               <b-form-group>
-                <label for="name">Subject <span class="text-danger">*</span></label>
+                <label for="subject">Subject <span class="text-danger">*</span></label>
                 <b-form-input
                   id="subject"
                   v-model="form.subject"
-                  required
+                  v-focus name="subject"
+                  :class="{ 'is-invalid': submitted && $v.form.subject.$error }"
                 ></b-form-input>
+                <div v-if="submitted && !$v.form.subject.required" class="invalid-feedback">This value is required.</div> 
               </b-form-group>
 
               <b-form-group>
-                <label for="comment">Comment <span class="text-danger">*</span></label>
+                <label for="message">Message <span class="text-danger">*</span></label>
                 <b-form-textarea
-                  id="comment"
-                  v-model="form.comment"
+                  id="message"
+                  v-model="form.message"
                   rows="3"
                   max-rows="6"
+                  v-focus name="message"
+                  :class="{ 'is-invalid': submitted && $v.form.message.$error }"
                 ></b-form-textarea>
+                <div v-if="submitted && !$v.form.message.required" class="invalid-feedback">This value is required.</div> 
               </b-form-group>
 
-              <button type="submit" class="theme-button">Submit</button>
+              <button class="theme-button" :class="{ 'disabled': submit}" id="submit" type="submit" v-if="!form.id">Submit</button>
             </b-form>
           </div>
         </div>
@@ -87,7 +96,16 @@
 
 <script>
 
-import { mapState } from 'vuex'
+import {
+    required
+} from 'vuelidate/lib/validators'
+import Swal from "sweetalert2";
+import { helper } from '../helpers/helper'
+/**
+ * Form Validation component
+ */
+import { mapGetters,mapActions } from 'vuex'
+import axios from 'axios'
 
 export default {
   layout: 'public',
@@ -98,39 +116,77 @@ export default {
         name: '',
         email: '',
         subject: '',
-        comment: ''
+        message: ''
       },
-    show: true,
-    markers: [{
-      position: {
-        lat: 22.821849999999998,
-        lng: 89.559187
-      }
-    },],
+      submitted: false,
+      submit: false,
+
+      markers: [{
+        position: {
+          lat: 22.821849999999998,
+          lng: 89.559187
+        }
+      },],
 
     }
   },
-  methods: {
+      validations: {
+        form: {
+          name: {
+            required
+          },
+          email: {
+            required
+          },
+          subject: {
+            required
+          },
+          message: {
+            required
+          },
+        }
+    },
+    methods: {
+      ...mapActions({
+            newContact : 'settings/createContact',
+          }),
+      SaveContact(e) {
+          this.submitted = true
+          this.$v.$touch()
+          if (this.$v.$invalid) {
+              console.log('error submit');
+          } else {
+              this.submit = true
+              this.newContact(this.form).then(res => {
+                  if(res.error === false){
+                      helper.SuccessMsg(res.msg);
+                      this.form = {
+                          id: '',
+                          name: '',
+                          email: '',
+                          subject: '',
+                          message: '',
+                      }
+                  }else{
+                      helper.WarningMsg(res.msg);
+                  }
+                  this.submit = false
+              }).catch(err => {
+                  helper.WarningMsg(err.msg);
+              });
+          }
+      },
 
-    onSubmit(evt) {
-      evt.preventDefault()
-      alert('Form Submitted Successfully')
-      console.log(this.form)
     },
 
-    onReset(evt) {
-      evt.preventDefault()
-      // Reset our form values
-      this.form.name = ''
-      this.form.email = ''
-      this.form.comment = ''
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
-    }
-  },
-  
+    directives: {
+      focus: {
+        // directive definition
+        inserted: function (el) {
+        el.focus()
+        }
+      }
+    },
 
   /*
   ** Headers of the page

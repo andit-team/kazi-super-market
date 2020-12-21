@@ -95,6 +95,25 @@ export const menuItems = [
         icon: "fe-anchor",
         link: '/admin/products/units'
     },
+    {
+        id: 27,
+        label: "Settings",
+        icon: "fe-anchor",
+        // link: '/admin/settings',
+        isMenuCollapsed: false,
+        subItems: [
+            {
+                id: 20,
+                label: "Contacts",
+                link: "/admin/settings/contact"
+            },
+            {
+                id: 21,
+                label: "Address",
+                link: "/admin/settings/address"
+            }
+        ]
+    },
     
     {
         id: 8,
